@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \":*)",
+      "Bash(wc -l \"c:/verabuy-traductor/articulos \\(3\\).sql\")"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import ast; ast.parse\\(open\\(''verabuy_trainer.py'',''r'',encoding=''utf-8''\\).read\\(\\)\\); print\\(''OK''\\)\")"
+    ]
+  }
+}

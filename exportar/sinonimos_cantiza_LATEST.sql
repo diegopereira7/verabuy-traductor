@@ -1,5 +1,5 @@
 -- Sinónimos Cantiza — cantiza_trainer.py
--- 2026-03-18 08:45 — 28 sinónimos
+-- 2026-03-18 10:56 — 28 sinónimos
 
 INSERT INTO `sinonimos_producto`
     (`id_proveedor`,`nombre_factura`,`especie`,`talla`,`stems_per_bunch`,

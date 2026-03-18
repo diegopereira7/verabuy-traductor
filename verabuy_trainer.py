@@ -8,6 +8,8 @@ los sinónimos necesarios para el traductor de VeraBuy.
 Uso: python verabuy_trainer.py
 """
 import json, os, re, sys, subprocess, glob
+sys.stdout.reconfigure(encoding='utf-8')
+sys.stderr.reconfigure(encoding='utf-8')
 from dataclasses import dataclass, field
 from datetime import datetime
 from difflib import SequenceMatcher
@@ -70,6 +72,13 @@ PROVIDERS = {
     'latina'     : {'id':12990, 'name':'Floricola Latinafarms',  'fmt':'alegria',      'patterns':['FLORICOLA LATINAFARMS','LATINA']},
 }
 
+# Regex que elimina el sufijo de proveedor al final del nombre de artículo
+# Ej: "ROSA EC EXPLORER 60CM 25U CANTIZA" → "ROSA EC EXPLORER 60CM 25U"
+_PROVIDER_SUFFIX_RE = re.compile(
+    r'\s+(' + '|'.join(re.escape(k.upper()) for k in PROVIDERS) + r')\s*$', re.I)
+def _strip_provider_suffix(name:str) -> str:
+    return _PROVIDER_SUFFIX_RE.sub('', name).strip()
+
 # ──────────────────────────────────────────────────────────────────────────────
 class C:
     if sys.platform=='win32': os.system('')
@@ -77,6 +86,20 @@ class C:
     RESET='\033[0m'; CYAN='\033[96m'; MAG='\033[95m'
 
 def clear(): os.system('cls' if sys.platform=='win32' else 'clear')
+
+_CARNATION_COLOR_MAP = {
+    'WHITE':'BLANCO','BLANCA':'BLANCO','RED':'ROJO','ROJA':'ROJO',
+    'PINK':'ROSA','ROSE':'ROSA','YELLOW':'AMARILLO','AMARILLA':'AMARILLO',
+    'MIX':'MIXTO','MIXED':'MIXTO','ORANGE':'NARANJA','PURPLE':'MORADO',
+    'VIOLET':'VIOLETA','LILAC':'LILA','PEACH':'MELOCOTON','SALMON':'SALMON',
+    'GREEN':'VERDE','NOVELTY':'NOVEDADES','NOVELTIES':'NOVEDADES',
+    'BICOLOR':'BICOLOR','DARK':'OSCURO','LIGHT':'CLARO',
+}
+def _translate_carnation_color(v:str) -> str:
+    """Traduce palabras de color de claveles del inglés al español."""
+    v_up=v.upper().strip()
+    if v_up in _CARNATION_COLOR_MAP: return _CARNATION_COLOR_MAP[v_up]
+    return ' '.join(_CARNATION_COLOR_MAP.get(w,w) for w in v_up.split())
 
 # ──────────────────────────────────────────────────────────────────────────────
 # DATACLASSES
@@ -117,8 +140,11 @@ class InvoiceLine:
             if orig=='EC': return f"ROSA EC {v} {s}CM {u}U" if s and u else f"ROSA EC {v}"
             return f"ROSA COL {v} {s}CM {u}U" if s and u else f"ROSA COL {v}"
         if self.species=='CARNATIONS':
-            typ='CABEZAS' if 'SPRAY' not in v.upper() else 'SPRAY'
-            return f"CLAVEL {typ} {g} {v} 1U" if g else f"CLAVEL {typ} {v} 1U"
+            color=_translate_carnation_color(v)
+            sz=s if s else 70  # tamaño estándar si no viene en la factura
+            if 'SPRAY' in v.upper():
+                return f"CLAVEL SPRAY {g} {color} {sz}CM {u}U".replace('  ',' ') if g else f"CLAVEL SPRAY {color} {sz}CM {u}U"
+            return f"CLAVEL COL {g} {color} {sz}CM {u}U".replace('  ',' ') if g else f"CLAVEL COL {color} {sz}CM {u}U"
         if self.species=='HYDRANGEAS':
             return f"HYDRANGEA {v} {s}CM {u}U" if s and u else f"HYDRANGEA {v}"
         if self.species=='ALSTROEMERIA':
@@ -167,6 +193,8 @@ class ArticulosLoader:
                     nombre=art['nombre']
                     if nombre:
                         self.by_name[nombre.upper()]=art['id']
+                        clean=_strip_provider_suffix(nombre.upper())
+                        if clean!=nombre.upper(): self.by_name[clean]=art['id']
                         self._index_species(art, species_prefixes)
                     count+=1
                 except: continue
@@ -177,22 +205,33 @@ class ArticulosLoader:
         nombre=art['nombre'].upper()
         for prefix, sp in prefixes.items():
             if nombre.startswith(prefix):
-                # Strip producer suffix (CANTIZA, GOLDEN, PUTUMAYO, etc.)
-                rest=nombre[len(prefix):].strip()
-                rest=re.sub(r'\s+CANTIZA\s*$','',rest,flags=re.I).strip()
+                # Strip producer suffix (CANTIZA, GOLDEN, COLIBRI, etc.)
+                rest=_strip_provider_suffix(nombre[len(prefix):].strip())
                 self.by_species[sp].append((rest, art['id']))
                 # Special fast-access dicts for roses
                 if sp=='ROSES_EC':
                     rm=re.match(r'(.+?)\s+(\d+)CM\s+(\d+)U',rest)
                     if rm:
-                        var=re.sub(r'\s+CANTIZA\s*$','',rm.group(1),flags=re.I).strip()
-                        key=f"{var} {rm.group(2)}CM {rm.group(3)}U"
+                        key=f"{rm.group(1).strip()} {rm.group(2)}CM {rm.group(3)}U"
                         self.rosas_ec[key]=art['id']
                 elif sp=='ROSES_COL':
                     rm=re.match(r'(?:([A-Z0-9]+)\s+)?(.+?)\s+(\d+)CM\s+(\d+)U',rest)
                     if rm:
                         self.rosas_col[rest]=art['id']
                 break
+        else:
+            # "ROSA VARIEDAD XCMYU PROVEEDOR" — sin prefijo EC/COL
+            # Se añade a los dos pools para que funcione tanto desde EC como COL
+            clean=_strip_provider_suffix(nombre)
+            if re.match(r'ROSA\s+[A-Z]', clean):
+                rest=clean[5:].strip()  # quitar "ROSA "
+                self.by_species['ROSES_EC'].append((rest, art['id']))
+                self.by_species['ROSES_COL'].append((rest, art['id']))
+                rm=re.match(r'(.+?)\s+(\d+)CM\s+(\d+)U', rest)
+                if rm:
+                    key=f"{rm.group(1).strip()} {rm.group(2)}CM {rm.group(3)}U"
+                    self.rosas_ec[key]=art['id']
+                    self.rosas_col[key]=art['id']
 
     def find_rose_ec(self, variety, size, spb):
         key=f"{variety.upper()} {size}CM {spb}U"
@@ -214,6 +253,10 @@ class ArticulosLoader:
     def find_by_name(self, name:str):
         name=name.upper().strip()
         if name in self.by_name: return self.articulos[self.by_name[name]]
+        # Fallback: quitar "EC " o "COL " para artículos tipo "ROSA VARIEDAD XCMYU PROVEEDOR"
+        no_orig=re.sub(r'^(ROSA)\s+(EC|COL)\s+',r'\1 ',name)
+        if no_orig!=name and no_orig in self.by_name:
+            return self.articulos[self.by_name[no_orig]]
         return None
 
     def fuzzy_search(self, line:InvoiceLine, threshold=0.4):
@@ -239,7 +282,9 @@ class ArticulosLoader:
         if line.species in ('ROSES','ROSES_EC','ROSES_COL'):
             return f"{v} {s}CM {u}U" if s and u else v
         if line.species=='CARNATIONS':
-            return f"{g} {v} 1U" if g else f"{v} 1U"
+            color=_translate_carnation_color(v)
+            sz=s if s else 70
+            return (f"COL {g} {color} {sz}CM {u}U" if g else f"COL {color} {sz}CM {u}U").replace('  ',' ').strip()
         if line.species in ('HYDRANGEAS','ALSTROEMERIA','CHRYSANTHEMUM'):
             return f"{v} {s}CM {u}U" if s and u else v
         if line.species=='GYPSOPHILA':
@@ -445,7 +490,23 @@ class CantizaParser:
 
 # ─── Agrivaldani / Luxus ──────────────────────────────────────────────────────
 class AgrivaldaniParser:
-    """Formato: ORDER BX BOX_TYPE VARIETY CM SPB BUNCHES STEMS PRICE TOTAL"""
+    """
+    Formato Agrivaldani/Luxus.
+    QUARTER/HALF/FULL = tipo de caja (nunca variedad).
+    La variedad puede estar en la misma línea que los números
+    o en una línea propia justo antes (carry-forward).
+
+    Casos:
+      Luxus:       "1 HALF FREEDOM 40 25 12 300 0.22 22.00"
+      Agrivaldani: variedad en sub-cabecera, datos en siguiente línea
+      Agrivaldani1:"1-1 R15  1 QUARTER EXPLORER 50 25 1 25 0.30 7.50"
+                   "MUNDIAL 50 25 1 25 0.38 9.50"
+                   "CARROUSEL  1"  ← sólo variedad + cantidad, hereda tamaño
+    """
+    _NOISE = re.compile(r'^(TOTAL|FOB|USD|ORDER|BOX|TYPE|VARIETIES|STEMS|PRICE|BUNCH|CARPE\s+DIEM\s+STEMS)', re.I)
+    _BTYPE = re.compile(r'\b(QUARTER|HALF|FULL)\b', re.I)
+    _VARONLY = re.compile(r'^([A-Z][A-Z\s]{2,25}?)\s+(\d+)\s*$')  # "CARROUSEL  1"
+
     def parse(self, text:str, pdata:dict):
         h=InvoiceHeader(); h.provider_key=pdata['key']; h.provider_id=pdata['id']; h.provider_name=pdata['name']
         m=re.search(r'Invoice\s+#[:\s]+(\S+)',text,re.I); h.invoice_number=m.group(1) if m else ''
@@ -453,53 +514,105 @@ class AgrivaldaniParser:
         m=re.search(r'AWB[:\s]+([\d\-\s]+?)(?:\s{2,}|HAWB)',text,re.I); h.awb=re.sub(r'\s+','',m.group(1)) if m else ''
         m=re.search(r'HAWB[:\s]+(\S+)',text,re.I); h.hawb=m.group(1) if m else ''
         try:
-            m=re.search(r'TOTAL[:\s]+(?:[A-Z\s]+AND\s+[\d/]+\s+USD|USD\s*)?\s*\$?\s*([\d,]+\.?\d*)',text,re.I)
-            h.total=float(m.group(1).replace(',','')) if m else 0.0
+            m=re.search(r'TOTAL:\s+[A-Z\s]+AND\s+[\d/]+\s+USD',text,re.I)
+            # fallback: last number before USD
+            m2=re.search(r'\$([\d,]+\.?\d*)\s*$',text,re.M)
+            h.total=float(m2.group(1).replace(',','')) if m2 else 0.0
         except: h.total=0.0
-        lines=[]; current_variety=''
-        for ln in text.split('\n'):
+
+        raw_lines=text.split('\n')
+        lines=[]; current_variety=''; current_sz=50; current_spb=25; current_btype=''
+
+        for ln in raw_lines:
             ln=ln.strip()
             if not ln: continue
-            # Extract variety when it appears on a label/header line
-            var_m=re.search(r'(?:HALF|QUARTER|FULL|HB|QB|TB)?\s+([A-Z][A-Z\s]{3,}?)\s+(\d{2})\s+(\d{2})\s+\d+\s+\d+\s+([\d.]+)',ln)
-            if var_m:
-                var=var_m.group(1).strip()
-                sz,spb=int(var_m.group(2)),int(var_m.group(3))
-                if var and not re.match(r'^(TOTAL|FOB|USD)',var):
-                    current_variety=var
-                bunches_m=re.search(r'(\d+)\s+([\d.]+)\s*$',ln)
-                bunches=0; total=0.0
-                if bunches_m:
-                    try: total=float(bunches_m.group(2))
-                    except: pass
-                stems=sz*spb
+
+            bt=self._BTYPE.search(ln)
+            if bt: current_btype=bt.group(1).upper()
+
+            # ── Limpiar prefijos de orden y tipo de caja ──
+            clean=re.sub(r'^\d+\s*[-–]\s*\d+\s+\S+\s+','',ln)              # "1 - 1 R15 "
+            clean=re.sub(r'^\d+\s+(?:QUARTER|HALF|FULL)\s+','',clean,flags=re.I)  # "1 QUARTER "
+            clean=re.sub(r'^(?:QUARTER|HALF|FULL)\s+','',clean,flags=re.I)         # "HALF " residual
+
+            # ── Patrón A: variedad + CM + SPB + (bunches) + stems + price + total ──
+            # "FREEDOM 40 25 12 300 0.22 22.00"  /  "E. BLACK 50 25 1 25 0.30 15.00"
+            pm=re.search(
+                r'^([A-Z][A-Z\s.]{1,28}?)\s+'  # variedad (admite puntos y espacios)
+                r'(\d{2})\s+(\d{2})\s+'         # CM  SPB
+                r'\d*\s*(\d+)\s+'               # (bunches?)  stems
+                r'([\d.]+)\s+([\d.]+)',          # price  total
+                clean, re.I
+            )
+            if pm:
+                candidate=pm.group(1).strip()
+                sz=int(pm.group(2)); spb=int(pm.group(3))
+                stems=int(pm.group(4))
+                try: price=float(pm.group(5)); total=float(pm.group(6))
+                except: price=0.0; total=0.0
+                if not self._NOISE.match(candidate):
+                    current_variety=candidate; current_sz=sz; current_spb=spb
+                elif current_variety:
+                    sz=current_sz; spb=current_spb
+                else:
+                    continue
+                if not current_variety: continue
                 il=InvoiceLine(raw_description=ln,species='ROSES',variety=current_variety,
-                               size=sz,stems_per_bunch=spb,bunches=bunches,stems=stems,
-                               price_per_stem=0.0,line_total=total)
-                lines.append(il)
-            else:
-                # Try simpler: just pick up data rows with at least 4 numbers
-                nm=re.findall(r'\b(\d+)\b',ln)
-                ft=re.findall(r'([\d.]+)',ln)
-                if len(nm)>=4 and current_variety:
-                    # Try to find CM pattern
-                    cm_m=re.search(r'(\w[\w\s]+?)\s+(\d{2})\s+(\d{2})\s+\d+\s+(\d+)\s+([\d.]+)\s+([\d.]+)',ln)
-                    if cm_m:
-                        var=cm_m.group(1).strip()
-                        if var and not re.match(r'^[\d\W]',var) and not re.match(r'^(TOTAL|ORDER|BOX)',var.upper()):
-                            current_variety=var
-                        sz,spb=int(cm_m.group(2)),int(cm_m.group(3))
-                        stems=int(cm_m.group(4))
-                        try: total=float(cm_m.group(6))
-                        except: total=0.0
-                        il=InvoiceLine(raw_description=ln,species='ROSES',variety=current_variety,
-                                       size=sz,stems_per_bunch=spb,stems=stems,line_total=total)
-                        lines.append(il)
-        # Deduplicate same variety/size/spb
+                               size=sz,stems_per_bunch=spb,stems=stems,
+                               price_per_stem=price,line_total=total,box_type=current_btype)
+                lines.append(il); continue
+
+            # ── Patrón B: variedad + bunches + stems + price + total (sin CM/SPB) ──
+            # "M. DARK BLUE  1  25  0.90  22.50"  — hereda CM/SPB del contexto
+            pm2=re.search(
+                r'^([A-Z][A-Z\s.]{1,28}?)\s+'   # variedad
+                r'(\d{1,3})\s+(\d{1,3})\s+'     # bunches  stems
+                r'([\d.]+)\s+([\d.]+)',           # price  total
+                clean, re.I
+            )
+            if pm2 and current_sz:
+                candidate=pm2.group(1).strip()
+                if not self._NOISE.match(candidate) and len(candidate)>2:
+                    current_variety=candidate
+                if not current_variety: continue
+                try:
+                    stems=int(pm2.group(3)); price=float(pm2.group(4)); total=float(pm2.group(5))
+                except: continue
+                il=InvoiceLine(raw_description=ln,species='ROSES',variety=current_variety,
+                               size=current_sz,stems_per_bunch=current_spb,stems=stems,
+                               price_per_stem=price,line_total=total,box_type=current_btype)
+                lines.append(il); continue
+
+            # ── Patrón C: solo números ── hereda variedad y CM/SPB
+            # "50  25  1  25  0.38  9.50"  o  "60  25  100  0.90  22.50"
+            nm=re.search(r'^(\d{2})\s+(\d{2})\s+\d*\s*(\d+)\s+([\d.]+)\s+([\d.]+)',clean)
+            if nm and current_variety:
+                sz=int(nm.group(1)); spb=int(nm.group(2)); stems=int(nm.group(3))
+                try: price=float(nm.group(4)); total=float(nm.group(5))
+                except: price=0.0; total=0.0
+                il=InvoiceLine(raw_description=ln,species='ROSES',variety=current_variety,
+                               size=sz,stems_per_bunch=spb,stems=stems,
+                               price_per_stem=price,line_total=total,box_type=current_btype)
+                lines.append(il); continue
+
+            # ── Variedad sola (actualiza current_variety para siguiente línea) ──
+            vo=self._VARONLY.match(clean)
+            if vo:
+                candidate=vo.group(1).strip()
+                if not self._NOISE.match(candidate): current_variety=candidate
+
+            # ── Sub-cabecera Agrivaldani: "TYPE  CARPE DIEM  STEMS  BOX..." ──
+            hm=re.search(r'TYPE\s+([A-Z][A-Z\s]{2,20}?)\s+STEMS',ln,re.I)
+            if hm:
+                candidate=hm.group(1).strip()
+                if not self._NOISE.match(candidate): current_variety=candidate
+
+        # Deduplicar: agrupa múltiples cajas de misma variedad/talla/SPB
         seen={}
         for il in lines:
             k=f"{il.variety}|{il.size}|{il.stems_per_bunch}"
             if k not in seen: seen[k]=il
+            else: seen[k].stems+=il.stems; seen[k].line_total+=il.line_total
         return h, list(seen.values())
 
 # ─── Brissas ──────────────────────────────────────────────────────────────────
@@ -688,8 +801,15 @@ class BosqueParser:
 
 # ─── Colibri ─────────────────────────────────────────────────────────────────
 class ColibriParser:
-    """Claveles: 1H Carnation White X20 - FAN"""
+    """
+    Claveles Colibri.
+    Formato: [N] H/Q  Carnation [COLOR] [X SPB] [- GRADE]  [BOX_IDs]  [Total] ST  [PRICE]  [TOTAL]
+    - No hay talla en CM.
+    - El número antes de ST ya es el total de tallos de esa línea.
+    - X 20 indica tallos por ramo; si no aparece se asume 20.
+    """
     GRADE_MAP={'FAN':'FANCY','SEL':'SELECT','STD':'STANDARD','PRE':'PREMIUM','FCY':'FANCY'}
+
     def parse(self, text:str, pdata:dict):
         h=InvoiceHeader(); h.provider_key=pdata['key']; h.provider_id=pdata['id']; h.provider_name=pdata['name']
         m=re.search(r'INVOICE\s+No\.\s*(\S+)',text,re.I); h.invoice_number=m.group(1) if m else ''
@@ -697,19 +817,58 @@ class ColibriParser:
         m=re.search(r'AWB[:\s]+([\d\-]+)',text,re.I); h.awb=re.sub(r'\s+','',m.group(1)) if m else ''
         lines=[]
         for ln in text.split('\n'):
-            pm=re.search(r'(\d+)\s*H\s+Carnation\s+([A-Za-z][A-Za-z\s]*?)\s+X\s*\d+\s*[-–]\s*(\w+)',ln,re.I)
+            # Patrón: [N] H/Q  Carnation DESCRIPCIÓN ...  [N] ST  PRICE  TOTAL
+            # La descripción termina en 3+ espacios o en un número de 6 dígitos (box ID)
+            pm=re.search(
+                r'(\d+)\s*[HQ]\s+'                                    # N cajas
+                r'Carnation\s+'                                        # especie
+                r'((?:[A-Za-z][A-Za-z\s/\-]*?))'                      # color/descripción
+                r'(?=\s{3,}|\s+\d{6}|\s+X\s+\d|\s*[-–]\s*\w+\s{2,})',# fin descripción
+                ln, re.I
+            )
             if not pm: continue
-            qty=int(pm.group(1)); color=pm.group(2).strip().upper(); grade_raw=pm.group(3).strip().upper()
-            grade=self.GRADE_MAP.get(grade_raw[:3],grade_raw)
-            var=color; sp='CARNATIONS'
-            nm=re.search(r'(\d+)\s+ST\s+([\d.]+)\s+([\d.]+)',ln)
-            stems=0; price=0.0; total=0.0
-            if nm:
-                try: stems=int(nm.group(1))*qty; price=float(nm.group(2)); total=float(nm.group(3))*qty
+            color=pm.group(2).strip().upper()
+
+            # Extraer SPB del "X 20" — solo 2-3 dígitos, no IDs de caja
+            spb_m=re.search(r'\bX\s+(\d{2,3})\b', ln)
+            spb=int(spb_m.group(1)) if spb_m else 20
+
+            # Extraer grado (FAN / SEL / etc.) de la línea
+            grade_m=re.search(r'\b(FAN|SEL|STD|PRE|FCY)\b', ln, re.I)
+            grade_raw=grade_m.group(1).upper() if grade_m else 'FAN'
+            grade=self.GRADE_MAP.get(grade_raw[:3], 'FANCY')
+
+            # Total de tallos: número antes de "ST"
+            st_m=re.search(r'(\d+)\s+ST', ln)
+            stems=int(st_m.group(1)) if st_m else 0
+
+            # Precio y total
+            prices=re.findall(r'([\d,]+\.[\d]{3})', ln)
+            price=0.0; total=0.0
+            if len(prices)>=2:
+                try: price=float(prices[-2].replace(',','.')); total=float(prices[-1].replace(',','.'))
                 except: pass
-            il=InvoiceLine(raw_description=ln,species=sp,variety=var,grade=grade,origin='COL',
-                           stems_per_bunch=20,stems=stems,price_per_stem=price,line_total=total)
-            lines.append(il)
+            elif len(prices)==1:
+                try: total=float(prices[-1].replace(',','.'))
+                except: pass
+
+            # Caja mixta: "CARN MIX RED/YELLOW" → dos líneas, tallos y total ÷ 2
+            # BICOLOR es una variedad en sí misma (flor bicolor), no se parte
+            mix_m=re.search(r'([A-Za-z]+)\s*/\s*([A-Za-z]+)', color)
+            if mix_m:
+                c1=mix_m.group(1).strip().upper()
+                c2=mix_m.group(2).strip().upper()
+                half=stems//2; half_t=round(total/2,3)
+                for cv in (c1,c2):
+                    lines.append(InvoiceLine(raw_description=ln,species='CARNATIONS',variety=cv,
+                                             grade=grade,origin='COL',size=0,
+                                             stems_per_bunch=spb,stems=half,
+                                             price_per_stem=price,line_total=half_t))
+            else:
+                lines.append(InvoiceLine(raw_description=ln,species='CARNATIONS',variety=color,
+                                         grade=grade,origin='COL',size=0,
+                                         stems_per_bunch=spb,stems=stems,
+                                         price_per_stem=price,line_total=total))
         return h, lines
 
 # ─── Golden / Benchmark ───────────────────────────────────────────────────────
@@ -845,32 +1004,62 @@ class MaxiParser:
 
 # ─── Mystic / Fiorentina / Stampsy ──────────────────────────────────────────
 class MysticParser:
-    """BOX TB Box_code VARIETY CAN BUNCHES LENGTH STEMS PRICE/UNIT TOTAL"""
+    """BOX TB [Box_code] VARIETY CAN/CANTID BUNCHES/BUNCHE LENGT STEMS PRICE/UNIT TOTAL
+    - Box_code puede estar ausente (Fiorentina, Stampsy)
+    - CAN = nº de ramos en la caja; BUNCHES = tallos por ramo (U); LENGT = tamaño CM
+    - Algunas líneas llevan la variedad en la línea anterior (carry-forward)
+    """
     def parse(self, text:str, pdata:dict):
         h=InvoiceHeader(); h.provider_key=pdata['key']; h.provider_id=pdata['id']; h.provider_name=pdata['name']
         m=re.search(r'INVOICE\s+#\s*(\S+)',text,re.I); h.invoice_number=m.group(1) if m else ''
         m=re.search(r'Date\s*:\s*([\d/]+)',text,re.I); h.date=m.group(1) if m else ''
-        m=re.search(r'A\.W\.B\.\s*N[oº\s]+[:\s]*([\d\-]+)',text,re.I); h.awb=re.sub(r'\s+','',m.group(1)) if m else ''
+        m=re.search(r'A\.W\.B\.?\s*N[oº\s]*[:\s]*([\d\-]+)',text,re.I); h.awb=re.sub(r'\s+','',m.group(1)) if m else ''
         try:
-            m=re.search(r'Total Invoice USD\s*\$([\d,.]+)',text,re.I)
+            m=re.search(r'Total Invoice USD\s*\$?\s*([\d,.]+)',text,re.I)
             h.total=float(m.group(1).replace(',','')) if m else 0.0
         except: h.total=0.0
         lines=[]
+        current_variety=''
         for ln in text.split('\n'):
-            ln=ln.strip()
-            pm=re.search(r'(H|Q)\s+\w+\s+([A-Z][A-Z\s]+?)\s+(\d+)\s+(\d+)\s+(\d{2})\s+(\d+)\s+([\d,.]+)',ln)
-            if not pm: continue
-            btype=pm.group(1); var=pm.group(2).strip()
-            try:
-                spb=int(pm.group(3)); bunches=int(pm.group(4))
-                sz=int(pm.group(5)); stems=int(pm.group(6))
-                price=float(pm.group(7).replace(',','.'))
-            except: continue
-            total=price*stems
-            il=InvoiceLine(raw_description=ln,species='ROSES',variety=var,
-                           size=sz,stems_per_bunch=spb,bunches=bunches,stems=stems,
-                           price_per_stem=price,line_total=total,box_type=btype)
-            lines.append(il)
+            raw=ln; ln=ln.strip()
+            # Patrón A: con código de caja corto (Mystic: "H VNG VARIETY CAN BUNCHES LENGT STEMS PRICE")
+            # [A-Z]{2,5} no captura — solo casa con códigos tipo "VNG", no con palabras como "ORANGE"
+            pm=re.search(r'\b(H|Q)\b\s+[A-Z]{2,5}\s+([A-Z][A-Z\s]+?)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+([\d,.]+)',ln)
+            if not pm:
+                # Patrón B: sin código de caja (Fiorentina, Stampsy)
+                pm=re.search(r'\b(H|Q)\b\s+([A-Z][A-Z\s]+?)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+([\d,.]+)',ln)
+            if pm:
+                btype=pm.group(1); current_variety=pm.group(2).strip()
+                try:
+                    bunches=int(pm.group(3))  # CAN/CANTID = nº ramos
+                    spb=int(pm.group(4))       # BUNCHES/BUNCHE = tallos por ramo (U)
+                    sz=int(pm.group(5))        # LENGT = tamaño CM
+                    stems=int(pm.group(6))     # STEMS = total tallos
+                    price=float(pm.group(7).replace(',','.'))
+                except: continue
+                total=price*stems
+                il=InvoiceLine(raw_description=raw,species='ROSES',variety=current_variety,
+                               size=sz,stems_per_bunch=spb,bunches=bunches,stems=stems,
+                               price_per_stem=price,line_total=total,box_type=btype)
+                lines.append(il); continue
+            # Carry-forward: línea H/Q con números pero sin variedad (variedad en línea anterior)
+            pm2=re.search(r'\b(H|Q)\b\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+([\d,.]+)',ln)
+            if pm2 and current_variety:
+                btype=pm2.group(1)
+                try:
+                    bunches=int(pm2.group(2)); spb=int(pm2.group(3))
+                    sz=int(pm2.group(4)); stems=int(pm2.group(5))
+                    price=float(pm2.group(6).replace(',','.'))
+                except: continue
+                total=price*stems
+                il=InvoiceLine(raw_description=raw,species='ROSES',variety=current_variety,
+                               size=sz,stems_per_bunch=spb,bunches=bunches,stems=stems,
+                               price_per_stem=price,line_total=total,box_type=btype)
+                lines.append(il); continue
+            # Línea solo con variedad (antes de la línea de números)
+            # Requiere sangría inicial — así excluimos cabeceras tipo "BOX TB Box code..."
+            vm=re.match(r'^\s{5,}([A-Z][A-Z ]+[A-Z])\s{5,}',raw)
+            if vm: current_variety=vm.group(1).strip()
         return h, lines
 
 # ─── Prestige ────────────────────────────────────────────────────────────────

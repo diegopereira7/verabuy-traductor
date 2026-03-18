@@ -1,0 +1,101 @@
+{
+  "00000167239": {
+    "pdf": "AGRIVALDANI.pdf",
+    "provider": "Agrivaldani",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-03-18 13:22"
+  },
+  "00000166808": {
+    "pdf": "AGRIVALDANI1.pdf",
+    "provider": "Agrivaldani",
+    "total_usd": 0.0,
+    "lineas": 4,
+    "ok": 4,
+    "sin_match": 0,
+    "fecha": "2026-03-18 13:22"
+  },
+  "00000166806": {
+    "pdf": "AGRIVALDANI2.pdf",
+    "provider": "Agrivaldani",
+    "total_usd": 0.0,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-03-18 13:22"
+  },
+  "8.747": {
+    "pdf": "ALUNA.pdf",
+    "provider": "Inversiones del Neusa",
+    "total_usd": 0.0,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-03-18 13:22"
+  },
+  "000004140": {
+    "pdf": "BRISSAS completa.pdf",
+    "provider": "Brissas",
+    "total_usd": 0.0,
+    "lineas": 29,
+    "ok": 29,
+    "sin_match": 0,
+    "fecha": "2026-03-18 13:22"
+  },
+  "25059649": {
+    "pdf": "CANTIZA.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 701.75,
+    "lineas": 31,
+    "ok": 31,
+    "sin_match": 0,
+    "fecha": "2026-03-18 13:22"
+  },
+  "FA-117044": {
+    "pdf": "COLIBRI.pdf",
+    "provider": "Colibri Flowers",
+    "total_usd": 0.0,
+    "lineas": 28,
+    "ok": 28,
+    "sin_match": 0,
+    "fecha": "2026-03-18 13:28"
+  },
+  "588151": {
+    "pdf": "EQR.pdf",
+    "provider": "EQR USA",
+    "total_usd": 37.5,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-03-18 13:28"
+  },
+  "588758": {
+    "pdf": "EQR1.pdf",
+    "provider": "EQR USA",
+    "total_usd": 84.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-03-18 13:28"
+  },
+  "0000140929": {
+    "pdf": "FIORENTINA.pdf",
+    "provider": "Fiorentina Flowers",
+    "total_usd": 481.0,
+    "lineas": 2,
+    "ok": 0,
+    "sin_match": 2,
+    "fecha": "2026-03-18 13:28"
+  },
+  "750": {
+    "pdf": "FLORSANI.pdf",
+    "provider": "Florsani",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 0,
+    "sin_match": 1,
+    "fecha": "2026-03-18 14:58"
+  }
+}
