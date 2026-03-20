@@ -125,7 +125,7 @@ class InvoiceLine:
     price_per_stem:float=0.0
     price_per_bunch:float=0.0
     line_total:float=0.0
-    label:str=''; farm:str=''; box_type:str=''
+    label:str=''; farm:str=''; box_type:str=''; provider_key:str=''
     # Resultado del match
     articulo_id:Optional[int]=None
     articulo_name:str=''
@@ -142,6 +142,9 @@ class InvoiceLine:
         if self.species=='CARNATIONS':
             color=_translate_carnation_color(v)
             sz=s if s else 70  # tamaño estándar si no viene en la factura
+            if self.provider_key=='golden':
+                prefix='MINI CLAVEL' if u==10 else 'CLAVEL'
+                return f"{prefix} FANCY {color} {sz}CM {u}U GOLDEN"
             if 'SPRAY' in v.upper():
                 return f"CLAVEL SPRAY {g} {color} {sz}CM {u}U".replace('  ',' ') if g else f"CLAVEL SPRAY {color} {sz}CM {u}U"
             return f"CLAVEL COL {g} {color} {sz}CM {u}U".replace('  ',' ') if g else f"CLAVEL COL {color} {sz}CM {u}U"
@@ -175,7 +178,7 @@ class ArticulosLoader:
         count=0
         species_prefixes={
             'ROSA EC':'ROSES_EC','ROSA COL':'ROSES_COL',
-            'CLAVEL':'CARNATIONS','HYDRANGEA':'HYDRANGEAS',
+            'MINI CLAVEL':'CARNATIONS','CLAVEL':'CARNATIONS','HYDRANGEA':'HYDRANGEAS',
             'ALSTROMERIA':'ALSTROEMERIA','ALSTROEMERIA':'ALSTROEMERIA',
             'PANICULATA':'GYPSOPHILA','CRISANTEMO':'CHRYSANTHEMUM',
             'DIANTHUS':'OTHER',
@@ -284,6 +287,8 @@ class ArticulosLoader:
         if line.species=='CARNATIONS':
             color=_translate_carnation_color(v)
             sz=s if s else 70
+            if getattr(line,'provider_key','')=='golden':
+                return f"FANCY {color} {sz}CM {u}U"
             return (f"COL {g} {color} {sz}CM {u}U" if g else f"COL {color} {sz}CM {u}U").replace('  ',' ').strip()
         if line.species in ('HYDRANGEAS','ALSTROEMERIA','CHRYSANTHEMUM'):
             return f"{v} {s}CM {u}U" if s and u else v
@@ -873,34 +878,105 @@ class ColibriParser:
 
 # ─── Golden / Benchmark ───────────────────────────────────────────────────────
 class GoldenParser:
-    """Pompoms y claveles: N H/Q DESCRIPTION GRADE Box_ID Price Total"""
+    """
+    Benchmark Growers SAS (Golden) — Claveles y Miniclaveles.
+    Formato: N H/Q Un/Box TotStems ItemDescription Grade/Color [BoxID] [ItemCode] Price Total
+    - Grade/Color mezcla ruta (R45, PUERTO…) + color abreviado (WH, RD, MIX…)
+    - Líneas con 2+ colores se dividen en sublíneas (50/50)
+    - Artículos en BD: "CLAVEL FANCY {COLOR} 70CM 20U GOLDEN"
+    """
+    _LABELS = {'PUERTO','ASTURIAS','BARRAL','PYTI','DANI','GIJON','CRISTIAN'}
+    _COLOR_MAP = {
+        'WH':'BLANCO','WHITE':'BLANCO',
+        'RD':'ROJO','RED':'ROJO',
+        'PK':'ROSA','PINK':'ROSA',
+        'YW':'AMARILLO','YELLOW':'AMARILLO',
+        'BIC':'BICOLOR','BICOL':'BICOLOR','BICOLORES':'BICOLOR','BICOLOR':'BICOLOR',
+        'NOV':'NOVEDADES','NOVEDADES':'NOVEDADES',
+    }
+    _SKIP = {'FCY','FANCY','CARN','CARNATION','MINI','MCAT','AST','CB','MC','S2','AT','X',
+             'BUNCH','CONSUMER','ASSORTED','MINICARNS'}
+
+    def _parse_grade_color(self, field:str):
+        """Retorna (label, [colores_en_español]) del campo Grade/Color de Benchmark."""
+        field = re.sub(r'(?<!\w)R-(\d+)', r'R\1', field.upper())
+        tokens = re.split(r'[\s/]+', field)
+        label = ''; colors = []
+        for tok in tokens:
+            tok = tok.strip('+- ')
+            if not tok: continue
+            rm = re.match(r'^R(\d+)$', tok)
+            if rm: label = 'R' + rm.group(1); continue
+            if tok in self._LABELS: label = tok; continue
+            if tok in ('MIX','MIXED'): continue   # indicador; los colores vienen después
+            if tok in self._SKIP: continue
+            if tok in self._COLOR_MAP:
+                c = self._COLOR_MAP[tok]
+                if c not in colors: colors.append(c)
+                continue
+        if not colors: colors = ['MIXTO']
+        return label, colors
+
+    def _parse_invoice_line(self, ln:str):
+        """Parsea una línea de factura anclando en el campo Item Description fijo."""
+        desc_m = re.search(r'(CONSUMER\s+BUNCH\s+CARNATION\s+FANCY|MINICARNS\s+ASSORTED)', ln, re.I)
+        if not desc_m: return None
+        item_desc = desc_m.group(1).upper()
+        before = ln[:desc_m.start()].strip()
+        after  = ln[desc_m.end():].strip()
+        bm = re.match(r'(\d+)\s+(H|Q)\s+(\d+)\s+(\d+)', before)
+        if not bm: return None
+        btype = bm.group(2).upper()
+        upb   = int(bm.group(3))
+        stems = int(bm.group(4))
+        price_m = re.search(r'([\d.]+)\s+([\d.]+)\s*$', after)
+        if not price_m: return None
+        try: price=float(price_m.group(1)); total=float(price_m.group(2))
+        except: return None
+        grade_color = after[:price_m.start()].strip()
+        ic_m = re.search(r'\b(CB|MC)\s+\S+\s*$', grade_color, re.I)
+        if ic_m: grade_color = grade_color[:ic_m.start()].strip()
+        return {'btype':btype,'upb':upb,'stems':stems,
+                'item_desc':item_desc,'grade_color':grade_color,
+                'price_per_stem':price,'total':total}
+
     def parse(self, text:str, pdata:dict):
         h=InvoiceHeader(); h.provider_key=pdata['key']; h.provider_id=pdata['id']; h.provider_name=pdata['name']
-        m=re.search(r'INVOICE\s+No\.?\s*(\d+)',text,re.I); h.invoice_number=m.group(1) if m else ''
-        m=re.search(r'INVOICE\s+DATE\s+([\d/]+)',text,re.I); h.date=m.group(1) if m else ''
-        m=re.search(r'MAWB\s+No\.?\s*([\d\-]+)',text,re.I); h.awb=re.sub(r'\s+','',m.group(1)) if m else ''
+        m=re.search(r'INVOICE\s+No\.?\s*(\d+)',text,re.I);       h.invoice_number=m.group(1) if m else ''
+        m=re.search(r'INVOICE\s+DATE\s+([\d/]+)',text,re.I);     h.date=m.group(1) if m else ''
+        m=re.search(r'MAWB\s+No\.?\s*([\d\-]+)',text,re.I);      h.awb=re.sub(r'\s+','',m.group(1)) if m else ''
+        m=re.search(r'HAWB\s+No\.?\s*([\d\-]+)',text,re.I);      h.hawb=re.sub(r'\s+','',m.group(1)) if m else ''
+        m=re.search(r'Ship\s+Date\s+([\d/]+)',text,re.I);        # ship date (no campo en header, ignorar)
+        try:
+            m=re.search(r'TOTAL\s+([\d,]+\.\d+)',text,re.I); h.total=float(m.group(1).replace(',','')) if m else 0.0
+        except: h.total=0.0
         lines=[]
         for ln in text.split('\n'):
             ln=ln.strip()
-            pm=re.search(r'(\d+)\s+(H|Q)\s+(\d+)\s+(\d+)\s+([A-Z][A-Z\s\-]+?)\s+([A-Z]+)\s+\w+\s+\w+\s+([\d.]+)\s+([\d.]+)',ln)
-            if not pm:
-                pm=re.search(r'(\d+)\s+(H|Q)\s+(\d+)\s+(\d+)\s+([A-Z][A-Z\s\-]+?)\s+([\d.]+)\s+([\d.]+)',ln)
-                if not pm: continue
-                btype='H' if pm.group(2)=='H' else 'Q'
-                upb=int(pm.group(3)); stems_total=int(pm.group(4))
-                desc=pm.group(5).strip(); grade=''
-                try: total=float(pm.group(7))
-                except: total=0.0
+            if not ln: continue
+            parsed=self._parse_invoice_line(ln)
+            if not parsed: continue
+            is_mini='MINICARNS' in parsed['item_desc']
+            sp='CARNATIONS'
+            spb=10 if is_mini else 20   # 10U miniclavel, 20U clavel fancy
+            label, colors = self._parse_grade_color(parsed['grade_color'])
+            stems_total=parsed['stems']; total=parsed['total']; price=parsed['price_per_stem']
+            btype=parsed['btype']
+            n=len(colors)
+            if n<=1:
+                il=InvoiceLine(raw_description=ln,species=sp,variety=colors[0],grade='FANCY',origin='COL',
+                               size=70,stems_per_bunch=spb,stems=stems_total,price_per_stem=price,
+                               line_total=total,box_type=btype,label=label,provider_key='golden')
+                lines.append(il)
             else:
-                btype=pm.group(2); upb=int(pm.group(3)); stems_total=int(pm.group(4))
-                desc=pm.group(5).strip(); grade=pm.group(6)
-                try: total=float(pm.group(8))
-                except: total=0.0
-            sp='CHRYSANTHEMUM' if 'SPIDER' in desc.upper() or 'POMPON' in desc.upper() else 'CARNATIONS'
-            price=total/stems_total if stems_total else 0.0
-            il=InvoiceLine(raw_description=ln,species=sp,variety=desc,grade=grade,origin='COL',
-                           stems_per_bunch=upb,stems=stems_total,price_per_stem=price,line_total=total,box_type=btype)
-            lines.append(il)
+                base=stems_total//n
+                for i,color in enumerate(colors):
+                    st=base if i<n-1 else stems_total-base*(n-1)
+                    lt=round(st*price,2)
+                    il=InvoiceLine(raw_description=ln,species=sp,variety=color,grade='FANCY',origin='COL',
+                                   size=70,stems_per_bunch=spb,stems=st,price_per_stem=price,
+                                   line_total=lt,box_type=btype,label=label,provider_key='golden')
+                    lines.append(il)
         return h, lines
 
 # ─── Latin Flowers (Hortensias) ──────────────────────────────────────────────

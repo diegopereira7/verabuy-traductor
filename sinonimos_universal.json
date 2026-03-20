@@ -1021,5 +1021,93 @@
     "size": 0,
     "stems_per_bunch": 20,
     "grade": "FANCY"
+  },
+  "6916|ROSES|FREEDOM|40|25|": {
+    "articulo_id": 32990,
+    "articulo_name": "ROSA EC FREEDOM 40CM 25U",
+    "origen": "auto",
+    "provider_id": 6916,
+    "species": "ROSES",
+    "variety": "FREEDOM",
+    "size": 40,
+    "stems_per_bunch": 25,
+    "grade": ""
+  },
+  "6916|ROSES|CARNELIAN|60|25|": {
+    "articulo_id": 32815,
+    "articulo_name": "ROSA EC CARNELIAN 60CM 25U",
+    "origen": "auto",
+    "provider_id": 6916,
+    "species": "ROSES",
+    "variety": "CARNELIAN",
+    "size": 60,
+    "stems_per_bunch": 25,
+    "grade": ""
+  },
+  "6916|ROSES|ORANGE CROWN|70|25|": {
+    "articulo_id": 33299,
+    "articulo_name": "ROSA EC ORANGE CRUSH 70CM 25U",
+    "origen": "auto-fuzzy",
+    "provider_id": 6916,
+    "species": "ROSES",
+    "variety": "ORANGE CROWN",
+    "size": 70,
+    "stems_per_bunch": 25,
+    "grade": ""
+  },
+  "6916|ROSES|SUNSET GLORY|60|25|": {
+    "articulo_id": 36838,
+    "articulo_name": "ROSA SUNSET GLORY 60CM 25U CANTIZA",
+    "origen": "auto",
+    "provider_id": 6916,
+    "species": "ROSES",
+    "variety": "SUNSET GLORY",
+    "size": 60,
+    "stems_per_bunch": 25,
+    "grade": ""
+  },
+  "6916|ROSES|TWILIGHT|60|25|": {
+    "articulo_id": 37507,
+    "articulo_name": "ROSA TWILIGHT 60CM 25U CANTIZA",
+    "origen": "auto",
+    "provider_id": 6916,
+    "species": "ROSES",
+    "variety": "TWILIGHT",
+    "size": 60,
+    "stems_per_bunch": 25,
+    "grade": ""
+  },
+  "419|GYPSOPHILA|GYPSOPHILA XLENCE|50|80|": {
+    "articulo_id": 28249,
+    "articulo_name": "PANICULATA XLENCE BLANCO 750GR 1U FLORSANI",
+    "origen": "manual",
+    "provider_id": 419,
+    "species": "GYPSOPHILA",
+    "variety": "GYPSOPHILA XLENCE",
+    "size": 50,
+    "stems_per_bunch": 80,
+    "grade": ""
+  },
+  "310|CHRYSANTHEMUM|SPIDER ASSORTED FBE SPIDER|0|200|AT": {
+    "articulo_id": 14527,
+    "articulo_name": "CRISANTEMO BI SPIDER MIXTO 60CM 10U GOLDEN",
+    "origen": "manual",
+    "provider_id": 310,
+    "species": "CHRYSANTHEMUM",
+    "variety": "SPIDER ASSORTED FBE SPIDER",
+    "size": 0,
+    "stems_per_bunch": 200,
+    "grade": "AT"
+  },
+  "310|CHRYSANTHEMUM|SPIDER WHITE RUTAS SPIDER|0|200|WH": {
+    "articulo_id": 14528,
+    "articulo_name": "CRISANTEMO BI SPIDER BLANCO 60CM 10U GOLDEN",
+    "origen": "manual",
+    "provider_id": 310,
+    "species": "CHRYSANTHEMUM",
+    "variety": "SPIDER WHITE RUTAS SPIDER",
+    "size": 0,
+    "stems_per_bunch": 200,
+    "grade": "WH"
   }
 }
