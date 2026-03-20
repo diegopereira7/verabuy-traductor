@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "Bash(python -c \":*)",
-      "Bash(wc -l \"c:/verabuy-traductor/articulos \\(3\\).sql\")"
+      "Bash(wc -l \"c:/verabuy-traductor/articulos \\(3\\).sql\")",
+      "Bash(python3 -c \":*)",
+      "Bash(python3 -c \"import openpyxl; print\\(''ok''\\)\")",
+      "Bash(pip install:*)",
+      "Bash(python3 exportar_excel.py)",
+      "Bash(start \"c:\\\\verabuy-traductor\\\\exportar\\\\sinonimos_universal.xlsx\")"
     ]
   }
 }

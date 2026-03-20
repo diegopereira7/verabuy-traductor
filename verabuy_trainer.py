@@ -50,7 +50,7 @@ PROVIDERS = {
     'bosque'     : {'id':0,     'name':'Bosque Flowers',         'fmt':'bosque',       'patterns':['BOSQUEFLOWERS','bosqueflowers']},
     'colibri'    : {'id':313,   'name':'Colibri Flowers',        'fmt':'colibri',      'patterns':['COLIBRI FLOWERS']},
     'golden'     : {'id':310,   'name':'Benchmark Growers',      'fmt':'golden',       'patterns':['Benchmark Growers','benchmarkgrowers']},
-    'latin'      : {'id':6323,  'name':'Latin Flowers',          'fmt':'latin',        'patterns':['LATIN FLOWERS']},
+    'latin'      : {'id':6323,  'name':'Latin Flowers',          'fmt':'latin',        'patterns':['LATIN FLOWERS','latinflowers.com.co']},
     'multiflora' : {'id':8342,  'name':'Multiflora',             'fmt':'multiflora',   'patterns':['MULTIFLORA CORPORATION','multiflorasales']},
     'florsani'   : {'id':419,   'name':'Florsani',               'fmt':'florsani',     'patterns':['FLORSANI','FLORICOLA SAN ISIDRO','1792059232001']},
     'maxi'       : {'id':281,   'name':'Maxiflores',             'fmt':'maxi',         'patterns':['MAXIFLORES','C.I. MAXIFLORES']},
@@ -149,6 +149,8 @@ class InvoiceLine:
                 return f"CLAVEL SPRAY {g} {color} {sz}CM {u}U".replace('  ',' ') if g else f"CLAVEL SPRAY {color} {sz}CM {u}U"
             return f"CLAVEL COL {g} {color} {sz}CM {u}U".replace('  ',' ') if g else f"CLAVEL COL {color} {sz}CM {u}U"
         if self.species=='HYDRANGEAS':
+            if self.provider_key=='latin':
+                return f"HYDRANGEA {v} 60CM 1U LATIN"
             return f"HYDRANGEA {v} {s}CM {u}U" if s and u else f"HYDRANGEA {v}"
         if self.species=='ALSTROEMERIA':
             orig='COL' if self.origin=='COL' else 'EC'
@@ -156,6 +158,8 @@ class InvoiceLine:
         if self.species=='GYPSOPHILA':
             return f"PANICULATA {v}"
         if self.species=='CHRYSANTHEMUM':
+            if self.provider_key=='sayonara':
+                return f"CRISANTEMO {v} {s}CM {u}U SAYONARA"
             return f"CRISANTEMO {v} {s}CM {u}U" if s else f"CRISANTEMO {v}"
         return v
 
@@ -981,27 +985,69 @@ class GoldenParser:
 
 # ─── Latin Flowers (Hortensias) ──────────────────────────────────────────────
 class LatinParser:
+    """
+    Latin Flowers Farms SAS CI — Hortensias (id_proveedor=6323).
+    Artículos en BD: "HYDRANGEA {GRADO} {COLOR_ES} 60CM 1U LATIN"
+    Siempre 1U en VeraBuy, independientemente del bunch en la factura.
+    """
+    _COLOR_MAP = {
+        'DARK GREEN':'VERDE OSCURO','LIGHT PINK':'ROSA CLARO','DUSTY PINK':'ROSA VIEJO',
+        'PINK BLUSH':'ROSA','LIGHT PEACH':'MELOCOTON','LIGHT MOCCA':'MOCCA',
+        'LIGHT BLUE':'AZUL CLARO','BLUE BOGOTANA':'AZUL CRIOLLA','BLUE CRIOLLA':'AZUL CRIOLLA',
+        'WHITE':'BLANCO','BLUE':'AZUL','RED':'ROJO','PINK':'ROSA','GREEN':'VERDE',
+        'MIX':'MIXTO','PEACH':'MELOCOTON','SALMON':'SALMON',
+    }
+
+    def _map_color(self, color_en:str) -> str:
+        for en, es in sorted(self._COLOR_MAP.items(), key=lambda x:-len(x[0])):
+            if color_en == en or color_en.startswith(en):
+                return es
+        return color_en
+
+    def _translate_variety(self, desc:str) -> str:
+        """Convierte descripción raw en variedad VeraBuy (porción tras 'HYDRANGEA ')."""
+        d = desc.upper().strip()
+        d = re.sub(r'^HYDRANGEA\s+', '', d)
+        d = re.sub(r'\s*-\s*VERALEZA\b.*$', '', d)
+        d = re.sub(r'\s+PREMIUM\s*$', '', d)
+        if d.startswith('MIX'):
+            return 'PREMIUM MIXTO'
+        is_tinted = d.startswith('TINTED')
+        if is_tinted: d = re.sub(r'^TINTED\s+', '', d)
+        if d.startswith('EMERALD'):
+            return 'EMERALD BICOLOR'
+        if d.startswith('ANTIQUE'):
+            d = re.sub(r'^ANTIQUE\s+', '', d).strip()
+            return f"ANTIQUE {self._map_color(d)}"
+        grado = 'PREMIUM TEÑIDA' if is_tinted else 'PREMIUM'
+        return f"{grado} {self._map_color(d.strip())}"
+
     def parse(self, text:str, pdata:dict):
         h=InvoiceHeader(); h.provider_key=pdata['key']; h.provider_id=pdata['id']; h.provider_name=pdata['name']
-        m=re.search(r'LF(\d+)',text,re.I); h.invoice_number='LF'+m.group(1) if m else ''
-        m=re.search(r'Date\s+([\d\-]+)',text,re.I); h.date=m.group(1) if m else ''
-        m=re.search(r'AWB\s+No\.?\s*([\d\-]+)',text,re.I); h.awb=re.sub(r'\s+','',m.group(1)) if m else ''
+        m=re.search(r'LF(\d+)',text,re.I);                      h.invoice_number='LF'+m.group(1) if m else ''
+        m=re.search(r'Date\s+([\d\-]+)',text,re.I);             h.date=m.group(1) if m else ''
+        m=re.search(r'AWB\s+No\.?\s*([\d]+)',text,re.I);        h.awb=re.sub(r'\s+','',m.group(1)) if m else ''
+        m=re.search(r'HAWB[:\s]+(ECM\d+)',text,re.I);           h.hawb=m.group(1) if m else ''
+        try:
+            m=re.search(r'Total\s+USD\s*([\d,]+\.\d+)',text,re.I); h.total=float(m.group(1).replace(',','')) if m else 0.0
+        except: h.total=0.0
         lines=[]
         for ln in text.split('\n'):
             ln=ln.strip()
-            pm=re.search(r'(\d+)\s+(QB|HB)\s+(HYDRANGEA\s+[A-Z][A-Z\s]+?)\s+\w+\s+\d{4}\w*\s+(\d+)\s+(\d+)\s+([\d.]+)',ln,re.I)
+            pm=re.search(r'(\d+)\s+(QB|HB)\s+(HYDRANGEA\s+[A-Z][A-Z\s\-]+?)\s+\w+\s+\d{4}\w*\s+(\d+)\s+(\d+)\s+([\d.]+)',ln,re.I)
             if not pm: continue
-            qty=int(pm.group(1)); btype=pm.group(2); desc=pm.group(3).strip().upper()
-            spb=int(pm.group(4)); stems=int(pm.group(5))
+            btype=pm.group(2).upper()
+            desc=pm.group(3).strip().upper()
+            stems=int(pm.group(5))
             try: pps=float(pm.group(6))
             except: pps=0.0
-            total=pps*stems
-            # Extract size from description if present
-            sz_m=re.search(r'(\d{2})',desc); sz=int(sz_m.group(1)) if sz_m else 40
-            var=re.sub(r'\d+','',desc).strip()
-            il=InvoiceLine(raw_description=ln,species='HYDRANGEAS',variety=var,origin='COL',
-                           size=sz,stems_per_bunch=spb,stems=stems,
-                           price_per_stem=pps,line_total=total,box_type=btype)
+            total=round(pps*stems,2)
+            before=ln[:pm.start()].strip()
+            label=re.sub(r'\s*-?\s*S\.?O\.?\s*$','',before).strip() if before else ''
+            variety=self._translate_variety(desc)
+            il=InvoiceLine(raw_description=ln,species='HYDRANGEAS',variety=variety,origin='COL',
+                           size=60,stems_per_bunch=1,stems=stems,price_per_stem=pps,
+                           line_total=total,box_type=btype,label=label,provider_key='latin')
             lines.append(il)
         return h, lines
 
@@ -1362,31 +1408,110 @@ class ValleVerdeParser:
 
 # ─── Sayonara (Crisantemos / Pompons) ────────────────────────────────────────
 class SayonaraParser:
+    """
+    C.I. Cultivos Sayonara SAS — Crisantemos, Limonium, Alstroemeria (id_proveedor=2166).
+    Las líneas de Custom Pack/caja son agrupadores y se ignoran.
+    Artículos: "CRISANTEMO {TIPO} {VARIEDAD} {COLOR} 70CM {BUNCH}U SAYONARA"
+    """
+    # (prefijo_factura, tipo_verabuy, bunch)  — ordenados más largo primero
+    _TYPE_MAP = [
+        ('Disbud Cremon', 'BI CREMON',   10),
+        ('Disbud Spider', 'BI SPIDER',   10),
+        ('Pom Csh',       'SP CUSHION',   5),
+        ('Pom Btn',       'SP BUTTON',    5),
+        ('Pom Dsy',       'SP DAISY',     5),
+        ('Pom Nov',       'SP NOVELTY',   5),
+        ('Pom CDN',       'SP CDN',       5),
+        ('Santini',       'SA SANTINI',  25),
+    ]
+    _COLOR_MAP = [
+        ('Bronze Dark','BRONCE OSCURO'),('White','BLANCO'),('Yellow','AMARILLO'),
+        ('Red','ROJO'),('Pink','ROSA'),('Purple','LILA'),('Green','VERDE'),
+        ('Orange','NARANJA'),('Bronze','BRONCE'),('Cream','CREMA'),
+        ('Salmon','SALMON'),('Blue','AZUL'),('Bicolor','BICOLOR'),('Mix','MIXTO'),
+    ]
+    # Marcadores de líneas de caja/pack que se deben ignorar
+    _SKIP_RE = re.compile(r'Custom\s+Pack|^\s*Pack\s+|^\s*Box\s+|^\s*CAJA\b', re.I)
+
+    def _parse_product(self, name:str):
+        """Devuelve (tipo_vb, variedad, color_es, bunch) o None si no reconoce."""
+        for prefix, tipo, bunch in self._TYPE_MAP:
+            if name.lower().startswith(prefix.lower()):
+                rest = name[len(prefix):].strip()
+                rest = re.sub(r'\bEuropa\b', '', rest, flags=re.I).strip()
+                color_es = 'MIXTO'; variety = ''
+                for en, es in self._COLOR_MAP:
+                    if rest.lower().startswith(en.lower()):
+                        color_es = es
+                        variety = rest[len(en):].strip().upper()
+                        break
+                return tipo, variety, color_es, bunch
+        return None
+
+    def _build_variety(self, tipo:str, variety:str, color:str) -> str:
+        """Construye la cadena 'variety' que se almacena en InvoiceLine."""
+        parts = [tipo]
+        if variety: parts.append(variety)
+        parts.append(color)
+        return ' '.join(parts)
+
     def parse(self, text:str, pdata:dict):
         h=InvoiceHeader(); h.provider_key=pdata['key']; h.provider_id=pdata['id']; h.provider_name=pdata['name']
-        m=re.search(r'No\.\s+(\d+)',text,re.I); h.invoice_number=m.group(1) if m else ''
-        m=re.search(r'Invoice Date\s+([\w\-]+)',text,re.I); h.date=m.group(1) if m else ''
-        m=re.search(r'Master AWB\s+([\d\-]+)',text,re.I); h.awb=re.sub(r'\s+','',m.group(1)) if m else ''
+        m=re.search(r'No\.\s+(\d+)',text,re.I);            h.invoice_number=m.group(1) if m else ''
+        m=re.search(r'Invoice\s+Date\s+([\w\-/]+)',text,re.I); h.date=m.group(1) if m else ''
+        m=re.search(r'Master\s+AWB\s+([\d\-]+)',text,re.I); h.awb=re.sub(r'\s+','',m.group(1)) if m else ''
+        m=re.search(r'HAWB[:\s]+([\w\-]+)',text,re.I);     h.hawb=m.group(1) if m else ''
+        try:
+            m=re.search(r'(?:TOTAL|Total\s+USD)[:\s]*([\d,]+\.\d+)',text,re.I)
+            h.total=float(m.group(1).replace(',','')) if m else 0.0
+        except: h.total=0.0
         lines=[]
         for ln in text.split('\n'):
             ln=ln.strip()
-            pm=re.search(r'Pom\s+Csh\s+Europa\s+(\w+.*?)\s+CO-',ln,re.I)
-            if not pm: continue
-            desc=pm.group(1).strip()
-            nm=re.search(r'(\d+)\s+(HB|QB)\s+\d+\s+(\d+)\s+([\d.]+)',ln)
-            boxes=0; stems=0; price=0.0; btype=''
-            if nm:
-                try: boxes=int(nm.group(1)); btype=nm.group(2); stems=int(nm.group(3)); price=float(nm.group(4))
-                except: pass
-            if stems==0:
-                sm=re.search(r'(\d+)\s+([\d.]+)',ln[-30:])
-                if sm:
-                    try: stems=int(sm.group(1)); price=float(sm.group(2))
+            if not ln: continue
+            if self._SKIP_RE.search(ln): continue   # ignorar líneas de caja/pack
+
+            # Buscar tipo de producto EN CUALQUIER POSICIÓN de la línea (puede haber N HB antes)
+            parsed=None
+            for prefix, _, _ in self._TYPE_MAP:
+                type_m=re.search(re.escape(prefix), ln, re.I)
+                if type_m:
+                    # Extraer descripción desde donde empieza el tipo hasta CO- o números
+                    desc_start=ln[type_m.start():]
+                    desc_m=re.match(r'([A-Za-z][A-Za-z\s\-]+?)(?=\s+CO-|\s+\d|\s+HB\b|\s+QB\b)',desc_start)
+                    if desc_m:
+                        parsed=self._parse_product(desc_m.group(1).strip())
+                    break
+
+            if not parsed: continue
+            tipo, variety, color_es, bunch = parsed
+
+            # Extraer stems y precio
+            stems=0; price=0.0; btype=''
+            bm=re.search(r'(\d+)\s+(HB|QB)\b',ln,re.I)
+            if bm: btype=bm.group(2).upper()
+            sm=re.search(r'\b(\d+)\s+ST\b',ln,re.I)
+            if sm: stems=int(sm.group(1))
+            if not stems:
+                nm=re.search(r'(?:HB|QB)\s+\d+\s+(\d+)\s+([\d.]+)',ln,re.I)
+                if nm:
+                    try: stems=int(nm.group(1)); price=float(nm.group(2))
                     except: pass
-            total=price*stems
-            il=InvoiceLine(raw_description=ln,species='CHRYSANTHEMUM',variety=desc.upper(),
-                           origin='COL',stems_per_bunch=20,stems=stems,
-                           price_per_stem=price,line_total=total,box_type=btype)
+            if not price:
+                prices=re.findall(r'([\d,]+\.[\d]{2,3})',ln)
+                if len(prices)>=2:
+                    try: price=float(prices[-2].replace(',','.')); total_=float(prices[-1].replace(',','.'))
+                    except: price=0.0
+                elif len(prices)==1:
+                    try: price=float(prices[-1].replace(',','.'))
+                    except: pass
+            if not price and stems: price=0.0
+            total=round(price*stems,2) if stems else 0.0
+            var_stored=self._build_variety(tipo,variety,color_es)
+            il=InvoiceLine(raw_description=ln,species='CHRYSANTHEMUM',variety=var_stored,
+                           grade='',origin='COL',size=70,stems_per_bunch=bunch,
+                           stems=stems,price_per_stem=price,line_total=total,
+                           box_type=btype,provider_key='sayonara')
             lines.append(il)
         return h, lines
 
