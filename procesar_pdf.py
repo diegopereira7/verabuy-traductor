@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from verabuy_trainer import (
     detect_provider, FORMAT_PARSERS, ArticulosLoader,
-    SynonymStore, Matcher, SQL_FILE, SYNS_FILE
+    SynonymStore, Matcher, SYNS_FILE
 )
 from pathlib import Path
 

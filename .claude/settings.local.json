@@ -7,7 +7,10 @@
       "Bash(python3 -c \"import openpyxl; print\\(''ok''\\)\")",
       "Bash(pip install:*)",
       "Bash(python3 exportar_excel.py)",
-      "Bash(start \"c:\\\\verabuy-traductor\\\\exportar\\\\sinonimos_universal.xlsx\")"
+      "Bash(start \"c:\\\\verabuy-traductor\\\\exportar\\\\sinonimos_universal.xlsx\")",
+      "Bash(py procesar_pdf.py \"facturas/CANTIZA.pdf\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost/verabuy/web/)",
+      "Bash(curl -s -F \"pdf=@/c/verabuy-traductor/facturas/CANTIZA.pdf\" \"http://localhost/verabuy/web/api.php?action=process\")"
     ]
   }
 }
