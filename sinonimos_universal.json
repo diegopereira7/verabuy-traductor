@@ -1945,5 +1945,27 @@
     "size": 50,
     "stems_per_bunch": 25,
     "grade": ""
+  },
+  "6323|HYDRANGEAS|PREMIUM TEÑIDA ROJO|60|1|": {
+    "articulo_id": 22733,
+    "articulo_name": "HYDRANGEA PREMIUM TEÑIDA ROJO 60CM 1U LATIN",
+    "origen": "auto",
+    "provider_id": 6323,
+    "species": "HYDRANGEAS",
+    "variety": "PREMIUM TEÑIDA ROJO",
+    "size": 60,
+    "stems_per_bunch": 1,
+    "grade": ""
+  },
+  "6323|HYDRANGEAS|PREMIUM TEÑIDA GRANATE|60|1|": {
+    "articulo_id": 22736,
+    "articulo_name": "HYDRANGEA PREMIUM TEÑIDA GRANATE 60CM 1U LATIN",
+    "origen": "manual",
+    "provider_id": 6323,
+    "species": "HYDRANGEAS",
+    "variety": "PREMIUM TEÑIDA GRANATE",
+    "size": 60,
+    "stems_per_bunch": 1,
+    "grade": ""
   }
 }

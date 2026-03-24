@@ -401,8 +401,8 @@ class Matcher:
                 l.articulo_id=a['id']; l.articulo_name=a['nombre']
                 l.match_status='ok'; l.match_method='exacto'
                 self.syn.add(provider_id,l,a['id'],a['nombre'],'auto'); return l
-        # 4. Auto-fuzzy ≥85%
-        cands=self.art.fuzzy_search(l,threshold=0.85)
+        # 4. Auto-fuzzy ≥90%
+        cands=self.art.fuzzy_search(l,threshold=0.90)
         if cands:
             best=cands[0]; l.articulo_id=best['id']; l.articulo_name=best['nombre']
             l.match_status='ok'; l.match_method=f"fuzzy {best['similitud']}%"
@@ -995,7 +995,7 @@ class LatinParser:
         'PINK BLUSH':'ROSA','LIGHT PEACH':'MELOCOTON','LIGHT MOCCA':'MOCCA',
         'LIGHT BLUE':'AZUL CLARO','BLUE BOGOTANA':'AZUL CRIOLLA','BLUE CRIOLLA':'AZUL CRIOLLA',
         'WHITE':'BLANCO','BLUE':'AZUL','RED':'ROJO','PINK':'ROSA','GREEN':'VERDE',
-        'MIX':'MIXTO','PEACH':'MELOCOTON','SALMON':'SALMON',
+        'MIX':'MIXTO','PEACH':'MELOCOTON','SALMON':'SALMON','BURGUNDY':'GRANATE',
     }
 
     def _map_color(self, color_en:str) -> str:
