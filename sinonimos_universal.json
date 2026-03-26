@@ -2066,5 +2066,71 @@
     "size": 0,
     "stems_per_bunch": 10,
     "grade": "SELECT"
+  },
+  "6323|HYDRANGEAS|PREMIUM TENIDA MELOCOTON|60|1|": {
+    "articulo_id": 22734,
+    "articulo_name": "HYDRANGEA PREMIUM TEÑIDA MELOCOTON 60CM 1U LATIN",
+    "origen": "auto-fuzzy",
+    "provider_id": 6323,
+    "species": "HYDRANGEAS",
+    "variety": "PREMIUM TENIDA MELOCOTON",
+    "size": 60,
+    "stems_per_bunch": 1,
+    "grade": ""
+  },
+  "6323|HYDRANGEAS|PREMIUM TENIDA ROSA CLARO|60|1|": {
+    "articulo_id": 22748,
+    "articulo_name": "HYDRANGEA PREMIUM TEÑIDA ROSA CLARO 60CM 1U LATIN",
+    "origen": "auto-fuzzy",
+    "provider_id": 6323,
+    "species": "HYDRANGEAS",
+    "variety": "PREMIUM TENIDA ROSA CLARO",
+    "size": 60,
+    "stems_per_bunch": 1,
+    "grade": ""
+  },
+  "6323|HYDRANGEAS|PREMIUM TENIDA ROSA VIEJO|60|1|": {
+    "articulo_id": 22730,
+    "articulo_name": "HYDRANGEA PREMIUM TEÑIDA ROSA VIEJO 60CM 1U LATIN",
+    "origen": "auto-fuzzy",
+    "provider_id": 6323,
+    "species": "HYDRANGEAS",
+    "variety": "PREMIUM TENIDA ROSA VIEJO",
+    "size": 60,
+    "stems_per_bunch": 1,
+    "grade": ""
+  },
+  "6323|HYDRANGEAS|PREMIUM TENIDA SALMON|60|1|": {
+    "articulo_id": 22752,
+    "articulo_name": "HYDRANGEA PREMIUM TEÑIDA SALMON 60CM 1U LATIN",
+    "origen": "auto-fuzzy",
+    "provider_id": 6323,
+    "species": "HYDRANGEAS",
+    "variety": "PREMIUM TENIDA SALMON",
+    "size": 60,
+    "stems_per_bunch": 1,
+    "grade": ""
+  },
+  "6323|HYDRANGEAS|PREMIUM TENIDA MOCCA|60|1|": {
+    "articulo_id": 22751,
+    "articulo_name": "HYDRANGEA PREMIUM TEÑIDA MOCCA 60CM 1U LATIN",
+    "origen": "auto-fuzzy",
+    "provider_id": 6323,
+    "species": "HYDRANGEAS",
+    "variety": "PREMIUM TENIDA MOCCA",
+    "size": 60,
+    "stems_per_bunch": 1,
+    "grade": ""
+  },
+  "6323|HYDRANGEAS|PREMIUM TENIDA ROSA|60|1|": {
+    "articulo_id": 22728,
+    "articulo_name": "HYDRANGEA PREMIUM TEÑIDA ROSA 60CM 1U LATIN",
+    "origen": "auto-fuzzy",
+    "provider_id": 6323,
+    "species": "HYDRANGEAS",
+    "variety": "PREMIUM TENIDA ROSA",
+    "size": 60,
+    "stems_per_bunch": 1,
+    "grade": ""
   }
 }

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.bak
+*.xlsx
+*.egg-info/
+.venv/
+venv/
+.idea/
+.vscode/
+web/uploads/*.pdf

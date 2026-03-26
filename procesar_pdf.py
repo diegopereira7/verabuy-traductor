@@ -1,44 +1,47 @@
-"""
-Procesador no-interactivo de facturas PDF para VeraBuy Web.
+"""Procesador no-interactivo de facturas PDF para VeraBuy Web.
+
 Uso: python procesar_pdf.py <ruta_pdf>
 Salida: JSON en stdout
 """
-import sys, json, os
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from __future__ import annotations
 
-from verabuy_trainer import (
-    detect_provider, FORMAT_PARSERS, ArticulosLoader,
-    SynonymStore, Matcher, SYNS_FILE, _rescue_unparsed_lines,
-    _split_mixed_boxes
-)
+import json
+import sys
 from pathlib import Path
+
+from src.pdf import detect_provider
+from src.parsers import FORMAT_PARSERS
+from src.articulos import ArticulosLoader
+from src.sinonimos import SynonymStore
+from src.matcher import Matcher, rescue_unparsed_lines, split_mixed_boxes
+from src.config import SQL_FILE, SYNS_FILE
 
 
 def run(pdf_path: str) -> dict:
+    """Procesa un PDF y devuelve el resultado como dict JSON-serializable."""
     pdata = detect_provider(pdf_path)
     if not pdata:
         return {'ok': False, 'error': 'Proveedor no reconocido en el PDF'}
 
-    fmt    = pdata.get('fmt', '')
+    fmt = pdata.get('fmt', '')
     parser = FORMAT_PARSERS.get(fmt)
     if not parser:
         return {'ok': False, 'error': f'Sin parser para formato "{fmt}"'}
 
-    sql_path = Path(__file__).parent / 'articulos (3).sql'
-    if not sql_path.exists():
-        return {'ok': False, 'error': f'No se encuentra la BD de artículos: {sql_path}'}
+    if not SQL_FILE.exists():
+        return {'ok': False, 'error': f'No se encuentra la BD de artículos: {SQL_FILE}'}
 
     art = ArticulosLoader()
-    art.load_from_sql(str(sql_path))
+    art.load_from_sql(str(SQL_FILE))
 
-    syn     = SynonymStore(str(SYNS_FILE))
+    syn = SynonymStore(str(SYNS_FILE))
     matcher = Matcher(art, syn)
 
     header, lines = parser.parse(pdata['text'], pdata)
-    lines = _split_mixed_boxes(lines)
-    rescued = _rescue_unparsed_lines(pdata['text'], lines)
+    lines = split_mixed_boxes(lines)
+    rescued = rescue_unparsed_lines(pdata['text'], lines)
     lines = matcher.match_all(pdata['id'], lines)
-    lines.extend(rescued)  # sin_parser lines added after matching
+    lines.extend(rescued)
 
     ok_count = sum(1 for l in lines if l.match_status == 'ok')
     no_parser = sum(1 for l in lines if l.match_status == 'sin_parser')
@@ -76,11 +79,12 @@ def run(pdf_path: str) -> dict:
             'articulo_name':   l.articulo_name or '',
             'match_status':    l.match_status,
             'match_method':    l.match_method,
-        } for l in lines]
+        } for l in lines],
     }
 
 
 if __name__ == '__main__':
+    sys.stdout.reconfigure(encoding='utf-8')
     if len(sys.argv) < 2:
         print(json.dumps({'ok': False, 'error': 'Uso: procesar_pdf.py <ruta_pdf>'}))
         sys.exit(1)
