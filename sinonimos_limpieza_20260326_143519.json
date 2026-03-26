@@ -1,0 +1,74 @@
+{
+  "fecha": "2026-03-26 14:35:19",
+  "eliminados": 11,
+  "antes": 194,
+  "despues": 183,
+  "detalle": [
+    {
+      "key": "0|ROSES|EXPLORER|50|25|",
+      "articulo_id": 32950,
+      "articulo_name": "ROSA EC EXPLORER 50CM 25U",
+      "razon": "provider_id=0, existe con provider 2228"
+    },
+    {
+      "key": "0|ROSES|MONDIAL|50|25|",
+      "articulo_id": 33230,
+      "articulo_name": "ROSA EC MONDIAL 50CM 25U",
+      "razon": "provider_id=0, existe con provider 435"
+    },
+    {
+      "key": "0|ROSES|FRUTTETO|50|25|",
+      "articulo_id": 33000,
+      "articulo_name": "ROSA EC FRUTTETO 50CM 25U",
+      "razon": "provider_id=0, existe con provider 435"
+    },
+    {
+      "key": "0|ROSES|SILANTOI|50|25|",
+      "articulo_id": 33446,
+      "articulo_name": "ROSA EC SILANTOI BICOLOR 50CM 25U",
+      "razon": "provider_id=0, existe con provider 435"
+    },
+    {
+      "key": "0|ROSES|BRIGHTON|50|25|",
+      "articulo_id": 32780,
+      "articulo_name": "ROSA EC BRIGHTON 50CM 25U",
+      "razon": "provider_id=0, existe con provider 435"
+    },
+    {
+      "key": "0|ROSES|MAGIC TIMES|50|25|",
+      "articulo_id": 33166,
+      "articulo_name": "ROSA EC MAGIC TIMES BICOLOR 50CM 25U",
+      "razon": "provider_id=0, existe con provider 435"
+    },
+    {
+      "key": "0|ROSES|FREEDOM|70|25|",
+      "articulo_id": 32994,
+      "articulo_name": "ROSA EC FREEDOM 70CM 25U",
+      "razon": "provider_id=0, existe con provider 3375"
+    },
+    {
+      "key": "0|ROSES|FREEDOM|60|25|",
+      "articulo_id": 32993,
+      "articulo_name": "ROSA EC FREEDOM 60CM 25U",
+      "razon": "provider_id=0, existe con provider 3375"
+    },
+    {
+      "key": "0|ROSES|EXPLORER|60|25|",
+      "articulo_id": 32952,
+      "articulo_name": "ROSA EC EXPLORER 60CM 25U",
+      "razon": "provider_id=0, existe con provider 435"
+    },
+    {
+      "key": "0|ROSES|MONDIAL|60|25|",
+      "articulo_id": 33232,
+      "articulo_name": "ROSA EC MONDIAL 60CM 25U",
+      "razon": "provider_id=0, existe con provider 435"
+    },
+    {
+      "key": "0|ROSES|BRIGHTON|60|25|",
+      "articulo_id": 32782,
+      "articulo_name": "ROSA EC BRIGHTON 60CM 25U",
+      "razon": "provider_id=0, existe con provider 435"
+    }
+  ]
+}

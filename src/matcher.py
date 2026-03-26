@@ -37,6 +37,17 @@ class Matcher:
         # 1. Sinónimo guardado
         s = self.syn.find(provider_id, line)
         if s and s['articulo_id'] > 0:
+            # Verificar si existe artículo con marca (upgrade de sinónimo genérico)
+            branded = self.art.find_branded(line.expected_name(), provider_id,
+                                            getattr(line, 'provider_key', ''))
+            if branded and branded['id'] != s['articulo_id']:
+                # Hay artículo con marca distinto al genérico — upgradar sinónimo
+                self.syn.add(provider_id, line, branded['id'], branded['nombre'], 'auto-marca')
+                line.articulo_id = branded['id']
+                line.articulo_name = branded['nombre']
+                line.match_status = 'ok'
+                line.match_method = 'sinónimo→marca'
+                return line
             line.articulo_id = s['articulo_id']
             line.articulo_name = s['articulo_name']
             line.match_status = 'ok'
