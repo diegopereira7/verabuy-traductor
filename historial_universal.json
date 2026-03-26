@@ -6,7 +6,7 @@
     "lineas": 1,
     "ok": 1,
     "sin_match": 0,
-    "fecha": "2026-03-20 14:08"
+    "fecha": "2026-03-26 15:23"
   },
   "00000166808": {
     "pdf": "AGRIVALDANI1.pdf",
@@ -15,7 +15,7 @@
     "lineas": 4,
     "ok": 4,
     "sin_match": 0,
-    "fecha": "2026-03-20 14:08"
+    "fecha": "2026-03-26 15:23"
   },
   "00000166806": {
     "pdf": "AGRIVALDANI2.pdf",
@@ -24,7 +24,7 @@
     "lineas": 3,
     "ok": 3,
     "sin_match": 0,
-    "fecha": "2026-03-20 14:08"
+    "fecha": "2026-03-26 15:23"
   },
   "8.747": {
     "pdf": "ALUNA.pdf",
@@ -33,16 +33,16 @@
     "lineas": 3,
     "ok": 3,
     "sin_match": 0,
-    "fecha": "2026-03-20 14:08"
+    "fecha": "2026-03-26 15:23"
   },
   "000004140": {
-    "pdf": "BRISSAS completa.pdf",
+    "pdf": "BRISSAS_completa.pdf",
     "provider": "Brissas",
     "total_usd": 0.0,
-    "lineas": 29,
+    "lineas": 34,
     "ok": 29,
     "sin_match": 0,
-    "fecha": "2026-03-20 14:08"
+    "fecha": "2026-03-26 15:23"
   },
   "25059649": {
     "pdf": "CANTIZA.pdf",
@@ -51,7 +51,7 @@
     "lineas": 31,
     "ok": 31,
     "sin_match": 0,
-    "fecha": "2026-03-26 13:55"
+    "fecha": "2026-03-26 15:23"
   },
   "FA-117044": {
     "pdf": "COLIBRI.pdf",
@@ -60,7 +60,7 @@
     "lineas": 31,
     "ok": 31,
     "sin_match": 0,
-    "fecha": "2026-03-26 13:55"
+    "fecha": "2026-03-26 15:23"
   },
   "588151": {
     "pdf": "EQR.pdf",
@@ -69,7 +69,7 @@
     "lineas": 1,
     "ok": 1,
     "sin_match": 0,
-    "fecha": "2026-03-20 14:08"
+    "fecha": "2026-03-26 15:23"
   },
   "588758": {
     "pdf": "EQR1.pdf",
@@ -78,7 +78,7 @@
     "lineas": 1,
     "ok": 1,
     "sin_match": 0,
-    "fecha": "2026-03-20 14:08"
+    "fecha": "2026-03-26 15:23"
   },
   "0000140929": {
     "pdf": "FIORENTINA.pdf",
@@ -87,16 +87,16 @@
     "lineas": 9,
     "ok": 9,
     "sin_match": 0,
-    "fecha": "2026-03-20 14:08"
+    "fecha": "2026-03-26 15:23"
   },
   "750": {
     "pdf": "FLORSANI1.pdf",
     "provider": "Florsani",
     "total_usd": 0.0,
-    "lineas": 20,
+    "lineas": 21,
     "ok": 20,
     "sin_match": 0,
-    "fecha": "2026-03-20 14:08"
+    "fecha": "2026-03-26 15:23"
   },
   "GOLDEN 105369.pdf": {
     "pdf": "GOLDEN 105369.pdf",
@@ -117,13 +117,13 @@
     "fecha": "2026-03-20 14:08"
   },
   "LF41329": {
-    "pdf": "LATIN 41329.pdf",
+    "pdf": "LATIN_41329.pdf",
     "provider": "Latin Flowers",
     "total_usd": 1959.35,
-    "lineas": 51,
-    "ok": 51,
+    "lineas": 53,
+    "ok": 53,
     "sin_match": 0,
-    "fecha": "2026-03-20 14:08"
+    "fecha": "2026-03-26 15:23"
   },
   "001030882": {
     "pdf": "LIFE2.pdf",
@@ -250,5 +250,59 @@
     "ok": 3,
     "sin_match": 0,
     "fecha": "2026-03-26 13:55"
+  },
+  "00045375": {
+    "pdf": "ALEGRIA.pdf",
+    "provider": "La Alegria Farm",
+    "total_usd": 0.0,
+    "lineas": 40,
+    "ok": 0,
+    "sin_match": 40,
+    "fecha": "2026-03-26 15:23"
+  },
+  "001001000055329": {
+    "pdf": "BOSQUE.pdf",
+    "provider": "Bosque Flowers",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-03-26 15:23"
+  },
+  "58938": {
+    "pdf": "CONDOR_58938.pdf",
+    "provider": "Condor Andino",
+    "total_usd": 0.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-03-26 15:23"
+  },
+  "4164": {
+    "pdf": "DAFLOR.pdf",
+    "provider": "Daflor",
+    "total_usd": 0.0,
+    "lineas": 13,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-03-26 15:23"
+  },
+  "001002": {
+    "pdf": "FAIRIS_GARDEN.pdf",
+    "provider": "Fairis Garden",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 0,
+    "sin_match": 1,
+    "fecha": "2026-03-26 15:23"
+  },
+  "": {
+    "pdf": "GOLDEN_105397.pdf",
+    "provider": "Benchmark Growers",
+    "total_usd": 3572.5,
+    "lineas": 33,
+    "ok": 33,
+    "sin_match": 0,
+    "fecha": "2026-03-26 15:23"
   }
 }
