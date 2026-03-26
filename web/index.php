@@ -178,21 +178,55 @@
 
         <!-- TAB: Sinónimos -->
         <section id="tab-synonyms" class="tab hidden">
-            <h2>Diccionario de Sinónimos</h2>
+            <div class="syn-header">
+                <h2>Diccionario de Sinónimos</h2>
+                <button type="button" class="btn btn-primary" id="btnAddSynonym">+ Añadir sinónimo</button>
+            </div>
+
+            <!-- Badges de resumen clickables -->
+            <div class="syn-badges" id="synBadges"></div>
+
+            <!-- Filtros -->
             <div class="filters">
-                <input type="text" id="synFilter" placeholder="Buscar por variedad, proveedor, especie...">
+                <input type="text" id="synFilter" placeholder="Buscar en línea, factura, variedad, artículo...">
                 <select id="synOriginFilter">
                     <option value="">Todos los orígenes</option>
                     <option value="auto">Auto</option>
+                    <option value="auto-marca">Marca</option>
                     <option value="auto-fuzzy">Fuzzy</option>
                     <option value="manual">Manual</option>
                     <option value="manual-web">Manual (Web)</option>
                 </select>
                 <span id="synCount"></span>
             </div>
+
             <div id="synLoading" class="hidden">
                 <div class="spinner"></div>
             </div>
+
+            <!-- Formulario añadir sinónimo (oculto) -->
+            <div id="synAddForm" class="syn-add-form hidden">
+                <h3>Añadir sinónimo manual</h3>
+                <div class="syn-form-grid">
+                    <label>Clave (provider|species|variety|size|spb|grade)
+                        <input type="text" id="synAddKey" placeholder="2222|ROSES|FREEDOM|50|25|">
+                    </label>
+                    <label>ID Artículo VeraBuy
+                        <input type="number" id="synAddArticuloId" placeholder="32993">
+                    </label>
+                    <label>Nombre Artículo
+                        <input type="text" id="synAddArticuloName" placeholder="ROSA EC FREEDOM 50CM 25U">
+                    </label>
+                </div>
+                <div class="syn-form-actions">
+                    <button type="button" class="btn btn-primary" id="btnSynAddSave">Guardar</button>
+                    <button type="button" class="btn btn-secondary" id="btnSynAddCancel">Cancelar</button>
+                </div>
+            </div>
+
+            <!-- Paginación -->
+            <div class="syn-pagination" id="synPagination"></div>
+
             <div class="table-container">
                 <table id="synTable">
                     <thead>
@@ -205,11 +239,15 @@
                             <th>ID Artículo</th>
                             <th>Nombre Artículo</th>
                             <th>Origen</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
                 </table>
             </div>
+
+            <!-- Paginación inferior -->
+            <div class="syn-pagination" id="synPaginationBottom"></div>
         </section>
         <!-- TAB: Auto-Aprendizaje -->
         <section id="tab-learned" class="tab hidden">

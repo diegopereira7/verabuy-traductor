@@ -47,6 +47,12 @@ switch ($action) {
     case 'save_synonym':
         handleSaveSynonym();
         break;
+    case 'update_synonym':
+        handleUpdateSynonym();
+        break;
+    case 'delete_synonym':
+        handleDeleteSynonym();
+        break;
     case 'batch_upload':
         handleBatchUpload();
         break;
@@ -230,6 +236,84 @@ function handleSaveSynonym(): void
     }
 
     echo json_encode(['ok' => true, 'message' => 'Sinónimo guardado']);
+}
+
+/**
+ * Actualizar un sinónimo existente (cambiar clave, artículo o ambos)
+ */
+function handleUpdateSynonym(): void
+{
+    $input = json_decode(file_get_contents('php://input'), true);
+    $origKey = $input['original_key'] ?? '';
+    $newKey  = $input['new_key'] ?? '';
+    $artId   = (int)($input['articulo_id'] ?? 0);
+    $artName = $input['articulo_name'] ?? '';
+
+    if (!$origKey || !$newKey || !$artId) {
+        echo json_encode(['ok' => false, 'error' => 'Datos incompletos']);
+        return;
+    }
+
+    $data = json_decode(file_get_contents(SYNONYMS_FILE), true);
+    if ($data === null) {
+        echo json_encode(['ok' => false, 'error' => 'Error al leer sinónimos']);
+        return;
+    }
+
+    if (!isset($data[$origKey])) {
+        echo json_encode(['ok' => false, 'error' => 'Sinónimo no encontrado']);
+        return;
+    }
+
+    $entry = $data[$origKey];
+    $entry['articulo_id'] = $artId;
+    $entry['articulo_name'] = $artName;
+
+    if ($origKey !== $newKey) {
+        unset($data[$origKey]);
+    }
+    $data[$newKey] = $entry;
+
+    $tmp = SYNONYMS_FILE . '.tmp';
+    $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    file_put_contents($tmp, $json);
+    rename($tmp, SYNONYMS_FILE);
+
+    echo json_encode(['ok' => true, 'message' => 'Sinónimo actualizado']);
+}
+
+/**
+ * Eliminar un sinónimo
+ */
+function handleDeleteSynonym(): void
+{
+    $input = json_decode(file_get_contents('php://input'), true);
+    $key = $input['key'] ?? '';
+
+    if (!$key) {
+        echo json_encode(['ok' => false, 'error' => 'Clave no proporcionada']);
+        return;
+    }
+
+    $data = json_decode(file_get_contents(SYNONYMS_FILE), true);
+    if ($data === null) {
+        echo json_encode(['ok' => false, 'error' => 'Error al leer sinónimos']);
+        return;
+    }
+
+    if (!isset($data[$key])) {
+        echo json_encode(['ok' => false, 'error' => 'Sinónimo no encontrado']);
+        return;
+    }
+
+    unset($data[$key]);
+
+    $tmp = SYNONYMS_FILE . '.tmp';
+    $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    file_put_contents($tmp, $json);
+    rename($tmp, SYNONYMS_FILE);
+
+    echo json_encode(['ok' => true, 'message' => 'Sinónimo eliminado']);
 }
 
 // ── Importación Masiva ──────────────────────────────────────────────────────

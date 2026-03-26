@@ -261,35 +261,91 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Synonyms Tab ---
     let allSynonyms = [];
+    let filteredSynonyms = [];
+    let synPage = 1;
+    const SYN_PER_PAGE = 50;
+    let synEditingKey = null;
 
     async function loadSynonyms() {
-        const loading = document.getElementById('synLoading');
-        loading.classList.remove('hidden');
-
+        document.getElementById('synLoading').classList.remove('hidden');
         try {
             const resp = await fetch('api.php?action=synonyms', { method: 'POST' });
             const data = await resp.json();
-
-            loading.classList.add('hidden');
-
+            document.getElementById('synLoading').classList.add('hidden');
             if (!data.ok) return;
-
             allSynonyms = data.synonyms;
-            renderSynonyms(allSynonyms);
+            synPage = 1;
+            filterSynonyms();
         } catch (err) {
-            loading.classList.add('hidden');
+            document.getElementById('synLoading').classList.add('hidden');
         }
     }
 
-    function renderSynonyms(list) {
-        document.getElementById('synCount').textContent = `${list.length} sinónimos`;
+    function renderSynBadges() {
+        const counts = {};
+        allSynonyms.forEach(s => {
+            const o = s.origen || 'otro';
+            counts[o] = (counts[o] || 0) + 1;
+        });
+        const active = document.getElementById('synOriginFilter').value;
+        const badges = [{ key: '', label: 'Todos', count: allSynonyms.length }];
+        for (const [k, c] of Object.entries(counts).sort((a, b) => b[1] - a[1])) {
+            badges.push({ key: k, label: k, count: c });
+        }
+        document.getElementById('synBadges').innerHTML = badges.map(b => {
+            const cls = b.key === active ? 'syn-badge active' : 'syn-badge';
+            const color = b.key.includes('fuzzy') ? 'badge-fuzzy' :
+                          b.key.includes('manual') ? 'badge-manual' :
+                          b.key.includes('marca') ? 'badge-marca' :
+                          b.key === '' ? '' : 'badge-auto';
+            return `<span class="${cls} ${color}" data-origin="${esc(b.key)}">${esc(b.label)}: ${b.count}</span>`;
+        }).join('');
+    }
+
+    // Badge clicks
+    document.getElementById('synBadges').addEventListener('click', e => {
+        const badge = e.target.closest('.syn-badge');
+        if (!badge) return;
+        const origin = badge.dataset.origin;
+        document.getElementById('synOriginFilter').value = origin;
+        synPage = 1;
+        filterSynonyms();
+    });
+
+    function filterSynonyms() {
+        const text = document.getElementById('synFilter').value.toLowerCase();
+        const origin = document.getElementById('synOriginFilter').value;
+        filteredSynonyms = allSynonyms.filter(s => {
+            const matchText = !text ||
+                (s.raw || '').toLowerCase().includes(text) ||
+                (s.invoice || '').toLowerCase().includes(text) ||
+                (s.variety || '').toLowerCase().includes(text) ||
+                (s.articulo_name || '').toLowerCase().includes(text) ||
+                (s.key || '').toLowerCase().includes(text) ||
+                String(s.provider_id).includes(text);
+            const matchOrigin = !origin || (s.origen || '').includes(origin);
+            return matchText && matchOrigin;
+        });
+        renderSynBadges();
+        renderSynPage();
+    }
+
+    function renderSynPage() {
+        const total = filteredSynonyms.length;
+        const totalPages = Math.max(1, Math.ceil(total / SYN_PER_PAGE));
+        if (synPage > totalPages) synPage = totalPages;
+        const start = (synPage - 1) * SYN_PER_PAGE;
+        const page = filteredSynonyms.slice(start, start + SYN_PER_PAGE);
+
+        document.getElementById('synCount').textContent =
+            `${total} sinónimos` + (total !== allSynonyms.length ? ` (de ${allSynonyms.length})` : '');
 
         const tbody = document.querySelector('#synTable tbody');
-        tbody.innerHTML = list.map(s => {
+        tbody.innerHTML = page.map(s => {
             const raw = s.raw || `${s.species || ''} ${s.variety || ''} ${s.size || ''}CM ${s.stems_per_bunch || ''}U`;
             return `
-            <tr>
-                <td title="${esc(raw)}">${esc(raw.substring(0, 65))}${raw.length > 65 ? '...' : ''}</td>
+            <tr data-key="${esc(s.key || '')}">
+                <td title="${esc(raw)}">${esc(raw.substring(0, 60))}${raw.length > 60 ? '...' : ''}</td>
                 <td>${esc(s.invoice || '-')}</td>
                 <td>${s.provider_id}</td>
                 <td><strong>${esc(s.variety || '')}</strong></td>
@@ -297,42 +353,160 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${s.articulo_id}</td>
                 <td>${esc(s.articulo_name || '')}</td>
                 <td>${originBadge(s.origen || '')}</td>
+                <td class="syn-actions">
+                    <button class="btn-icon syn-edit" title="Editar">&#9998;</button>
+                    <button class="btn-icon syn-delete" title="Eliminar">&#10005;</button>
+                </td>
             </tr>`;
         }).join('');
+
+        // Paginación
+        const pagHtml = totalPages <= 1 ? '' : _buildPagination(synPage, totalPages);
+        document.getElementById('synPagination').innerHTML = pagHtml;
+        document.getElementById('synPaginationBottom').innerHTML = pagHtml;
     }
+
+    function _buildPagination(current, total) {
+        let html = '<div class="pagination">';
+        if (current > 1) html += `<button class="pag-btn" data-page="${current - 1}">&laquo;</button>`;
+        const start = Math.max(1, current - 3);
+        const end = Math.min(total, current + 3);
+        for (let p = start; p <= end; p++) {
+            html += `<button class="pag-btn ${p === current ? 'active' : ''}" data-page="${p}">${p}</button>`;
+        }
+        if (current < total) html += `<button class="pag-btn" data-page="${current + 1}">&raquo;</button>`;
+        html += '</div>';
+        return html;
+    }
+
+    // Pagination clicks
+    document.addEventListener('click', e => {
+        const btn = e.target.closest('.pag-btn');
+        if (btn) {
+            synPage = parseInt(btn.dataset.page);
+            renderSynPage();
+            document.getElementById('synTable').scrollIntoView({ behavior: 'smooth' });
+        }
+    });
 
     function originBadge(origin) {
         const cls = origin.includes('fuzzy') ? 'badge-fuzzy' :
-                    origin.includes('manual') ? 'badge-manual' : 'badge-auto';
+                    origin.includes('manual') ? 'badge-manual' :
+                    origin.includes('marca') ? 'badge-marca' : 'badge-auto';
         return `<span class="badge ${cls}">${esc(origin)}</span>`;
     }
 
-    // Synonym filtering
-    const synFilter = document.getElementById('synFilter');
-    const synOriginFilter = document.getElementById('synOriginFilter');
+    // --- Synonym Actions: Edit & Delete ---
+    document.querySelector('#synTable tbody').addEventListener('click', e => {
+        const row = e.target.closest('tr');
+        if (!row) return;
+        const key = row.dataset.key;
 
-    function filterSynonyms() {
-        const text = synFilter.value.toLowerCase();
-        const origin = synOriginFilter.value;
+        if (e.target.closest('.syn-edit')) {
+            synStartEdit(row, key);
+        } else if (e.target.closest('.syn-delete')) {
+            synDelete(key);
+        } else if (e.target.closest('.syn-save')) {
+            synSaveEdit(row, key);
+        } else if (e.target.closest('.syn-cancel')) {
+            renderSynPage();
+        }
+    });
 
-        const filtered = allSynonyms.filter(s => {
-            const matchText = !text ||
-                (s.raw || '').toLowerCase().includes(text) ||
-                (s.invoice || '').toLowerCase().includes(text) ||
-                (s.variety || '').toLowerCase().includes(text) ||
-                (s.articulo_name || '').toLowerCase().includes(text) ||
-                String(s.provider_id).includes(text);
-
-            const matchOrigin = !origin || (s.origen || '').includes(origin);
-
-            return matchText && matchOrigin;
-        });
-
-        renderSynonyms(filtered);
+    function synStartEdit(row, key) {
+        const s = allSynonyms.find(x => x.key === key);
+        if (!s) return;
+        row.innerHTML = `
+            <td colspan="2"><input class="edit-input" id="editKey" value="${esc(s.key || '')}" style="width:100%"></td>
+            <td>${s.provider_id}</td>
+            <td><input class="edit-input" id="editVariety" value="${esc(s.variety || '')}"></td>
+            <td>${s.size || '-'}</td>
+            <td><input class="edit-input" id="editArtId" value="${s.articulo_id}" type="number" style="width:70px"></td>
+            <td><input class="edit-input" id="editArtName" value="${esc(s.articulo_name || '')}" style="width:100%"></td>
+            <td>${originBadge(s.origen || '')}</td>
+            <td class="syn-actions">
+                <button class="btn-icon syn-save" title="Guardar" style="color:green">&#10003;</button>
+                <button class="btn-icon syn-cancel" title="Cancelar" style="color:gray">&#10007;</button>
+            </td>`;
+        synEditingKey = key;
     }
 
-    synFilter.addEventListener('input', filterSynonyms);
-    synOriginFilter.addEventListener('change', filterSynonyms);
+    async function synSaveEdit(row, originalKey) {
+        const newKey = document.getElementById('editKey').value.trim();
+        const artId = parseInt(document.getElementById('editArtId').value) || 0;
+        const artName = document.getElementById('editArtName').value.trim();
+
+        if (!newKey || !artId) { alert('Clave e ID artículo son obligatorios'); return; }
+
+        try {
+            const res = await fetch('api.php?action=update_synonym', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    original_key: synEditingKey,
+                    new_key: newKey,
+                    articulo_id: artId,
+                    articulo_name: artName,
+                }),
+            });
+            const data = await res.json();
+            if (data.ok) {
+                synEditingKey = null;
+                loadSynonyms();
+            } else {
+                alert('Error: ' + data.error);
+            }
+        } catch (err) { alert('Error de conexión'); }
+    }
+
+    async function synDelete(key) {
+        if (!confirm(`¿Eliminar sinónimo?\n${key}`)) return;
+        try {
+            const res = await fetch('api.php?action=delete_synonym', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ key }),
+            });
+            const data = await res.json();
+            if (data.ok) loadSynonyms();
+            else alert('Error: ' + data.error);
+        } catch (err) { alert('Error de conexión'); }
+    }
+
+    // --- Add synonym ---
+    document.getElementById('btnAddSynonym').addEventListener('click', () => {
+        document.getElementById('synAddForm').classList.toggle('hidden');
+    });
+    document.getElementById('btnSynAddCancel').addEventListener('click', () => {
+        document.getElementById('synAddForm').classList.add('hidden');
+    });
+    document.getElementById('btnSynAddSave').addEventListener('click', async () => {
+        const key = document.getElementById('synAddKey').value.trim();
+        const artId = parseInt(document.getElementById('synAddArticuloId').value) || 0;
+        const artName = document.getElementById('synAddArticuloName').value.trim();
+        if (!key || !artId) { alert('Clave e ID artículo son obligatorios'); return; }
+        try {
+            const res = await fetch('api.php?action=save_synonym', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ key, articulo_id: artId, articulo_name: artName }),
+            });
+            const data = await res.json();
+            if (data.ok) {
+                document.getElementById('synAddForm').classList.add('hidden');
+                document.getElementById('synAddKey').value = '';
+                document.getElementById('synAddArticuloId').value = '';
+                document.getElementById('synAddArticuloName').value = '';
+                loadSynonyms();
+            } else {
+                alert('Error: ' + data.error);
+            }
+        } catch (err) { alert('Error de conexión'); }
+    });
+
+    // Filters
+    document.getElementById('synFilter').addEventListener('input', () => { synPage = 1; filterSynonyms(); });
+    document.getElementById('synOriginFilter').addEventListener('change', () => { synPage = 1; filterSynonyms(); });
 
     // --- Utilities ---
     function esc(str) {
