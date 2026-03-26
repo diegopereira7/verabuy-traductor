@@ -50,6 +50,9 @@ switch ($action) {
     case 'batch_upload':
         handleBatchUpload();
         break;
+    case 'batch_upload_pdfs':
+        handleBatchUploadPdfs();
+        break;
     case 'batch_status':
         handleBatchStatus();
         break;
@@ -324,6 +327,77 @@ function handleBatchUpload(): void
          . '--batch-id ' . $batchId;
 
     // Windows: start /B para background
+    $bgCmd = 'start /B cmd /C "' . $cmd . ' > nul 2>&1"';
+    pclose(popen($bgCmd, 'r'));
+
+    echo json_encode([
+        'ok'        => true,
+        'batch_id'  => $batchId,
+        'total_pdfs' => $pdfCount,
+    ]);
+}
+
+/**
+ * Subir PDFs sueltos (desde carpeta o selección múltiple) y lanzar procesamiento
+ */
+function handleBatchUploadPdfs(): void
+{
+    // Verificar que no hay batch en curso
+    $running = _findRunningBatch();
+    if ($running) {
+        echo json_encode([
+            'ok' => false,
+            'error' => 'Ya hay un lote en proceso. Espera a que termine.',
+            'batch_id' => $running,
+        ]);
+        return;
+    }
+
+    if (!isset($_FILES['pdfs']) || !is_array($_FILES['pdfs']['name'])) {
+        echo json_encode(['ok' => false, 'error' => 'No se recibieron archivos PDF']);
+        return;
+    }
+
+    $batchId = date('YmdHis') . '_' . bin2hex(random_bytes(4));
+    $extractDir = BATCH_UPLOADS_DIR . '/' . $batchId;
+    @mkdir($extractDir, 0777, true);
+
+    $pdfCount = 0;
+    $fileCount = count($_FILES['pdfs']['name']);
+
+    for ($i = 0; $i < $fileCount; $i++) {
+        if ($_FILES['pdfs']['error'][$i] !== UPLOAD_ERR_OK) continue;
+
+        $name = $_FILES['pdfs']['name'][$i];
+        if (strtolower(pathinfo($name, PATHINFO_EXTENSION)) !== 'pdf') continue;
+
+        $safeName = preg_replace('/[^a-zA-Z0-9._-]/', '_', basename($name));
+        $dest = $extractDir . '/' . $safeName;
+
+        // Evitar colisiones
+        if (file_exists($dest)) {
+            $safeName = pathinfo($safeName, PATHINFO_FILENAME) . '_' . $i . '.pdf';
+            $dest = $extractDir . '/' . $safeName;
+        }
+
+        if (move_uploaded_file($_FILES['pdfs']['tmp_name'][$i], $dest)) {
+            $pdfCount++;
+        }
+    }
+
+    if ($pdfCount === 0) {
+        array_map('unlink', glob($extractDir . '/*'));
+        @rmdir($extractDir);
+        echo json_encode(['ok' => false, 'error' => 'No se recibieron archivos PDF válidos']);
+        return;
+    }
+
+    // Lanzar Python en background
+    $cmd = '"' . PYTHON_BIN . '" '
+         . '"' . BATCH_SCRIPT . '" '
+         . '"' . $extractDir . '" '
+         . '--batch-id ' . $batchId;
+
     $bgCmd = 'start /B cmd /C "' . $cmd . ' > nul 2>&1"';
     pclose(popen($bgCmd, 'r'));
 

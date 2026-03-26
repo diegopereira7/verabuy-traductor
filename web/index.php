@@ -73,10 +73,16 @@
                 <h2>Importación Masiva de Facturas</h2>
                 <div class="batch-drop-zone" id="batchDropZone">
                     <div class="upload-icon">&#128230;</div>
-                    <p>Arrastra un archivo <strong>.zip</strong> con facturas PDF</p>
-                    <p class="text-muted">o haz clic para seleccionar</p>
+                    <p>Arrastra archivos <strong>PDF</strong>, una <strong>carpeta</strong> o un <strong>.zip</strong></p>
+                    <p class="text-muted">o usa los botones para seleccionar</p>
                     <input type="file" id="batchZipInput" accept=".zip" hidden>
-                    <button class="btn btn-primary" id="btnSelectZip">Seleccionar ZIP</button>
+                    <input type="file" id="batchFolderInput" webkitdirectory hidden>
+                    <input type="file" id="batchPdfInput" accept=".pdf" multiple hidden>
+                    <div class="batch-btn-group">
+                        <button class="btn btn-primary" id="btnSelectZip">ZIP</button>
+                        <button class="btn btn-primary" id="btnSelectFolder">Carpeta</button>
+                        <button class="btn btn-primary" id="btnSelectPdfs">PDFs</button>
+                    </div>
                 </div>
             </div>
 

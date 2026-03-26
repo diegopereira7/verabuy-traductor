@@ -352,7 +352,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const batchDropZone   = document.getElementById('batchDropZone');
     const batchZipInput   = document.getElementById('batchZipInput');
-    const btnSelectZip    = document.getElementById('btnSelectZip');
+    const batchFolderInput = document.getElementById('batchFolderInput');
+    const batchPdfInput   = document.getElementById('batchPdfInput');
     const batchUploadZone = document.getElementById('batch-upload-zone');
     const batchProgress   = document.getElementById('batch-progress');
     const batchResults    = document.getElementById('batch-results');
@@ -361,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let batchPollingTimer = null;
     let batchAllResults = [];
 
-    // Drag & drop para ZIP
+    // Drag & drop — acepta ZIP, PDFs sueltos o carpetas
     batchDropZone.addEventListener('dragover', e => {
         e.preventDefault();
         batchDropZone.classList.add('drag-over');
@@ -370,12 +371,41 @@ document.addEventListener('DOMContentLoaded', () => {
     batchDropZone.addEventListener('drop', e => {
         e.preventDefault();
         batchDropZone.classList.remove('drag-over');
-        const file = e.dataTransfer.files[0];
-        if (file) batchUploadZip(file);
+        const files = [...e.dataTransfer.files];
+        if (files.length === 1 && files[0].name.toLowerCase().endsWith('.zip')) {
+            batchUploadZip(files[0]);
+        } else {
+            const pdfs = files.filter(f => f.name.toLowerCase().endsWith('.pdf'));
+            if (pdfs.length > 0) {
+                batchUploadPdfs(pdfs);
+            } else {
+                alert('Arrastra archivos PDF o un ZIP');
+            }
+        }
     });
-    btnSelectZip.addEventListener('click', () => batchZipInput.click());
+
+    // Botón ZIP
+    document.getElementById('btnSelectZip').addEventListener('click', () => batchZipInput.click());
     batchZipInput.addEventListener('change', () => {
         if (batchZipInput.files[0]) batchUploadZip(batchZipInput.files[0]);
+    });
+
+    // Botón Carpeta
+    document.getElementById('btnSelectFolder').addEventListener('click', () => batchFolderInput.click());
+    batchFolderInput.addEventListener('change', () => {
+        const pdfs = [...batchFolderInput.files].filter(f => f.name.toLowerCase().endsWith('.pdf'));
+        if (pdfs.length > 0) {
+            batchUploadPdfs(pdfs);
+        } else {
+            alert('La carpeta no contiene archivos PDF');
+        }
+    });
+
+    // Botón PDFs sueltos
+    document.getElementById('btnSelectPdfs').addEventListener('click', () => batchPdfInput.click());
+    batchPdfInput.addEventListener('change', () => {
+        const pdfs = [...batchPdfInput.files];
+        if (pdfs.length > 0) batchUploadPdfs(pdfs);
     });
 
     async function batchUploadZip(file) {
@@ -413,6 +443,44 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('batch-progress-count').textContent = `0 / ${data.total_pdfs}`;
 
             // Iniciar polling
+            batchPollingTimer = setInterval(batchPollStatus, 2000);
+
+        } catch (err) {
+            alert('Error de conexión: ' + err.message);
+            batchReset();
+        }
+    }
+
+    async function batchUploadPdfs(files) {
+        batchUploadZone.classList.add('hidden');
+        batchProgress.classList.remove('hidden');
+        batchResults.classList.add('hidden');
+
+        document.getElementById('batch-status-text').textContent = `Subiendo ${files.length} PDFs...`;
+        document.getElementById('batch-progress-count').textContent = '';
+        document.getElementById('batchProgressBar').style.width = '0%';
+        document.getElementById('batch-current-pdf').textContent = '';
+        document.getElementById('batch-ok-err').textContent = '';
+
+        const form = new FormData();
+        for (const f of files) {
+            form.append('pdfs[]', f);
+        }
+
+        try {
+            const res = await fetch('api.php?action=batch_upload_pdfs', { method: 'POST', body: form });
+            const data = await res.json();
+
+            if (!data.ok) {
+                alert('Error: ' + data.error);
+                batchReset();
+                return;
+            }
+
+            batchId = data.batch_id;
+            document.getElementById('batch-status-text').textContent = 'Procesando...';
+            document.getElementById('batch-progress-count').textContent = `0 / ${data.total_pdfs}`;
+
             batchPollingTimer = setInterval(batchPollStatus, 2000);
 
         } catch (err) {
