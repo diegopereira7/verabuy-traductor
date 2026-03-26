@@ -325,6 +325,21 @@ tr.row-sin-match:hover td {
     background: #fee2e2;
 }
 
+.badge-sin-parser {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+tr.row-sin-parser {
+    background: #fffbeb;
+}
+
+tr.row-sin-parser:hover td {
+    background: #fef3c7;
+}
+
+.stat-card.warning .stat-value { color: #d97706; }
+
 /* Filters */
 .filters {
     display: flex;

@@ -1967,5 +1967,104 @@
     "size": 60,
     "stems_per_bunch": 1,
     "grade": ""
+  },
+  "0|ROSES|BRIGTHON|6|25|": {
+    "articulo_id": 31927,
+    "articulo_name": "ROSA BRIGHTON 60CM 25U CANTIZA",
+    "origen": "auto-fuzzy",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "BRIGTHON",
+    "size": 6,
+    "stems_per_bunch": 25,
+    "grade": ""
+  },
+  "4471|ROSES|COUNTRY HOME|50|20|": {
+    "articulo_id": 32538,
+    "articulo_name": "ROSA COUNTRY HOME 50CM 25U FIORENTINA",
+    "origen": "auto-fuzzy",
+    "provider_id": 4471,
+    "species": "ROSES",
+    "variety": "COUNTRY HOME",
+    "size": 50,
+    "stems_per_bunch": 20,
+    "grade": ""
+  },
+  "4471|ROSES|TOPAZ|50|20|": {
+    "articulo_id": 33571,
+    "articulo_name": "ROSA EC TOPAZ 50CM 20U",
+    "origen": "auto",
+    "provider_id": 4471,
+    "species": "ROSES",
+    "variety": "TOPAZ",
+    "size": 50,
+    "stems_per_bunch": 20,
+    "grade": ""
+  },
+  "1434|ROSES|PINK X-PRESSION|25|25|": {
+    "articulo_id": 35949,
+    "articulo_name": "ROSA PINK  X-PRESSION 50CM 25U LUXUS",
+    "origen": "auto-fuzzy",
+    "provider_id": 1434,
+    "species": "ROSES",
+    "variety": "PINK X-PRESSION",
+    "size": 25,
+    "stems_per_bunch": 25,
+    "grade": ""
+  },
+  "1434|ROSES|COUNTRY HOME|25|25|": {
+    "articulo_id": 32538,
+    "articulo_name": "ROSA COUNTRY HOME 50CM 25U FIORENTINA",
+    "origen": "auto-fuzzy",
+    "provider_id": 1434,
+    "species": "ROSES",
+    "variety": "COUNTRY HOME",
+    "size": 25,
+    "stems_per_bunch": 25,
+    "grade": ""
+  },
+  "1434|ROSES|PRINCESS CROWN|25|25|": {
+    "articulo_id": 33360,
+    "articulo_name": "ROSA EC PRINCESS CROWN 50CM 25U",
+    "origen": "auto-fuzzy",
+    "provider_id": 1434,
+    "species": "ROSES",
+    "variety": "PRINCESS CROWN",
+    "size": 25,
+    "stems_per_bunch": 25,
+    "grade": ""
+  },
+  "99999|ROSES|EXPLORER|60|25|": {
+    "articulo_id": 33788,
+    "articulo_name": "ROSA EXPLORER 60CM 25U CANTIZA",
+    "origen": "auto-marca",
+    "provider_id": 99999,
+    "species": "ROSES",
+    "variety": "EXPLORER",
+    "size": 60,
+    "stems_per_bunch": 25,
+    "grade": ""
+  },
+  "313|CARNATIONS|MIX|0|10|SELECT": {
+    "articulo_id": 26776,
+    "articulo_name": "MINI CLAVEL COL SELECT MIXTO 70CM 10U",
+    "origen": "auto-fuzzy",
+    "provider_id": 313,
+    "species": "CARNATIONS",
+    "variety": "MIX",
+    "size": 0,
+    "stems_per_bunch": 10,
+    "grade": "SELECT"
+  },
+  "313|CARNATIONS|NOVELTY|0|10|SELECT": {
+    "articulo_id": 12578,
+    "articulo_name": "CLAVEL COL SELECT NOVEDADES 70CM 20U",
+    "origen": "auto-fuzzy",
+    "provider_id": 313,
+    "species": "CARNATIONS",
+    "variety": "NOVELTY",
+    "size": 0,
+    "stems_per_bunch": 10,
+    "grade": "SELECT"
   }
 }

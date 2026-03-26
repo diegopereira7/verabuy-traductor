@@ -8,7 +8,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from verabuy_trainer import (
     detect_provider, FORMAT_PARSERS, ArticulosLoader,
-    SynonymStore, Matcher, SYNS_FILE
+    SynonymStore, Matcher, SYNS_FILE, _rescue_unparsed_lines,
+    _split_mixed_boxes
 )
 from pathlib import Path
 
@@ -34,9 +35,13 @@ def run(pdf_path: str) -> dict:
     matcher = Matcher(art, syn)
 
     header, lines = parser.parse(pdata['text'], pdata)
+    lines = _split_mixed_boxes(lines)
+    rescued = _rescue_unparsed_lines(pdata['text'], lines)
     lines = matcher.match_all(pdata['id'], lines)
+    lines.extend(rescued)  # sin_parser lines added after matching
 
     ok_count = sum(1 for l in lines if l.match_status == 'ok')
+    no_parser = sum(1 for l in lines if l.match_status == 'sin_parser')
 
     return {
         'ok': True,
@@ -52,7 +57,8 @@ def run(pdf_path: str) -> dict:
         'stats': {
             'total_lineas': len(lines),
             'ok':           ok_count,
-            'sin_match':    len(lines) - ok_count,
+            'sin_match':    len(lines) - ok_count - no_parser,
+            'sin_parser':   no_parser,
         },
         'lines': [{
             'raw':             l.raw_description[:120],

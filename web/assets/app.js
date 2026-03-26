@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         const s = data.stats;
+        const sinParser = s.sin_parser || 0;
         document.getElementById('statsBar').innerHTML = `
             <div class="stat-card">
                 <div class="stat-value">${s.total_lineas}</div>
@@ -150,11 +151,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="stat-value">${s.sin_match}</div>
                 <div class="stat-label">Sin Match</div>
             </div>
+            ${sinParser > 0 ? `
+            <div class="stat-card warning">
+                <div class="stat-value">${sinParser}</div>
+                <div class="stat-label">No Parseadas</div>
+            </div>` : ''}
         `;
 
         const tbody = document.querySelector('#linesTable tbody');
         tbody.innerHTML = data.lines.map((l, i) => `
-            <tr class="${l.match_status !== 'ok' ? 'row-sin-match' : ''}">
+            <tr class="${l.match_status === 'sin_parser' ? 'row-sin-parser' : l.match_status !== 'ok' ? 'row-sin-match' : ''}">
                 <td>${i + 1}</td>
                 <td title="${esc(l.raw)}">${esc(l.raw.substring(0, 60))}${l.raw.length > 60 ? '...' : ''}</td>
                 <td>${esc(l.species)}</td>
@@ -173,6 +179,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function matchBadge(status, method) {
         if (status === 'ok') {
             return `<span class="badge badge-ok" title="${esc(method)}">${esc(method)}</span>`;
+        }
+        if (status === 'sin_parser') {
+            return '<span class="badge badge-sin-parser">NO PARSEADO</span>';
         }
         return '<span class="badge badge-sin-match">SIN MATCH</span>';
     }
