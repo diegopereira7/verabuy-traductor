@@ -11,13 +11,16 @@ define('BATCH_RESULTS_DIR', PROJECT_ROOT . '/batch_results');
 define('BATCH_UPLOADS_DIR', PROJECT_ROOT . '/batch_uploads');
 define('BATCH_SCRIPT',      PROJECT_ROOT . '/batch_process.py');
 define('MAX_ZIP_SIZE',      100 * 1024 * 1024); // 100 MB
+define('LEARNED_RULES_FILE', PROJECT_ROOT . '/learned_rules.json');
+define('PENDING_REVIEW_FILE', PROJECT_ROOT . '/pending_review.json');
+define('AUDIT_LOG_FILE', PROJECT_ROOT . '/audit_log.jsonl');
 
 header('Content-Type: application/json; charset=utf-8');
 
 // Batch status y download son GET; el resto POST
 $action = $_GET['action'] ?? 'process';
 
-if (in_array($action, ['batch_status', 'batch_download'])) {
+if (in_array($action, ['batch_status', 'batch_download', 'learned_parsers', 'pending_review'])) {
     if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
         http_response_code(405);
         echo json_encode(['ok' => false, 'error' => 'Método no permitido']);
@@ -52,6 +55,15 @@ switch ($action) {
         break;
     case 'batch_download':
         handleBatchDownload();
+        break;
+    case 'learned_parsers':
+        handleLearnedParsers();
+        break;
+    case 'pending_review':
+        handlePendingReview();
+        break;
+    case 'toggle_parser':
+        handleToggleParser();
         break;
     default:
         http_response_code(400);
@@ -412,4 +424,80 @@ function _findRunningBatch(): ?string
         }
     }
     return null;
+}
+
+// ── Auto-Aprendizaje ────────────────────────────────────────────────────────
+
+/**
+ * Lista de parsers aprendidos
+ */
+function handleLearnedParsers(): void
+{
+    if (!file_exists(LEARNED_RULES_FILE)) {
+        echo json_encode(['ok' => true, 'parsers' => [], 'total' => 0]);
+        return;
+    }
+
+    $data = json_decode(file_get_contents(LEARNED_RULES_FILE), true);
+    if ($data === null) {
+        echo json_encode(['ok' => true, 'parsers' => [], 'total' => 0]);
+        return;
+    }
+
+    $list = [];
+    foreach ($data as $name => $config) {
+        $list[] = [
+            'nombre'       => $name,
+            'species'      => $config['species'] ?? '',
+            'score'        => $config['score'] ?? 0,
+            'decision'     => $config['decision'] ?? '',
+            'fecha'        => $config['fecha_generacion'] ?? '',
+            'num_pdfs'     => $config['num_pdfs_analizados'] ?? 0,
+            'activo'       => $config['activo'] ?? true,
+            'keywords'     => $config['keywords'] ?? [],
+        ];
+    }
+
+    echo json_encode(['ok' => true, 'parsers' => $list, 'total' => count($list)]);
+}
+
+/**
+ * Pendientes de revisión
+ */
+function handlePendingReview(): void
+{
+    if (!file_exists(PENDING_REVIEW_FILE)) {
+        echo json_encode(['ok' => true, 'pendientes' => []]);
+        return;
+    }
+
+    $data = json_decode(file_get_contents(PENDING_REVIEW_FILE), true);
+    echo json_encode(['ok' => true, 'pendientes' => $data['pendientes'] ?? []]);
+}
+
+/**
+ * Activar/desactivar un parser aprendido
+ */
+function handleToggleParser(): void
+{
+    $input = json_decode(file_get_contents('php://input'), true);
+    $name = $input['nombre'] ?? '';
+
+    if (!$name || !file_exists(LEARNED_RULES_FILE)) {
+        echo json_encode(['ok' => false, 'error' => 'Parser no encontrado']);
+        return;
+    }
+
+    $data = json_decode(file_get_contents(LEARNED_RULES_FILE), true);
+    if (!isset($data[$name])) {
+        echo json_encode(['ok' => false, 'error' => 'Parser no encontrado']);
+        return;
+    }
+
+    $data[$name]['activo'] = !($data[$name]['activo'] ?? true);
+    $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    file_put_contents(LEARNED_RULES_FILE, $json);
+
+    $state = $data[$name]['activo'] ? 'activado' : 'desactivado';
+    echo json_encode(['ok' => true, 'message' => "Parser $name $state", 'activo' => $data[$name]['activo']]);
 }

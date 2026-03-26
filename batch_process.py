@@ -314,6 +314,46 @@ def run_batch(folder: Path, batch_id: str | None = None, output: Path | None = N
     # Guardar historial
     hist.save()
 
+    # Auto-aprendizaje: intentar aprender de los PDFs que fallaron
+    pdfs_sin_parser = [
+        {'path': str(pdf), 'text': r.get('_text', ''), 'fingerprint': None}
+        for pdf, r in zip(pdfs, results)
+        if not r['ok'] and 'no reconocido' in r.get('error', '').lower()
+    ]
+    if len(pdfs_sin_parser) >= 2:
+        try:
+            from src.learner import aprender_de_batch
+            update_status({
+                'estado': 'aprendiendo',
+                'progreso': total, 'total': total, 'porcentaje': 98,
+                'actual': f'Auto-aprendizaje: {len(pdfs_sin_parser)} PDFs sin parser...',
+                'procesados_ok': ok_count, 'con_error': err_count,
+            })
+            learned = aprender_de_batch(pdfs_sin_parser)
+            if learned:
+                # Reprocesar los PDFs que ahora tienen parser
+                for lr in learned:
+                    if lr['decision'] in ('VERDE', 'AMARILLO'):
+                        for pdf_path in lr['pdfs']:
+                            pdf = Path(pdf_path)
+                            try:
+                                reresult = _process_single_pdf(pdf, art, syn, matcher)
+                                if reresult['ok']:
+                                    # Reemplazar el resultado de error por el nuevo
+                                    for j, r in enumerate(results):
+                                        if r['pdf'] == pdf.name and not r['ok']:
+                                            results[j] = reresult
+                                            ok_count += 1
+                                            err_count -= 1
+                                            break
+                            except Exception:
+                                pass
+                if not is_web:
+                    print(f'\n  Auto-aprendizaje: {len(learned)} parsers generados')
+        except Exception as exc:
+            if not is_web:
+                print(f'\n  Auto-aprendizaje falló: {exc}')
+
     # Generar Excel
     update_status({
         'estado': 'generando_excel',

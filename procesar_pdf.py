@@ -20,8 +20,30 @@ from src.config import SQL_FILE, SYNS_FILE
 def run(pdf_path: str) -> dict:
     """Procesa un PDF y devuelve el resultado como dict JSON-serializable."""
     pdata = detect_provider(pdf_path)
+
     if not pdata:
-        return {'ok': False, 'error': 'Proveedor no reconocido en el PDF'}
+        # Intentar con parsers aprendidos
+        from src.learner import intentar_auto_parse
+        from src.pdf import extract_text
+        text = extract_text(pdf_path)
+        auto_result = intentar_auto_parse(pdf_path, text)
+        if auto_result['ok']:
+            pdata = {
+                'id': 0,
+                'name': auto_result.get('learned_provider', 'Auto'),
+                'fmt': 'auto_learned',
+                'key': 'auto_learned',
+                'text': text,
+            }
+            header = auto_result['header']
+            lines = auto_result['lines']
+            # Saltar al matching directamente
+            return _process_with_lines(pdf_path, pdata, header, lines)
+        return {
+            'ok': False,
+            'error': 'Proveedor no reconocido en el PDF',
+            'auto_learn_info': auto_result.get('auto_learn_info'),
+        }
 
     fmt = pdata.get('fmt', '')
     parser = FORMAT_PARSERS.get(fmt)
@@ -31,16 +53,21 @@ def run(pdf_path: str) -> dict:
     if not SQL_FILE.exists():
         return {'ok': False, 'error': f'No se encuentra la BD de artículos: {SQL_FILE}'}
 
+    header, lines = parser.parse(pdata['text'], pdata)
+    return _process_with_lines(pdf_path, pdata, header, lines)
+
+
+def _process_with_lines(pdf_path: str, pdata: dict, header, lines) -> dict:
+    """Pipeline compartido: matching + serialización."""
     art = ArticulosLoader()
     art.load_from_sql(str(SQL_FILE))
 
     syn = SynonymStore(str(SYNS_FILE))
     matcher = Matcher(art, syn)
 
-    header, lines = parser.parse(pdata['text'], pdata)
     lines = split_mixed_boxes(lines)
-    rescued = rescue_unparsed_lines(pdata['text'], lines)
-    lines = matcher.match_all(pdata['id'], lines)
+    rescued = rescue_unparsed_lines(pdata.get('text', ''), lines)
+    lines = matcher.match_all(pdata.get('id', 0), lines)
     lines.extend(rescued)
 
     ok_count = sum(1 for l in lines if l.match_status == 'ok')

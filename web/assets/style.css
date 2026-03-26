@@ -548,3 +548,10 @@ tr.row-partial {
     gap: 12px;
     margin-top: 16px;
 }
+
+/* === BTN SMALL === */
+
+.btn-sm {
+    padding: 4px 10px;
+    font-size: 12px;
+}

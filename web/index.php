@@ -14,6 +14,7 @@
             <button class="nav-btn" data-tab="batch">Importación Masiva</button>
             <button class="nav-btn" data-tab="history">Historial</button>
             <button class="nav-btn" data-tab="synonyms">Sinónimos</button>
+            <button class="nav-btn" data-tab="learned">Auto-Aprendizaje</button>
         </nav>
     </header>
 
@@ -206,6 +207,50 @@
                     </thead>
                     <tbody></tbody>
                 </table>
+            </div>
+        </section>
+        <!-- TAB: Auto-Aprendizaje -->
+        <section id="tab-learned" class="tab hidden">
+            <h2>Parsers Auto-Aprendidos</h2>
+            <div id="learnedLoading" class="hidden"><div class="spinner"></div></div>
+
+            <div id="learnedContent">
+                <h3>Parsers Generados</h3>
+                <div class="table-container">
+                    <table id="learnedTable">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Especie</th>
+                                <th>Score</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th>PDFs</th>
+                                <th>Keywords</th>
+                                <th>Activo</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <h3 style="margin-top: 24px;">Pendientes de Revisión</h3>
+                <div class="table-container">
+                    <table id="pendingTable">
+                        <thead>
+                            <tr>
+                                <th>Proveedor</th>
+                                <th>Score</th>
+                                <th>Razón</th>
+                                <th>PDFs</th>
+                                <th>Fecha</th>
+                                <th>Acción Sugerida</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
         </section>
     </main>

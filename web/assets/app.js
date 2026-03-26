@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Load data on tab switch
             if (target === 'history') loadHistory();
             if (target === 'synonyms') loadSynonyms();
+            if (target === 'learned') loadLearnedParsers();
         });
     });
 
@@ -599,4 +600,84 @@ document.addEventListener('DOMContentLoaded', () => {
         batchResults.classList.add('hidden');
         batchZipInput.value = '';
     }
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // AUTO-APRENDIZAJE
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    async function loadLearnedParsers() {
+        try {
+            const [parsersRes, pendingRes] = await Promise.all([
+                fetch('api.php?action=learned_parsers').then(r => r.json()),
+                fetch('api.php?action=pending_review').then(r => r.json()),
+            ]);
+
+            if (parsersRes.ok) renderLearnedTable(parsersRes.parsers || []);
+            if (pendingRes.ok) renderPendingTable(pendingRes.pendientes || []);
+        } catch (err) {
+            console.error('Error cargando parsers aprendidos:', err);
+        }
+    }
+
+    function renderLearnedTable(parsers) {
+        const tbody = document.querySelector('#learnedTable tbody');
+        if (!parsers.length) {
+            tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:var(--text-muted)">No hay parsers auto-generados todavía</td></tr>';
+            return;
+        }
+        tbody.innerHTML = parsers.map(p => {
+            const scorePct = Math.round(p.score * 100);
+            const decBadge = p.decision === 'VERDE'
+                ? '<span class="badge badge-ok">VERDE</span>'
+                : '<span class="badge badge-fuzzy">AMARILLO</span>';
+            return `
+                <tr>
+                    <td><strong>${esc(p.nombre)}</strong></td>
+                    <td>${esc(p.species)}</td>
+                    <td>${scorePct}%</td>
+                    <td>${decBadge}</td>
+                    <td>${esc(p.fecha)}</td>
+                    <td>${p.num_pdfs}</td>
+                    <td><small>${esc((p.keywords || []).join(', '))}</small></td>
+                    <td>${p.activo ? '<span class="badge badge-ok">Sí</span>' : '<span class="badge badge-sin-match">No</span>'}</td>
+                    <td><button class="btn btn-secondary btn-sm" onclick="toggleParser('${esc(p.nombre)}')">${p.activo ? 'Desactivar' : 'Activar'}</button></td>
+                </tr>`;
+        }).join('');
+    }
+
+    function renderPendingTable(pending) {
+        const tbody = document.querySelector('#pendingTable tbody');
+        if (!pending.length) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-muted)">No hay revisiones pendientes</td></tr>';
+            return;
+        }
+        tbody.innerHTML = pending.map(p => `
+            <tr class="row-partial">
+                <td><strong>${esc(p.proveedor)}</strong></td>
+                <td>${Math.round(p.score * 100)}%</td>
+                <td>${esc(p.razon)}</td>
+                <td>${(p.pdfs || []).length}</td>
+                <td>${esc(p.fecha)}</td>
+                <td><em>${esc(p.accion_sugerida)}</em></td>
+            </tr>`).join('');
+    }
+
+    // Expose globally for onclick
+    window.toggleParser = async function(nombre) {
+        try {
+            const res = await fetch('api.php?action=toggle_parser', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({nombre}),
+            });
+            const data = await res.json();
+            if (data.ok) {
+                loadLearnedParsers();
+            } else {
+                alert('Error: ' + data.error);
+            }
+        } catch (err) {
+            alert('Error de conexión');
+        }
+    };
 });
