@@ -5,15 +5,31 @@
  */
 require_once __DIR__ . '/config.php';
 
+// Constantes de importación masiva
+define('BATCH_STATUS_DIR',  PROJECT_ROOT . '/batch_status');
+define('BATCH_RESULTS_DIR', PROJECT_ROOT . '/batch_results');
+define('BATCH_UPLOADS_DIR', PROJECT_ROOT . '/batch_uploads');
+define('BATCH_SCRIPT',      PROJECT_ROOT . '/batch_process.py');
+define('MAX_ZIP_SIZE',      100 * 1024 * 1024); // 100 MB
+
 header('Content-Type: application/json; charset=utf-8');
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['ok' => false, 'error' => 'Método no permitido']);
-    exit;
-}
-
+// Batch status y download son GET; el resto POST
 $action = $_GET['action'] ?? 'process';
+
+if (in_array($action, ['batch_status', 'batch_download'])) {
+    if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+        http_response_code(405);
+        echo json_encode(['ok' => false, 'error' => 'Método no permitido']);
+        exit;
+    }
+} else {
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        http_response_code(405);
+        echo json_encode(['ok' => false, 'error' => 'Método no permitido']);
+        exit;
+    }
+}
 
 switch ($action) {
     case 'process':
@@ -27,6 +43,15 @@ switch ($action) {
         break;
     case 'save_synonym':
         handleSaveSynonym();
+        break;
+    case 'batch_upload':
+        handleBatchUpload();
+        break;
+    case 'batch_status':
+        handleBatchStatus();
+        break;
+    case 'batch_download':
+        handleBatchDownload();
         break;
     default:
         http_response_code(400);
@@ -190,4 +215,201 @@ function handleSaveSynonym(): void
     }
 
     echo json_encode(['ok' => true, 'message' => 'Sinónimo guardado']);
+}
+
+// ── Importación Masiva ──────────────────────────────────────────────────────
+
+/**
+ * Subir ZIP con PDFs y lanzar procesamiento en background
+ */
+function handleBatchUpload(): void
+{
+    // Verificar que no hay batch en curso
+    $running = _findRunningBatch();
+    if ($running) {
+        echo json_encode([
+            'ok' => false,
+            'error' => 'Ya hay un lote en proceso. Espera a que termine.',
+            'batch_id' => $running,
+        ]);
+        return;
+    }
+
+    if (!isset($_FILES['zip']) || $_FILES['zip']['error'] !== UPLOAD_ERR_OK) {
+        $code = $_FILES['zip']['error'] ?? -1;
+        echo json_encode(['ok' => false, 'error' => "Error al subir archivo (código $code)"]);
+        return;
+    }
+
+    $file = $_FILES['zip'];
+
+    // Validar tipo
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mime = finfo_file($finfo, $file['tmp_name']);
+    finfo_close($finfo);
+
+    if (!in_array($mime, ['application/zip', 'application/x-zip-compressed', 'application/octet-stream'])) {
+        echo json_encode(['ok' => false, 'error' => "El archivo debe ser un ZIP (recibido: $mime)"]);
+        return;
+    }
+
+    if ($file['size'] > MAX_ZIP_SIZE) {
+        echo json_encode(['ok' => false, 'error' => 'El ZIP excede el tamaño máximo (100 MB)']);
+        return;
+    }
+
+    // Generar batch ID
+    $batchId = date('YmdHis') . '_' . bin2hex(random_bytes(4));
+
+    // Descomprimir ZIP
+    $extractDir = BATCH_UPLOADS_DIR . '/' . $batchId;
+    @mkdir($extractDir, 0777, true);
+
+    $zip = new ZipArchive();
+    if ($zip->open($file['tmp_name']) !== true) {
+        echo json_encode(['ok' => false, 'error' => 'No se pudo abrir el archivo ZIP']);
+        @rmdir($extractDir);
+        return;
+    }
+
+    // Extraer solo PDFs (evitar archivos peligrosos)
+    $pdfCount = 0;
+    for ($i = 0; $i < $zip->numFiles; $i++) {
+        $name = $zip->getNameIndex($i);
+        // Ignorar directorios y archivos no-PDF
+        if (substr($name, -1) === '/' || strtolower(pathinfo($name, PATHINFO_EXTENSION)) !== 'pdf') {
+            continue;
+        }
+        // Usar solo el basename (evitar path traversal)
+        $safeName = preg_replace('/[^a-zA-Z0-9._-]/', '_', basename($name));
+        // Evitar colisiones
+        $dest = $extractDir . '/' . $safeName;
+        if (file_exists($dest)) {
+            $safeName = pathinfo($safeName, PATHINFO_FILENAME) . '_' . $i . '.pdf';
+            $dest = $extractDir . '/' . $safeName;
+        }
+        // Extraer a memoria y guardar
+        $content = $zip->getFromIndex($i);
+        if ($content !== false) {
+            file_put_contents($dest, $content);
+            $pdfCount++;
+        }
+    }
+    $zip->close();
+
+    if ($pdfCount === 0) {
+        // Limpiar
+        array_map('unlink', glob($extractDir . '/*'));
+        @rmdir($extractDir);
+        echo json_encode(['ok' => false, 'error' => 'El ZIP no contiene archivos PDF']);
+        return;
+    }
+
+    // Lanzar Python en background
+    $cmd = '"' . PYTHON_BIN . '" '
+         . '"' . BATCH_SCRIPT . '" '
+         . '"' . $extractDir . '" '
+         . '--batch-id ' . $batchId;
+
+    // Windows: start /B para background
+    $bgCmd = 'start /B cmd /C "' . $cmd . ' > nul 2>&1"';
+    pclose(popen($bgCmd, 'r'));
+
+    echo json_encode([
+        'ok'        => true,
+        'batch_id'  => $batchId,
+        'total_pdfs' => $pdfCount,
+    ]);
+}
+
+/**
+ * Consultar estado de un batch
+ */
+function handleBatchStatus(): void
+{
+    $batchId = $_GET['batch_id'] ?? '';
+    if (!preg_match('/^[a-zA-Z0-9_]+$/', $batchId)) {
+        echo json_encode(['ok' => false, 'error' => 'batch_id inválido']);
+        return;
+    }
+
+    $statusFile = BATCH_STATUS_DIR . '/' . $batchId . '.json';
+
+    if (!file_exists($statusFile)) {
+        // Puede que Python aún no haya escrito el primer status
+        echo json_encode([
+            'ok' => true,
+            'estado' => 'iniciando',
+            'progreso' => 0, 'total' => 0, 'porcentaje' => 0,
+            'actual' => 'Iniciando procesamiento...',
+            'procesados_ok' => 0, 'con_error' => 0,
+        ]);
+        return;
+    }
+
+    $content = @file_get_contents($statusFile);
+    if ($content === false) {
+        echo json_encode(['ok' => false, 'error' => 'Error al leer estado']);
+        return;
+    }
+
+    $data = json_decode($content, true);
+    if ($data === null) {
+        echo json_encode(['ok' => true, 'estado' => 'iniciando', 'progreso' => 0, 'total' => 0, 'porcentaje' => 0]);
+        return;
+    }
+
+    $data['ok'] = true;
+    echo json_encode($data, JSON_UNESCAPED_UNICODE);
+}
+
+/**
+ * Descargar Excel de resultados de un batch
+ */
+function handleBatchDownload(): void
+{
+    $batchId = $_GET['batch_id'] ?? '';
+    if (!preg_match('/^[a-zA-Z0-9_]+$/', $batchId)) {
+        http_response_code(400);
+        echo json_encode(['ok' => false, 'error' => 'batch_id inválido']);
+        return;
+    }
+
+    $excelFile = BATCH_RESULTS_DIR . '/' . $batchId . '.xlsx';
+
+    if (!file_exists($excelFile)) {
+        http_response_code(404);
+        echo json_encode(['ok' => false, 'error' => 'Excel no encontrado']);
+        return;
+    }
+
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment; filename="verabuy_batch_' . $batchId . '.xlsx"');
+    header('Content-Length: ' . filesize($excelFile));
+    readfile($excelFile);
+    exit;
+}
+
+/**
+ * Buscar si hay algún batch en curso (no completado ni error)
+ */
+function _findRunningBatch(): ?string
+{
+    $files = glob(BATCH_STATUS_DIR . '/*.json');
+    foreach ($files as $f) {
+        $content = @file_get_contents($f);
+        if ($content === false) continue;
+        $data = json_decode($content, true);
+        if ($data && isset($data['estado']) && !in_array($data['estado'], ['completado', 'error'])) {
+            // Verificar que no sea un zombie (>30 min sin actualizar)
+            if (isset($data['timestamp'])) {
+                $ts = strtotime($data['timestamp']);
+                if ($ts && (time() - $ts) > 1800) {
+                    continue; // Zombie, ignorar
+                }
+            }
+            return pathinfo($f, PATHINFO_FILENAME);
+        }
+    }
+    return null;
 }

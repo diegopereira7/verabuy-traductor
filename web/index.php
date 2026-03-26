@@ -11,6 +11,7 @@
         <h1>VeraBuy Traductor</h1>
         <nav>
             <button class="nav-btn active" data-tab="upload">Procesar Factura</button>
+            <button class="nav-btn" data-tab="batch">Importación Masiva</button>
             <button class="nav-btn" data-tab="history">Historial</button>
             <button class="nav-btn" data-tab="synonyms">Sinónimos</button>
         </nav>
@@ -61,6 +62,88 @@
                 </div>
 
                 <button class="btn btn-secondary" id="btnNewUpload">Procesar otra factura</button>
+            </div>
+        </section>
+
+        <!-- TAB: Importación Masiva -->
+        <section id="tab-batch" class="tab hidden">
+            <!-- Estado 1: Subida -->
+            <div id="batch-upload-zone">
+                <h2>Importación Masiva de Facturas</h2>
+                <div class="batch-drop-zone" id="batchDropZone">
+                    <div class="upload-icon">&#128230;</div>
+                    <p>Arrastra un archivo <strong>.zip</strong> con facturas PDF</p>
+                    <p class="text-muted">o haz clic para seleccionar</p>
+                    <input type="file" id="batchZipInput" accept=".zip" hidden>
+                    <button class="btn btn-primary" id="btnSelectZip">Seleccionar ZIP</button>
+                </div>
+            </div>
+
+            <!-- Estado 2: Progreso -->
+            <div id="batch-progress" class="hidden">
+                <h2>Procesando Lote</h2>
+                <div class="batch-progress-card">
+                    <div class="batch-progress-header">
+                        <span id="batch-status-text">Iniciando...</span>
+                        <span id="batch-progress-count"></span>
+                    </div>
+                    <div class="batch-progress-bar-wrap">
+                        <div class="batch-progress-bar" id="batchProgressBar" style="width: 0%"></div>
+                    </div>
+                    <div class="batch-progress-detail">
+                        <span id="batch-current-pdf"></span>
+                        <span id="batch-ok-err"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estado 3: Resultados -->
+            <div id="batch-results" class="hidden">
+                <h2>Resultados del Lote</h2>
+
+                <!-- Tarjetas resumen -->
+                <div class="batch-summary" id="batchSummary"></div>
+
+                <!-- Filtros -->
+                <div class="filters">
+                    <select id="batchFilterInvoice">
+                        <option value="">Todas las facturas</option>
+                    </select>
+                    <select id="batchFilterStatus">
+                        <option value="">Todos los estados</option>
+                        <option value="ok">OK</option>
+                        <option value="parcial">Parcial</option>
+                        <option value="error">Error</option>
+                    </select>
+                    <input type="text" id="batchFilterText" placeholder="Buscar proveedor, factura...">
+                </div>
+
+                <!-- Tabla de resultados -->
+                <div class="table-container">
+                    <table id="batchTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>PDF</th>
+                                <th>Proveedor</th>
+                                <th>Factura</th>
+                                <th>Fecha</th>
+                                <th>Líneas</th>
+                                <th>OK</th>
+                                <th>Sin Match</th>
+                                <th>Total USD</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <!-- Acciones -->
+                <div class="batch-actions">
+                    <button class="btn btn-primary" id="btnBatchExcel">Descargar Excel</button>
+                    <button class="btn btn-secondary" id="btnBatchNew">Nueva Importación</button>
+                </div>
             </div>
         </section>
 

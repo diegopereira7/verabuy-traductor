@@ -10,3 +10,6 @@ venv/
 .idea/
 .vscode/
 web/uploads/*.pdf
+batch_status/*.json
+batch_uploads/*/
+batch_results/*.xlsx

@@ -342,4 +342,261 @@ document.addEventListener('DOMContentLoaded', () => {
         if (val === null || val === undefined) return '0.00';
         return Number(val).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 5 });
     }
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // IMPORTACIÓN MASIVA
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    const batchDropZone   = document.getElementById('batchDropZone');
+    const batchZipInput   = document.getElementById('batchZipInput');
+    const btnSelectZip    = document.getElementById('btnSelectZip');
+    const batchUploadZone = document.getElementById('batch-upload-zone');
+    const batchProgress   = document.getElementById('batch-progress');
+    const batchResults    = document.getElementById('batch-results');
+
+    let batchId = null;
+    let batchPollingTimer = null;
+    let batchAllResults = [];
+
+    // Drag & drop para ZIP
+    batchDropZone.addEventListener('dragover', e => {
+        e.preventDefault();
+        batchDropZone.classList.add('drag-over');
+    });
+    batchDropZone.addEventListener('dragleave', () => batchDropZone.classList.remove('drag-over'));
+    batchDropZone.addEventListener('drop', e => {
+        e.preventDefault();
+        batchDropZone.classList.remove('drag-over');
+        const file = e.dataTransfer.files[0];
+        if (file) batchUploadZip(file);
+    });
+    btnSelectZip.addEventListener('click', () => batchZipInput.click());
+    batchZipInput.addEventListener('change', () => {
+        if (batchZipInput.files[0]) batchUploadZip(batchZipInput.files[0]);
+    });
+
+    async function batchUploadZip(file) {
+        if (!file.name.toLowerCase().endsWith('.zip')) {
+            alert('Selecciona un archivo .zip');
+            return;
+        }
+
+        // Mostrar progreso
+        batchUploadZone.classList.add('hidden');
+        batchProgress.classList.remove('hidden');
+        batchResults.classList.add('hidden');
+
+        document.getElementById('batch-status-text').textContent = 'Subiendo ZIP...';
+        document.getElementById('batch-progress-count').textContent = '';
+        document.getElementById('batchProgressBar').style.width = '0%';
+        document.getElementById('batch-current-pdf').textContent = file.name;
+        document.getElementById('batch-ok-err').textContent = '';
+
+        const form = new FormData();
+        form.append('zip', file);
+
+        try {
+            const res = await fetch('api.php?action=batch_upload', { method: 'POST', body: form });
+            const data = await res.json();
+
+            if (!data.ok) {
+                alert('Error: ' + data.error);
+                batchReset();
+                return;
+            }
+
+            batchId = data.batch_id;
+            document.getElementById('batch-status-text').textContent = 'Procesando...';
+            document.getElementById('batch-progress-count').textContent = `0 / ${data.total_pdfs}`;
+
+            // Iniciar polling
+            batchPollingTimer = setInterval(batchPollStatus, 2000);
+
+        } catch (err) {
+            alert('Error de conexión: ' + err.message);
+            batchReset();
+        }
+    }
+
+    async function batchPollStatus() {
+        if (!batchId) return;
+
+        try {
+            const res = await fetch(`api.php?action=batch_status&batch_id=${batchId}`);
+            const data = await res.json();
+
+            if (!data.ok && data.error) {
+                clearInterval(batchPollingTimer);
+                alert('Error: ' + data.error);
+                batchReset();
+                return;
+            }
+
+            // Actualizar barra
+            const pct = data.porcentaje || 0;
+            document.getElementById('batchProgressBar').style.width = pct + '%';
+            document.getElementById('batch-progress-count').textContent =
+                `${data.progreso || 0} / ${data.total || 0}`;
+            document.getElementById('batch-current-pdf').textContent = data.actual || '';
+            document.getElementById('batch-ok-err').textContent =
+                `OK: ${data.procesados_ok || 0} | Errores: ${data.con_error || 0}`;
+
+            const statusMap = {
+                'iniciando': 'Iniciando...',
+                'cargando_datos': 'Cargando artículos y sinónimos...',
+                'procesando': 'Procesando facturas...',
+                'generando_excel': 'Generando Excel...',
+            };
+            document.getElementById('batch-status-text').textContent =
+                statusMap[data.estado] || data.estado;
+
+            // ¿Completado?
+            if (data.estado === 'completado') {
+                clearInterval(batchPollingTimer);
+                batchShowResults(data);
+            } else if (data.estado === 'error') {
+                clearInterval(batchPollingTimer);
+                alert('Error en el procesamiento: ' + (data.error || 'desconocido'));
+                batchReset();
+            }
+
+        } catch (err) {
+            // Silenciar errores de red durante polling
+        }
+    }
+
+    function batchShowResults(data) {
+        batchProgress.classList.add('hidden');
+        batchResults.classList.remove('hidden');
+
+        const r = data.resumen;
+        batchAllResults = data.resultados || [];
+
+        // Tarjetas resumen
+        document.getElementById('batchSummary').innerHTML = `
+            <div class="stat-card success">
+                <div class="stat-value">${r.total_facturas}</div>
+                <div class="stat-label">Facturas</div>
+            </div>
+            <div class="stat-card success">
+                <div class="stat-value">${r.procesadas_ok}</div>
+                <div class="stat-label">Procesadas</div>
+            </div>
+            ${r.con_error > 0 ? `<div class="stat-card danger">
+                <div class="stat-value">${r.con_error}</div>
+                <div class="stat-label">Con Error</div>
+            </div>` : ''}
+            <div class="stat-card primary">
+                <div class="stat-value">${r.total_lineas}</div>
+                <div class="stat-label">Líneas</div>
+            </div>
+            <div class="stat-card success">
+                <div class="stat-value">${r.total_ok}</div>
+                <div class="stat-label">Matcheadas</div>
+            </div>
+            ${r.total_sin_match > 0 ? `<div class="stat-card danger">
+                <div class="stat-value">${r.total_sin_match}</div>
+                <div class="stat-label">Sin Match</div>
+            </div>` : ''}
+            <div class="stat-card primary">
+                <div class="stat-value">$${Number(r.total_usd).toLocaleString('en-US', {minimumFractionDigits: 2})}</div>
+                <div class="stat-label">Total USD</div>
+            </div>
+        `;
+
+        // Llenar filtro de facturas
+        const sel = document.getElementById('batchFilterInvoice');
+        sel.innerHTML = '<option value="">Todas las facturas</option>';
+        batchAllResults.forEach(r => {
+            if (r.ok) {
+                sel.innerHTML += `<option value="${esc(r.pdf)}">${esc(r.pdf)} — ${esc(r.provider)}</option>`;
+            }
+        });
+
+        batchRenderTable(batchAllResults);
+    }
+
+    function batchRenderTable(list) {
+        const tbody = document.querySelector('#batchTable tbody');
+        tbody.innerHTML = list.map((r, i) => {
+            let status, statusClass;
+            if (!r.ok) {
+                status = 'ERROR'; statusClass = 'badge badge-sin-match';
+            } else if (r.sin_match > 0) {
+                status = 'PARCIAL'; statusClass = 'badge badge-fuzzy';
+            } else {
+                status = 'OK'; statusClass = 'badge badge-ok';
+            }
+            return `
+                <tr class="${!r.ok ? 'row-sin-match' : r.sin_match > 0 ? 'row-partial' : ''}">
+                    <td>${i + 1}</td>
+                    <td>${esc(r.pdf)}</td>
+                    <td>${esc(r.provider || '-')}</td>
+                    <td>${esc(r.invoice || '-')}</td>
+                    <td>${esc(r.date || '-')}</td>
+                    <td>${r.lineas || 0}</td>
+                    <td>${r.ok_count || 0}</td>
+                    <td>${r.sin_match || 0}</td>
+                    <td>$${num(r.total_usd || 0)}</td>
+                    <td><span class="${statusClass}">${status}</span>${!r.ok ? `<br><small>${esc(r.error)}</small>` : ''}</td>
+                </tr>
+            `;
+        }).join('');
+    }
+
+    // Filtros batch
+    function batchFilter() {
+        const invFilter  = document.getElementById('batchFilterInvoice').value;
+        const statFilter = document.getElementById('batchFilterStatus').value;
+        const textFilter = document.getElementById('batchFilterText').value.toLowerCase();
+
+        let filtered = batchAllResults;
+
+        if (invFilter) {
+            filtered = filtered.filter(r => r.pdf === invFilter);
+        }
+        if (statFilter) {
+            filtered = filtered.filter(r => {
+                if (statFilter === 'ok') return r.ok && r.sin_match === 0;
+                if (statFilter === 'parcial') return r.ok && r.sin_match > 0;
+                if (statFilter === 'error') return !r.ok;
+                return true;
+            });
+        }
+        if (textFilter) {
+            filtered = filtered.filter(r =>
+                (r.pdf || '').toLowerCase().includes(textFilter) ||
+                (r.provider || '').toLowerCase().includes(textFilter) ||
+                (r.invoice || '').toLowerCase().includes(textFilter)
+            );
+        }
+
+        batchRenderTable(filtered);
+    }
+
+    document.getElementById('batchFilterInvoice').addEventListener('change', batchFilter);
+    document.getElementById('batchFilterStatus').addEventListener('change', batchFilter);
+    document.getElementById('batchFilterText').addEventListener('input', batchFilter);
+
+    // Botones
+    document.getElementById('btnBatchExcel').addEventListener('click', () => {
+        if (batchId) {
+            window.location.href = `api.php?action=batch_download&batch_id=${batchId}`;
+        }
+    });
+
+    document.getElementById('btnBatchNew').addEventListener('click', () => {
+        batchReset();
+    });
+
+    function batchReset() {
+        batchId = null;
+        if (batchPollingTimer) clearInterval(batchPollingTimer);
+        batchPollingTimer = null;
+        batchAllResults = [];
+        batchUploadZone.classList.remove('hidden');
+        batchProgress.classList.add('hidden');
+        batchResults.classList.add('hidden');
+        batchZipInput.value = '';
+    }
 });
