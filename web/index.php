@@ -194,12 +194,11 @@
                 <table id="synTable">
                     <thead>
                         <tr>
+                            <th>Línea Factura</th>
+                            <th>Factura</th>
                             <th>Proveedor</th>
-                            <th>Especie</th>
                             <th>Variedad</th>
                             <th>Talla</th>
-                            <th>SPB</th>
-                            <th>Grado</th>
                             <th>ID Artículo</th>
                             <th>Nombre Artículo</th>
                             <th>Origen</th>

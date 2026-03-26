@@ -36,7 +36,8 @@ class SynonymStore:
         return self.syns.get(self._key(provider_id, line))
 
     def add(self, provider_id: int, line: InvoiceLine,
-            articulo_id: int, articulo_name: str, origin: str = 'manual') -> None:
+            articulo_id: int, articulo_name: str, origin: str = 'manual',
+            invoice: str = '') -> None:
         """Añade o actualiza un sinónimo."""
         k = self._key(provider_id, line)
         self.syns[k] = {
@@ -49,6 +50,8 @@ class SynonymStore:
             'size': line.size,
             'stems_per_bunch': line.stems_per_bunch,
             'grade': line.grade.upper(),
+            'raw': getattr(line, 'raw_description', '')[:120],
+            'invoice': invoice,
         }
         self.save()
 

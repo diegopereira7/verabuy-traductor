@@ -285,19 +285,20 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('synCount').textContent = `${list.length} sinónimos`;
 
         const tbody = document.querySelector('#synTable tbody');
-        tbody.innerHTML = list.map(s => `
+        tbody.innerHTML = list.map(s => {
+            const raw = s.raw || `${s.species || ''} ${s.variety || ''} ${s.size || ''}CM ${s.stems_per_bunch || ''}U`;
+            return `
             <tr>
+                <td title="${esc(raw)}">${esc(raw.substring(0, 65))}${raw.length > 65 ? '...' : ''}</td>
+                <td>${esc(s.invoice || '-')}</td>
                 <td>${s.provider_id}</td>
-                <td>${esc(s.species || '')}</td>
                 <td><strong>${esc(s.variety || '')}</strong></td>
                 <td>${s.size || '-'}</td>
-                <td>${s.stems_per_bunch || '-'}</td>
-                <td>${esc(s.grade || '-')}</td>
                 <td>${s.articulo_id}</td>
                 <td>${esc(s.articulo_name || '')}</td>
                 <td>${originBadge(s.origen || '')}</td>
-            </tr>
-        `).join('');
+            </tr>`;
+        }).join('');
     }
 
     function originBadge(origin) {
@@ -316,8 +317,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const filtered = allSynonyms.filter(s => {
             const matchText = !text ||
+                (s.raw || '').toLowerCase().includes(text) ||
+                (s.invoice || '').toLowerCase().includes(text) ||
                 (s.variety || '').toLowerCase().includes(text) ||
-                (s.species || '').toLowerCase().includes(text) ||
                 (s.articulo_name || '').toLowerCase().includes(text) ||
                 String(s.provider_id).includes(text);
 

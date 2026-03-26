@@ -503,7 +503,9 @@
     "variety": "BRIGHTON",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "BRIGHTON 40CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|CABARET|40|25|": {
     "articulo_id": 32013,
@@ -514,7 +516,9 @@
     "variety": "CABARET",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "CABARET 40CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|DEEP PURPLE|40|25|": {
     "articulo_id": 32603,
@@ -525,7 +529,9 @@
     "variety": "DEEP PURPLE",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "DEEP PURPLE 40CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|FRUTTETO|40|25|": {
     "articulo_id": 34058,
@@ -536,7 +542,9 @@
     "variety": "FRUTTETO",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "FRUTTETO 40CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|BRIGHTON|50|25|": {
     "articulo_id": 31899,
@@ -547,7 +555,9 @@
     "variety": "BRIGHTON",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "BRIGHTON 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|MONDIAL|50|25|": {
     "articulo_id": 35473,
@@ -558,7 +568,9 @@
     "variety": "MONDIAL",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "MONDIAL 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|IGUAZU|50|25|": {
     "articulo_id": 34637,
@@ -569,7 +581,9 @@
     "variety": "IGUAZU",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "IGUAZU 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|JOY|50|25|": {
     "articulo_id": 34689,
@@ -580,7 +594,9 @@
     "variety": "JOY",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "JOY 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|PALOMA|50|25|": {
     "articulo_id": 35873,
@@ -591,7 +607,9 @@
     "variety": "PALOMA",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "PALOMA 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|PINK MONDIAL|50|25|": {
     "articulo_id": 36045,
@@ -602,7 +620,9 @@
     "variety": "PINK MONDIAL",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "PINK MONDIAL 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|BRIGHTON|60|25|": {
     "articulo_id": 31927,
@@ -613,7 +633,9 @@
     "variety": "BRIGHTON",
     "size": 60,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "BRIGHTON 60CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|CABARET|60|25|": {
     "articulo_id": 32047,
@@ -624,7 +646,9 @@
     "variety": "CABARET",
     "size": 60,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "CABARET 60CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|EXPLORER|60|25|": {
     "articulo_id": 33788,
@@ -635,7 +659,9 @@
     "variety": "EXPLORER",
     "size": 60,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "EXPLORER 60CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|FRUTTETO|60|25|": {
     "articulo_id": 34112,
@@ -646,7 +672,9 @@
     "variety": "FRUTTETO",
     "size": 60,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "FRUTTETO 60CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|JOY|60|25|": {
     "articulo_id": 34690,
@@ -657,7 +685,9 @@
     "variety": "JOY",
     "size": 60,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "JOY 60CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|MONDIAL|60|25|": {
     "articulo_id": 35525,
@@ -668,7 +698,9 @@
     "variety": "MONDIAL",
     "size": 60,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "MONDIAL 60CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|CABARET|50|25|": {
     "articulo_id": 32026,
@@ -679,7 +711,9 @@
     "variety": "CABARET",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "CABARET 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|IGUANA|50|25|": {
     "articulo_id": 34604,
@@ -690,7 +724,9 @@
     "variety": "IGUANA",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "IGUANA 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|DEEP PURPLE|50|25|": {
     "articulo_id": 32615,
@@ -701,7 +737,9 @@
     "variety": "DEEP PURPLE",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "DEEP PURPLE 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|FRUTTETO|50|25|": {
     "articulo_id": 34079,
@@ -712,7 +750,9 @@
     "variety": "FRUTTETO",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "FRUTTETO 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|MAGIC TIMES|50|25|": {
     "articulo_id": 35203,
@@ -723,7 +763,9 @@
     "variety": "MAGIC TIMES",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "MAGIC TIMES 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|FELICITY|50|25|": {
     "articulo_id": 33877,
@@ -734,7 +776,9 @@
     "variety": "FELICITY",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "FELICITY 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|PINK FLOYD|50|25|": {
     "articulo_id": 36000,
@@ -745,7 +789,9 @@
     "variety": "PINK FLOYD",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "PINK FLOYD 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|SILANTOI|50|25|": {
     "articulo_id": 36540,
@@ -756,7 +802,9 @@
     "variety": "SILANTOI",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "SILANTOI 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|SUPER SUN|50|25|": {
     "articulo_id": 36859,
@@ -767,7 +815,9 @@
     "variety": "SUPER SUN",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "SUPER SUN 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|TUTTI FRUTTI|50|20|": {
     "articulo_id": 37487,
@@ -778,7 +828,9 @@
     "variety": "TUTTI FRUTTI",
     "size": 50,
     "stems_per_bunch": 20,
-    "grade": ""
+    "grade": "",
+    "raw": "TUTTI FRUTTI 50CM N 20ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|CAROUSEL|50|25|": {
     "articulo_id": 32150,
@@ -789,7 +841,9 @@
     "variety": "CAROUSEL",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "CAROUSEL 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2222|ROSES|PURPLE FICTION|50|25|": {
     "articulo_id": 36271,
@@ -800,7 +854,9 @@
     "variety": "PURPLE FICTION",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "PURPLE FICTION 50CM N 25ST CZ",
+    "invoice": "25059649"
   },
   "2229|ROSES|CARPE DIEM|40|25|": {
     "articulo_id": 32817,

@@ -24,12 +24,14 @@ class Matcher:
         self.art = art
         self.syn = syn
 
-    def match_line(self, provider_id: int, line: InvoiceLine) -> InvoiceLine:
+    def match_line(self, provider_id: int, line: InvoiceLine,
+                   invoice: str = '') -> InvoiceLine:
         """Intenta vincular una línea de factura con un artículo de VeraBuy.
 
         Args:
             provider_id: ID del proveedor.
             line: Línea de factura a matchear.
+            invoice: Número de factura (para trazabilidad en sinónimos).
 
         Returns:
             La misma línea con match_status y match_method actualizados.
@@ -41,13 +43,19 @@ class Matcher:
             branded = self.art.find_branded(line.expected_name(), provider_id,
                                             getattr(line, 'provider_key', ''))
             if branded and branded['id'] != s['articulo_id']:
-                # Hay artículo con marca distinto al genérico — upgradar sinónimo
-                self.syn.add(provider_id, line, branded['id'], branded['nombre'], 'auto-marca')
+                self.syn.add(provider_id, line, branded['id'], branded['nombre'],
+                             'auto-marca', invoice=invoice)
                 line.articulo_id = branded['id']
                 line.articulo_name = branded['nombre']
                 line.match_status = 'ok'
                 line.match_method = 'sinónimo→marca'
                 return line
+            # Enriquecer sinónimo con raw/invoice si faltan
+            if not s.get('raw') and getattr(line, 'raw_description', ''):
+                s['raw'] = line.raw_description[:120]
+                s['invoice'] = invoice
+                self.syn.syns[self.syn._key(provider_id, line)] = s
+                self.syn.save()
             line.articulo_id = s['articulo_id']
             line.articulo_name = s['articulo_name']
             line.match_status = 'ok'
@@ -62,7 +70,8 @@ class Matcher:
             line.articulo_name = a['nombre']
             line.match_status = 'ok'
             line.match_method = 'marca'
-            self.syn.add(provider_id, line, a['id'], a['nombre'], 'auto-marca')
+            self.syn.add(provider_id, line, a['id'], a['nombre'], 'auto-marca',
+                         invoice=invoice)
             return line
 
         # 3. Match exacto por nombre esperado
@@ -72,7 +81,8 @@ class Matcher:
             line.articulo_name = a['nombre']
             line.match_status = 'ok'
             line.match_method = 'exacto'
-            self.syn.add(provider_id, line, a['id'], a['nombre'], 'auto')
+            self.syn.add(provider_id, line, a['id'], a['nombre'], 'auto',
+                         invoice=invoice)
             return line
 
         # 4. Match por rosa (si es rosa)
@@ -86,7 +96,8 @@ class Matcher:
                 line.articulo_name = a['nombre']
                 line.match_status = 'ok'
                 line.match_method = 'exacto'
-                self.syn.add(provider_id, line, a['id'], a['nombre'], 'auto')
+                self.syn.add(provider_id, line, a['id'], a['nombre'], 'auto',
+                             invoice=invoice)
                 return line
 
         # 5. Auto-fuzzy ≥90%
@@ -97,16 +108,18 @@ class Matcher:
             line.articulo_name = best['nombre']
             line.match_status = 'ok'
             line.match_method = f"fuzzy {best['similitud']}%"
-            self.syn.add(provider_id, line, best['id'], best['nombre'], 'auto-fuzzy')
+            self.syn.add(provider_id, line, best['id'], best['nombre'], 'auto-fuzzy',
+                         invoice=invoice)
             return line
 
         line.match_status = 'sin_match'
         line.match_method = ''
         return line
 
-    def match_all(self, provider_id: int, lines: list[InvoiceLine]) -> list[InvoiceLine]:
+    def match_all(self, provider_id: int, lines: list[InvoiceLine],
+                   invoice: str = '') -> list[InvoiceLine]:
         """Matchea todas las líneas de una factura."""
-        return [self.match_line(provider_id, l) for l in lines]
+        return [self.match_line(provider_id, l, invoice=invoice) for l in lines]
 
 
 # --- Postproceso ---
