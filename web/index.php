@@ -233,9 +233,9 @@
                         <tr>
                             <th>Línea Factura</th>
                             <th>Factura</th>
-                            <th>Proveedor</th>
                             <th>Variedad</th>
                             <th>Talla</th>
+                            <th>Tallos</th>
                             <th>ID Artículo</th>
                             <th>Nombre Artículo</th>
                             <th>Origen</th>

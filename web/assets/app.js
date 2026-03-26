@@ -347,9 +347,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <tr data-key="${esc(s.key || '')}">
                 <td title="${esc(raw)}">${esc(raw.substring(0, 60))}${raw.length > 60 ? '...' : ''}</td>
                 <td>${esc(s.invoice || '-')}</td>
-                <td>${s.provider_id}</td>
                 <td><strong>${esc(s.variety || '')}</strong></td>
                 <td>${s.size || '-'}</td>
+                <td>${s.stems_per_bunch || '-'}</td>
                 <td>${s.articulo_id}</td>
                 <td>${esc(s.articulo_name || '')}</td>
                 <td>${originBadge(s.origen || '')}</td>
@@ -418,9 +418,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!s) return;
         row.innerHTML = `
             <td colspan="2"><input class="edit-input" id="editKey" value="${esc(s.key || '')}" style="width:100%"></td>
-            <td>${s.provider_id}</td>
             <td><input class="edit-input" id="editVariety" value="${esc(s.variety || '')}"></td>
             <td>${s.size || '-'}</td>
+            <td>${s.stems_per_bunch || '-'}</td>
             <td><input class="edit-input" id="editArtId" value="${s.articulo_id}" type="number" style="width:70px"></td>
             <td><input class="edit-input" id="editArtName" value="${esc(s.articulo_name || '')}" style="width:100%"></td>
             <td>${originBadge(s.origen || '')}</td>
