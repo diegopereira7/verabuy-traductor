@@ -92,11 +92,27 @@ class ArticulosLoader:
             Artículo con marca si existe (ej: 'ROSA MONDIAL 50CM 25U CERES'), None si no.
         """
         brands = set()
+        # Marca del índice SQL (por id_proveedor del artículo)
         b = self.brand_by_provider.get(provider_id)
         if b:
             brands.add(b)
+        # Marca de la clave del proveedor en PROVIDERS
         if provider_key:
             brands.add(provider_key.upper())
+        # Buscar también marcas de otros providers con el mismo fmt (aliases)
+        # Ej: cantiza(2222) y valtho(435) comparten fmt='cantiza'
+        from src.config import PROVIDERS
+        for pkey, pdata in PROVIDERS.items():
+            if pdata.get('id') == provider_id:
+                brands.add(pkey.upper())
+                # Buscar marcas de otros providers con mismo fmt
+                fmt = pdata.get('fmt', '')
+                for pkey2, pdata2 in PROVIDERS.items():
+                    if pdata2.get('fmt') == fmt and pdata2.get('id') != provider_id:
+                        b2 = self.brand_by_provider.get(pdata2['id'])
+                        if b2:
+                            brands.add(b2)
+                break
         if not brands:
             return None
         name = name.upper().strip()
