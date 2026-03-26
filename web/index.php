@@ -75,13 +75,10 @@
                     <div class="upload-icon">&#128230;</div>
                     <p>Arrastra archivos <strong>PDF</strong>, una <strong>carpeta</strong> o un <strong>.zip</strong></p>
                     <p class="text-muted">o usa los botones para seleccionar</p>
-                    <input type="file" id="batchZipInput" accept=".zip" hidden>
-                    <input type="file" id="batchFolderInput" webkitdirectory hidden>
-                    <input type="file" id="batchPdfInput" accept=".pdf" multiple hidden>
                     <div class="batch-btn-group">
-                        <button class="btn btn-primary" id="btnSelectZip">ZIP</button>
-                        <button class="btn btn-primary" id="btnSelectFolder">Carpeta</button>
-                        <button class="btn btn-primary" id="btnSelectPdfs">PDFs</button>
+                        <button type="button" class="btn btn-primary" id="btnSelectZip">ZIP</button>
+                        <button type="button" class="btn btn-primary" id="btnSelectFolder">Carpeta</button>
+                        <button type="button" class="btn btn-primary" id="btnSelectPdfs">PDFs</button>
                     </div>
                 </div>
             </div>
@@ -263,6 +260,11 @@
     <footer>
         <p>VeraBuy Traductor v4.0 &mdash; Interfaz Web</p>
     </footer>
+
+    <!-- Inputs ocultos para batch (fuera de tabs para evitar display:none issues) -->
+    <input type="file" id="batchZipInput" accept=".zip" style="position:fixed;top:-9999px;left:-9999px">
+    <input type="file" id="batchFolderInput" webkitdirectory style="position:fixed;top:-9999px;left:-9999px">
+    <input type="file" id="batchPdfInput" accept=".pdf" multiple style="position:fixed;top:-9999px;left:-9999px">
 
     <script src="assets/app.js"></script>
 </body>

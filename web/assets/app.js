@@ -363,35 +363,45 @@ document.addEventListener('DOMContentLoaded', () => {
     let batchAllResults = [];
 
     // Drag & drop — acepta ZIP, PDFs sueltos o carpetas
-    batchDropZone.addEventListener('dragover', e => {
-        e.preventDefault();
-        batchDropZone.classList.add('drag-over');
-    });
-    batchDropZone.addEventListener('dragleave', () => batchDropZone.classList.remove('drag-over'));
-    batchDropZone.addEventListener('drop', e => {
-        e.preventDefault();
-        batchDropZone.classList.remove('drag-over');
-        const files = [...e.dataTransfer.files];
-        if (files.length === 1 && files[0].name.toLowerCase().endsWith('.zip')) {
-            batchUploadZip(files[0]);
-        } else {
-            const pdfs = files.filter(f => f.name.toLowerCase().endsWith('.pdf'));
-            if (pdfs.length > 0) {
-                batchUploadPdfs(pdfs);
+    if (batchDropZone) {
+        batchDropZone.addEventListener('dragover', e => {
+            e.preventDefault();
+            batchDropZone.classList.add('drag-over');
+        });
+        batchDropZone.addEventListener('dragleave', () => batchDropZone.classList.remove('drag-over'));
+        batchDropZone.addEventListener('drop', e => {
+            e.preventDefault();
+            batchDropZone.classList.remove('drag-over');
+            const files = [...e.dataTransfer.files];
+            if (files.length === 1 && files[0].name.toLowerCase().endsWith('.zip')) {
+                batchUploadZip(files[0]);
             } else {
-                alert('Arrastra archivos PDF o un ZIP');
+                const pdfs = files.filter(f => f.name.toLowerCase().endsWith('.pdf'));
+                if (pdfs.length > 0) {
+                    batchUploadPdfs(pdfs);
+                } else {
+                    alert('Arrastra archivos PDF o un ZIP');
+                }
             }
-        }
-    });
+        });
+    }
 
     // Botón ZIP
-    document.getElementById('btnSelectZip').addEventListener('click', () => batchZipInput.click());
+    document.getElementById('btnSelectZip').addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        batchZipInput.click();
+    });
     batchZipInput.addEventListener('change', () => {
         if (batchZipInput.files[0]) batchUploadZip(batchZipInput.files[0]);
     });
 
     // Botón Carpeta
-    document.getElementById('btnSelectFolder').addEventListener('click', () => batchFolderInput.click());
+    document.getElementById('btnSelectFolder').addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        batchFolderInput.click();
+    });
     batchFolderInput.addEventListener('change', () => {
         const pdfs = [...batchFolderInput.files].filter(f => f.name.toLowerCase().endsWith('.pdf'));
         if (pdfs.length > 0) {
@@ -402,7 +412,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Botón PDFs sueltos
-    document.getElementById('btnSelectPdfs').addEventListener('click', () => batchPdfInput.click());
+    document.getElementById('btnSelectPdfs').addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        batchPdfInput.click();
+    });
     batchPdfInput.addEventListener('change', () => {
         const pdfs = [...batchPdfInput.files];
         if (pdfs.length > 0) batchUploadPdfs(pdfs);
