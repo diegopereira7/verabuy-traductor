@@ -51,16 +51,16 @@
     "lineas": 31,
     "ok": 31,
     "sin_match": 0,
-    "fecha": "2026-03-20 14:08"
+    "fecha": "2026-03-26 13:55"
   },
   "FA-117044": {
     "pdf": "COLIBRI.pdf",
     "provider": "Colibri Flowers",
     "total_usd": 0.0,
-    "lineas": 28,
-    "ok": 28,
+    "lineas": 31,
+    "ok": 31,
     "sin_match": 0,
-    "fecha": "2026-03-20 14:08"
+    "fecha": "2026-03-26 13:55"
   },
   "588151": {
     "pdf": "EQR.pdf",
@@ -241,5 +241,14 @@
     "ok": 35,
     "sin_match": 1,
     "fecha": "2026-03-20 13:25"
+  },
+  "000092900": {
+    "pdf": "MONTEROSA.pdf",
+    "provider": "Monterosas Farms",
+    "total_usd": 0.0,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-03-26 13:55"
   }
 }

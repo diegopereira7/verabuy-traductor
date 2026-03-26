@@ -67,8 +67,8 @@ def _process_with_lines(pdf_path: str, pdata: dict, header, lines) -> dict:
 
     lines = split_mixed_boxes(lines)
     rescued = rescue_unparsed_lines(pdata.get('text', ''), lines)
-    invoice_num = getattr(header, 'invoice_number', '')
-    lines = matcher.match_all(pdata.get('id', 0), lines, invoice=invoice_num)
+    pdf_name = Path(pdf_path).name if pdf_path else ''
+    lines = matcher.match_all(pdata.get('id', 0), lines, invoice=pdf_name)
     lines.extend(rescued)
 
     ok_count = sum(1 for l in lines if l.match_status == 'ok')

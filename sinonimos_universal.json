@@ -319,37 +319,43 @@
     "grade": ""
   },
   "2228|ROSES|EXPLORER|50|25|": {
-    "articulo_id": 32950,
-    "articulo_name": "ROSA EC EXPLORER 50CM 25U",
-    "origen": "auto",
+    "articulo_id": 33765,
+    "articulo_name": "ROSA EXPLORER 50CM 25U LUXUS",
+    "origen": "auto-marca",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "EXPLORER",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "EXPLORER 50 25 1 25 0.38 9.50",
+    "invoice": "AGRIVALDANI1.pdf"
   },
   "2228|ROSES|FRUTTETO|50|25|": {
-    "articulo_id": 33000,
-    "articulo_name": "ROSA EC FRUTTETO 50CM 25U",
-    "origen": "auto",
+    "articulo_id": 34085,
+    "articulo_name": "ROSA FRUTTETO 50CM 25U LUXUS",
+    "origen": "auto-marca",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "FRUTTETO",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "FRUTTETO 50 25 1 25 0.30 7.50",
+    "invoice": "AGRIVALDANI1.pdf"
   },
   "2228|ROSES|MONDIAL|50|25|": {
-    "articulo_id": 33230,
-    "articulo_name": "ROSA EC MONDIAL 50CM 25U",
-    "origen": "auto",
+    "articulo_id": 35502,
+    "articulo_name": "ROSA MONDIAL 50CM 25U LUXUS",
+    "origen": "auto-marca",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "MONDIAL",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "MONDIAL 50 25 1 25 0.30 7.50",
+    "invoice": "AGRIVALDANI1.pdf"
   },
   "2228|ROSES|BLACK|60|25|": {
     "articulo_id": 32753,
@@ -371,18 +377,22 @@
     "variety": "CARPE DIEM",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "1 - 1 1 QUARTER CARPE DIEM 50 25 4 100 0.35 35.00",
+    "invoice": "AGRIVALDANI.pdf"
   },
   "2228|ROSES|CARROUSEL|50|25|": {
-    "articulo_id": 32822,
-    "articulo_name": "ROSA EC CARROUSEL BICOLOR 50CM 25U",
-    "origen": "auto",
+    "articulo_id": 32151,
+    "articulo_name": "ROSA CARROUSEL 50CM 25U LUXUS",
+    "origen": "auto-marca",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "CARROUSEL",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "1 - 1 R15-MAPOULA 1 QUARTER CARROUSEL 50 25 1 25 0.30 7.50",
+    "invoice": "AGRIVALDANI1.pdf"
   },
   "2228|ROSES|E. BLACK|60|25|": {
     "articulo_id": 33533,
@@ -393,7 +403,9 @@
     "variety": "E. BLACK",
     "size": 60,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "E. BLACK 60 25 1 25 0.90 22.50",
+    "invoice": "AGRIVALDANI2.pdf"
   },
   "2228|ROSES|M. DARK BLUE|60|25|": {
     "articulo_id": 33514,
@@ -404,73 +416,87 @@
     "variety": "M. DARK BLUE",
     "size": 60,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "M. DARK BLUE 60 25 1 25 0.90 22.50",
+    "invoice": "AGRIVALDANI2.pdf"
   },
   "3375|ROSES|FREEDOM|40|25|": {
-    "articulo_id": 33915,
-    "articulo_name": "ROSA FREEDOM 40CM 25U ALUNA",
-    "origen": "manual",
+    "articulo_id": 33912,
+    "articulo_name": "ROSA FREEDOM 40CM 25U PONDEROSA",
+    "origen": "auto-marca",
     "provider_id": 3375,
     "species": "ROSES",
     "variety": "FREEDOM",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "0,50 1,00 250 FREEDOM 40 NAVARRA FRESH CUT ROSES*25 CO 0603110060 $ 0,23 $ 57,50",
+    "invoice": "ALUNA.pdf"
   },
   "3375|ROSES|FREEDOM|60|25|": {
-    "articulo_id": 33994,
-    "articulo_name": "ROSA FREEDOM 60CM 25U ALUNA",
-    "origen": "manual",
+    "articulo_id": 33985,
+    "articulo_name": "ROSA FREEDOM 60CM 25U PONDEROSA",
+    "origen": "auto-marca",
     "provider_id": 3375,
     "species": "ROSES",
     "variety": "FREEDOM",
     "size": 60,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "1,50 3,00 600 FREEDOM 60 NAVARRA FRESH CUT ROSES*25 CO 0603110060 $ 0,34 $ 204,00",
+    "invoice": "ALUNA.pdf"
   },
   "3375|ROSES|FREEDOM|70|25|": {
-    "articulo_id": 34020,
-    "articulo_name": "ROSA FREEDOM 70CM 25U ALUNA",
-    "origen": "manual",
+    "articulo_id": 34017,
+    "articulo_name": "ROSA FREEDOM 70CM 25U PONDEROSA",
+    "origen": "auto-marca",
     "provider_id": 3375,
     "species": "ROSES",
     "variety": "FREEDOM",
     "size": 70,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "0,50 1,00 200 FREEDOM 70 NAVARRA FRESH CUT ROSES*25 CO 0603110060 $ 0,38 $ 76,00",
+    "invoice": "ALUNA.pdf"
   },
   "0|ROSES|RED PANTHER|60|25|": {
-    "articulo_id": 33395,
-    "articulo_name": "ROSA EC RED PANTHER 60CM 25U",
-    "origen": "auto",
+    "articulo_id": 36357,
+    "articulo_name": "ROSA RED PANTHER 60CM 25U BRISSAS",
+    "origen": "auto-marca",
     "provider_id": 0,
     "species": "ROSES",
     "variety": "RED PANTHER",
     "size": 60,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "6 - 6 ROSIJHOS 1 HB ROSE RED PANTHER 60 175 175 0.320 56.000 Standing ROSIJHOS",
+    "invoice": "BRISSAS completa.pdf"
   },
   "0|ROSES|MONDIAL|70|25|": {
-    "articulo_id": 33233,
-    "articulo_name": "ROSA EC MONDIAL 70CM 25U",
-    "origen": "auto",
+    "articulo_id": 35592,
+    "articulo_name": "ROSA MONDIAL 70CM 25U BRISSAS",
+    "origen": "auto-marca",
     "provider_id": 0,
     "species": "ROSES",
     "variety": "MONDIAL",
     "size": 70,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "27 - 27 FLOR GOLD 1 HB ROSE MONDIAL 70 300 300 0.380 114.000 Standing FLOR GOLD",
+    "invoice": "BRISSAS completa.pdf"
   },
   "0|ROSES|EXPLORER|70|25|": {
-    "articulo_id": 32953,
-    "articulo_name": "ROSA EC EXPLORER 70CM 25U",
-    "origen": "auto",
+    "articulo_id": 33840,
+    "articulo_name": "ROSA EXPLORER 70CM 25U BRISSAS",
+    "origen": "auto-marca",
     "provider_id": 0,
     "species": "ROSES",
     "variety": "EXPLORER",
     "size": 70,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "28 - 28 FLOR GOLD ROY 1 HB ROSE EXPLORER 70 125 125 0.380 47.500 Standing FLOR GOLD",
+    "invoice": "BRISSAS completa.pdf"
   },
   "0|ROSES|MIX COLORS|50|25|": {
     "articulo_id": 32437,
@@ -481,7 +507,9 @@
     "variety": "MIX COLORS",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "11 - 11 JOYMARY 1 HB ROSE MIX COLORS 50 300 300 0.280 84.000 Standing JOYMARY",
+    "invoice": "BRISSAS completa.pdf"
   },
   "0|ROSES|BLUE SKY|50|25|": {
     "articulo_id": 37069,
@@ -492,7 +520,9 @@
     "variety": "BLUE SKY",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "25 - 25 VALENT ROSES 1 QB ROSE BLUE SKY 50 100 100 0.450 45.000 Standing VALENT ROSES",
+    "invoice": "BRISSAS completa.pdf"
   },
   "2222|ROSES|BRIGHTON|40|25|": {
     "articulo_id": 31877,
@@ -859,26 +889,30 @@
     "invoice": "25059649"
   },
   "2229|ROSES|CARPE DIEM|40|25|": {
-    "articulo_id": 32817,
-    "articulo_name": "ROSA EC CARPE DIEM 40CM 25U",
-    "origen": "auto",
+    "articulo_id": 32134,
+    "articulo_name": "ROSA CARPE DIEM 40CM 25U EQR",
+    "origen": "auto-marca",
     "provider_id": 2229,
     "species": "ROSES",
     "variety": "CARPE DIEM",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "Roses Peach Carpe Diem 40 Cm x 150 Stem - 1 QBT 150 $0.250 $37.50",
+    "invoice": "EQR.pdf"
   },
   "2229|ROSES|TARA|50|25|": {
-    "articulo_id": 33508,
-    "articulo_name": "ROSA EC TARA 50CM 25U",
-    "origen": "auto",
+    "articulo_id": 37056,
+    "articulo_name": "ROSA TARA 50CM 25U EQR",
+    "origen": "auto-marca",
     "provider_id": 2229,
     "species": "ROSES",
     "variety": "TARA",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "Roses Yellow Tara 50 Cm x 280 Stem - 1 HB 280 $0.300 $84.00",
+    "invoice": "EQR1.pdf"
   },
   "313|CARNATIONS|WHITE|0|20|FANCY": {
     "articulo_id": 12532,
@@ -889,7 +923,9 @@
     "variety": "WHITE",
     "size": 0,
     "stems_per_bunch": 20,
-    "grade": "FANCY"
+    "grade": "FANCY",
+    "raw": "1 H Carnation White X 20 - FAN 576300 FAN GARCIA CO-0603129000 500 500 ST 0.190 95.000",
+    "invoice": "COLIBRI.pdf"
   },
   "313|CARNATIONS|RED|0|20|FANCY": {
     "articulo_id": 12564,
@@ -900,7 +936,9 @@
     "variety": "RED",
     "size": 0,
     "stems_per_bunch": 20,
-    "grade": "FANCY"
+    "grade": "FANCY",
+    "raw": "1 H Carnation Carn Mix Red/Yellow 576301 FAN GARCIA CO-0603129000 500 500 ST 0.190 95.000",
+    "invoice": "COLIBRI.pdf"
   },
   "313|CARNATIONS|MIX|0|20|FANCY": {
     "articulo_id": 12549,
@@ -911,7 +949,9 @@
     "variety": "MIX",
     "size": 0,
     "stems_per_bunch": 20,
-    "grade": "FANCY"
+    "grade": "FANCY",
+    "raw": "1 H Carnation mix 576309 FAN ALMACEN CO-0603129000 500 500 ST 0.190 95.000",
+    "invoice": "COLIBRI.pdf"
   },
   "313|CARNATIONS|GOBI|0|20|FANCY": {
     "articulo_id": 12545,
@@ -922,7 +962,9 @@
     "variety": "GOBI",
     "size": 0,
     "stems_per_bunch": 20,
-    "grade": "FANCY"
+    "grade": "FANCY",
+    "raw": "1 Q Carnation Gobi X 20 - FAN 579545 FAN ILER CO-0603129000 240 240 ST 0.190 45.600",
+    "invoice": "COLIBRI.pdf"
   },
   "313|CARNATIONS|RED|0|20|SELECT": {
     "articulo_id": 12576,
@@ -933,7 +975,9 @@
     "variety": "RED",
     "size": 0,
     "stems_per_bunch": 20,
-    "grade": "SELECT"
+    "grade": "SELECT",
+    "raw": "2 H Carnation Red X 20 - SEL 576310- SEL LILAS CO-0603129000 500 1000 ST 0.200 200.000",
+    "invoice": "COLIBRI.pdf"
   },
   "313|CARNATIONS|WHITE|0|20|SELECT": {
     "articulo_id": 12604,
@@ -944,7 +988,9 @@
     "variety": "WHITE",
     "size": 0,
     "stems_per_bunch": 20,
-    "grade": "SELECT"
+    "grade": "SELECT",
+    "raw": "2 H Carnation White X 20 - SEL 576312- SEL LILAS CO-0603129000 500 1000 ST 0.200 200.000",
+    "invoice": "COLIBRI.pdf"
   },
   "313|CARNATIONS|YELLOW|0|20|FANCY": {
     "articulo_id": 12527,
@@ -955,7 +1001,9 @@
     "variety": "YELLOW",
     "size": 0,
     "stems_per_bunch": 20,
-    "grade": "FANCY"
+    "grade": "FANCY",
+    "raw": "1 H Carnation Carn Mix Red/Yellow 576301 FAN GARCIA CO-0603129000 500 500 ST 0.190 95.000",
+    "invoice": "COLIBRI.pdf"
   },
   "313|CARNATIONS|PINK|0|20|FANCY": {
     "articulo_id": 12566,
@@ -966,7 +1014,9 @@
     "variety": "PINK",
     "size": 0,
     "stems_per_bunch": 20,
-    "grade": "FANCY"
+    "grade": "FANCY",
+    "raw": "1 H Carnation Carn Mix Pink/Bicolor 576305 FAN R45 CO-0603129000 500 500 ST 0.190 95.000",
+    "invoice": "COLIBRI.pdf"
   },
   "313|CARNATIONS|PINK|0|20|SELECT": {
     "articulo_id": 12579,
@@ -977,7 +1027,9 @@
     "variety": "PINK",
     "size": 0,
     "stems_per_bunch": 20,
-    "grade": "SELECT"
+    "grade": "SELECT",
+    "raw": "1 H Carnation Carn Mix - Pink/Yellow 576314 SEL LILAS CO-0603129000 500 500 ST 0.200 100.000",
+    "invoice": "COLIBRI.pdf"
   },
   "313|CARNATIONS|YELLOW|0|20|SELECT": {
     "articulo_id": 12577,
@@ -988,7 +1040,9 @@
     "variety": "YELLOW",
     "size": 0,
     "stems_per_bunch": 20,
-    "grade": "SELECT"
+    "grade": "SELECT",
+    "raw": "1 H Carnation Carn Mix - Pink/Yellow 576314 SEL LILAS CO-0603129000 500 500 ST 0.200 100.000",
+    "invoice": "COLIBRI.pdf"
   },
   "313|CARNATIONS|BICOLOR|0|20|FANCY": {
     "articulo_id": 12534,
@@ -999,7 +1053,9 @@
     "variety": "BICOLOR",
     "size": 0,
     "stems_per_bunch": 20,
-    "grade": "FANCY"
+    "grade": "FANCY",
+    "raw": "1 H Carnation Carn Mix Pink/Bicolor 576305 FAN R45 CO-0603129000 500 500 ST 0.190 95.000",
+    "invoice": "COLIBRI.pdf"
   },
   "313|CARNATIONS|BURGUNDY|0|20|FANCY": {
     "articulo_id": 12760,
@@ -1010,29 +1066,35 @@
     "variety": "BURGUNDY",
     "size": 0,
     "stems_per_bunch": 20,
-    "grade": "FANCY"
+    "grade": "FANCY",
+    "raw": "1 H Carnation Burgundy X 20 - FAN 576325 FAN PABLO CO-0603129000 500 500 ST 0.190 95.000",
+    "invoice": "COLIBRI.pdf"
   },
   "6916|ROSES|FREEDOM|40|25|": {
-    "articulo_id": 32990,
-    "articulo_name": "ROSA EC FREEDOM 40CM 25U",
-    "origen": "auto",
+    "articulo_id": 33920,
+    "articulo_name": "ROSA FREEDOM 40CM 25U FIORENTINA",
+    "origen": "auto-marca",
     "provider_id": 6916,
     "species": "ROSES",
     "variety": "FREEDOM",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "1 H FREEDOM 14 25 40 350 0,220 77,000",
+    "invoice": "FIORENTINA.pdf"
   },
   "6916|ROSES|CARNELIAN|60|25|": {
-    "articulo_id": 32815,
-    "articulo_name": "ROSA EC CARNELIAN 60CM 25U",
-    "origen": "auto",
+    "articulo_id": 32130,
+    "articulo_name": "ROSA CARNELIAN 60CM 25U FIORENTINA",
+    "origen": "auto-marca",
     "provider_id": 6916,
     "species": "ROSES",
     "variety": "CARNELIAN",
     "size": 60,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "6 H CARNELIAN 3 25 60 75 0,320 24,000",
+    "invoice": "FIORENTINA.pdf"
   },
   "6916|ROSES|ORANGE CROWN|70|25|": {
     "articulo_id": 33299,
@@ -1043,7 +1105,9 @@
     "variety": "ORANGE CROWN",
     "size": 70,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "H ORANGE CROWN 3 25 70 75 0,320 24,000",
+    "invoice": "FIORENTINA.pdf"
   },
   "6916|ROSES|SUNSET GLORY|60|25|": {
     "articulo_id": 36838,
@@ -1054,7 +1118,9 @@
     "variety": "SUNSET GLORY",
     "size": 60,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "H SUNSET GLORY 3 25 60 75 0,320 24,000",
+    "invoice": "FIORENTINA.pdf"
   },
   "6916|ROSES|TWILIGHT|60|25|": {
     "articulo_id": 37507,
@@ -1065,7 +1131,9 @@
     "variety": "TWILIGHT",
     "size": 60,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "H TWILIGHT 3 25 60 75 0,320 24,000",
+    "invoice": "FIORENTINA.pdf"
   },
   "419|GYPSOPHILA|GYPSOPHILA XLENCE|50|80|": {
     "articulo_id": 28249,
@@ -1076,7 +1144,9 @@
     "variety": "GYPSOPHILA XLENCE",
     "size": 50,
     "stems_per_bunch": 80,
-    "grade": ""
+    "grade": "",
+    "raw": "3 HE Gypsophila Xlence NINGUNO 750 80 16 22 0.273 1056 288.00",
+    "invoice": "FLORSANI.pdf"
   },
   "310|CHRYSANTHEMUM|SPIDER ASSORTED FBE SPIDER|0|200|AT": {
     "articulo_id": 14527,
@@ -1109,7 +1179,9 @@
     "variety": "MIXTO",
     "size": 70,
     "stems_per_bunch": 20,
-    "grade": "FANCY"
+    "grade": "FANCY",
+    "raw": "2 H 500 1000 CONSUMER BUNCH CARNATION FANCY PYTI 12 BLANCO FCY CB S2 0.180 180.00",
+    "invoice": "GOLDEN 105369.pdf"
   },
   "310|CARNATIONS|BLANCO|70|20|FANCY": {
     "articulo_id": 12728,
@@ -1197,7 +1269,9 @@
     "variety": "PREMIUM BLANCO",
     "size": 60,
     "stems_per_bunch": 1,
-    "grade": ""
+    "grade": "",
+    "raw": "1 QB HYDRANGEA WHITE PREMIUM ATPDEA 0603190125 35 35 0.580 1 20.300 20.30GIJON R45- S.O GIJON R45- S.O",
+    "invoice": "LATIN 41329.pdf"
   },
   "6323|HYDRANGEAS|PREMIUM MIXTO|60|1|": {
     "articulo_id": 22743,
@@ -1208,7 +1282,9 @@
     "variety": "PREMIUM MIXTO",
     "size": 60,
     "stems_per_bunch": 1,
-    "grade": ""
+    "grade": "",
+    "raw": "1 QB HYDRANGEA MIX PREMIUM ATPDEA 0603190125 20 35 0.650 2 11.375 22.75GIJON R45- S.O GIJON R45- S.O",
+    "invoice": "LATIN 41329.pdf"
   },
   "6323|HYDRANGEAS|PREMIUM TEÑIDA MELOCOTON|60|1|": {
     "articulo_id": 22734,
@@ -1230,7 +1306,9 @@
     "variety": "MARL EXPLORER",
     "size": 50,
     "stems_per_bunch": 20,
-    "grade": ""
+    "grade": "",
+    "raw": "HB 1 0.50 MARL Explorer 50CM 20 16 320 0.28 89.60",
+    "invoice": "LIFE2.pdf"
   },
   "4471|ROSES|MARL MONDIAL|50|20|": {
     "articulo_id": 33229,
@@ -1241,7 +1319,9 @@
     "variety": "MARL MONDIAL",
     "size": 50,
     "stems_per_bunch": 20,
-    "grade": ""
+    "grade": "",
+    "raw": "HB 1 0.50 MARL Mondial 50CM 20 16 320 0.28 89.60",
+    "invoice": "LIFE2.pdf"
   },
   "4471|ROSES|MARL FRUTTETO|50|20|": {
     "articulo_id": 33001,
@@ -1252,18 +1332,22 @@
     "variety": "MARL FRUTTETO",
     "size": 50,
     "stems_per_bunch": 20,
-    "grade": ""
+    "grade": "",
+    "raw": "HB 1 0.50 MARL Frutteto 50CM 20 16 320 0.28 89.60",
+    "invoice": "LIFE2.pdf"
   },
   "4471|ROSES|CONFIDENTIAL|50|25|": {
-    "articulo_id": 32452,
-    "articulo_name": "ROSA CONFIDENTIAL 50CM 25U SCARLET",
-    "origen": "auto",
+    "articulo_id": 32450,
+    "articulo_name": "ROSA CONFIDENTIAL 50CM 25U LIFEFLOWERS",
+    "origen": "auto-marca",
     "provider_id": 4471,
     "species": "ROSES",
     "variety": "CONFIDENTIAL",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "HB 1 0.50 R-18 Confidential 50CM 25 2 50 0.28 14.00",
+    "invoice": "LIFE2.pdf"
   },
   "4471|ROSES|HOME|50|25|": {
     "articulo_id": 33091,
@@ -1274,7 +1358,9 @@
     "variety": "HOME",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "Country Home 50CM 25 2 50 0.28 14.00",
+    "invoice": "LIFE2.pdf"
   },
   "4471|ROSES|BLUES|50|25|": {
     "articulo_id": 31812,
@@ -1285,7 +1371,9 @@
     "variety": "BLUES",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "Country Blues 50CM 25 2 50 0.28 14.00",
+    "invoice": "LIFE2.pdf"
   },
   "6323|HYDRANGEAS|PREMIUM TEÑIDA ROSA CLARO|60|1|": {
     "articulo_id": 22748,
@@ -1307,7 +1395,9 @@
     "variety": "PREMIUM VERDE OSCURO",
     "size": 60,
     "stems_per_bunch": 1,
-    "grade": ""
+    "grade": "",
+    "raw": "1 QB HYDRANGEA DARK GREEN PREMIUM ATPDEA 0603190125 40 40 0.650 1 26.000 26.00MERCO- S.O MERCO- S.O",
+    "invoice": "LATIN 41329.pdf"
   },
   "6323|HYDRANGEAS|PREMIUM AZUL|60|1|": {
     "articulo_id": 22726,
@@ -1318,7 +1408,9 @@
     "variety": "PREMIUM AZUL",
     "size": 60,
     "stems_per_bunch": 1,
-    "grade": ""
+    "grade": "",
+    "raw": "1 QB HYDRANGEA BLUE PREMIUM ATPDEA 0603190125 35 35 0.580 1 20.300 20.30MERCO- S.O MERCO- S.O",
+    "invoice": "LATIN 41329.pdf"
   },
   "6323|HYDRANGEAS|EMERALD BICOLOR|60|1|": {
     "articulo_id": 22388,
@@ -1329,7 +1421,9 @@
     "variety": "EMERALD BICOLOR",
     "size": 60,
     "stems_per_bunch": 1,
-    "grade": ""
+    "grade": "",
+    "raw": "2 QB HYDRANGEA EMERALD VARIEGATED PREMIUM ATPDEA 0603190125 40 80 0.700 2 28.000 56.00MERCO- S.O MERCO- S.O",
+    "invoice": "LATIN 41329.pdf"
   },
   "6323|HYDRANGEAS|PREMIUM TEÑIDA ROSA VIEJO|60|1|": {
     "articulo_id": 22730,
@@ -1351,7 +1445,9 @@
     "variety": "PREMIUM AZUL CRIOLLA",
     "size": 60,
     "stems_per_bunch": 1,
-    "grade": ""
+    "grade": "",
+    "raw": "2 QB HYDRANGEA BLUE BOGOTANA PREMIUM ATPDEA 0603190125 35 70 0.580 2 20.300 40.60COIMBRA COIMBRA",
+    "invoice": "LATIN 41329.pdf"
   },
   "6323|HYDRANGEAS|PREMIUM TEÑIDA SALMON|60|1|": {
     "articulo_id": 22752,
@@ -1373,7 +1469,9 @@
     "variety": "ANTIQUE VERDE",
     "size": 60,
     "stems_per_bunch": 1,
-    "grade": ""
+    "grade": "",
+    "raw": "2 QB HYDRANGEA ANTIQUE GREEN ATPDEA 0603190125 25 50 1.500 2 37.500 75.00ASTURIAS ASTURIAS",
+    "invoice": "LATIN 41329.pdf"
   },
   "6323|HYDRANGEAS|PREMIUM TEÑIDA MOCCA|60|1|": {
     "articulo_id": 22751,
@@ -1406,95 +1504,113 @@
     "variety": "MARL MAGIC TIMES",
     "size": 50,
     "stems_per_bunch": 20,
-    "grade": ""
+    "grade": "",
+    "raw": "HB 1 0.50 MARL Magic Times 50CM 20 15 300 0.28 84.00",
+    "invoice": "LIFE2.pdf"
   },
   "4471|ROSES|MONDIAL|50|25|": {
-    "articulo_id": 33230,
-    "articulo_name": "ROSA EC MONDIAL 50CM 25U",
-    "origen": "auto",
+    "articulo_id": 35478,
+    "articulo_name": "ROSA MONDIAL 50CM 25U LIFEFLOWERS",
+    "origen": "auto-marca",
     "provider_id": 4471,
     "species": "ROSES",
     "variety": "MONDIAL",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "HB 1 0.50 R-14 Mondial 50CM 25 14 350 0.28 98.00",
+    "invoice": "LIFE3.pdf"
   },
   "4471|ROSES|EXPLORER|50|25|": {
-    "articulo_id": 32950,
-    "articulo_name": "ROSA EC EXPLORER 50CM 25U",
-    "origen": "auto",
+    "articulo_id": 33764,
+    "articulo_name": "ROSA EXPLORER 50CM 25U LIFEFLOWERS",
+    "origen": "auto-marca",
     "provider_id": 4471,
     "species": "ROSES",
     "variety": "EXPLORER",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "HB 1 0.50 R-14 Explorer 50CM 25 12 300 0.28 84.00",
+    "invoice": "LIFE3.pdf"
   },
   "1429|ROSES|CABARET|40|25|": {
-    "articulo_id": 32023,
-    "articulo_name": "ROSA CABARET 40CM 25U BRISSAS",
-    "origen": "auto",
+    "articulo_id": 32015,
+    "articulo_name": "ROSA CABARET 40CM 25U LUXUS",
+    "origen": "auto-marca",
     "provider_id": 1429,
     "species": "ROSES",
     "variety": "CABARET",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "1 - 1 1 HALF CABARET 40 25 4 100 0.22 22.00",
+    "invoice": "LUXUS.pdf"
   },
   "1429|ROSES|FREEDOM|50|25|": {
-    "articulo_id": 32991,
-    "articulo_name": "ROSA EC FREEDOM 50CM 25U",
-    "origen": "auto",
+    "articulo_id": 33955,
+    "articulo_name": "ROSA FREEDOM 50CM 25U LUXUS",
+    "origen": "auto-marca",
     "provider_id": 1429,
     "species": "ROSES",
     "variety": "FREEDOM",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "2 - 3 2 HALF FREEDOM 50 25 14 700 0.30 210.00",
+    "invoice": "LUXUS.pdf"
   },
   "1429|ROSES|FREEDOM|60|25|": {
-    "articulo_id": 32993,
-    "articulo_name": "ROSA EC FREEDOM 60CM 25U",
-    "origen": "auto",
+    "articulo_id": 33992,
+    "articulo_name": "ROSA FREEDOM 60CM 25U AGRIVALDANI",
+    "origen": "auto-marca",
     "provider_id": 1429,
     "species": "ROSES",
     "variety": "FREEDOM",
     "size": 60,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "4 - 4 1 HALF FREEDOM 60 25 12 300 0.35 105.00",
+    "invoice": "LUXUS.pdf"
   },
   "1429|ROSES|EXPLORER|40|25|": {
-    "articulo_id": 32948,
-    "articulo_name": "ROSA EC EXPLORER 40CM 25U",
-    "origen": "auto",
+    "articulo_id": 33740,
+    "articulo_name": "ROSA EXPLORER 40CM 25U LUXUS",
+    "origen": "auto-marca",
     "provider_id": 1429,
     "species": "ROSES",
     "variety": "EXPLORER",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "5 - 5 1 HALF EXPLORER 40 25 12 300 0.22 66.00",
+    "invoice": "LUXUS.pdf"
   },
   "1429|ROSES|ORANGE CRUSH|50|25|": {
-    "articulo_id": 33300,
-    "articulo_name": "ROSA EC ORANGE CRUSH 50CM 25U",
-    "origen": "auto",
+    "articulo_id": 35813,
+    "articulo_name": "ROSA ORANGE CRUSH 50CM 25U LUXUS",
+    "origen": "auto-marca",
     "provider_id": 1429,
     "species": "ROSES",
     "variety": "ORANGE CRUSH",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "6 - 6 1 HALF ORANGE CRUSH 50 25 14 350 0.24 84.00",
+    "invoice": "LUXUS.pdf"
   },
   "1429|ROSES|MONDIAL|40|25|": {
-    "articulo_id": 33228,
-    "articulo_name": "ROSA EC MONDIAL 40CM 25U",
-    "origen": "auto",
+    "articulo_id": 35454,
+    "articulo_name": "ROSA MONDIAL 40CM 25U LUXUS",
+    "origen": "auto-marca",
     "provider_id": 1429,
     "species": "ROSES",
     "variety": "MONDIAL",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "7 - 7 1 HALF MONDIAL 40 25 16 400 0.22 88.00",
+    "invoice": "LUXUS.pdf"
   },
   "7563|GYPSOPHILA|XLENCE 80CM 750GR MIN 25ST R PTRI - XL|0|25|": {
     "articulo_id": 28244,
@@ -1505,7 +1621,9 @@
     "variety": "XLENCE 80CM 750GR MIN 25ST R PTRI - XL",
     "size": 0,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "5117007 1 HB MALIMA EUROPA 0.50 XLENCE 80CM 750GR MIN 25ST R PTRI - XL GYPSOPHILA 14 $7.2500 350 $7.2500 $101.50 REY",
+    "invoice": "MALIMA.pdf"
   },
   "7563|GYPSOPHILA|XLENCE 80CM 750GR MIN 20ST R PTRI - XL|0|20|": {
     "articulo_id": 28244,
@@ -1516,7 +1634,9 @@
     "variety": "XLENCE 80CM 750GR MIN 20ST R PTRI - XL",
     "size": 0,
     "stems_per_bunch": 20,
-    "grade": ""
+    "grade": "",
+    "raw": "5117012 8 HB MALIMA EUROPA 4.00 XLENCE 80CM 750GR MIN 20ST R PTRI - XL GYPSOPHILA 112 $7.0000 2240 $7.0000 $784.00",
+    "invoice": "MALIMA.pdf"
   },
   "281|ROSES|FREEDOM|70|25|": {
     "articulo_id": 34033,
@@ -1527,7 +1647,9 @@
     "variety": "FREEDOM",
     "size": 70,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "ROSE FREEDOM 70 Cm 3 250 750 .420 315.00",
+    "invoice": "MAXI.pdf"
   },
   "442|ROSES|EXPLORER|50|20|": {
     "articulo_id": 32949,
@@ -1538,7 +1660,9 @@
     "variety": "EXPLORER",
     "size": 50,
     "stems_per_bunch": 20,
-    "grade": ""
+    "grade": "",
+    "raw": "1 H VNG EXPLORER 1 20 50 20 0,320 6,400",
+    "invoice": "MYSTIC.pdf"
   },
   "442|ROSES|MONDIAL|50|20|": {
     "articulo_id": 33229,
@@ -1549,7 +1673,9 @@
     "variety": "MONDIAL",
     "size": 50,
     "stems_per_bunch": 20,
-    "grade": ""
+    "grade": "",
+    "raw": "H VNG MONDIAL 2 20 50 40 0,320 12,800",
+    "invoice": "MYSTIC.pdf"
   },
   "442|ROSES|MOODY BLUES|50|20|": {
     "articulo_id": 35618,
@@ -1560,7 +1686,9 @@
     "variety": "MOODY BLUES",
     "size": 50,
     "stems_per_bunch": 20,
-    "grade": ""
+    "grade": "",
+    "raw": "H VNG MOODY BLUES 2 20 50 40 0,320 12,800",
+    "invoice": "MYSTIC.pdf"
   },
   "442|ROSES|ORANGE CRUSH|50|20|": {
     "articulo_id": 33300,
@@ -1571,7 +1699,9 @@
     "variety": "ORANGE CRUSH",
     "size": 50,
     "stems_per_bunch": 20,
-    "grade": ""
+    "grade": "",
+    "raw": "H VNG ORANGE CRUSH 2 20 50 40 0,320 12,800",
+    "invoice": "MYSTIC.pdf"
   },
   "442|ROSES|PINK MONDIAL|50|20|": {
     "articulo_id": 33343,
@@ -1582,7 +1712,9 @@
     "variety": "PINK MONDIAL",
     "size": 50,
     "stems_per_bunch": 20,
-    "grade": ""
+    "grade": "",
+    "raw": "H VNG PINK MONDIAL 2 20 50 40 0,320 12,800",
+    "invoice": "MYSTIC.pdf"
   },
   "442|ROSES|SWEETNESS|50|20|": {
     "articulo_id": 33504,
@@ -1593,18 +1725,22 @@
     "variety": "SWEETNESS",
     "size": 50,
     "stems_per_bunch": 20,
-    "grade": ""
+    "grade": "",
+    "raw": "H VNG SWEETNESS 2 20 50 40 0,320 12,800",
+    "invoice": "MYSTIC.pdf"
   },
   "0|ROSES|PINK MONDIAL|60|25|": {
-    "articulo_id": 33339,
-    "articulo_name": "ROSA EC PINK MONDIAL 60CM 25U",
-    "origen": "auto",
+    "articulo_id": 36134,
+    "articulo_name": "ROSA PINK MONDIAL 60CM 25U BRISSAS",
+    "origen": "auto-marca",
     "provider_id": 0,
     "species": "ROSES",
     "variety": "PINK MONDIAL",
     "size": 60,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "1 TB PINK MONDIAL *25 60 8 200 $ 0.2700 $54.00",
+    "invoice": "ROSELY.pdf"
   },
   "2166|CHRYSANTHEMUM|SP CUSHION BONITA BLANCO|70|5|": {
     "articulo_id": 14810,
@@ -1615,7 +1751,9 @@
     "variety": "SP CUSHION BONITA BLANCO",
     "size": 70,
     "stems_per_bunch": 5,
-    "grade": ""
+    "grade": "",
+    "raw": "Pom Csh Europa White Bonita CO-0603141000 5 HB 200 1,000 0.950 190.00",
+    "invoice": "SAYONARA 83155.pdf"
   },
   "7338|ROSES|MONDIAL|50|1|": {
     "articulo_id": 33229,
@@ -1626,7 +1764,9 @@
     "variety": "MONDIAL",
     "size": 50,
     "stems_per_bunch": 1,
-    "grade": ""
+    "grade": "",
+    "raw": "ROSE MONDIAL 50 CM (S.O) 350 1 HALF 350 0.280 98.000 AGRICOLA EL RETIRO",
+    "invoice": "SECORE.pdf"
   },
   "7338|ROSES|MONDIAL|40|1|": {
     "articulo_id": 33227,
@@ -1637,40 +1777,48 @@
     "variety": "MONDIAL",
     "size": 40,
     "stems_per_bunch": 1,
-    "grade": ""
+    "grade": "",
+    "raw": "ROSE MONDIAL 40 CM ( REPLACING S.O) 350 1 HALF 350 0.250 87.500 SERREZUELA FLOWERS",
+    "invoice": "SECORE.pdf"
   },
   "2220|ROSES|FRUTTETO|50|25|": {
-    "articulo_id": 33000,
-    "articulo_name": "ROSA EC FRUTTETO 50CM 25U",
-    "origen": "auto",
+    "articulo_id": 34088,
+    "articulo_name": "ROSA FRUTTETO 50CM 25U FIORENTINA",
+    "origen": "auto-marca",
     "provider_id": 2220,
     "species": "ROSES",
     "variety": "FRUTTETO",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "1 H FRUTTETO 4 25 50 100 0,300 30,000",
+    "invoice": "STAMPSY.pdf"
   },
   "2220|ROSES|NECTARINE|50|25|": {
-    "articulo_id": 33254,
-    "articulo_name": "ROSA EC NECTARINE 50CM 25U",
-    "origen": "auto",
+    "articulo_id": 35656,
+    "articulo_name": "ROSA NECTARINE 50CM 25U STAMPSY",
+    "origen": "auto-marca",
     "provider_id": 2220,
     "species": "ROSES",
     "variety": "NECTARINE",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "1 H NECTARINE 4 25 50 100 0,300 30,000",
+    "invoice": "STAMPSY.pdf"
   },
   "2220|ROSES|SILANTOI|50|25|": {
-    "articulo_id": 36542,
-    "articulo_name": "ROSA SILANTOI 50CM 25U BRISSAS",
-    "origen": "auto",
+    "articulo_id": 36532,
+    "articulo_name": "ROSA SILANTOI 50CM 25U FIORENTINA",
+    "origen": "auto-marca",
     "provider_id": 2220,
     "species": "ROSES",
     "variety": "SILANTOI",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "1 H SILANTOI 4 25 50 100 0,300 30,000",
+    "invoice": "STAMPSY.pdf"
   },
   "2166|CHRYSANTHEMUM|SP CUSHION MIXTO|70|5|": {
     "articulo_id": 14803,
@@ -1681,7 +1829,9 @@
     "variety": "SP CUSHION MIXTO",
     "size": 70,
     "stems_per_bunch": 5,
-    "grade": ""
+    "grade": "",
+    "raw": "Pom Csh Europa Exportacion Yellow Bernal CO-0603141000 120 0.19",
+    "invoice": "SAYONARA 83155.pdf"
   },
   "306|CARNATIONS|CARNATION SPECIAL MIX FANCY|0|500|FANCY": {
     "articulo_id": 12549,
@@ -1692,7 +1842,9 @@
     "variety": "CARNATION SPECIAL MIX FANCY",
     "size": 0,
     "stems_per_bunch": 500,
-    "grade": "FANCY"
+    "grade": "FANCY",
+    "raw": "1 HB CARNATION SPECIAL MIX FANCY - Fancy MARIÑO - - 500 500 Stems $0.170 $85.00",
+    "invoice": "TURFLOR.pdf"
   },
   "2222|ROSES|BARBIECORE|40|25|": {
     "articulo_id": 31741,
@@ -1703,7 +1855,9 @@
     "variety": "BARBIECORE",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "BARBIECORE 40CM N 25ST CZ",
+    "invoice": "VALTHO.pdf"
   },
   "2222|ROSES|JOY|40|25|": {
     "articulo_id": 34688,
@@ -1714,7 +1868,9 @@
     "variety": "JOY",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "JOY 40CM N 25ST CZ",
+    "invoice": "VALTHO.pdf"
   },
   "2222|ROSES|PINK CANDY|40|25|": {
     "articulo_id": 35971,
@@ -1725,7 +1881,9 @@
     "variety": "PINK CANDY",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "PINK CANDY 40CM N 25ST CZ",
+    "invoice": "VALTHO.pdf"
   },
   "2222|ROSES|ROSEBERRY|40|25|": {
     "articulo_id": 33411,
@@ -1736,62 +1894,74 @@
     "variety": "ROSEBERRY",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "ROSEBERRY 40CM N 25ST CZ",
+    "invoice": "VALTHO.pdf"
   },
   "2222|ROSES|STARDUST|40|25|": {
-    "articulo_id": 33468,
-    "articulo_name": "ROSA EC STARDUST 40CM 25U",
-    "origen": "auto",
+    "articulo_id": 36764,
+    "articulo_name": "ROSA STARDUST 40CM 25U CANTIZA",
+    "origen": "auto-marca",
     "provider_id": 2222,
     "species": "ROSES",
     "variety": "STARDUST",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "STARDUST 40CM N 25ST CZ",
+    "invoice": "VALTHO.pdf"
   },
   "2222|ROSES|TIBET|40|25|": {
-    "articulo_id": 33552,
-    "articulo_name": "ROSA EC TIBET 40CM 25U",
-    "origen": "auto",
+    "articulo_id": 37118,
+    "articulo_name": "ROSA TIBET 40CM 25U CANTIZA",
+    "origen": "auto-marca",
     "provider_id": 2222,
     "species": "ROSES",
     "variety": "TIBET",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "TIBET 40CM N 25ST CZ",
+    "invoice": "VALTHO.pdf"
   },
   "2222|ROSES|TOPAZ|40|25|": {
-    "articulo_id": 33569,
-    "articulo_name": "ROSA EC TOPAZ 40CM 25U",
-    "origen": "auto",
+    "articulo_id": 37215,
+    "articulo_name": "ROSA TOPAZ 40CM 25U CANTIZA",
+    "origen": "auto-marca",
     "provider_id": 2222,
     "species": "ROSES",
     "variety": "TOPAZ",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "TOPAZ 40CM N 25ST CZ",
+    "invoice": "VALTHO.pdf"
   },
   "2222|ROSES|COOL WATER|50|25|": {
-    "articulo_id": 32879,
-    "articulo_name": "ROSA EC COOL WATER 50CM 25U",
-    "origen": "auto",
+    "articulo_id": 32461,
+    "articulo_name": "ROSA COOL WATER 50CM 25U CANTIZA",
+    "origen": "auto-marca",
     "provider_id": 2222,
     "species": "ROSES",
     "variety": "COOL WATER",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "COOL WATER 50CM N 25ST CZ",
+    "invoice": "VALTHO.pdf"
   },
   "2222|ROSES|NENA|40|25|": {
-    "articulo_id": 33257,
-    "articulo_name": "ROSA EC NENA 40CM 25U",
-    "origen": "auto",
+    "articulo_id": 35666,
+    "articulo_name": "ROSA NENA 40CM 25U CANTIZA",
+    "origen": "auto-marca",
     "provider_id": 2222,
     "species": "ROSES",
     "variety": "NENA",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "NENA 40CM N 25ST CZ",
+    "invoice": "VALTHO.pdf"
   },
   "2222|ROSES|SWEET CAKE|40|25|": {
     "articulo_id": 36960,
@@ -1802,7 +1972,9 @@
     "variety": "SWEET CAKE",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "SWEET CAKE 40CM N 25ST CZ",
+    "invoice": "VALTHO.pdf"
   },
   "2222|ROSES|UNFORGIVEN|40|25|": {
     "articulo_id": 37516,
@@ -1813,7 +1985,9 @@
     "variety": "UNFORGIVEN",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "UNFORGIVEN 40CM N 25ST CZ",
+    "invoice": "VALTHO.pdf"
   },
   "2222|ROSES|TUTTI FRUTTI|50|25|": {
     "articulo_id": 37488,
@@ -1824,7 +1998,9 @@
     "variety": "TUTTI FRUTTI",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "TUTTI FRUTTI 50CM N 25ST CZ",
+    "invoice": "VALTHO.pdf"
   },
   "2222|ROSES|FLAME|40|25|": {
     "articulo_id": 33065,
@@ -1835,51 +2011,61 @@
     "variety": "FLAME",
     "size": 40,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "FLAME 40CM N 25ST CZ",
+    "invoice": "VALTHO.pdf"
   },
   "2222|ROSES|ABSOLUT IN PINK|50|25|": {
-    "articulo_id": 31614,
-    "articulo_name": "ROSA ABSOLUT IN PINK 50CM 25U FIORENTINA",
-    "origen": "auto",
+    "articulo_id": 31608,
+    "articulo_name": "ROSA ABSOLUT IN PINK 50CM 25U CANTIZA",
+    "origen": "auto-marca",
     "provider_id": 2222,
     "species": "ROSES",
     "variety": "ABSOLUT IN PINK",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "ABSOLUT IN PINK 50CM N 25ST CZ",
+    "invoice": "VATHO.pdf"
   },
   "2222|ROSES|CORAL REEF|50|25|": {
-    "articulo_id": 32883,
-    "articulo_name": "ROSA EC CORAL REEF 50CM 25U",
-    "origen": "auto",
+    "articulo_id": 32481,
+    "articulo_name": "ROSA CORAL REEF 50CM 25U CANTIZA",
+    "origen": "auto-marca",
     "provider_id": 2222,
     "species": "ROSES",
     "variety": "CORAL REEF",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "CORAL REEF 50CM N 25ST CZ",
+    "invoice": "VATHO.pdf"
   },
   "2222|ROSES|HIGH MAGIC|50|25|": {
-    "articulo_id": 34507,
-    "articulo_name": "ROSA HIGH MAGIC 50CM 25U BRISSAS",
-    "origen": "auto",
+    "articulo_id": 34483,
+    "articulo_name": "ROSA HIGH MAGIC 50CM 25U CANTIZA",
+    "origen": "auto-marca",
     "provider_id": 2222,
     "species": "ROSES",
     "variety": "HIGH MAGIC",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "HIGH MAGIC 50CM N 25ST CZ",
+    "invoice": "VATHO.pdf"
   },
   "2222|ROSES|FREEDOM|50|25|": {
-    "articulo_id": 32991,
-    "articulo_name": "ROSA EC FREEDOM 50CM 25U",
-    "origen": "auto",
+    "articulo_id": 33953,
+    "articulo_name": "ROSA FREEDOM 50CM 25U CANTIZA",
+    "origen": "auto-marca",
     "provider_id": 2222,
     "species": "ROSES",
     "variety": "FREEDOM",
     "size": 50,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "FREEDOM 50CM N 25ST CZ",
+    "invoice": "VATHO.pdf"
   },
   "6323|HYDRANGEAS|PREMIUM TEÑIDA ROJO|60|1|": {
     "articulo_id": 22733,
@@ -1945,7 +2131,9 @@
     "variety": "PINK X-PRESSION",
     "size": 25,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "QB 1 1 R11 PINK X-PRESSION 25 2 2 50 0.40 20.00",
+    "invoice": "MONTEROSA.pdf"
   },
   "1434|ROSES|COUNTRY HOME|25|25|": {
     "articulo_id": 32538,
@@ -1956,7 +2144,9 @@
     "variety": "COUNTRY HOME",
     "size": 25,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "QB 1 1 R11 COUNTRY HOME 25 2 2 50 0.35 17.50",
+    "invoice": "MONTEROSA.pdf"
   },
   "1434|ROSES|PRINCESS CROWN|25|25|": {
     "articulo_id": 33360,
@@ -1967,7 +2157,9 @@
     "variety": "PRINCESS CROWN",
     "size": 25,
     "stems_per_bunch": 25,
-    "grade": ""
+    "grade": "",
+    "raw": "QB 1 1 R11 PRINCESS CROWN 25 2 2 50 0.40 20.00",
+    "invoice": "MONTEROSA.pdf"
   },
   "99999|ROSES|EXPLORER|60|25|": {
     "articulo_id": 33788,
@@ -1989,7 +2181,9 @@
     "variety": "MIX",
     "size": 0,
     "stems_per_bunch": 10,
-    "grade": "SELECT"
+    "grade": "SELECT",
+    "raw": "2 H Minicarnation mix 576298- SEL GARCIA CO-0603121000 500 1000 ST 0.200 200.000",
+    "invoice": "COLIBRI.pdf"
   },
   "313|CARNATIONS|NOVELTY|0|10|SELECT": {
     "articulo_id": 12578,
@@ -2000,7 +2194,9 @@
     "variety": "NOVELTY",
     "size": 0,
     "stems_per_bunch": 10,
-    "grade": "SELECT"
+    "grade": "SELECT",
+    "raw": "1 H Minicarnation Novelty X 10 - SEL 576321 SEL FBE CO-0603121000 500 500 ST 0.200 100.000",
+    "invoice": "COLIBRI.pdf"
   },
   "6323|HYDRANGEAS|PREMIUM TENIDA MELOCOTON|60|1|": {
     "articulo_id": 22734,
@@ -2011,7 +2207,9 @@
     "variety": "PREMIUM TENIDA MELOCOTON",
     "size": 60,
     "stems_per_bunch": 1,
-    "grade": ""
+    "grade": "",
+    "raw": "1 QB HYDRANGEA TINTED PEACH PREMIUM ATPDEA 0603190125 35 35 0.630 1 22.050 22.05MERCO- S.O MERCO- S.O",
+    "invoice": "LATIN 41329.pdf"
   },
   "6323|HYDRANGEAS|PREMIUM TENIDA ROSA CLARO|60|1|": {
     "articulo_id": 22748,
@@ -2022,7 +2220,9 @@
     "variety": "PREMIUM TENIDA ROSA CLARO",
     "size": 60,
     "stems_per_bunch": 1,
-    "grade": ""
+    "grade": "",
+    "raw": "1 QB HYDRANGEA TINTED LIGHT PINK PREMIUMATPDEA 0603190125 35 35 0.630 1 22.050 22.05MERCO- S.O MERCO- S.O",
+    "invoice": "LATIN 41329.pdf"
   },
   "6323|HYDRANGEAS|PREMIUM TENIDA ROSA VIEJO|60|1|": {
     "articulo_id": 22730,
@@ -2033,7 +2233,9 @@
     "variety": "PREMIUM TENIDA ROSA VIEJO",
     "size": 60,
     "stems_per_bunch": 1,
-    "grade": ""
+    "grade": "",
+    "raw": "1 QB HYDRANGEA TINTED DUSTY PINK PREMIUM ATPDEA 0603190125 35 35 0.650 1 22.750 22.75MERCO- S.O MERCO- S.O",
+    "invoice": "LATIN 41329.pdf"
   },
   "6323|HYDRANGEAS|PREMIUM TENIDA SALMON|60|1|": {
     "articulo_id": 22752,
@@ -2044,7 +2246,9 @@
     "variety": "PREMIUM TENIDA SALMON",
     "size": 60,
     "stems_per_bunch": 1,
-    "grade": ""
+    "grade": "",
+    "raw": "1 QB HYDRANGEA TINTED SALMON PREMIUMATPDEA 0603190125 35 35 0.650 1 22.750 22.75 GAIA GAIA",
+    "invoice": "LATIN 41329.pdf"
   },
   "6323|HYDRANGEAS|PREMIUM TENIDA MOCCA|60|1|": {
     "articulo_id": 22751,
@@ -2055,7 +2259,9 @@
     "variety": "PREMIUM TENIDA MOCCA",
     "size": 60,
     "stems_per_bunch": 1,
-    "grade": ""
+    "grade": "",
+    "raw": "2 QB HYDRANGEA TINTED LIGHT MOCCA PREMIUMATPDEA 0603190125 35 70 0.630 2 22.050 44.10 OPEN OPEN",
+    "invoice": "LATIN 41329.pdf"
   },
   "6323|HYDRANGEAS|PREMIUM TENIDA ROSA|60|1|": {
     "articulo_id": 22728,
@@ -2066,6 +2272,73 @@
     "variety": "PREMIUM TENIDA ROSA",
     "size": 60,
     "stems_per_bunch": 1,
-    "grade": ""
+    "grade": "",
+    "raw": "1 QB HYDRANGEA TINTED PINK BLUSH PREMIUM ATPDEA 0603190125 35 35 0.630 1 22.050 22.05 OPEN OPEN",
+    "invoice": "LATIN 41329.pdf"
+  },
+  "0|ROSES|FREEDOM|70|25|": {
+    "articulo_id": 32994,
+    "articulo_name": "ROSA EC FREEDOM 70CM 25U",
+    "origen": "auto",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "FREEDOM",
+    "size": 70,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "1 TB FREEDOM *25 70 8 200 $ 0.3000 $60.00",
+    "invoice": "ROSELY.pdf"
+  },
+  "0|ROSES|FREEDOM|60|25|": {
+    "articulo_id": 34013,
+    "articulo_name": "ROSA FREEDOM 60CM 25U BRISSAS",
+    "origen": "auto-marca",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "FREEDOM",
+    "size": 60,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "1 TB FREEDOM *25 60 8 200 $ 0.2700 $54.00",
+    "invoice": "ROSELY.pdf"
+  },
+  "0|ROSES|EXPLORER|60|25|": {
+    "articulo_id": 33813,
+    "articulo_name": "ROSA EXPLORER 60CM 25U BRISSAS",
+    "origen": "auto-marca",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "EXPLORER",
+    "size": 60,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "2 TB EXPLORER *25 60 8 400 $ 0.2700 $108.00",
+    "invoice": "ROSELY.pdf"
+  },
+  "0|ROSES|MONDIAL|60|25|": {
+    "articulo_id": 35567,
+    "articulo_name": "ROSA MONDIAL 60CM 25U BRISSAS",
+    "origen": "auto-marca",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "MONDIAL",
+    "size": 60,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "2 TB MONDIAL *25 60 8 400 $ 0.2700 $108.00",
+    "invoice": "ROSELY.pdf"
+  },
+  "0|ROSES|BRIGHTON|60|25|": {
+    "articulo_id": 31949,
+    "articulo_name": "ROSA BRIGHTON 60CM 25U BRISSAS",
+    "origen": "auto-marca",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "BRIGHTON",
+    "size": 60,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "1 TB BRIGHTON *25 60 8 200 $ 0.2700 $54.00",
+    "invoice": "ROSELY.pdf"
   }
 }
