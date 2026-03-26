@@ -398,3 +398,54 @@ footer {
         grid-template-columns: 1fr 1fr;
     }
 }
+
+/* === CAJAS MIXTAS === */
+
+tr.row-mixed-parent {
+    background-color: #eff6ff;
+    font-weight: 600;
+}
+
+tr.row-mixed-parent:hover td {
+    background-color: #dbeafe;
+}
+
+tr.row-mixed-parent td:nth-child(2) {
+    font-size: 13px;
+}
+
+.mixed-desc {
+    display: block;
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+tr.row-mixed-child {
+    border-left: 3px solid var(--primary);
+}
+
+tr.row-mixed-child td:first-child {
+    padding-left: 28px;
+}
+
+tr.row-mixed-child td:nth-child(2) {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.color-variety {
+    color: var(--primary-dark);
+}
+
+.badge-label {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    background-color: #fef3c7;
+    color: #92400e;
+}

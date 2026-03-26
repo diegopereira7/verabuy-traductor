@@ -46,6 +46,9 @@ def run(pdf_path: str) -> dict:
     ok_count = sum(1 for l in lines if l.match_status == 'ok')
     no_parser = sum(1 for l in lines if l.match_status == 'sin_parser')
 
+    raw_lines = _serialize_lines(lines)
+    grouped_lines = _group_mixed_boxes(raw_lines)
+
     return {
         'ok': True,
         'header': {
@@ -63,24 +66,80 @@ def run(pdf_path: str) -> dict:
             'sin_match':    len(lines) - ok_count - no_parser,
             'sin_parser':   no_parser,
         },
-        'lines': [{
-            'raw':             l.raw_description[:120],
-            'species':         l.species,
-            'variety':         l.variety,
-            'grade':           l.grade,
-            'size':            l.size,
-            'stems_per_bunch': l.stems_per_bunch,
-            'stems':           l.stems,
-            'price_per_stem':  round(l.price_per_stem, 5),
-            'line_total':      round(l.line_total, 2),
-            'label':           l.label,
-            'box_type':        l.box_type,
-            'articulo_id':     l.articulo_id,
-            'articulo_name':   l.articulo_name or '',
-            'match_status':    l.match_status,
-            'match_method':    l.match_method,
-        } for l in lines],
+        'lines': grouped_lines,
     }
+
+
+def _serialize_line(l) -> dict:
+    """Convierte una InvoiceLine a dict JSON-serializable."""
+    return {
+        'raw':             l.raw_description[:120],
+        'species':         l.species,
+        'variety':         l.variety,
+        'grade':           l.grade,
+        'size':            l.size,
+        'stems_per_bunch': l.stems_per_bunch,
+        'stems':           l.stems,
+        'price_per_stem':  round(l.price_per_stem, 5),
+        'line_total':      round(l.line_total, 2),
+        'label':           l.label,
+        'box_type':        l.box_type,
+        'articulo_id':     l.articulo_id,
+        'articulo_name':   l.articulo_name or '',
+        'match_status':    l.match_status,
+        'match_method':    l.match_method,
+    }
+
+
+def _serialize_lines(lines) -> list[dict]:
+    return [_serialize_line(l) for l in lines]
+
+
+def _group_mixed_boxes(lines: list[dict]) -> list[dict]:
+    """Agrupa líneas de cajas mixtas (box_type='MIX', mismo raw) bajo una fila padre.
+
+    Las líneas normales pasan sin modificar con is_mixed=False.
+    Las cajas mixtas generan una fila padre con totales + array de hijas.
+    """
+    from collections import OrderedDict
+
+    groups: OrderedDict[str, list[int]] = OrderedDict()
+    for i, l in enumerate(lines):
+        if l.get('box_type') == 'MIX':
+            key = l['raw']
+            groups.setdefault(key, []).append(i)
+        else:
+            # Línea normal: clave única para que no se agrupe
+            groups.setdefault(f'__single_{i}', []).append(i)
+
+    result = []
+    for key, indices in groups.items():
+        if key.startswith('__single_'):
+            line = lines[indices[0]]
+            line['is_mixed'] = False
+            result.append(line)
+        elif len(indices) == 1:
+            line = lines[indices[0]]
+            line['is_mixed'] = False
+            result.append(line)
+        else:
+            hijas = [lines[i] for i in indices]
+            for h in hijas:
+                h['is_mixed'] = True
+            first = hijas[0]
+            result.append({
+                'row_type':    'mixed_parent',
+                'raw':         first['raw'],
+                'species':     first['species'],
+                'grade':       first['grade'],
+                'label':       first['label'],
+                'stems':       sum(h['stems'] for h in hijas),
+                'line_total':  round(sum(h['line_total'] for h in hijas), 2),
+                'num_varieties': len(hijas),
+                'children':    hijas,
+                'is_mixed':    True,
+            })
+    return result
 
 
 if __name__ == '__main__':

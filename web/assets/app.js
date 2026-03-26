@@ -159,9 +159,49 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         const tbody = document.querySelector('#linesTable tbody');
-        tbody.innerHTML = data.lines.map((l, i) => `
+        let rowNum = 0;
+        tbody.innerHTML = data.lines.map((l) => {
+            if (l.row_type === 'mixed_parent') {
+                // Fila padre de caja mixta
+                rowNum++;
+                const labelBadge = l.label ? `<span class="badge badge-label">${esc(l.label)}</span>` : '';
+                const parentRow = `
+                    <tr class="row-mixed-parent">
+                        <td>${rowNum}</td>
+                        <td title="${esc(l.raw)}">CAJA MIXTA ${labelBadge}
+                            <span class="mixed-desc">${esc(l.raw.substring(0, 55))}${l.raw.length > 55 ? '...' : ''}</span></td>
+                        <td>${esc(l.species)}</td>
+                        <td><strong>${l.num_varieties} variedades</strong></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>${l.stems || '-'}</td>
+                        <td>-</td>
+                        <td>$${num(l.line_total)}</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>`;
+                // Filas hijas
+                const childRows = l.children.map(h => `
+                    <tr class="row-mixed-child ${h.match_status === 'sin_match' ? 'row-sin-match' : ''}">
+                        <td></td>
+                        <td title="${esc(h.raw)}">↳ ${esc(h.raw.substring(0, 55))}${h.raw.length > 55 ? '...' : ''}</td>
+                        <td>${esc(h.species)}</td>
+                        <td><strong class="color-variety">${esc(h.variety)}</strong></td>
+                        <td>${h.size || '-'}</td>
+                        <td>${h.stems_per_bunch || '-'}</td>
+                        <td>${h.stems || '-'}</td>
+                        <td>$${num(h.price_per_stem)}</td>
+                        <td>$${num(h.line_total)}</td>
+                        <td>${h.articulo_id ? `<strong>${h.articulo_id}</strong> ${esc(h.articulo_name)}` : '<em>-</em>'}</td>
+                        <td>${matchBadge(h.match_status, h.match_method)}</td>
+                    </tr>`).join('');
+                return parentRow + childRows;
+            }
+            // Línea normal
+            rowNum++;
+            return `
             <tr class="${l.match_status === 'sin_parser' ? 'row-sin-parser' : l.match_status !== 'ok' ? 'row-sin-match' : ''}">
-                <td>${i + 1}</td>
+                <td>${rowNum}</td>
                 <td title="${esc(l.raw)}">${esc(l.raw.substring(0, 60))}${l.raw.length > 60 ? '...' : ''}</td>
                 <td>${esc(l.species)}</td>
                 <td><strong>${esc(l.variety)}</strong></td>
@@ -172,8 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>$${num(l.line_total)}</td>
                 <td>${l.articulo_id ? `<strong>${l.articulo_id}</strong> ${esc(l.articulo_name)}` : '<em>-</em>'}</td>
                 <td>${matchBadge(l.match_status, l.match_method)}</td>
-            </tr>
-        `).join('');
+            </tr>`;
+        }).join('');
     }
 
     function matchBadge(status, method) {
