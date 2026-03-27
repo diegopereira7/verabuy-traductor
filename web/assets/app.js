@@ -429,6 +429,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button class="btn-icon syn-cancel" title="Cancelar" style="color:gray">&#10007;</button>
             </td>`;
         synEditingKey = key;
+        // Auto-lookup: al cambiar ID artículo, buscar nombre
+        document.getElementById('editArtId').addEventListener('change', async () => {
+            const id = parseInt(document.getElementById('editArtId').value) || 0;
+            if (!id) return;
+            try {
+                const res = await fetch(`api.php?action=lookup_article&id=${id}`);
+                const data = await res.json();
+                if (data.ok) {
+                    document.getElementById('editArtName').value = data.nombre;
+                }
+            } catch (err) { /* silenciar */ }
+        });
     }
 
     async function synSaveEdit(row, originalKey) {
@@ -479,6 +491,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     document.getElementById('btnSynAddCancel').addEventListener('click', () => {
         document.getElementById('synAddForm').classList.add('hidden');
+    });
+    // Auto-lookup en formulario de añadir
+    document.getElementById('synAddArticuloId').addEventListener('change', async () => {
+        const id = parseInt(document.getElementById('synAddArticuloId').value) || 0;
+        if (!id) return;
+        try {
+            const res = await fetch(`api.php?action=lookup_article&id=${id}`);
+            const data = await res.json();
+            if (data.ok) {
+                document.getElementById('synAddArticuloName').value = data.nombre;
+            }
+        } catch (err) { /* silenciar */ }
     });
     document.getElementById('btnSynAddSave').addEventListener('click', async () => {
         const key = document.getElementById('synAddKey').value.trim();

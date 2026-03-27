@@ -20,7 +20,7 @@ header('Content-Type: application/json; charset=utf-8');
 // Batch status y download son GET; el resto POST
 $action = $_GET['action'] ?? 'process';
 
-if (in_array($action, ['batch_status', 'batch_download', 'learned_parsers', 'pending_review'])) {
+if (in_array($action, ['batch_status', 'batch_download', 'learned_parsers', 'pending_review', 'lookup_article'])) {
     if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
         http_response_code(405);
         echo json_encode(['ok' => false, 'error' => 'Método no permitido']);
@@ -49,6 +49,9 @@ switch ($action) {
         break;
     case 'update_synonym':
         handleUpdateSynonym();
+        break;
+    case 'lookup_article':
+        handleLookupArticle();
         break;
     case 'delete_synonym':
         handleDeleteSynonym();
@@ -239,6 +242,35 @@ function handleSaveSynonym(): void
 }
 
 /**
+ * Buscar nombre de artículo por ID en el dump SQL
+ */
+function handleLookupArticle(): void
+{
+    $id = (int)($_GET['id'] ?? 0);
+    if (!$id) {
+        echo json_encode(['ok' => false, 'error' => 'ID no proporcionado']);
+        return;
+    }
+
+    $sqlFile = PROJECT_ROOT . '/articulos (3).sql';
+    if (!file_exists($sqlFile)) {
+        echo json_encode(['ok' => false, 'error' => 'Archivo SQL no encontrado']);
+        return;
+    }
+
+    // Buscar el ID en el dump SQL
+    // Formato: (ID, 'codigo', num, num_proveedor, 'color', 'tamaño'|NULL, 'marca'|NULL, num, 'NOMBRE', ...)
+    $content = file_get_contents($sqlFile);
+    // Buscar línea que empieza con (ID, y extraer el campo nombre (9no campo)
+    $pattern = "/\($id,\s*'[^']*',\s*\d+,\s*\d+,\s*(?:'[^']*'|NULL),\s*(?:'[^']*'|NULL),\s*(?:'[^']*'|NULL),\s*\d+,\s*'([^']+)'/";
+    if (preg_match($pattern, $content, $m)) {
+        echo json_encode(['ok' => true, 'id' => $id, 'nombre' => $m[1]]);
+    } else {
+        echo json_encode(['ok' => false, 'error' => "Artículo $id no encontrado"]);
+    }
+}
+
+/**
  * Actualizar un sinónimo existente (cambiar clave, artículo o ambos)
  */
 function handleUpdateSynonym(): void
@@ -268,6 +300,7 @@ function handleUpdateSynonym(): void
     $entry = $data[$origKey];
     $entry['articulo_id'] = $artId;
     $entry['articulo_name'] = $artName;
+    $entry['origen'] = 'manual-web';
 
     if ($origKey !== $newKey) {
         unset($data[$origKey]);
