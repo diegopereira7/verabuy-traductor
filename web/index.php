@@ -169,6 +169,7 @@
                             <th>OK</th>
                             <th>Sin Match</th>
                             <th>Total USD</th>
+                            <th>Detalle</th>
                         </tr>
                     </thead>
                     <tbody></tbody>

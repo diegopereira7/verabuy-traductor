@@ -228,22 +228,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- History Tab ---
+    let historyData = [];
+
     async function loadHistory() {
         const loading = document.getElementById('historyLoading');
         loading.classList.remove('hidden');
 
         try {
-            // Use GET with action parameter via query string workaround
             const resp = await fetch('api.php?action=history', { method: 'POST' });
             const data = await resp.json();
-
             loading.classList.add('hidden');
-
             if (!data.ok) return;
+            historyData = data.history;
+            renderHistory();
+        } catch (err) {
+            loading.classList.add('hidden');
+        }
+    }
 
-            const tbody = document.querySelector('#historyTable tbody');
-            tbody.innerHTML = data.history.map(h => `
-                <tr class="${(h.sin_match || 0) > 0 ? 'row-sin-match' : ''}">
+    function renderHistory() {
+        const tbody = document.querySelector('#historyTable tbody');
+        tbody.innerHTML = historyData.map((h, i) => {
+            const hasPdf = !!(h.pdf);
+            const needsReview = (h.sin_match || 0) > 0;
+            const detailId = `hist-detail-${i}`;
+            return `
+                <tr class="${needsReview ? 'row-sin-match' : ''}" data-idx="${i}">
                     <td>${esc(h.fecha || '')}</td>
                     <td>${esc(h.invoice_key || '')}</td>
                     <td>${esc(h.provider || '')}</td>
@@ -252,12 +262,126 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${h.ok || 0}</td>
                     <td>${h.sin_match || 0}</td>
                     <td>$${num(h.total_usd || 0)}</td>
+                    <td>${hasPdf ? `<button class="btn btn-sm btn-secondary hist-expand" data-pdf="${esc(h.pdf)}" data-detail="${detailId}">Ver líneas</button>` : '-'}</td>
                 </tr>
-            `).join('');
-        } catch (err) {
-            loading.classList.add('hidden');
-        }
+                <tr id="${detailId}" class="batch-lines-row hidden">
+                    <td colspan="9">
+                        <div class="batch-lines-detail">
+                            <div class="hist-detail-loading"><div class="spinner"></div> Reprocesando...</div>
+                        </div>
+                    </td>
+                </tr>`;
+        }).join('');
     }
+
+    // Expandir historial: reprocesar PDF y mostrar líneas
+    document.querySelector('#historyTable tbody').addEventListener('click', async e => {
+        const expandBtn = e.target.closest('.hist-expand');
+        if (expandBtn) {
+            const detailId = expandBtn.dataset.detail;
+            const detailRow = document.getElementById(detailId);
+            if (!detailRow) return;
+
+            // Toggle
+            if (!detailRow.classList.contains('hidden') && detailRow.dataset.loaded) {
+                detailRow.classList.add('hidden');
+                expandBtn.textContent = 'Ver líneas';
+                return;
+            }
+
+            detailRow.classList.remove('hidden');
+            expandBtn.textContent = 'Ocultar';
+
+            // Si ya está cargado, no reprocesar
+            if (detailRow.dataset.loaded) return;
+
+            // Reprocesar el PDF
+            const pdf = expandBtn.dataset.pdf;
+            try {
+                const resp = await fetch('api.php?action=reprocess', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ pdf }),
+                });
+                const data = await resp.json();
+                detailRow.dataset.loaded = '1';
+
+                if (!data.ok) {
+                    detailRow.querySelector('.batch-lines-detail').innerHTML =
+                        `<p style="color:var(--danger)">Error: ${esc(data.error)}</p>`;
+                    return;
+                }
+
+                const lines = data.lines || [];
+                const needsReview = lines.some(l => l.match_status !== 'ok' && !l.row_type);
+                const providerId = data.header?.provider_id || 0;
+
+                detailRow.querySelector('.batch-lines-detail').innerHTML = `
+                    <table class="batch-lines-table">
+                        <thead><tr>
+                            <th>Descripción</th><th>Variedad</th><th>Talla</th>
+                            <th>Tallos</th><th>Total</th>
+                            <th>ID Artículo</th><th>Nombre Artículo</th>
+                            <th>Match</th>${needsReview ? '<th>Acción</th>' : ''}
+                        </tr></thead>
+                        <tbody>${lines.filter(l => !l.row_type).map(l => {
+                            const isBad = l.match_status !== 'ok';
+                            const key = `${providerId}|${l.species || ''}|${l.variety || ''}|${l.size || 0}|${l.stems_per_bunch || 0}|${l.grade || ''}`;
+                            return `<tr class="${isBad ? 'row-sin-match' : ''}" data-syn-key="${esc(key)}" data-pdf="${esc(pdf)}">
+                                <td title="${esc(l.raw || '')}">${esc((l.raw || '').substring(0, 50))}${(l.raw||'').length > 50 ? '...' : ''}</td>
+                                <td><strong>${esc(l.variety || '')}</strong></td>
+                                <td>${l.size || '-'}</td>
+                                <td>${l.stems || '-'}</td>
+                                <td>$${num(l.line_total || 0)}</td>
+                                <td>${l.articulo_id || '-'}</td>
+                                <td>${esc(l.articulo_name || '-')}</td>
+                                <td>${matchBadge(l.match_status || '', l.match_method || '')}</td>
+                                ${needsReview && isBad ? `<td>
+                                    <input type="number" class="edit-input batch-art-id" placeholder="ID" style="width:65px">
+                                    <button class="btn-icon batch-line-save" title="Guardar">&#10003;</button>
+                                </td>` : (needsReview ? '<td></td>' : '')}
+                            </tr>`;
+                        }).join('')}</tbody>
+                    </table>`;
+            } catch (err) {
+                detailRow.querySelector('.batch-lines-detail').innerHTML =
+                    `<p style="color:var(--danger)">Error de conexión</p>`;
+            }
+        }
+
+        // Guardar match (reutiliza la misma lógica que batch)
+        const saveBtn = e.target.closest('.batch-line-save');
+        if (saveBtn) {
+            const tr = saveBtn.closest('tr');
+            const input = tr.querySelector('.batch-art-id');
+            const artId = parseInt(input.value) || 0;
+            if (!artId) { alert('Introduce un ID de artículo'); return; }
+            const synKey = tr.dataset.synKey;
+
+            try {
+                const lookupResp = await fetch(`api.php?action=lookup_article&id=${artId}`);
+                const lookupData = await lookupResp.json();
+                if (!lookupData.ok) { alert(lookupData.error); return; }
+
+                const saveResp = await fetch('api.php?action=save_synonym', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ key: synKey, articulo_id: artId, articulo_name: lookupData.nombre }),
+                });
+                const saveData = await saveResp.json();
+                if (saveData.ok) {
+                    const cells = tr.querySelectorAll('td');
+                    cells[5].textContent = artId;
+                    cells[6].textContent = lookupData.nombre;
+                    cells[7].innerHTML = '<span class="badge badge-manual">manual-web</span>';
+                    tr.classList.remove('row-sin-match');
+                    cells[cells.length - 1].innerHTML = '<span style="color:green">&#10003;</span>';
+                } else {
+                    alert('Error: ' + saveData.error);
+                }
+            } catch (err) { alert('Error de conexión'); }
+        }
+    });
 
     // --- Synonyms Tab ---
     let allSynonyms = [];

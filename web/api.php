@@ -57,6 +57,9 @@ switch ($action) {
     case 'delete_synonym':
         handleDeleteSynonym();
         break;
+    case 'reprocess':
+        handleReprocess();
+        break;
     case 'batch_upload':
         handleBatchUpload();
         break;
@@ -390,6 +393,41 @@ function handleDeleteSynonym(): void
     rename($tmp, SYNONYMS_FILE);
 
     echo json_encode(['ok' => true, 'message' => 'Sinónimo eliminado']);
+}
+
+/**
+ * Reprocesar un PDF del historial y devolver las líneas
+ */
+function handleReprocess(): void
+{
+    $input = json_decode(file_get_contents('php://input'), true);
+    $pdfName = $input['pdf'] ?? '';
+
+    if (!$pdfName) {
+        echo json_encode(['ok' => false, 'error' => 'Nombre de PDF no proporcionado']);
+        return;
+    }
+
+    // Buscar el PDF en facturas/
+    $pdfPath = PROJECT_ROOT . '/facturas/' . $pdfName;
+    if (!file_exists($pdfPath)) {
+        echo json_encode(['ok' => false, 'error' => "PDF no encontrado: $pdfName"]);
+        return;
+    }
+
+    // Llamar a procesar_pdf.py
+    $cmd = '"' . PYTHON_BIN . '" '
+         . '"' . PROCESSOR_SCRIPT . '" '
+         . '"' . $pdfPath . '"'
+         . ' 2>&1';
+    $output = shell_exec($cmd);
+
+    if ($output === null) {
+        echo json_encode(['ok' => false, 'error' => 'Error al ejecutar el procesador Python']);
+        return;
+    }
+
+    echo $output;
 }
 
 /**
