@@ -556,6 +556,59 @@ tr.row-partial {
     margin-top: 16px;
 }
 
+/* Filas expandibles batch */
+.batch-expandable {
+    cursor: pointer;
+}
+.batch-expandable:hover td {
+    background-color: #f1f5f9;
+}
+.expand-arrow {
+    display: inline-block;
+    font-size: 10px;
+    color: var(--primary);
+    margin-right: 4px;
+    transition: transform 0.15s;
+}
+
+.batch-lines-row td {
+    padding: 0 !important;
+    background-color: #fafbfc;
+}
+.batch-lines-detail {
+    padding: 8px 16px 12px;
+    border-left: 3px solid var(--primary);
+    margin-left: 20px;
+}
+.batch-lines-table {
+    width: 100%;
+    font-size: 12px;
+    border-collapse: collapse;
+}
+.batch-lines-table th {
+    background-color: #e2e8f0;
+    padding: 4px 8px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+.batch-lines-table td {
+    padding: 4px 8px;
+    border-bottom: 1px solid #e2e8f0;
+}
+.batch-lines-table .row-sin-match td {
+    background-color: #fff5f5;
+}
+.batch-lines-table .batch-art-id {
+    padding: 2px 4px;
+    border: 1px solid var(--primary);
+    border-radius: 3px;
+    font-size: 12px;
+    background: #eff6ff;
+}
+
 /* === BTN SMALL === */
 
 .btn-sm {

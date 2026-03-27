@@ -810,10 +810,14 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 status = 'OK'; statusClass = 'badge badge-ok';
             }
-            return `
-                <tr class="${!r.ok ? 'row-sin-match' : r.sin_match > 0 ? 'row-partial' : ''}">
+            const hasLines = r.ok && r.lines && r.lines.length > 0;
+            const needsReview = r.ok && r.sin_match > 0;
+            const rowId = `batch-lines-${i}`;
+
+            let html = `
+                <tr class="${!r.ok ? 'row-sin-match' : r.sin_match > 0 ? 'row-partial' : ''} ${hasLines ? 'batch-expandable' : ''}" data-target="${rowId}">
                     <td>${i + 1}</td>
-                    <td>${esc(r.pdf)}</td>
+                    <td>${hasLines ? '<span class="expand-arrow">&#9654;</span> ' : ''}${esc(r.pdf)}</td>
                     <td>${esc(r.provider || '-')}</td>
                     <td>${esc(r.invoice || '-')}</td>
                     <td>${esc(r.date || '-')}</td>
@@ -822,10 +826,106 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${r.sin_match || 0}</td>
                     <td>$${num(r.total_usd || 0)}</td>
                     <td><span class="${statusClass}">${status}</span>${!r.ok ? `<br><small>${esc(r.error)}</small>` : ''}</td>
-                </tr>
-            `;
+                </tr>`;
+
+            // Fila expandible con líneas de detalle
+            if (hasLines) {
+                html += `<tr id="${rowId}" class="batch-lines-row hidden">
+                    <td colspan="10">
+                        <div class="batch-lines-detail">
+                            <table class="batch-lines-table">
+                                <thead><tr>
+                                    <th>Descripción</th><th>Variedad</th><th>Talla</th>
+                                    <th>Tallos</th><th>Total</th>
+                                    <th>ID Artículo</th><th>Nombre Artículo</th>
+                                    <th>Match</th>${needsReview ? '<th>Acción</th>' : ''}
+                                </tr></thead>
+                                <tbody>${r.lines.map(l => _batchLineRow(l, r, needsReview)).join('')}</tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>`;
+            }
+            return html;
         }).join('');
     }
+
+    function _batchLineRow(l, invoiceResult, showActions) {
+        const isBad = l.match_status !== 'ok';
+        const cls = isBad ? 'row-sin-match' : '';
+        const key = `${invoiceResult.provider_id || 0}|${l.species || ''}|${l.variety || ''}|${l.size || 0}|${l.stems_per_bunch || 0}|${l.grade || ''}`;
+        return `
+            <tr class="${cls}" data-syn-key="${esc(key)}" data-pdf="${esc(invoiceResult.pdf)}">
+                <td title="${esc(l.raw || '')}">${esc((l.raw || '').substring(0, 50))}${(l.raw || '').length > 50 ? '...' : ''}</td>
+                <td><strong>${esc(l.variety || '')}</strong></td>
+                <td>${l.size || '-'}</td>
+                <td>${l.stems || '-'}</td>
+                <td>$${num(l.line_total || 0)}</td>
+                <td>${l.articulo_id || '-'}</td>
+                <td>${esc(l.articulo_name || '-')}</td>
+                <td>${matchBadge(l.match_status || '', l.match_method || '')}</td>
+                ${showActions && isBad ? `<td>
+                    <input type="number" class="edit-input batch-art-id" placeholder="ID" style="width:65px">
+                    <button class="btn-icon batch-line-save" title="Guardar">&#10003;</button>
+                </td>` : (showActions ? '<td></td>' : '')}
+            </tr>`;
+    }
+
+    // Expandir/colapsar líneas de factura
+    document.querySelector('#batchTable tbody').addEventListener('click', e => {
+        const expandRow = e.target.closest('.batch-expandable');
+        if (expandRow && !e.target.closest('.batch-line-save') && !e.target.closest('input')) {
+            const targetId = expandRow.dataset.target;
+            const linesRow = document.getElementById(targetId);
+            if (linesRow) {
+                linesRow.classList.toggle('hidden');
+                const arrow = expandRow.querySelector('.expand-arrow');
+                if (arrow) arrow.innerHTML = linesRow.classList.contains('hidden') ? '&#9654;' : '&#9660;';
+            }
+        }
+
+        // Guardar match desde línea de batch
+        const saveBtn = e.target.closest('.batch-line-save');
+        if (saveBtn) {
+            const tr = saveBtn.closest('tr');
+            const input = tr.querySelector('.batch-art-id');
+            const artId = parseInt(input.value) || 0;
+            if (!artId) { alert('Introduce un ID de artículo'); return; }
+            const synKey = tr.dataset.synKey;
+            const pdf = tr.dataset.pdf;
+
+            // Lookup nombre del artículo y guardar sinónimo
+            fetch(`api.php?action=lookup_article&id=${artId}`)
+                .then(r => r.json())
+                .then(data => {
+                    if (!data.ok) { alert(data.error); return; }
+                    return fetch('api.php?action=save_synonym', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ key: synKey, articulo_id: artId, articulo_name: data.nombre }),
+                    });
+                })
+                .then(r => r ? r.json() : null)
+                .then(data => {
+                    if (data && data.ok) {
+                        // Actualizar visualmente
+                        const cells = tr.querySelectorAll('td');
+                        cells[5].textContent = artId;
+                        cells[6].textContent = '';
+                        fetch(`api.php?action=lookup_article&id=${artId}`)
+                            .then(r => r.json())
+                            .then(d => { if (d.ok) cells[6].textContent = d.nombre; });
+                        cells[7].innerHTML = '<span class="badge badge-manual">manual-web</span>';
+                        tr.classList.remove('row-sin-match');
+                        const actionCell = cells[cells.length - 1];
+                        actionCell.innerHTML = '<span style="color:green">&#10003;</span>';
+                    } else if (data) {
+                        alert('Error: ' + data.error);
+                    }
+                })
+                .catch(err => alert('Error de conexión'));
+        }
+    });
 
     // Filtros batch
     function batchFilter() {
