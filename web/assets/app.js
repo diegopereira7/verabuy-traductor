@@ -159,11 +159,13 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>` : ''}
         `;
 
+        // Guardar provider_id para edición de líneas
+        window._currentProviderId = data.header.provider_id || 0;
+
         const tbody = document.querySelector('#linesTable tbody');
         let rowNum = 0;
         tbody.innerHTML = data.lines.map((l) => {
             if (l.row_type === 'mixed_parent') {
-                // Fila padre de caja mixta
                 rowNum++;
                 const labelBadge = l.label ? `<span class="badge badge-label">${esc(l.label)}</span>` : '';
                 const parentRow = `
@@ -173,17 +175,17 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="mixed-desc">${esc(l.raw.substring(0, 55))}${l.raw.length > 55 ? '...' : ''}</span></td>
                         <td>${esc(l.species)}</td>
                         <td><strong>${l.num_varieties} variedades</strong></td>
-                        <td>-</td>
-                        <td>-</td>
+                        <td>-</td><td>-</td>
                         <td>${l.stems || '-'}</td>
                         <td>-</td>
                         <td>$${num(l.line_total)}</td>
-                        <td>-</td>
-                        <td>-</td>
+                        <td>-</td><td>-</td><td></td>
                     </tr>`;
-                // Filas hijas
-                const childRows = l.children.map(h => `
-                    <tr class="row-mixed-child ${h.match_status === 'sin_match' ? 'row-sin-match' : ''}">
+                const childRows = l.children.map(h => {
+                    const isBad = h.match_status !== 'ok';
+                    const synKey = `${window._currentProviderId}|${h.species||''}|${h.variety||''}|${h.size||0}|${h.stems_per_bunch||0}|${h.grade||''}`;
+                    return `
+                    <tr class="row-mixed-child ${isBad ? 'row-sin-match' : ''}" data-syn-key="${esc(synKey)}">
                         <td></td>
                         <td title="${esc(h.raw)}">↳ ${esc(h.raw.substring(0, 55))}${h.raw.length > 55 ? '...' : ''}</td>
                         <td>${esc(h.species)}</td>
@@ -195,13 +197,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         <td>$${num(h.line_total)}</td>
                         <td>${h.articulo_id ? `<strong>${h.articulo_id}</strong> ${esc(h.articulo_name)}` : '<em>-</em>'}</td>
                         <td>${matchBadge(h.match_status, h.match_method)}</td>
-                    </tr>`).join('');
+                        <td>${isBad ? `<input type="number" class="edit-input batch-art-id" placeholder="ID" style="width:65px"><button class="btn-icon batch-line-save" title="Guardar">&#10003;</button>` : ''}</td>
+                    </tr>`;
+                }).join('');
                 return parentRow + childRows;
             }
             // Línea normal
             rowNum++;
+            const isBad = l.match_status !== 'ok' && l.match_status !== 'sin_parser';
+            const synKey = `${window._currentProviderId}|${l.species||''}|${l.variety||''}|${l.size||0}|${l.stems_per_bunch||0}|${l.grade||''}`;
             return `
-            <tr class="${l.match_status === 'sin_parser' ? 'row-sin-parser' : l.match_status !== 'ok' ? 'row-sin-match' : ''}">
+            <tr class="${l.match_status === 'sin_parser' ? 'row-sin-parser' : isBad ? 'row-sin-match' : ''}" data-syn-key="${esc(synKey)}">
                 <td>${rowNum}</td>
                 <td title="${esc(l.raw)}">${esc(l.raw.substring(0, 60))}${l.raw.length > 60 ? '...' : ''}</td>
                 <td>${esc(l.species)}</td>
@@ -213,9 +219,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>$${num(l.line_total)}</td>
                 <td>${l.articulo_id ? `<strong>${l.articulo_id}</strong> ${esc(l.articulo_name)}` : '<em>-</em>'}</td>
                 <td>${matchBadge(l.match_status, l.match_method)}</td>
+                <td>${isBad ? `<input type="number" class="edit-input batch-art-id" placeholder="ID" style="width:65px"><button class="btn-icon batch-line-save" title="Guardar">&#10003;</button>` : ''}</td>
             </tr>`;
         }).join('');
     }
+
+    // Editar línea sin match en la tabla de factura individual
+    document.querySelector('#linesTable tbody').addEventListener('click', async e => {
+        const saveBtn = e.target.closest('.batch-line-save');
+        if (!saveBtn) return;
+        const tr = saveBtn.closest('tr');
+        const input = tr.querySelector('.batch-art-id');
+        const artId = parseInt(input.value) || 0;
+        if (!artId) { alert('Introduce un ID de artículo'); return; }
+        const synKey = tr.dataset.synKey;
+        try {
+            const lookupResp = await fetch(`api.php?action=lookup_article&id=${artId}`);
+            const lookupData = await lookupResp.json();
+            if (!lookupData.ok) { alert(lookupData.error); return; }
+            const saveResp = await fetch('api.php?action=save_synonym', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ key: synKey, articulo_id: artId, articulo_name: lookupData.nombre }),
+            });
+            const saveData = await saveResp.json();
+            if (saveData.ok) {
+                const cells = tr.querySelectorAll('td');
+                // Artículo VeraBuy (penúltima-2)
+                cells[cells.length - 3].innerHTML = `<strong>${artId}</strong> ${esc(lookupData.nombre)}`;
+                // Match badge
+                cells[cells.length - 2].innerHTML = '<span class="badge badge-manual">manual-web</span>';
+                // Acción
+                cells[cells.length - 1].innerHTML = '<span style="color:green">&#10003;</span>';
+                tr.classList.remove('row-sin-match');
+            } else {
+                alert('Error: ' + saveData.error);
+            }
+        } catch (err) { alert('Error de conexión'); }
+    });
 
     function matchBadge(status, method) {
         if (status === 'ok') {

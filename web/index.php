@@ -56,6 +56,7 @@
                                 <th>Total</th>
                                 <th>Artículo VeraBuy</th>
                                 <th>Match</th>
+                                <th>Acción</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
