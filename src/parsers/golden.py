@@ -15,10 +15,13 @@ class GoldenParser:
     """
     _LABELS = {'PUERTO','ASTURIAS','BARRAL','PYTI','DANI','GIJON','CRISTIAN'}
     _COLOR_MAP = {
-        'WH':'BLANCO','WHITE':'BLANCO',
-        'RD':'ROJO','RED':'ROJO',
-        'PK':'ROSA','PINK':'ROSA',
-        'YW':'AMARILLO','YELLOW':'AMARILLO',
+        'WH':'BLANCO','WHITE':'BLANCO','BLANCO':'BLANCO',
+        'RD':'ROJO','RED':'ROJO','ROJO':'ROJO',
+        'PK':'ROSA','PINK':'ROSA','ROSA':'ROSA',
+        'YW':'AMARILLO','YELLOW':'AMARILLO','AMARILLO':'AMARILLO',
+        'GR':'VERDE','GREEN':'VERDE','VERDE':'VERDE',
+        'OR':'NARANJA','ORANGE':'NARANJA','NARANJA':'NARANJA',
+        'PU':'MORADO','PURPLE':'MORADO','MORADO':'MORADO',
         'BIC':'BICOLOR','BICOL':'BICOLOR','BICOLORES':'BICOLOR','BICOLOR':'BICOLOR',
         'NOV':'NOVEDADES','NOVEDADES':'NOVEDADES',
     }
@@ -46,8 +49,10 @@ class GoldenParser:
         return label, colors
 
     def _parse_invoice_line(self, ln:str):
-        """Parsea una linea de factura anclando en el campo Item Description fijo."""
-        desc_m = re.search(r'(CONSUMER\s+BUNCH\s+CARNATION\s+FANCY|MINICARNS\s+ASSORTED)', ln, re.I)
+        """Parsea una linea de factura anclando en el campo Item Description fijo.
+        FIX: también captura SPIDER ASSORTED/WHITE/etc (crisantemos).
+        """
+        desc_m = re.search(r'(CONSUMER\s+BUNCH\s+CARNATION\s+FANCY|MINICARNS\s+ASSORTED|SPIDER\s+\w+)', ln, re.I)
         if not desc_m: return None
         item_desc = desc_m.group(1).upper()
         before = ln[:desc_m.start()].strip()
@@ -85,11 +90,28 @@ class GoldenParser:
             parsed=self._parse_invoice_line(ln)
             if not parsed: continue
             is_mini='MINICARNS' in parsed['item_desc']
-            sp='CARNATIONS'
-            spb=10 if is_mini else 20   # 10U miniclavel, 20U clavel fancy
+            is_spider='SPIDER' in parsed['item_desc']
+            if is_spider:
+                sp='CHRYSANTHEMUM'
+                spb=10
+            else:
+                sp='CARNATIONS'
+                spb=10 if is_mini else 20   # 10U miniclavel, 20U clavel fancy
             label, colors = self._parse_grade_color(parsed['grade_color'])
             stems_total=parsed['stems']; total=parsed['total']; price=parsed['price_per_stem']
             btype=parsed['btype']
+
+            # FIX: para SPIDER, usar tipo + color del grade_color como variedad
+            if is_spider:
+                spider_desc = parsed['item_desc'].replace('SPIDER','').strip()
+                spider_color = colors[0] if colors[0] != 'MIXTO' else spider_desc.upper()
+                var_name = f"SP SPIDER {spider_color}"
+                il=InvoiceLine(raw_description=ln,species=sp,variety=var_name,grade='',origin='COL',
+                               size=0,stems_per_bunch=spb,stems=stems_total,price_per_stem=price,
+                               line_total=total,box_type=btype,label=label,provider_key='golden')
+                lines.append(il)
+                continue
+
             n=len(colors)
             if n<=1:
                 il=InvoiceLine(raw_description=ln,species=sp,variety=colors[0],grade='FANCY',origin='COL',

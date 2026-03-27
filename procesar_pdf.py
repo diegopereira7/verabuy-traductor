@@ -53,6 +53,9 @@ def run(pdf_path: str) -> dict:
     if not SQL_FILE.exists():
         return {'ok': False, 'error': f'No se encuentra la BD de artículos: {SQL_FILE}'}
 
+    # Inyectar ruta al PDF para parsers que necesiten acceso directo (ej: tablas)
+    pdata['pdf_path'] = pdf_path
+
     header, lines = parser.parse(pdata['text'], pdata)
     return _process_with_lines(pdf_path, pdata, header, lines)
 

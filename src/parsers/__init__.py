@@ -27,6 +27,7 @@ from src.parsers.otros import (
     TessaParser,
     UmaParser,
     ValleVerdeParser,
+    VerdesEstacionParser,
 )
 
 FORMAT_PARSERS = {
@@ -54,6 +55,7 @@ FORMAT_PARSERS = {
     'tessa'      : TessaParser(),
     'uma'        : UmaParser(),
     'valleverde' : ValleVerdeParser(),
+    'verdesestacion': VerdesEstacionParser(),
     'sayonara'   : SayonaraParser(),
     'life'       : LifeParser(),
 }

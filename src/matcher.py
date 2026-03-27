@@ -168,6 +168,9 @@ def rescue_unparsed_lines(text: str, parsed_lines: list[InvoiceLine]) -> list[In
         Lista de InvoiceLine con match_status='sin_parser'.
     """
     parsed_raws = {l.raw_description.strip() for l in parsed_lines}
+    # Variedades ya parseadas para evitar duplicados cuando raw_description no coincide
+    # (ej: parser de tabla genera raw diferente al texto plano)
+    parsed_varieties = {l.variety.strip().upper() for l in parsed_lines if l.variety.strip()}
     rescued = []
     for ln in text.split('\n'):
         ln_s = ln.strip()
@@ -176,6 +179,10 @@ def rescue_unparsed_lines(text: str, parsed_lines: list[InvoiceLine]) -> list[In
         if ln_s in parsed_raws:
             continue
         if any(pr and pr in ln_s for pr in parsed_raws):
+            continue
+        # Si la línea contiene una variedad ya parseada, no rescatar
+        ln_upper = ln_s.upper()
+        if parsed_varieties and any(v in ln_upper for v in parsed_varieties if len(v) >= 4):
             continue
         if not _PRODUCT_LINE_RE.search(ln_s):
             continue

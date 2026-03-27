@@ -114,7 +114,7 @@ PROVIDERS = {
     'tessa'      : {'id': 13001, 'name': 'Tessa Corp',             'fmt': 'tessa',        'patterns': ['TESSA CORP', 'tessacorporation']},
     'uma'        : {'id': 440,   'name': 'Uma Flowers',            'fmt': 'uma',          'patterns': ['UMAFLOWERS', 'umaflowers']},
     'valleverde' : {'id': 2219,  'name': 'Valle Verde Farms',      'fmt': 'valleverde',   'patterns': ['VALLEVERDE FARMS', 'VALLE VERDE FARMS', 'valleverderoses', '1792027691001']},
-    'verdesestacion': {'id': 11748, 'name': 'Verdes La Estacion',  'fmt': 'aluna',        'patterns': ['VERDES LA ESTACION', '900.408.822']},
+    'verdesestacion': {'id': 11748, 'name': 'Verdes La Estacion',  'fmt': 'verdesestacion', 'patterns': ['VERDES LA ESTACION', '900.408.822']},
     'sayonara'   : {'id': 2166,  'name': 'Sayonara',               'fmt': 'sayonara',     'patterns': ['CULTIVOS SAYONARA', 'SAYONARA']},
     'life'       : {'id': 4471,  'name': 'Life Flowers',           'fmt': 'life',         'patterns': ['LIFEFLOWERS', 'lifeflowersecuador']},
     'latina'     : {'id': 12990, 'name': 'Floricola Latinafarms',  'fmt': 'alegria',      'patterns': ['FLORICOLA LATINAFARMS', 'LATINA']},
