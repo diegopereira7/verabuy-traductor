@@ -312,6 +312,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
+                // Actualizar conteos de la fila padre con datos reales del reprocesado
+                const parentRow = detailRow.previousElementSibling;
+                if (parentRow && data.stats) {
+                    const cells = parentRow.querySelectorAll('td');
+                    cells[4].textContent = data.stats.total_lineas || 0;
+                    cells[5].textContent = data.stats.ok || 0;
+                    cells[6].textContent = data.stats.sin_match || 0;
+                    if (data.stats.sin_match > 0) {
+                        parentRow.classList.add('row-sin-match');
+                    } else {
+                        parentRow.classList.remove('row-sin-match');
+                    }
+                }
+
                 const lines = data.lines || [];
                 const needsReview = lines.some(l => l.match_status !== 'ok' && !l.row_type);
                 const providerId = data.header?.provider_id || 0;
