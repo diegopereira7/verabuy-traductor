@@ -10,12 +10,10 @@ class SayonaraParser:
     C.I. Cultivos Sayonara SAS -- Crisantemos (id_proveedor=2166).
 
     Estructura de la factura:
-    - Líneas PRODUCTO: tienen HB/QB + bunches + stems + precio (son facturables)
-      Ej: "Pom Csh Europa White Bonita CO-... 5 HB 200 1,000 0.950 190.00"
-      Ej: "Pom Csh Europa Custom Pack CO-... MERCO 2 HB 80 400 0.950 76.00"
-    - Líneas DETALLE: "Exportacion {variedad}" — contenido de Custom Pack/Mix
-      Solo tienen tallos + precio unitario, NO se facturan aparte
-    - Línea TOTAL: "Pom Csh Europa 3,400 646.00" — resumen, ignorar
+    - Producto individual: "Pom Csh Europa White Bonita CO-... 5 HB 200 1,000 0.950 190.00"
+    - Custom Pack (caja mixta): "Pom Csh Europa Custom Pack CO-... MERCO 2 HB 80 400 0.950 76.00"
+      Seguido de líneas detalle: "Pom Csh Europa Exportacion Yellow Bernal CO-... 120 0.19"
+      Cada línea detalle es una variedad con sus tallos — se divide el total del pack.
     """
 
     _TYPE_MAP = [
@@ -36,142 +34,158 @@ class SayonaraParser:
         ('Salmon', 'SALMON'), ('Blue', 'AZUL'), ('Bicolor', 'BICOLOR'), ('Mix', 'MIXTO'),
     ]
 
-    # Regex: línea facturable = tiene N HB/QB + stems + precio
     _PACK_RE = re.compile(r'(\d+)\s+(HB|QB)\s+(\d+)\s+([\d,]+)\s+([\d.]+)\s+([\d,.]+)')
-
-    # Líneas de detalle (Exportacion) — ignorar como línea facturable
-    _DETAIL_RE = re.compile(r'Exportacion\b', re.I)
-
-    # Línea total (solo tipo + número grande) — ignorar
+    _DETAIL_RE = re.compile(r'Exportacion\s+(.+?)\s+CO-\d+.*?\s+(\d+)\s+([\d.]+)\s*$', re.I)
     _TOTAL_RE = re.compile(r'^Pom\s+\w+\s+Europa\s+[\d,]+\s+[\d,.]+\s*$', re.I)
 
     def _detect_type(self, line: str):
-        """Detecta el tipo de producto en la línea. Retorna (prefix, tipo_vb, bunch) o None."""
         for prefix, tipo, bunch in self._TYPE_MAP:
             if prefix.lower() in line.lower():
                 return prefix, tipo, bunch
         return None
 
-    def _extract_variety(self, line: str, prefix: str) -> tuple[str, str]:
-        """Extrae variedad y color de la parte después del prefijo de tipo.
+    def _translate_color(self, name: str) -> str:
+        """Traduce color inglés → español."""
+        for en, es in self._COLOR_MAP:
+            if en.lower() in name.lower():
+                return es
+        return name.upper()
 
-        Returns:
-            (variety_part, color_es) — ej: ('BONITA', 'BLANCO'), ('', 'MIXTO')
+    def _extract_variety_from_name(self, name: str) -> tuple[str, str]:
+        """Extrae (variedad, color_es) de un nombre como 'Yellow Bernal' o 'White Bonita WH'.
+
+        Para Sayonara, la variedad es el nombre completo (ej: BERNAL, LAMBRUSCO, VINTAGE CANDID)
+        y el color es la primera palabra si es un color conocido (Yellow→AMARILLO, Pink→ROSA).
+        Si no empieza con color (ej: 'Vintage Candid'), la variedad es todo y no hay color separado.
         """
-        # Extraer texto entre el prefijo del tipo y CO-
+        name = re.sub(r'\s+WH\s*$', '', name, flags=re.I).strip()
+        # Buscar color al inicio
+        for en, es in self._COLOR_MAP:
+            if name.lower().startswith(en.lower()):
+                rest = name[len(en):].strip().upper()
+                return rest, es
+        # Sin color reconocido — todo es variedad
+        return name.upper(), ''
+
+    def _extract_label(self, line: str) -> str:
+        m = re.search(r'CO-\d+\s+([A-ZÀ-Úa-zà-ú][A-ZÀ-Úa-zà-ú\s]{1,}?)\s+\d+\s+(?:HB|QB)', line, re.I)
+        if m:
+            label = m.group(1).strip().upper()
+            if label and label not in ('CO', 'COLOMBIA'):
+                return label
+        return ''
+
+    def _extract_variety_from_pack(self, line: str, prefix: str) -> tuple[str, str]:
+        """Extrae variedad de una línea PACK (no Custom Pack/Mix)."""
         idx = line.lower().find(prefix.lower())
         if idx < 0:
             return '', 'MIXTO'
-
         rest = line[idx + len(prefix):].strip()
-        # Quitar "Europa"
         rest = re.sub(r'\bEuropa\b', '', rest, flags=re.I).strip()
-
-        # Custom Pack / Mix → MIXTO sin variedad específica
         if re.match(r'Custom\s+Pack|Mix\b', rest, re.I):
             return '', 'MIXTO'
-
-        # Buscar color conocido
         color_es = 'MIXTO'
         variety = ''
         for en, es in self._COLOR_MAP:
             m = re.search(re.escape(en), rest, re.I)
             if m:
                 color_es = es
-                # Variedad es lo que viene después del color hasta CO- o dígitos
                 after = rest[m.end():].strip()
                 var_m = re.match(r'([A-Za-z][A-Za-z\s.\-/]*?)(?=\s+CO-|\s+\d|\s*$)', after)
                 if var_m:
                     variety = var_m.group(1).strip().upper()
                 break
-
         return variety, color_es
-
-    def _extract_label(self, line: str) -> str:
-        """Extrae el label/destino de un Custom Pack (ej: MERCO, PATIÑO, CORUÑA)."""
-        # Después de CO-XXXXXXXXXX viene el label antes de N HB
-        m = re.search(r'CO-\d+\s+([A-ZÀ-Ú][A-ZÀ-Ú\s]{2,}?)\s+\d+\s+(?:HB|QB)', line, re.I)
-        if m:
-            label = m.group(1).strip()
-            # Filtrar falsos positivos
-            if label and label not in ('CO', 'COLOMBIA'):
-                return label
-        return ''
 
     def parse(self, text: str, pdata: dict):
         h = InvoiceHeader()
-        h.provider_key = pdata['key']
-        h.provider_id = pdata['id']
-        h.provider_name = pdata['name']
-
-        m = re.search(r'No\.\s+(\d+)', text, re.I)
-        h.invoice_number = m.group(1) if m else ''
-        m = re.search(r'Invoice\s+Date\s+([\w\-/]+)', text, re.I)
-        h.date = m.group(1) if m else ''
-        m = re.search(r'Master\s+AWB\s+([\d\-]+)', text, re.I)
-        h.awb = re.sub(r'\s+', '', m.group(1)) if m else ''
-        m = re.search(r'House\s+AWB\s+([\w\-]+)', text, re.I)
-        h.hawb = m.group(1) if m else ''
+        h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
+        m = re.search(r'No\.\s+(\d+)', text); h.invoice_number = m.group(1) if m else ''
+        m = re.search(r'Invoice\s+Date\s+([\w\-/]+)', text, re.I); h.date = m.group(1) if m else ''
+        m = re.search(r'Master\s+AWB\s+([\d\-]+)', text, re.I); h.awb = re.sub(r'\s+', '', m.group(1)) if m else ''
+        m = re.search(r'House\s+AWB\s+([\w\-]+)', text, re.I); h.hawb = m.group(1) if m else ''
         try:
             m = re.search(r'(?:TOTAL|Total\s+USD)[:\s]*([\d,]+\.\d+)', text, re.I)
             h.total = float(m.group(1).replace(',', '')) if m else 0.0
         except Exception:
             h.total = 0.0
 
-        lines = []
-        for ln in text.split('\n'):
-            ln = ln.strip()
-            if not ln:
-                continue
+        # Fase 1: clasificar líneas en PACK y DETAIL
+        raw_lines = [ln.strip() for ln in text.split('\n') if ln.strip()]
+        packs = []      # lista de {line, tipo, prefix, bunch, stems, price, total, label, is_mix, details:[]}
+        current_pack = None
 
-            # Ignorar líneas de detalle (Exportacion) — son sub-líneas de packs
-            if self._DETAIL_RE.search(ln):
-                continue
-
-            # Ignorar línea total
+        for ln in raw_lines:
             if self._TOTAL_RE.match(ln):
                 continue
 
-            # Detectar tipo de producto
             detected = self._detect_type(ln)
             if not detected:
                 continue
 
             prefix, tipo, bunch = detected
-
-            # Solo procesar líneas facturables (con HB/QB + stems + precio)
             pack_m = self._PACK_RE.search(ln)
-            if not pack_m:
-                continue
+            detail_m = self._DETAIL_RE.search(ln)
 
-            boxes = int(pack_m.group(1))
-            btype = pack_m.group(2).upper()
-            spb = int(pack_m.group(3))
-            stems = int(pack_m.group(4).replace(',', ''))
-            price = float(pack_m.group(5))
-            total = float(pack_m.group(6).replace(',', ''))
+            if pack_m:
+                # Línea PACK (facturable)
+                is_mix = bool(re.search(r'Custom\s+Pack|Mix\b', ln, re.I))
+                current_pack = {
+                    'line': ln, 'tipo': tipo, 'prefix': prefix, 'bunch': bunch,
+                    'boxes': int(pack_m.group(1)),
+                    'btype': pack_m.group(2).upper(),
+                    'spb': int(pack_m.group(3)),
+                    'stems': int(pack_m.group(4).replace(',', '')),
+                    'price': float(pack_m.group(5)),
+                    'total': float(pack_m.group(6).replace(',', '')),
+                    'label': self._extract_label(ln),
+                    'is_mix': is_mix,
+                    'details': [],
+                }
+                packs.append(current_pack)
+            elif detail_m and current_pack and current_pack['is_mix']:
+                # Línea detalle de Custom Pack
+                current_pack['details'].append({
+                    'name': detail_m.group(1).strip(),
+                    'stems': int(detail_m.group(2)),
+                    'price_unit': float(detail_m.group(3)),
+                    'raw': ln,
+                })
 
-            variety, color_es = self._extract_variety(ln, prefix)
-            label = self._extract_label(ln)
-
-            var_stored = f"{tipo} {variety} {color_es}".replace('  ', ' ').strip()
-
-            il = InvoiceLine(
-                raw_description=ln,
-                species='CHRYSANTHEMUM',
-                variety=var_stored,
-                grade='',
-                origin='COL',
-                size=70,
-                stems_per_bunch=bunch,
-                bunches=boxes,
-                stems=stems,
-                price_per_stem=price,
-                line_total=total,
-                label=label,
-                box_type=btype,
-                provider_key='sayonara',
-            )
-            lines.append(il)
+        # Fase 2: generar InvoiceLines
+        lines = []
+        for pack in packs:
+            if not pack['is_mix'] or not pack['details']:
+                # Producto individual o mix sin detalle → una línea
+                variety, color = self._extract_variety_from_pack(pack['line'], pack['prefix'])
+                var_stored = f"{pack['tipo']} {variety} {color}".replace('  ', ' ').strip()
+                lines.append(InvoiceLine(
+                    raw_description=pack['line'], species='CHRYSANTHEMUM',
+                    variety=var_stored, grade='', origin='COL', size=70,
+                    stems_per_bunch=pack['bunch'], bunches=pack['boxes'],
+                    stems=pack['stems'], price_per_stem=pack['price'],
+                    line_total=pack['total'], label=pack['label'],
+                    box_type=pack['btype'], provider_key='sayonara',
+                ))
+            else:
+                # Caja mixta con detalle → una línea por variedad
+                total_detail_stems = sum(d['stems'] for d in pack['details'])
+                for d in pack['details']:
+                    variety, color = self._extract_variety_from_name(d['name'])
+                    var_stored = f"{pack['tipo']} {variety} {color}".replace('  ', ' ').strip()
+                    # Proporción de tallos y precio
+                    if total_detail_stems > 0:
+                        ratio = d['stems'] / total_detail_stems
+                        line_total = round(pack['total'] * ratio, 2)
+                    else:
+                        line_total = round(pack['total'] / len(pack['details']), 2)
+                    lines.append(InvoiceLine(
+                        raw_description=d['raw'], species='CHRYSANTHEMUM',
+                        variety=var_stored, grade='', origin='COL', size=70,
+                        stems_per_bunch=pack['bunch'],
+                        stems=d['stems'], price_per_stem=pack['price'],
+                        line_total=line_total, label=pack['label'],
+                        box_type='MIX', provider_key='sayonara',
+                    ))
 
         return h, lines
