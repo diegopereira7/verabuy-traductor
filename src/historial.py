@@ -1,4 +1,4 @@
-"""Gestión del historial de facturas procesadas (historial_universal.json)."""
+"""Gestión del historial de facturas procesadas (JSON + MySQL dual-write)."""
 from __future__ import annotations
 
 import json
@@ -10,9 +10,14 @@ from src.config import HIST_FILE, FILE_ENCODING
 
 logger = logging.getLogger(__name__)
 
+try:
+    from src.db import get_connection, MYSQL_AVAILABLE
+except Exception:
+    MYSQL_AVAILABLE = False
+
 
 class History:
-    """Registro persistente de facturas procesadas."""
+    """Registro persistente de facturas procesadas. Escribe a JSON + MySQL."""
 
     def __init__(self, fp: str | Path = HIST_FILE):
         self.fp = Path(fp)
@@ -23,19 +28,37 @@ class History:
             logger.debug("Historial cargado: %d entradas desde %s", len(self.entries), self.fp)
 
     def save(self) -> None:
-        """Persiste el historial a disco."""
+        """Persiste el historial a JSON."""
         with open(self.fp, 'w', encoding=FILE_ENCODING) as f:
             json.dump(self.entries, f, indent=2, ensure_ascii=False)
 
     def add(self, inv: str, pdf: str, provider: str, total: float,
             n: int, ok: int, fail: int) -> None:
         """Registra una factura procesada."""
+        fecha = f"{datetime.now():%Y-%m-%d %H:%M}"
         self.entries[inv] = {
             'pdf': pdf, 'provider': provider, 'total_usd': total,
             'lineas': n, 'ok': ok, 'sin_match': fail,
-            'fecha': f"{datetime.now():%Y-%m-%d %H:%M}",
+            'fecha': fecha,
         }
         self.save()
+        # Sync a MySQL
+        if MYSQL_AVAILABLE:
+            try:
+                conn = get_connection()
+                cur = conn.cursor()
+                cur.execute("""
+                    INSERT INTO historial (invoice_key, pdf, provider, total_usd,
+                        lineas, ok, sin_match, fecha)
+                    VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
+                    ON DUPLICATE KEY UPDATE
+                        pdf=VALUES(pdf), total_usd=VALUES(total_usd),
+                        lineas=VALUES(lineas), ok=VALUES(ok), sin_match=VALUES(sin_match)
+                """, (inv, pdf, provider, total, n, ok, fail, fecha + ':00'))
+                conn.commit()
+                conn.close()
+            except Exception as e:
+                logger.debug("MySQL historial sync falló: %s", e)
 
     def was_processed(self, inv: str) -> bool:
         """Comprueba si una factura ya fue procesada."""

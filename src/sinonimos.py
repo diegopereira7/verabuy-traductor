@@ -1,4 +1,4 @@
-"""Gestión del diccionario de sinónimos (sinonimos_universal.json)."""
+"""Gestión del diccionario de sinónimos (JSON + MySQL dual-write)."""
 from __future__ import annotations
 
 import json
@@ -11,9 +11,15 @@ from src.models import InvoiceLine
 
 logger = logging.getLogger(__name__)
 
+# MySQL opcional
+try:
+    from src.db import get_connection, MYSQL_AVAILABLE
+except Exception:
+    MYSQL_AVAILABLE = False
+
 
 class SynonymStore:
-    """Almacén persistente de sinónimos proveedor→artículo VeraBuy."""
+    """Almacén persistente de sinónimos. Escribe a JSON + MySQL (si disponible)."""
 
     def __init__(self, fp: str | Path = SYNS_FILE):
         self.fp = Path(fp)
@@ -24,9 +30,33 @@ class SynonymStore:
             logger.debug("Sinónimos cargados: %d desde %s", len(self.syns), self.fp)
 
     def save(self) -> None:
-        """Persiste los sinónimos a disco."""
+        """Persiste los sinónimos a JSON."""
         with open(self.fp, 'w', encoding=FILE_ENCODING) as f:
             json.dump(self.syns, f, indent=2, ensure_ascii=False)
+
+    def _sync_to_mysql(self, key: str, entry: dict) -> None:
+        """Sincroniza una entrada a MySQL (best-effort, no falla si MySQL caído)."""
+        if not MYSQL_AVAILABLE:
+            return
+        try:
+            conn = get_connection()
+            cur = conn.cursor()
+            cur.execute("""
+                INSERT INTO sinonimos (clave, articulo_id, articulo_name, origen,
+                    provider_id, species, variety, size, stems_per_bunch, grade, raw, invoice)
+                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+                ON DUPLICATE KEY UPDATE
+                    articulo_id=VALUES(articulo_id), articulo_name=VALUES(articulo_name),
+                    origen=VALUES(origen), raw=VALUES(raw), invoice=VALUES(invoice)
+            """, (key, entry.get('articulo_id', 0), entry.get('articulo_name', ''),
+                  entry.get('origen', ''), entry.get('provider_id', 0),
+                  entry.get('species', ''), entry.get('variety', ''),
+                  entry.get('size', 0), entry.get('stems_per_bunch', 0),
+                  entry.get('grade', ''), entry.get('raw', ''), entry.get('invoice', '')))
+            conn.commit()
+            conn.close()
+        except Exception as e:
+            logger.debug("MySQL sync falló (no crítico): %s", e)
 
     def _key(self, provider_id: int, line: InvoiceLine) -> str:
         return f"{provider_id}|{line.match_key()}"
@@ -40,7 +70,7 @@ class SynonymStore:
             invoice: str = '') -> None:
         """Añade o actualiza un sinónimo."""
         k = self._key(provider_id, line)
-        self.syns[k] = {
+        entry = {
             'articulo_id': articulo_id,
             'articulo_name': articulo_name,
             'origen': origin,
@@ -53,7 +83,9 @@ class SynonymStore:
             'raw': getattr(line, 'raw_description', '')[:120],
             'invoice': invoice,
         }
+        self.syns[k] = entry
         self.save()
+        self._sync_to_mysql(k, entry)
 
     def count(self) -> int:
         """Número total de sinónimos."""

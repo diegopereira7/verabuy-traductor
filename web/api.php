@@ -4,6 +4,7 @@
  * Recibe un PDF vía POST y devuelve el resultado del procesamiento en JSON.
  */
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/db_config.php';
 
 // Constantes de importación masiva
 define('BATCH_STATUS_DIR',  PROJECT_ROOT . '/batch_status');
@@ -143,106 +144,128 @@ function handleProcess(): void
 }
 
 /**
- * Devolver sinónimos actuales
+ * Devolver sinónimos actuales (MySQL con fallback JSON)
  */
 function handleSynonyms(): void
 {
+    $db = get_db();
+    if ($db) {
+        $result = $db->query("SELECT clave AS `key`, articulo_id, articulo_name,
+            origen, provider_id, species, variety, size, stems_per_bunch, grade,
+            raw, invoice FROM sinonimos WHERE activo = 1 ORDER BY clave");
+        if ($result) {
+            $list = $result->fetch_all(MYSQLI_ASSOC);
+            // Convertir tipos numéricos
+            foreach ($list as &$row) {
+                $row['articulo_id'] = (int)$row['articulo_id'];
+                $row['provider_id'] = (int)$row['provider_id'];
+                $row['size'] = (int)$row['size'];
+                $row['stems_per_bunch'] = (int)$row['stems_per_bunch'];
+            }
+            echo json_encode(['ok' => true, 'synonyms' => $list, 'total' => count($list)]);
+            return;
+        }
+    }
+
+    // Fallback a JSON
     if (!file_exists(SYNONYMS_FILE)) {
         echo json_encode(['ok' => true, 'synonyms' => []]);
         return;
     }
-
     $data = json_decode(file_get_contents(SYNONYMS_FILE), true);
     if ($data === null) {
         echo json_encode(['ok' => false, 'error' => 'Error al leer sinónimos']);
         return;
     }
-
-    // Convertir a array indexado para la tabla
     $list = [];
     foreach ($data as $key => $entry) {
         $entry['key'] = $key;
         $list[] = $entry;
     }
-
     echo json_encode(['ok' => true, 'synonyms' => $list, 'total' => count($list)]);
 }
 
 /**
- * Devolver historial de procesamiento
+ * Devolver historial de procesamiento (MySQL con fallback JSON)
  */
 function handleHistory(): void
 {
+    $db = get_db();
+    if ($db) {
+        $result = $db->query("SELECT invoice_key, pdf, provider, total_usd,
+            lineas, ok, sin_match, fecha FROM historial ORDER BY fecha DESC");
+        if ($result) {
+            $list = $result->fetch_all(MYSQLI_ASSOC);
+            foreach ($list as &$row) {
+                $row['total_usd'] = (float)$row['total_usd'];
+                $row['lineas'] = (int)$row['lineas'];
+                $row['ok'] = (int)$row['ok'];
+                $row['sin_match'] = (int)$row['sin_match'];
+            }
+            echo json_encode(['ok' => true, 'history' => $list, 'total' => count($list)]);
+            return;
+        }
+    }
+
+    // Fallback JSON
     if (!file_exists(HISTORY_FILE)) {
         echo json_encode(['ok' => true, 'history' => []]);
         return;
     }
-
     $data = json_decode(file_get_contents(HISTORY_FILE), true);
     if ($data === null) {
         echo json_encode(['ok' => false, 'error' => 'Error al leer historial']);
         return;
     }
-
     $list = [];
     foreach ($data as $key => $entry) {
         $entry['invoice_key'] = $key;
         $list[] = $entry;
     }
-
-    // Ordenar por fecha descendente
     usort($list, fn($a, $b) => strcmp($b['fecha'] ?? '', $a['fecha'] ?? ''));
-
     echo json_encode(['ok' => true, 'history' => $list, 'total' => count($list)]);
 }
 
 /**
- * Guardar un sinónimo manual (resolver sin_match)
+ * Guardar un sinónimo manual — MySQL + JSON dual-write
  */
 function handleSaveSynonym(): void
 {
     $input = json_decode(file_get_contents('php://input'), true);
-
     if (!$input || empty($input['key']) || empty($input['articulo_id'])) {
         echo json_encode(['ok' => false, 'error' => 'Datos incompletos']);
         return;
     }
 
-    if (!file_exists(SYNONYMS_FILE)) {
-        echo json_encode(['ok' => false, 'error' => 'Archivo de sinónimos no encontrado']);
-        return;
-    }
-
-    $data = json_decode(file_get_contents(SYNONYMS_FILE), true);
-    if ($data === null) {
-        echo json_encode(['ok' => false, 'error' => 'Error al leer sinónimos']);
-        return;
-    }
-
     $key = $input['key'];
-    $data[$key] = [
-        'articulo_id'    => (int)$input['articulo_id'],
-        'articulo_name'  => $input['articulo_name'] ?? '',
-        'origen'         => 'manual-web',
-        'provider_id'    => (int)($input['provider_id'] ?? 0),
-        'species'        => $input['species'] ?? '',
-        'variety'        => $input['variety'] ?? '',
-        'size'           => (int)($input['size'] ?? 0),
-        'stems_per_bunch' => (int)($input['stems_per_bunch'] ?? 0),
-        'grade'          => $input['grade'] ?? '',
-    ];
+    $artId = (int)$input['articulo_id'];
+    $artName = $input['articulo_name'] ?? '';
 
-    $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    if (file_put_contents(SYNONYMS_FILE, $json) === false) {
-        echo json_encode(['ok' => false, 'error' => 'Error al guardar sinónimos']);
-        return;
+    // MySQL
+    $db = get_db();
+    if ($db) {
+        $stmt = $db->prepare("INSERT INTO sinonimos (clave, articulo_id, articulo_name, origen)
+            VALUES (?, ?, ?, 'manual-web')
+            ON DUPLICATE KEY UPDATE articulo_id=VALUES(articulo_id),
+            articulo_name=VALUES(articulo_name), origen='manual-web'");
+        $stmt->bind_param('sis', $key, $artId, $artName);
+        $stmt->execute();
     }
+
+    // JSON sync
+    _syncSynonymToJson($key, [
+        'articulo_id' => $artId, 'articulo_name' => $artName, 'origen' => 'manual-web',
+        'provider_id' => (int)($input['provider_id'] ?? 0),
+        'species' => $input['species'] ?? '', 'variety' => $input['variety'] ?? '',
+        'size' => (int)($input['size'] ?? 0), 'stems_per_bunch' => (int)($input['stems_per_bunch'] ?? 0),
+        'grade' => $input['grade'] ?? '',
+    ]);
 
     echo json_encode(['ok' => true, 'message' => 'Sinónimo guardado']);
 }
 
 /**
- * Buscar nombre de artículo por ID en el dump SQL
+ * Buscar nombre de artículo por ID — MySQL con fallback SQL dump
  */
 function handleLookupArticle(): void
 {
@@ -252,16 +275,26 @@ function handleLookupArticle(): void
         return;
     }
 
-    $sqlFile = PROJECT_ROOT . '/articulos (3).sql';
-    if (!file_exists($sqlFile)) {
-        echo json_encode(['ok' => false, 'error' => 'Archivo SQL no encontrado']);
-        return;
+    // MySQL primero
+    $db = get_db();
+    if ($db) {
+        $stmt = $db->prepare("SELECT nombre FROM articulos WHERE id = ? LIMIT 1");
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            echo json_encode(['ok' => true, 'id' => $id, 'nombre' => $row['nombre']]);
+            return;
+        }
     }
 
-    // Buscar el ID en el dump SQL
-    // Formato: (ID, 'codigo', num, num_proveedor, 'color', 'tamaño'|NULL, 'marca'|NULL, num, 'NOMBRE', ...)
+    // Fallback: regex en dump SQL
+    $sqlFile = PROJECT_ROOT . '/articulos (3).sql';
+    if (!file_exists($sqlFile)) {
+        echo json_encode(['ok' => false, 'error' => "Artículo $id no encontrado"]);
+        return;
+    }
     $content = file_get_contents($sqlFile);
-    // Buscar línea que empieza con (ID, y extraer el campo nombre (9no campo)
     $pattern = "/\($id,\s*'[^']*',\s*\d+,\s*\d+,\s*(?:'[^']*'|NULL),\s*(?:'[^']*'|NULL),\s*(?:'[^']*'|NULL),\s*\d+,\s*'([^']+)'/";
     if (preg_match($pattern, $content, $m)) {
         echo json_encode(['ok' => true, 'id' => $id, 'nombre' => $m[1]]);
@@ -271,7 +304,7 @@ function handleLookupArticle(): void
 }
 
 /**
- * Actualizar un sinónimo existente (cambiar clave, artículo o ambos)
+ * Actualizar sinónimo — MySQL + JSON dual-write
  */
 function handleUpdateSynonym(): void
 {
@@ -286,37 +319,42 @@ function handleUpdateSynonym(): void
         return;
     }
 
-    $data = json_decode(file_get_contents(SYNONYMS_FILE), true);
-    if ($data === null) {
-        echo json_encode(['ok' => false, 'error' => 'Error al leer sinónimos']);
-        return;
+    // MySQL
+    $db = get_db();
+    if ($db) {
+        if ($origKey !== $newKey) {
+            // Cambiar clave: borrar vieja, insertar nueva
+            $stmt = $db->prepare("DELETE FROM sinonimos WHERE clave = ?");
+            $stmt->bind_param('s', $origKey);
+            $stmt->execute();
+        }
+        $stmt = $db->prepare("INSERT INTO sinonimos (clave, articulo_id, articulo_name, origen)
+            VALUES (?, ?, ?, 'manual-web')
+            ON DUPLICATE KEY UPDATE articulo_id=VALUES(articulo_id),
+            articulo_name=VALUES(articulo_name), origen='manual-web'");
+        $stmt->bind_param('sis', $newKey, $artId, $artName);
+        $stmt->execute();
     }
 
-    if (!isset($data[$origKey])) {
-        echo json_encode(['ok' => false, 'error' => 'Sinónimo no encontrado']);
-        return;
+    // JSON sync
+    $data = json_decode(file_get_contents(SYNONYMS_FILE), true) ?? [];
+    if (isset($data[$origKey])) {
+        $entry = $data[$origKey];
+        $entry['articulo_id'] = $artId;
+        $entry['articulo_name'] = $artName;
+        $entry['origen'] = 'manual-web';
+        if ($origKey !== $newKey) unset($data[$origKey]);
+        $data[$newKey] = $entry;
+        $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        file_put_contents(SYNONYMS_FILE . '.tmp', $json);
+        rename(SYNONYMS_FILE . '.tmp', SYNONYMS_FILE);
     }
-
-    $entry = $data[$origKey];
-    $entry['articulo_id'] = $artId;
-    $entry['articulo_name'] = $artName;
-    $entry['origen'] = 'manual-web';
-
-    if ($origKey !== $newKey) {
-        unset($data[$origKey]);
-    }
-    $data[$newKey] = $entry;
-
-    $tmp = SYNONYMS_FILE . '.tmp';
-    $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    file_put_contents($tmp, $json);
-    rename($tmp, SYNONYMS_FILE);
 
     echo json_encode(['ok' => true, 'message' => 'Sinónimo actualizado']);
 }
 
 /**
- * Eliminar un sinónimo
+ * Eliminar sinónimo — soft delete en MySQL + borrar de JSON
  */
 function handleDeleteSynonym(): void
 {
@@ -328,11 +366,16 @@ function handleDeleteSynonym(): void
         return;
     }
 
-    $data = json_decode(file_get_contents(SYNONYMS_FILE), true);
-    if ($data === null) {
-        echo json_encode(['ok' => false, 'error' => 'Error al leer sinónimos']);
-        return;
+    // MySQL: soft delete
+    $db = get_db();
+    if ($db) {
+        $stmt = $db->prepare("UPDATE sinonimos SET activo = 0 WHERE clave = ?");
+        $stmt->bind_param('s', $key);
+        $stmt->execute();
     }
+
+    // JSON: hard delete
+    $data = json_decode(file_get_contents(SYNONYMS_FILE), true) ?? [];
 
     if (!isset($data[$key])) {
         echo json_encode(['ok' => false, 'error' => 'Sinónimo no encontrado']);
@@ -347,6 +390,22 @@ function handleDeleteSynonym(): void
     rename($tmp, SYNONYMS_FILE);
 
     echo json_encode(['ok' => true, 'message' => 'Sinónimo eliminado']);
+}
+
+/**
+ * Sincroniza un sinónimo al fichero JSON (para compatibilidad con Python)
+ */
+function _syncSynonymToJson(string $key, array $entry): void
+{
+    $data = [];
+    if (file_exists(SYNONYMS_FILE)) {
+        $data = json_decode(file_get_contents(SYNONYMS_FILE), true) ?? [];
+    }
+    $data[$key] = $entry;
+    $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    $tmp = SYNONYMS_FILE . '.tmp';
+    file_put_contents($tmp, $json);
+    rename($tmp, SYNONYMS_FILE);
 }
 
 // ── Importación Masiva ──────────────────────────────────────────────────────
