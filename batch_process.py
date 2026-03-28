@@ -266,19 +266,45 @@ def run_batch(folder: Path, batch_id: str | None = None, output: Path | None = N
     if not is_web:
         print(f'  {len(art.articulos)} artículos, {syn.count()} sinónimos cargados.')
 
+    # Patrones de nombre que NO son facturas de proveedor
+    SKIP_PATTERNS = ['DUA', 'NYD', 'ALLIANCE']
+
+    def _should_skip(name: str) -> str | None:
+        """Retorna el patrón detectado si el archivo debe omitirse, o None."""
+        upper = name.upper()
+        for pat in SKIP_PATTERNS:
+            if pat in upper:
+                return pat
+        return None
+
     # Procesar cada PDF
     results = []
     errores = []
+    omitidos = []
     ok_count = 0
     err_count = 0
+    skip_count = 0
 
     for i, pdf in enumerate(pdfs):
+        # Filtrar documentos que no son facturas
+        skip_reason = _should_skip(pdf.name)
+        if skip_reason:
+            skip_count += 1
+            omitidos.append({
+                'pdf': pdf.name,
+                'motivo': f'Omitido: documento no es factura ({skip_reason})',
+            })
+            if not is_web:
+                print(f'  [{i+1}/{total}] {pdf.name}: OMITIDO — no es factura ({skip_reason})')
+            continue
+
         update_status({
             'estado': 'procesando',
             'progreso': i, 'total': total,
             'porcentaje': round(i / total * 100),
             'actual': pdf.name,
             'procesados_ok': ok_count, 'con_error': err_count,
+            'omitidos': skip_count,
         })
 
         try:
@@ -384,6 +410,7 @@ def run_batch(folder: Path, batch_id: str | None = None, output: Path | None = N
         'total_facturas':  total,
         'procesadas_ok':   ok_count,
         'con_error':       err_count,
+        'omitidos':        skip_count,
         'total_lineas':    total_lineas,
         'total_ok':        total_ok,
         'total_sin_match': total_fail,
@@ -395,8 +422,9 @@ def run_batch(folder: Path, batch_id: str | None = None, output: Path | None = N
         'estado': 'completado',
         'progreso': total, 'total': total, 'porcentaje': 100,
         'actual': '',
-        'procesados_ok': ok_count, 'con_error': err_count,
+        'procesados_ok': ok_count, 'con_error': err_count, 'omitidos': skip_count,
         'resumen': resumen,
+        'omitidos_detalle': omitidos,
         'resultados': [{
             'pdf': r['pdf'],
             'ok': r['ok'],
@@ -417,7 +445,8 @@ def run_batch(folder: Path, batch_id: str | None = None, output: Path | None = N
     update_status(final_status)
 
     if not is_web:
-        print(f'\nResumen: {ok_count} OK, {err_count} errores, '
+        omit_msg = f', {skip_count} omitidos' if skip_count else ''
+        print(f'\nResumen: {ok_count} OK, {err_count} errores{omit_msg}, '
               f'{total_lineas} líneas ({total_ok} match, {total_fail} sin match)')
         print(f'Total USD: ${total_usd:,.2f}')
 

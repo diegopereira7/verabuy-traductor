@@ -499,39 +499,54 @@ class TessaParser:
 class UmaParser:
     """FIX: descripciones largas con cm/gr y farm.
     FIX: comas decimales y espacios en totales ($ 1 40,00 = $140.00).
+    FIX: "Gyp XL" (forma corta sin word-chars pegado), puntos como separador de miles.
     Formato: COD QTY BOX X PRODUCT FARM TOTAL_STEMS ST.BUNCH BUNCHES PRICE TOTAL
     """
+    @staticmethod
+    def _parse_amount(s: str) -> float:
+        """Parsea montos en formato europeo: '1 .512,00' -> 1512.0, '1 44,00' -> 144.0"""
+        s = re.sub(r'[\s.]', '', s)  # quitar espacios y puntos (miles)
+        s = s.replace(',', '.')       # coma decimal -> punto
+        return float(s)
+
     def parse(self, text:str, pdata:dict):
         h=InvoiceHeader(); h.provider_key=pdata['key']; h.provider_id=pdata['id']; h.provider_name=pdata['name']
         m=re.search(r'INVOICE\s+(\d+)',text,re.I); h.invoice_number=m.group(1) if m else ''
         m=re.search(r'Invoice\s+Date\s+([\d/]+)',text,re.I); h.date=m.group(1) if m else ''
         m=re.search(r'AWB\s+([\d\-]+)',text,re.I); h.awb=re.sub(r'\s+','',m.group(1)) if m else ''
         try:
-            m=re.search(r'Amount\s+Due\s+\$\s*([\d\s,.]+)',text,re.I)
-            h.total=float(re.sub(r'[\s,]','',m.group(1)).replace(',','.')) if m else 0.0
+            m=re.search(r'Amount\s+Due\s*[:\s]*\$\s*([\d\s.,]+)',text,re.I)
+            h.total=self._parse_amount(m.group(1)) if m else 0.0
         except: h.total=0.0
         lines=[]
         for ln in text.split('\n'):
             ln=ln.strip()
+            # Ejemplos:
             # "96885 1 hb 560 Gypso Xlence Natural 80 cm / 550 gr Violeta Flowers 560 20 28 $ 5,00 $ 1 40,00"
-            # Estrategia: buscar "hb/qb" + capturar todo hasta los números finales
-            pm=re.search(r'(hb|qb)\s+\d+\s+((?:Gyp|Gyps)\w+[^$]+?)\s+(\d+)\s+(\d+)\s+(\d+)\s+\$\s*([\d\s,]+?)\s+\$\s*([\d\s,]+?)$',ln,re.I)
+            # "97137 16 hb 450 Gypso Xlence Natural 80 cm / 750 gr Violeta Flowers 7200 25 288 $ 5 ,25 $ 1 .512,00"
+            # "97137 1 hb 450 Gyp XL Especial 80 cm /750gr Violeta Flowers 450 25 18 $ 8 ,50 $ 1 53,00"
+            # FIX: Gyp(?:so(?:phila)?)? para capturar "Gyp XL", "Gypso Xlence", "Gypsophila ..."
+            # FIX: [\d\s.,]+? en totales para capturar puntos de miles
+            pm=re.search(r'(hb|qb)\s+\d+\s+(Gyp(?:so(?:phila)?)?\s+[^$]+?)\s+(\d+)\s+(\d+)\s+(\d+)\s+\$\s*([\d\s.,]+?)\s+\$\s*([\d\s.,]+?)$',ln,re.I)
             if not pm: continue
             btype=pm.group(1).upper()
             desc_raw=pm.group(2).strip()
             # Extraer variedad limpia: "Gypso Xlence Natural 80 cm / 550 gr Violeta Flowers" -> "XLENCE NATURAL"
-            var_m=re.search(r'(?:Gyp(?:so)?|Gypsophila)\s+(?:Xl?\s+)?(.+?)(?:\d+\s*cm|\d+\s*gr|/|Violeta|Flowers)',desc_raw,re.I)
+            # "Gyp XL Especial 80 cm /750gr" -> "XL ESPECIAL"
+            # "Gyp XL Rainbow Mix Light 80/750gr" -> "XL RAINBOW MIX LIGHT"
+            # FIX: capturar todo después de "Gyp(so)?" hasta tamaño/farm
+            var_m=re.search(r'Gyp(?:so(?:phila)?)?\s+(.+?)\s+\d{2,3}\s*(?:cm|/|$)',desc_raw,re.I)
             var=var_m.group(1).strip().upper() if var_m else desc_raw.upper()
-            # Extraer tamaño
-            sz_m=re.search(r'(\d{2})\s*cm',desc_raw,re.I)
+            # Extraer tamaño: "80 cm", "80/750gr", "80cm"
+            sz_m=re.search(r'(\d{2,3})\s*(?:cm|/)',desc_raw,re.I)
             sz=int(sz_m.group(1)) if sz_m else 0
             # Extraer farm
             farm_m=re.search(r'(?:Violeta|Fiorella|Margarita)\s+Flowers',desc_raw,re.I)
             farm=farm_m.group(0).strip() if farm_m else ''
             try:
                 stems=int(pm.group(3)); spb=int(pm.group(4)); bunches=int(pm.group(5))
-                price=float(re.sub(r'\s','',pm.group(6)).replace(',','.'))
-                total=float(re.sub(r'\s','',pm.group(7)).replace(',','.'))
+                price=self._parse_amount(pm.group(6))
+                total=self._parse_amount(pm.group(7))
             except: continue
             # "Gypso Xlence Natural" -> "GYPSOPHILA XLENCE NATURAL"
             full_var='GYPSOPHILA ' + var if 'GYPSOPHILA' not in var else var
