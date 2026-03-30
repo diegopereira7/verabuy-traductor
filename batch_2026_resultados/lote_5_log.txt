@@ -1,0 +1,157 @@
+Encontrados 150 PDFs. Cargando datos...
+  42502 artículos, 1439 sinónimos cargados.
+  [1/150] EQR1.pdf: 1/1 — OK
+  [2/150] EQR2.pdf: 1/1 — OK
+  [3/150] ESMERALDA (2).pdf: 0/1 — 1 sin match
+  [4/150] ESMERALDA 2.pdf: 0/1 — 1 sin match
+  [5/150] ESMERALDA.pdf: 1/1 — OK
+  [6/150] ESMERALDA1.pdf: 1/1 — OK
+  [7/150] Factura Exportacion CERESFARMS 00295332 VERALEZA SL - VERALEZA SL H 12_16_03.pdf: 5/5 — OK
+  [8/150] Factura Veraleza 19-03-2026 corregida.pdf: 29/29 — OK
+  [9/150] FAIRIS GARDEN.pdf: 1/1 — OK
+  [10/150] FESO 5641 EXCELLENT.pdf: OMITIDO — no es factura (EXCELLENT)
+  [11/150] FESO 5774 EXCELLENT.pdf: OMITIDO — no es factura (EXCELLENT)
+  [12/150] FESO 5893 EXCELLENT.pdf: OMITIDO — no es factura (EXCELLENT)
+  [13/150] FESO 6028 EXCELLENT.pdf: OMITIDO — no es factura (EXCELLENT)
+  [14/150] FESO 6169 EXCELLENT.pdf: OMITIDO — no es factura (EXCELLENT)
+  [15/150] FESO 6306 EXCELLENT.pdf: OMITIDO — no es factura (EXCELLENT)
+  [16/150] FESO 6328 EXCELLENT.pdf: OMITIDO — no es factura (EXCELLENT)
+  [17/150] FESO 6435 EXCELLENTE.pdf: OMITIDO — no es factura (EXCELLENT)
+  [18/150] FESO 6583 EXCELLENT.pdf: OMITIDO — no es factura (EXCELLENT)
+  [19/150] FESO 6697 EXCELLENT.pdf: OMITIDO — no es factura (EXCELLENT)
+  [20/150] FESO 6736 EXCELLENT.pdf: OMITIDO — no es factura (EXCELLENT)
+  [21/150] FESO 6826 EXCELLENT.pdf: OMITIDO — no es factura (EXCELLENT)
+  [22/150] FIORENTINA (2).pdf: 6/6 — OK
+  [23/150] FIORENTINA 2.pdf: 2/2 — OK
+  [24/150] FIORENTINA 78.pdf: 20/21 — 1 sin match
+  [25/150] FIORENTINA FLOWERS.pdf: 35/36 — 1 sin match
+  [26/150] FIORENTINA.pdf: 2/2 — OK
+  [27/150] FIORENTINA1.pdf: 9/9 — OK
+  [28/150] FLORES LA LINDA.pdf: OMITIDO — no es factura (LINDA)
+  [29/150] FLORES MILONGAS.pdf: 10/12 — OK
+  [30/150] FLORES Y FRUTAS.pdf: 12/12 — OK
+  [31/150] FLORIFRUT 1070.pdf: 2/2 — OK
+  [32/150] FLORIFRUT 1382.pdf: 2/2 — OK
+  [33/150] FLORIFRUT 91519.pdf: 6/6 — OK
+  [34/150] FLORIFRUT.pdf: 14/14 — OK
+  [35/150] FLORIFRUT1.pdf: 13/13 — OK
+  [36/150] FLORIFRUT2.pdf: 5/5 — OK
+  [37/150] FLORSANI (2).pdf: 1/1 — OK
+  [38/150] FLORSANI 2.pdf: 19/19 — OK
+  [39/150] FLORSANI.pdf: 1/1 — OK
+  [40/150] FLORSANI1.pdf: 20/20 — OK
+  [41/150] GARDA (2).pdf: 4/11 — 7 sin match
+  [42/150] GARDA (3).pdf: 10/10 — OK
+  [43/150] GARDA.pdf: 4/4 — OK
+  [44/150] GARDA1.pdf: 1/1 — OK
+  [45/150] GARDA2.pdf: 6/11 — 5 sin match
+  [46/150] GARDA3.pdf: 1/1 — OK
+  [47/150] GOLDEN (2).pdf: 0/4 — 4 sin match
+  [48/150] GOLDEN (3).pdf: 4/4 — OK
+  [49/150] GOLDEN 105369.pdf: 1/8 — 7 sin match
+  [50/150] GOLDEN 105397.pdf: 33/33 — OK
+  [51/150] GOLDEN 2.pdf: 0/2 — 2 sin match
+  [52/150] GOLDEN 3.pdf: 1/8 — 7 sin match
+  [53/150] GOLDEN 4.pdf: 45/46 — OK
+  [54/150] GOLDEN.pdf: 33/33 — OK
+  [55/150] GOLDEN1.pdf: 0/5 — 5 sin match
+  [56/150] GOLDEN2.pdf: 35/38 — OK
+  [57/150] GROWER.pdf: 3/3 — OK
+  [58/150] HACIENDA.pdf: 2/2 — OK
+  [59/150] HACIENDA1.pdf: 3/3 — OK
+  [60/150] HACIENDCA.pdf: 2/2 — OK
+  [61/150] HERAFLOR.pdf: 20/20 — OK
+  [62/150] INFIINITY.pdf: 1/1 — OK
+  [63/150] INFINITY.pdf: 1/1 — OK
+  [64/150] Invoice #119943 - VERALEZA SLU.pdf: OMITIDO — no es factura (SLU)
+  [65/150] Invoice #119981 - VERALEZA SLU.pdf: OMITIDO — no es factura (SLU)
+  [66/150] Invoice #120002 - VERALEZA SLU.pdf: OMITIDO — no es factura (SLU)
+  [67/150] INVOICE 4132 BRISSAS completa.pdf: 16/18 — OK
+  [68/150] Invoice 4170 BRISSAS correcta.pdf: OMITIDO — no es factura (CORRECTA)
+  [69/150] Invoice 4171 BRISSAS ROSES completa.pdf: 70/74 — 1 sin match
+  [70/150] Invoice 4180 BRISSAS correcta.pdf: OMITIDO — no es factura (CORRECTA)
+  [71/150] INVOICE 6933501.pdf: ERROR — Proveedor no reconocido
+  [72/150] Invoice#0000142162-VERALEZA SL-.pdf: 3/9 — 6 sin match
+  [73/150] Invoice#0000160648-VERALEZA SL-.pdf: 0/1 — 1 sin match
+  [74/150] Invoice#0000160992-VERALEZA SL-.pdf: 6/6 — OK
+  [75/150] Invoice#0001093313-VERALEZA SL-.pdf: 2/2 — OK
+  [76/150] Invoice_001031505.pdf: 13/19 — 6 sin match
+  [77/150] Invoice_002001000569730 VERALEZA SL - VERALEZA SL .pdf: 0/3 — OK
+  [78/150] INVOS.pdf: 8/8 — OK
+  [79/150] LA ALEGRIA.pdf: 11/11 — OK
+  [80/150] LA HACIENDA.pdf: 4/4 — OK
+  [81/150] LA ROSA.pdf: 11/11 — OK
+  [82/150] LA ROSALEDA.pdf: 1/1 — OK
+  [83/150] LA ROSALEDA1.pdf: 36/57 — 21 sin match
+  [84/150] LAILA (2).pdf: 37/37 — OK
+  [85/150] LAILA (3).pdf: 2/2 — OK
+  [86/150] LAILA (4).pdf: 5/5 — OK
+  [87/150] LAILA.pdf: 1/1 — OK
+  [88/150] LATIN 41329.pdf: 53/53 — OK
+  [89/150] LATIN FLOWERS.pdf: 0/39 — OK
+  [90/150] LATIN.pdf: 0/29 — OK
+  [91/150] LATINA (2).pdf: 0/6 — OK
+  [92/150] LATINA.pdf: 0/4 — OK
+  [93/150] LIFE (2).pdf: 13/19 — 6 sin match
+  [94/150] LIFE (3).pdf: 13/19 — 6 sin match
+  [95/150] LIFE 2.pdf: 1/1 — OK
+  [96/150] LIFE 3.pdf: 2/13 — 11 sin match
+  [97/150] LIFE 4.pdf: 2/2 — OK
+  [98/150] LIFE.pdf: 13/19 — 6 sin match
+  [99/150] LIFE1 (2).pdf: 2/2 — OK
+  [100/150] LIFE1.pdf: 1/1 — OK
+  [101/150] LIFE2.pdf: 14/14 — OK
+  [102/150] LIFE3.pdf: 3/3 — OK
+  [103/150] LUXUS (2).pdf: 22/22 — OK
+  [104/150] LUXUS (3).pdf: 25/25 — OK
+  [105/150] LUXUS (4).pdf: 23/23 — OK
+  [106/150] LUXUS 2 (2).pdf: 21/21 — OK
+  [107/150] LUXUS 2.pdf: 12/12 — OK
+  [108/150] LUXUS.pdf: 1/1 — OK
+  [109/150] LUXUS1 (2).pdf: 12/12 — OK
+  [110/150] LUXUS1.pdf: 10/10 — OK
+  [111/150] LUXUS2.pdf: 1/1 — OK
+  [112/150] MALIIMA.pdf: 2/2 — OK
+  [113/150] MALIMA.pdf: 2/2 — OK
+  [114/150] MAXI.pdf: 0/4 — OK
+  [115/150] MAXI1.pdf: 0/1 — OK
+  [116/150] MAXI2.pdf: 0/1 — OK
+  [117/150] MAXI3.pdf: 0/1 — OK
+  [118/150] MAXI4.pdf: 1/1 — OK
+  [119/150] MAXI5.pdf: 0/1 — OK
+  [120/150] MAXI6.pdf: 0/1 — OK
+  [121/150] MAXI7.pdf: 12/17 — OK
+  [122/150] MAXI8.pdf: 1/1 — OK
+  [123/150] MAXI9.pdf: 5/8 — OK
+  [124/150] MAXIFKORES.pdf: 0/1 — OK
+  [125/150] MAXIFLFORES.pdf: 0/3 — OK
+  [126/150] MAXIFLORES 39.pdf: 1/1 — OK
+  [127/150] MAXIFLORES.pdf: 15/23 — 6 sin match
+  [128/150] MEAFLO.pdf: 33/33 — OK
+  [129/150] MEAFLOS 6972.pdf: 11/11 — OK
+  [130/150] MEAFLOS 705.pdf: 1/1 — OK
+  [131/150] MEAFLOS-1.pdf: 6/6 — OK
+  [132/150] MEAFLOS-2 (1).pdf: 7/7 — OK
+  [133/150] MEAFLOS.pdf: 12/12 — OK
+  [134/150] MEAFLOSS.pdf: 6/6 — OK
+  [135/150] MILONGA.pdf: 9/18 — 7 sin match
+  [136/150] MONTEROSA 2.pdf: 1/1 — OK
+  [137/150] MONTEROSA.pdf: 3/3 — OK
+  [138/150] MONTEROSA1.pdf: 1/1 — OK
+  [139/150] MUCH.pdf: 0/1 — 1 sin match
+  [140/150] MULTIFLOR.pdf: 0/12 — 12 sin match
+  [141/150] MULTIFLORA (2).pdf: 0/13 — 13 sin match
+  [142/150] MULTIFLORA.pdf: 0/11 — 11 sin match
+  [143/150] MULTIFLORA1.pdf: 0/9 — 9 sin match
+  [144/150] MYSTIC (2).pdf: 0/0 — OK
+  [145/150] MYSTIC (3).pdf: 0/0 — OK
+  [146/150] MYSTIC 2 (2).pdf: 0/0 — OK
+  [147/150] MYSTIC 2.pdf: 12/12 — OK
+  [148/150] MYSTIC 3.pdf: 6/6 — OK
+  [149/150] MYSTIC 4.pdf: 11/12 — 1 sin match
+  [150/150] MYSTIC.pdf: 0/0 — OK
+
+Excel generado: C:\verabuy-traductor\batch_2026_resultados\lote_5.xlsx
+
+Resumen: 131 OK, 1 errores, 18 omitidos, 1338 líneas (1056 match, 165 sin match)
+Total USD: $138,980.25

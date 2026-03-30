@@ -1,0 +1,157 @@
+Encontrados 150 PDFs. Cargando datos...
+  42502 artículos, 1439 sinónimos cargados.
+  [1/150] 729-4588 9966 FULL.pdf: OMITIDO — no es factura (FULL)
+  [2/150] 729-4588 9992 FULL.pdf: OMITIDO — no es factura (FULL)
+  [3/150] 729-4591 4971 FULL.pdf: OMITIDO — no es factura (FULL)
+  [4/150] 729-4591 5041 FULL.pdf: OMITIDO — no es factura (FULL)
+  [5/150] 729-4591 5074 FULL.pdf: OMITIDO — no es factura (FULL)
+  [6/150] 729-4591 5100 FULL.pdf: OMITIDO — no es factura (FULL)
+  [7/150] 729-4593 7194 FULL.pdf: OMITIDO — no es factura (FULL)
+  [8/150] 729-4593 7275 FULL.pdf: OMITIDO — no es factura (FULL)
+  [9/150] 729-4593 7555 FULL.pdf: OMITIDO — no es factura (FULL)
+  [10/150] 729-4599 6941 FULL.pdf: OMITIDO — no es factura (FULL)
+  [11/150] 729-4599 6974 FULL.pdf: OMITIDO — no es factura (FULL)
+  [12/150] 729-4599 7243 FULL.pdf: OMITIDO — no es factura (FULL)
+  [13/150] 996-1377 5226 FULL.pdf: OMITIDO — no es factura (FULL)
+  [14/150] 996-1423 3973 FULL.pdf: OMITIDO — no es factura (FULL)
+  [15/150] 996-1423 4146 FULL.pdf: OMITIDO — no es factura (FULL)
+  [16/150] 996-1423 4356 FULL.pdf: OMITIDO — no es factura (FULL)
+  [17/150] 996-1423 4754 FULL.pdf: OMITIDO — no es factura (FULL)
+  [18/150] AGRIVALDANI (2).pdf: 4/4 — OK
+  [19/150] AGRIVALDANI (3).pdf: 3/3 — OK
+  [20/150] AGRIVALDANI 2.pdf: 15/18 — 3 sin match
+  [21/150] AGRIVALDANI 3.pdf: 38/44 — 6 sin match
+  [22/150] AGRIVALDANI.pdf: 2/2 — OK
+  [23/150] AGRIVALDANI1 (2).pdf: 1/1 — OK
+  [24/150] AGRIVALDANI1.pdf: 4/4 — OK
+  [25/150] AGRIVALDANI2.pdf: 3/3 — OK
+  [26/150] AGRVALDANIA.pdf: 1/1 — OK
+  [27/150] AGUABLANCA.pdf: 0/1 — 1 sin match
+  [28/150] ALEGRIA (2).pdf: 6/6 — OK
+  [29/150] ALEGRIA.pdf: 57/57 — OK
+  [30/150] ALUNA.pdf: 3/3 — OK
+  [31/150] APOSENTOS CORRECTA.pdf: OMITIDO — no es factura (CORRECTA)
+  [32/150] APOSENTOS.pdf: 1/13 — 10 sin match
+  [33/150] APOSENTOS1.pdf: 1/9 — 7 sin match
+  [34/150] ARAWI FLOWERS.pdf: ERROR — Proveedor no reconocido
+  [35/150] AROMA (2).pdf: 0/1 — OK
+  [36/150] AROMA (3).pdf: 2/4 — OK
+  [37/150] AROMA (4).pdf: 47/49 — OK
+  [38/150] AROMA 2.pdf: 2/4 — OK
+  [39/150] AROMA 3.pdf: 0/0 — OK
+  [40/150] AROMA 4.pdf: 0/0 — OK
+  [41/150] AROMA.pdf: 4/6 — OK
+  [42/150] AROMA1.pdf: 0/0 — OK
+  [43/150] AROMA2.pdf: 0/0 — OK
+  [44/150] AROMA3.pdf: 1/3 — OK
+  [45/150] AROMA77.pdf: 2/3 — OK
+  [46/150] ART R.pdf: 6/6 — OK
+  [47/150] ART ROSES (2).pdf: 14/14 — OK
+  [48/150] ART ROSES.pdf: 8/8 — OK
+  [49/150] ART.pdf: 7/7 — OK
+  [50/150] AWB 729-45997243 VERALEZA SLU.pdf: OMITIDO — no es factura (SLU)
+  [51/150] AWB VERALEZA SLU.pdf: OMITIDO — no es factura (SLU)
+  [52/150] BG-104176.pdf: 0/5 — 5 sin match
+  [53/150] BG-104191.pdf: 33/33 — OK
+  [54/150] BG-104318.pdf: 0/5 — 5 sin match
+  [55/150] BG-104323.pdf: 34/34 — OK
+  [56/150] BG-104775.pdf: 0/6 — 6 sin match
+  [57/150] BG-104800.pdf: 31/35 — OK
+  [58/150] BG-104801.pdf: 3/3 — OK
+  [59/150] BG-104935.pdf: 0/5 — 5 sin match
+  [60/150] BG-104956.pdf: 33/33 — OK
+  [61/150] BG-105071.pdf: 0/7 — 5 sin match
+  [62/150] BG-105089.pdf: 35/35 — OK
+  [63/150] BG-105205.pdf: 0/7 — 7 sin match
+  [64/150] BG-105216.pdf: 35/35 — OK
+  [65/150] BG-105230.pdf: 0/2 — OK
+  [66/150] BG-105761.pdf: 1/1 — OK
+  [67/150] BG-105762.pdf: 2/2 — OK
+  [68/150] BOQUE.pdf: 0/1 — OK
+  [69/150] BOSQUE (2).pdf: 0/2 — OK
+  [70/150] BOSQUE.pdf: 0/1 — OK
+  [71/150] BOYACA.pdf: 0/8 — 6 sin match
+  [72/150] BRISSAS (2).pdf: 17/19 — 1 sin match
+  [73/150] BRISSAS ALIANZA.pdf: 5/6 — OK
+  [74/150] BRISSAS ALLIANZA.pdf: 2/3 — OK
+  [75/150] BRISSAS completa.pdf: 81/87 — 3 sin match
+  [76/150] BRISSAS.pdf: 97/104 — 2 sin match
+  [77/150] BRISSAS1.pdf: 32/35 — 1 sin match
+  [78/150] CANANVALLE.pdf: 2/2 — OK
+  [79/150] CANITZA.pdf: 2/2 — OK
+  [80/150] CANTIZA (2).pdf: 18/19 — 1 sin match
+  [81/150] CANTIZA (3).pdf: 1/1 — OK
+  [82/150] CANTIZA 2.pdf: 2/2 — OK
+  [83/150] CANTIZA.pdf: 14/15 — 1 sin match
+  [84/150] CANTIZA1.pdf: 14/14 — OK
+  [85/150] CANTIZA2.pdf: 17/17 — OK
+  [86/150] CANTIZA3.pdf: 17/18 — 1 sin match
+  [87/150] CERES (2).pdf: 25/25 — OK
+  [88/150] CERES 2.pdf: 4/4 — OK
+  [89/150] CERES.pdf: 25/25 — OK
+  [90/150] CERES1.pdf: 5/5 — OK
+  [91/150] CIRCASIA.pdf: 4/6 — OK
+  [92/150] CIRCASIIA.pdf: 3/5 — OK
+  [93/150] COLIBRI 2.pdf: 28/30 — 2 sin match
+  [94/150] COLIBRI.pdf: 13/13 — OK
+  [95/150] COLON.pdf: 4/5 — OK
+  [96/150] CONDOR 58938.pdf: 0/1 — 1 sin match
+  [97/150] CONDOR ANDINO.pdf: 0/0 — OK
+  [98/150] CONDOR.pdf: 0/1 — 1 sin match
+  [99/150] CUFE 24019 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [100/150] CUFE 24030 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [101/150] CUFE 24064 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [102/150] CUFE 24089 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [103/150] CUFE 24110 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [104/150] CUFE 24121 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [105/150] CUFE 24143 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [106/150] CUFE 24170 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [107/150] CUFE 24198 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [108/150] CUFE 24207 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [109/150] CUFE 24236 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [110/150] CUFE 24353 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [111/150] CUFE 24370 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [112/150] CUFE 24388 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [113/150] CUFE 24414 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [114/150] CUFE 24467 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [115/150] CUFE 24475 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [116/150] CUFE 24548 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [117/150] CUFE 24572 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [118/150] CUFE 24582 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [119/150] CUFE 24606 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [120/150] CUFE 24633 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [121/150] CUFE 24656 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [122/150] CUFE 24673 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [123/150] CUFE 24695 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [124/150] CUFE 24724 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [125/150] CUFE 24746 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [126/150] CUFE 24798 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [127/150] CUFE 24824 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [128/150] CUFE 24851 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [129/150] CUFE 24989 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [130/150] CUFE 25022 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [131/150] CUFE 25044 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [132/150] CUFE 25117 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [133/150] CUFE 25139 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [134/150] CUFE 25158 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [135/150] CUFE 25197 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [136/150] CUFE 25248 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [137/150] CUFE 25251 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
+  [138/150] DAFLOR.pdf: 0/7 — 5 sin match
+  [139/150] DILIGENCIA VIGILANCIA ADUANERA.pdf: OMITIDO — no es factura (DUA)
+  [140/150] DOMENICA.pdf: 12/12 — OK
+  [141/150] ECM-00003200.pdf: 8/15 — 7 sin match
+  [142/150] ECM-00003201.pdf: 0/1 — 1 sin match
+  [143/150] ECM-00003203.pdf: 98/112 — 14 sin match
+  [144/150] ECOFLOR 79682.pdf: 10/10 — OK
+  [145/150] ECOFLOR.pdf: 8/8 — OK
+  [146/150] ECOFLOR1.pdf: 17/19 — 2 sin match
+  [147/150] ECOFLOR2.pdf: 11/14 — 3 sin match
+  [148/150] EQR (2).pdf: 0/0 — OK
+  [149/150] EQR 2.pdf: 1/2 — 1 sin match
+  [150/150] EQR.pdf: 1/1 — OK
+
+Excel generado: C:\verabuy-traductor\batch_2026_resultados\lote_4.xlsx
+
+Resumen: 89 OK, 1 errores, 60 omitidos, 1199 líneas (1037 match, 113 sin match)
+Total USD: $111,359.60

@@ -1,0 +1,166 @@
+﻿[2026-03-30 10:11:05] FASE 1: Aplanando estructura de carpetas
+[2026-03-30 10:11:05] Buscando PDFs en: C:\Users\diego.pereira\Desktop\DOC VERA\FACTURAS IMPORTACION\VUELOS 2026
+[2026-03-30 10:11:05] PDFs encontrados: 2424
+[2026-03-30 10:11:06]   Copiados: 500 / 2424
+[2026-03-30 10:11:08]   Copiados: 1000 / 2424
+[2026-03-30 10:11:09]   Copiados: 1500 / 2424
+[2026-03-30 10:11:11]   Copiados: 2000 / 2424
+[2026-03-30 10:11:12] Copia completada: 2424 PDFs - 1538 renombrados
+[2026-03-30 10:11:12] FASE 2: Dividiendo en lotes de 150
+[2026-03-30 10:11:12] Total PDFs: 2424 - 17 lotes
+[2026-03-30 10:11:13]   Lote 1 : 150 PDFs
+[2026-03-30 10:11:13]   Lote 2 : 150 PDFs
+[2026-03-30 10:11:14]   Lote 3 : 150 PDFs
+[2026-03-30 10:11:14]   Lote 4 : 150 PDFs
+[2026-03-30 10:11:14]   Lote 5 : 150 PDFs
+[2026-03-30 10:11:14]   Lote 6 : 150 PDFs
+[2026-03-30 10:11:14]   Lote 7 : 150 PDFs
+[2026-03-30 10:11:15]   Lote 8 : 150 PDFs
+[2026-03-30 10:11:15]   Lote 9 : 150 PDFs
+[2026-03-30 10:11:15]   Lote 10 : 150 PDFs
+[2026-03-30 10:11:15]   Lote 11 : 150 PDFs
+[2026-03-30 10:11:15]   Lote 12 : 150 PDFs
+[2026-03-30 10:11:15]   Lote 13 : 150 PDFs
+[2026-03-30 10:11:16]   Lote 14 : 150 PDFs
+[2026-03-30 10:11:16]   Lote 15 : 150 PDFs
+[2026-03-30 10:11:16]   Lote 16 : 150 PDFs
+[2026-03-30 10:11:16]   Lote 17 : 24 PDFs
+[2026-03-30 10:11:16] FASE 3: Procesando lotes
+[2026-03-30 10:11:16] 
+[2026-03-30 10:11:16] --- Lote 1 / 17 : lote_1 ---
+[2026-03-30 10:11:16]   Ejecutando batch_process.py...
+[2026-03-30 10:11:25]   Completado OK
+[2026-03-30 10:11:25]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:11:25]   Duracion: 0.2 minutos
+[2026-03-30 10:11:25]   Estimado restante: ~3 minutos (16 lotes)
+[2026-03-30 10:11:25] 
+[2026-03-30 10:11:25] --- Lote 2 / 17 : lote_10 ---
+[2026-03-30 10:11:25]   Ejecutando batch_process.py...
+[2026-03-30 10:12:05]   Completado OK
+[2026-03-30 10:12:05]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:12:05]   Duracion: 0.7 minutos
+[2026-03-30 10:12:05]   Estimado restante: ~10 minutos (15 lotes)
+[2026-03-30 10:12:05] 
+[2026-03-30 10:12:05] --- Lote 3 / 17 : lote_11 ---
+[2026-03-30 10:12:05]   Ejecutando batch_process.py...
+[2026-03-30 10:13:05]   Completado OK
+[2026-03-30 10:13:05]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:13:05]   Duracion: 1 minutos
+[2026-03-30 10:13:05]   Estimado restante: ~14 minutos (14 lotes)
+[2026-03-30 10:13:05] 
+[2026-03-30 10:13:05] --- Lote 4 / 17 : lote_12 ---
+[2026-03-30 10:13:05]   Ejecutando batch_process.py...
+[2026-03-30 10:14:00]   Completado OK
+[2026-03-30 10:14:00]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:14:00]   Duracion: 0.9 minutos
+[2026-03-30 10:14:00]   Estimado restante: ~12 minutos (13 lotes)
+[2026-03-30 10:14:00] 
+[2026-03-30 10:14:00] --- Lote 5 / 17 : lote_13 ---
+[2026-03-30 10:14:00]   Ejecutando batch_process.py...
+[2026-03-30 10:15:28]   Completado OK
+[2026-03-30 10:15:28]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:15:28]   Duracion: 1.5 minutos
+[2026-03-30 10:15:28]   Estimado restante: ~18 minutos (12 lotes)
+[2026-03-30 10:15:28] 
+[2026-03-30 10:15:28] --- Lote 6 / 17 : lote_14 ---
+[2026-03-30 10:15:28]   Ejecutando batch_process.py...
+[2026-03-30 10:16:34]   Completado OK
+[2026-03-30 10:16:34]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:16:34]   Duracion: 1.1 minutos
+[2026-03-30 10:16:34]   Estimado restante: ~12 minutos (11 lotes)
+[2026-03-30 10:16:34] 
+[2026-03-30 10:16:34] --- Lote 7 / 17 : lote_15 ---
+[2026-03-30 10:16:34]   Ejecutando batch_process.py...
+[2026-03-30 10:18:09]   Completado OK
+[2026-03-30 10:18:09]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:18:09]   Duracion: 1.6 minutos
+[2026-03-30 10:18:09]   Estimado restante: ~16 minutos (10 lotes)
+[2026-03-30 10:18:09] 
+[2026-03-30 10:18:09] --- Lote 8 / 17 : lote_16 ---
+[2026-03-30 10:18:09]   Ejecutando batch_process.py...
+[2026-03-30 10:20:09]   Completado OK
+[2026-03-30 10:20:09]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:20:09]   Duracion: 2 minutos
+[2026-03-30 10:20:09]   Estimado restante: ~18 minutos (9 lotes)
+[2026-03-30 10:20:09] 
+[2026-03-30 10:20:09] --- Lote 9 / 17 : lote_17 ---
+[2026-03-30 10:20:09]   Ejecutando batch_process.py...
+[2026-03-30 10:20:17]   Completado OK
+[2026-03-30 10:20:17]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:20:17]   Duracion: 0.1 minutos
+[2026-03-30 10:20:17]   Estimado restante: ~1 minutos (8 lotes)
+[2026-03-30 10:20:17] 
+[2026-03-30 10:20:17] --- Lote 10 / 17 : lote_2 ---
+[2026-03-30 10:20:17]   Ejecutando batch_process.py...
+[2026-03-30 10:20:19]   Completado OK
+[2026-03-30 10:20:19]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:20:19]   Duracion: 0 minutos
+[2026-03-30 10:20:19] 
+[2026-03-30 10:20:19] --- Lote 11 / 17 : lote_3 ---
+[2026-03-30 10:20:19]   Ejecutando batch_process.py...
+[2026-03-30 10:20:21]   Completado OK
+[2026-03-30 10:20:21]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:20:21]   Duracion: 0 minutos
+[2026-03-30 10:20:21] 
+[2026-03-30 10:20:21] --- Lote 12 / 17 : lote_4 ---
+[2026-03-30 10:20:21]   Ejecutando batch_process.py...
+[2026-03-30 10:20:49]   Completado OK
+[2026-03-30 10:20:49]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:20:49]   Duracion: 0.5 minutos
+[2026-03-30 10:20:49]   Estimado restante: ~2 minutos (5 lotes)
+[2026-03-30 10:20:49] 
+[2026-03-30 10:20:49] --- Lote 13 / 17 : lote_5 ---
+[2026-03-30 10:20:49]   Ejecutando batch_process.py...
+[2026-03-30 10:21:31]   Completado OK
+[2026-03-30 10:21:31]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:21:31]   Duracion: 0.7 minutos
+[2026-03-30 10:21:31]   Estimado restante: ~3 minutos (4 lotes)
+[2026-03-30 10:21:31] 
+[2026-03-30 10:21:31] --- Lote 14 / 17 : lote_6 ---
+[2026-03-30 10:21:31]   Ejecutando batch_process.py...
+[2026-03-30 10:22:24]   Completado OK
+[2026-03-30 10:22:24]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:22:24]   Duracion: 0.9 minutos
+[2026-03-30 10:22:24]   Estimado restante: ~3 minutos (3 lotes)
+[2026-03-30 10:22:24] 
+[2026-03-30 10:22:24] --- Lote 15 / 17 : lote_7 ---
+[2026-03-30 10:22:24]   Ejecutando batch_process.py...
+[2026-03-30 10:23:38]   Completado OK
+[2026-03-30 10:23:38]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:23:38]   Duracion: 1.2 minutos
+[2026-03-30 10:23:38]   Estimado restante: ~2 minutos (2 lotes)
+[2026-03-30 10:23:38] 
+[2026-03-30 10:23:38] --- Lote 16 / 17 : lote_8 ---
+[2026-03-30 10:23:38]   Ejecutando batch_process.py...
+[2026-03-30 10:24:03]   Completado OK
+[2026-03-30 10:24:03]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:24:03]   Duracion: 0.4 minutos
+[2026-03-30 10:24:03]   Estimado restante: ~0 minutos (1 lotes)
+[2026-03-30 10:24:03] 
+[2026-03-30 10:24:03] --- Lote 17 / 17 : lote_9 ---
+[2026-03-30 10:24:03]   Ejecutando batch_process.py...
+[2026-03-30 10:25:39]   Completado OK
+[2026-03-30 10:25:39]   Resultado: 20 OK, 0 errores
+[2026-03-30 10:25:39]   Duracion: 1.6 minutos
+[2026-03-30 10:25:39]   Estimado restante: ~0 minutos (0 lotes)
+[2026-03-30 10:25:39] 
+[2026-03-30 10:25:39] FASE 4: Separando facturas con errores
+[2026-03-30 10:25:39] No se encontraron errores en los status JSON
+[2026-03-30 10:25:39] Revisar manualmente los Excel en: C:\verabuy-traductor\batch_2026_resultados
+[2026-03-30 10:25:39] 
+[2026-03-30 10:25:39] ======================================================
+[2026-03-30 10:25:39]               INFORME FINAL
+[2026-03-30 10:25:39] ======================================================
+[2026-03-30 10:25:39] 
+[2026-03-30 10:25:39]   PDFs totales:        2424
+[2026-03-30 10:25:39]   Lotes procesados:    17
+[2026-03-30 10:25:39]   Procesadas OK:       340
+[2026-03-30 10:25:39]   Con errores:         0
+[2026-03-30 10:25:39]   Tasa de exito:       100%
+[2026-03-30 10:25:39]   Duracion total:      14.4 minutos
+[2026-03-30 10:25:39] 
+[2026-03-30 10:25:39]   Resultados Excel:    C:\verabuy-traductor\batch_2026_resultados
+[2026-03-30 10:25:39]   Facturas fallidas:   C:\verabuy-traductor\batch_2026_fallos
+[2026-03-30 10:25:39]   Log completo:        C:\verabuy-traductor\batch_2026_log.txt
+[2026-03-30 10:25:39] 
+[2026-03-30 10:25:39] ======================================================

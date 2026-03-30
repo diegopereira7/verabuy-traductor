@@ -1,0 +1,351 @@
+{
+  "pendientes/AROMA.pdf": {
+    "hash_estructura": "198f5aab1f5b",
+    "proveedor_candidato": "I N V O I C E 001097740",
+    "keywords": [
+      "S.L",
+      "SA",
+      "SL"
+    ],
+    "num_paginas": 1,
+    "tiene_tablas": true,
+    "num_columnas": 1,
+    "headers": [
+      "floraroma sa cayambe km 1 12 via a tabacundo ecuador tel1 2362956 tel22494876 fax email contabilidadfloraromacomec wwwfloraromacomec ruc 1792060699001"
+    ],
+    "confianza": 0.4,
+    "timestamp": "2026-03-30T09:03:23.425894"
+  },
+  "pendientes/CERES.pdf": {
+    "hash_estructura": "baf2784c81a9",
+    "proveedor_candidato": "CERESFARMS CIA. LTDA.",
+    "keywords": [
+      "INVOICE",
+      "LTDA",
+      "SL"
+    ],
+    "num_paginas": 1,
+    "tiene_tablas": true,
+    "num_columnas": 19,
+    "headers": [
+      "",
+      "",
+      "variety",
+      "size stems grado",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "t steam",
+      "prec",
+      "total"
+    ],
+    "confianza": 0.7999999999999999,
+    "timestamp": "2026-03-30T09:03:24.891478"
+  },
+  "pendientes/ESMERALDA.pdf": {
+    "hash_estructura": "5ed4e00195b8",
+    "proveedor_candidato": "Invoice",
+    "keywords": [
+      "INVOICE",
+      "S.A.S"
+    ],
+    "num_paginas": 1,
+    "tiene_tablas": false,
+    "num_columnas": 0,
+    "headers": [],
+    "confianza": 0.30000000000000004,
+    "timestamp": "2026-03-30T09:03:25.555962"
+  },
+  "pendientes/GARDA.pdf": {
+    "hash_estructura": "4a57f552ba5a",
+    "proveedor_candidato": "INVOICE # 0000330381",
+    "keywords": [
+      "FARM",
+      "INVOICE",
+      "S.A",
+      "SL"
+    ],
+    "num_paginas": 1,
+    "tiene_tablas": true,
+    "num_columnas": 11,
+    "headers": [
+      "gardaexport sa ruc 1791715349001 city cayambe country ecuador",
+      "",
+      "",
+      "",
+      "",
+      "addresspanamericana norte km 1 12 via a farm phone pbx 59323827670 email salesgardaexportcom web wwwgardaexportcom",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "confianza": 0.5,
+    "timestamp": "2026-03-30T09:03:26.285887"
+  },
+  "pendientes/APOSENTOS.pdf": {
+    "hash_estructura": "ec9f0faa6a14",
+    "proveedor_candidato": "C.I. FLORES DE APOSENTOS S.A.S. INVOICE No.",
+    "keywords": [
+      "FLORES",
+      "INVOICE",
+      "S.A.S",
+      "SLU"
+    ],
+    "num_paginas": 1,
+    "tiene_tablas": true,
+    "num_columnas": 2,
+    "headers": [
+      "total fulls",
+      "33"
+    ],
+    "confianza": 0.65,
+    "timestamp": "2026-03-30T09:20:51.473785"
+  },
+  "pendientes/CIRCASIA.pdf": {
+    "hash_estructura": "702a309c545b",
+    "proveedor_candidato": "AGRICOLA CIRCASIA SAS",
+    "keywords": [
+      "INVOICE",
+      "SAS",
+      "SLU"
+    ],
+    "num_paginas": 1,
+    "tiene_tablas": true,
+    "num_columnas": 12,
+    "headers": [
+      "boxes",
+      "",
+      "description",
+      "box",
+      "gr",
+      "box id",
+      "tariff",
+      "unxbox",
+      "total un",
+      "un",
+      "price",
+      "total"
+    ],
+    "confianza": 0.7999999999999999,
+    "timestamp": "2026-03-30T09:20:52.537349"
+  },
+  "pendientes/ECOFLOR.pdf": {
+    "hash_estructura": "43614f5bfc7e",
+    "proveedor_candidato": "ECOFLOR GROUPCHILE CIA. LTDA",
+    "keywords": [
+      "FARM",
+      "INVOICE",
+      "LTDA",
+      "ROSES",
+      "SL"
+    ],
+    "num_paginas": 1,
+    "tiene_tablas": true,
+    "num_columnas": 10,
+    "headers": [
+      "box",
+      "tb",
+      "box code",
+      "variety",
+      "can",
+      "bunches",
+      "lengt",
+      "stems",
+      "priceunit",
+      "total"
+    ],
+    "confianza": 0.5,
+    "timestamp": "2026-03-30T09:20:53.392965"
+  },
+  "pendientes/FLORIFRUT.pdf": {
+    "hash_estructura": "e0934f684940",
+    "proveedor_candidato": "FLORES Y FRUTAS FLORIFRUT S.A.",
+    "keywords": [
+      "FARM",
+      "FLORES",
+      "INVOICE",
+      "ROSES",
+      "S.A",
+      "S.L"
+    ],
+    "num_paginas": 2,
+    "tiene_tablas": true,
+    "num_columnas": 10,
+    "headers": [
+      "box n",
+      "tb",
+      "box code",
+      "variety",
+      "cantidad",
+      "bunches",
+      "length",
+      "stems",
+      "priceunit",
+      "total"
+    ],
+    "confianza": 0.5,
+    "timestamp": "2026-03-30T09:20:54.332613"
+  },
+  "pendientes/LA ROSALEDA.pdf": {
+    "hash_estructura": "e26f23f6d14c",
+    "proveedor_candidato": "FLORICOLA LA ROSALEDA S.A.",
+    "keywords": [
+      "FLORICOLA",
+      "INVOICE",
+      "S.A",
+      "S.L"
+    ],
+    "num_paginas": 1,
+    "tiene_tablas": true,
+    "num_columnas": 11,
+    "headers": [
+      "order",
+      "box code",
+      "bx",
+      "box type",
+      "varieties",
+      "cm",
+      "bunch stems",
+      "bunch box",
+      "stems box",
+      "unit price",
+      "total price"
+    ],
+    "confianza": 0.6000000000000001,
+    "timestamp": "2026-03-30T09:20:54.887790"
+  },
+  "pendientes/MILONGA.pdf": {
+    "hash_estructura": "5ed4e00195b8",
+    "proveedor_candidato": "FLORES MILONGA S.A.S",
+    "keywords": [
+      "FLORES",
+      "INVOICE",
+      "S.A.S"
+    ],
+    "num_paginas": 1,
+    "tiene_tablas": false,
+    "num_columnas": 0,
+    "headers": [],
+    "confianza": 0.5,
+    "timestamp": "2026-03-30T09:20:55.529728"
+  },
+  "pendientes/NATIVE.pdf": {
+    "hash_estructura": "6727de005796",
+    "proveedor_candidato": "CUSTOMER INVOICE 0000034767",
+    "keywords": [
+      "INVOICE",
+      "S.A.",
+      "SLU"
+    ],
+    "num_paginas": 2,
+    "tiene_tablas": true,
+    "num_columnas": 2,
+    "headers": [
+      "customer information",
+      "additional information"
+    ],
+    "confianza": 0.30000000000000004,
+    "timestamp": "2026-03-30T09:20:56.344243"
+  },
+  "pendientes/SEMANA_10_X_075-6768_0104_(130)X_VUELVEN.pdf": {
+    "hash_estructura": "702a309c545b",
+    "proveedor_candidato": "VUELVEN S.A.S.",
+    "keywords": [
+      "INVOICE",
+      "S.A.S",
+      "SLU"
+    ],
+    "num_paginas": 1,
+    "tiene_tablas": true,
+    "num_columnas": 12,
+    "headers": [
+      "boxes",
+      "",
+      "description",
+      "box",
+      "gr",
+      "box id",
+      "tariff",
+      "unxbox",
+      "total un",
+      "un",
+      "price",
+      "total"
+    ],
+    "confianza": 0.7999999999999999,
+    "timestamp": "2026-03-30T09:20:57.592789"
+  },
+  "pendientes/SEMANA_10_X_369-9901_0800_(273)X_SOLPACIFIC.pdf": {
+    "hash_estructura": "7b723caed609",
+    "proveedor_candidato": "INVOICE 001231476 Page 1 of 1",
+    "keywords": [
+      "INVOICE",
+      "SL"
+    ],
+    "num_paginas": 1,
+    "tiene_tablas": true,
+    "num_columnas": 17,
+    "headers": [
+      "address",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "confianza": 0.2,
+    "timestamp": "2026-03-30T09:20:58.262136"
+  },
+  "pendientes/SEMANA_10_X_729-4588_9314_(180)XX_UNIQUE.pdf": {
+    "hash_estructura": "6048f483cdfe",
+    "proveedor_candidato": "UNIQUE FLOWERS US SAS COMMERCIAL",
+    "keywords": [
+      "FLOWERS",
+      "INVOICE",
+      "SAS",
+      "SLU"
+    ],
+    "num_paginas": 1,
+    "tiene_tablas": true,
+    "num_columnas": 13,
+    "headers": [
+      "box qty",
+      "box type",
+      "unitbox",
+      "product",
+      "sm",
+      "hts",
+      "po",
+      "unit type",
+      "total stems",
+      "price stem",
+      "total bunches",
+      "price bunch",
+      "total price"
+    ],
+    "confianza": 0.7999999999999999,
+    "timestamp": "2026-03-30T09:20:59.216017"
+  }
+}

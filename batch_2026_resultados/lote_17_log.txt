@@ -1,0 +1,31 @@
+Encontrados 24 PDFs. Cargando datos...
+  42502 artículos, 1439 sinónimos cargados.
+  [1/24] UMA1.pdf: 0/0 — OK
+  [2/24] UNIQUE.pdf: 0/2 — 2 sin match
+  [3/24] UTOPIA.pdf: 0/1 — 1 sin match
+  [4/24] UTOPIA1.pdf: 1/1 — OK
+  [5/24] VALLE VERDE (2).pdf: 0/1 — 1 sin match
+  [6/24] VALLE VERDE.pdf: 7/7 — OK
+  [7/24] VALLEVERDE.pdf: 7/7 — OK
+  [8/24] VALTHO.pdf: 10/10 — OK
+  [9/24] VALTHO1.pdf: 17/18 — 1 sin match
+  [10/24] VALTHO2.pdf: 6/7 — 1 sin match
+  [11/24] VALTHOMIG 25058615.pdf: 37/37 — OK
+  [12/24] VALTHOMIG 25058633.pdf: 1/1 — OK
+  [13/24] VALTHOMIG.pdf: 36/36 — OK
+  [14/24] VATHO.pdf: 35/36 — 1 sin match
+  [15/24] VERALEZA EC 25.3 93 BTOS.pdf: OMITIDO — no es factura (BTOS)
+  [16/24] VERALEZA EC 25.3. 66 BTOS PARTE.pdf: OMITIDO — no es factura (BTOS)
+  [17/24] VERALEZA SLU-INV-008963 (1).pdf: OMITIDO — no es factura (SLU)
+  [18/24] VERDES LA ESTACION 1815.pdf: 25/25 — OK
+  [19/24] VERDES LA ESTACION 1816.pdf: 0/0 — OK
+  [20/24] VERDES LA ESTACION 1829.pdf: 47/51 — 4 sin match
+  [21/24] VERDES TB.pdf: 0/0 — OK
+  [22/24] VERDES.pdf: 0/0 — OK
+  [23/24] VUELVEN (2).pdf: 4/9 — 1 sin match
+  [24/24] VUELVEN.pdf: 10/15 — 1 sin match
+
+Excel generado: C:\verabuy-traductor\batch_2026_resultados\lote_17.xlsx
+
+Resumen: 21 OK, 0 errores, 3 omitidos, 264 líneas (243 match, 13 sin match)
+Total USD: $6,552.25
