@@ -26,10 +26,11 @@ class MysticParser:
             raw=ln; ln=ln.strip()
             # Patron A: con codigo de caja corto (Mystic: "H VNG VARIETY CAN BUNCHES LENGT STEMS PRICE")
             # [A-Z]{2,5} no captura -- solo casa con codigos tipo "VNG", no con palabras como "ORANGE"
-            pm=re.search(r'\b(H|Q)\b\s+[A-Z]{2,5}\s+([A-Z][A-Z\s.\-/]+?)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+([\d,.]+)',ln)
+            # FIX: [A-Za-z] para aceptar variedades mixed-case (Florifrut: "Frutteto", "Brighton")
+            pm=re.search(r'\b(H|Q)\b\s+[A-Z]{2,5}\s+([A-Za-z][A-Za-z\s.\-/&]+?)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+([\d,.]+)',ln)
             if not pm:
                 # Patron B: sin codigo de caja (Fiorentina, Stampsy)
-                pm=re.search(r'\b(H|Q)\b\s+([A-Z][A-Z\s.\-/]+?)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+([\d,.]+)',ln)
+                pm=re.search(r'\b(H|Q)\b\s+([A-Za-z][A-Za-z\s.\-/&]+?)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+([\d,.]+)',ln)
             if pm:
                 btype=pm.group(1); current_variety=pm.group(2).strip()
                 try:

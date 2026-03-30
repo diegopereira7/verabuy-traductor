@@ -122,6 +122,16 @@ PROVIDERS = {
     'floraroma'  : {'id': 0,     'name': 'Floraroma',               'fmt': 'floraroma',    'patterns': ['FLORAROMA']},
     'garda'      : {'id': 0,     'name': 'GardaExport',             'fmt': 'garda',        'patterns': ['GARDAEXPORT']},
     'utopia'     : {'id': 0,     'name': 'Utopia Farms',            'fmt': 'utopia',       'patterns': ['UTOPIA FARMS']},
+    'ecoflor'    : {'id': 0,     'name': 'Ecoflor Groupchile',      'fmt': 'mystic',       'patterns': ['ECOFLOR GROUPCHILE']},
+    'florifrut'  : {'id': 0,     'name': 'Flores y Frutas Florifrut','fmt': 'mystic',       'patterns': ['FLORIFRUT']},
+    'solpacific' : {'id': 0,     'name': 'Sol Pacific',              'fmt': 'valleverde',   'patterns': ['solpacificecuador', 'SOLPACIFIC']},
+    'rosaleda'   : {'id': 2226,  'name': 'Floricola La Rosaleda',    'fmt': 'rosaleda',     'patterns': ['FLORICOLA LA ROSALEDA', 'LA ROSALEDA']},
+    'circasia'   : {'id': 0,     'name': 'Agricola Circasia',        'fmt': 'colfarm',      'patterns': ['AGRICOLA CIRCASIA']},
+    'vuelven'    : {'id': 0,     'name': 'Vuelven',                  'fmt': 'colfarm',      'patterns': ['VUELVEN S.A']},
+    'milonga'    : {'id': 0,     'name': 'Flores Milonga',           'fmt': 'colfarm',      'patterns': ['FLORES MILONGA']},
+    'native'     : {'id': 0,     'name': 'Calinama (Native)',        'fmt': 'native',       'patterns': ['CALINAMA CAPITAL']},
+    'unique'     : {'id': 0,     'name': 'Unique Flowers',           'fmt': 'unique',       'patterns': ['UNIQUE FLOWERS']},
+    'aposentos'  : {'id': 0,     'name': 'Flores de Aposentos',      'fmt': 'aposentos',    'patterns': ['FLORES DE APOSENTOS']},
 }
 
 # --- Regex para eliminar sufijo de proveedor del nombre del artículo ---

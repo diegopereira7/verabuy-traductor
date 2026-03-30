@@ -31,6 +31,11 @@ from src.parsers.otros import (
     FloraromaParser,
     GardaParser,
     UtopiaParser,
+    ColFarmParser,
+    NativeParser,
+    RosaledaParser,
+    UniqueParser,
+    AposentosParser,
 )
 
 FORMAT_PARSERS = {
@@ -64,4 +69,9 @@ FORMAT_PARSERS = {
     'floraroma'  : FloraromaParser(),
     'garda'      : GardaParser(),
     'utopia'     : UtopiaParser(),
+    'colfarm'    : ColFarmParser(),
+    'native'     : NativeParser(),
+    'rosaleda'   : RosaledaParser(),
+    'unique'     : UniqueParser(),
+    'aposentos'  : AposentosParser(),
 }
