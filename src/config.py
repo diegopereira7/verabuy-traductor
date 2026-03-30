@@ -118,6 +118,10 @@ PROVIDERS = {
     'sayonara'   : {'id': 2166,  'name': 'Sayonara',               'fmt': 'sayonara',     'patterns': ['CULTIVOS SAYONARA', 'SAYONARA']},
     'life'       : {'id': 4471,  'name': 'Life Flowers',           'fmt': 'life',         'patterns': ['LIFEFLOWERS', 'lifeflowersecuador']},
     'latina'     : {'id': 12990, 'name': 'Floricola Latinafarms',  'fmt': 'alegria',      'patterns': ['FLORICOLA LATINAFARMS', 'LATINA']},
+    'ceres'      : {'id': 0,     'name': 'Ceresfarms',              'fmt': 'alegria',      'patterns': ['CERESFARMS']},
+    'floraroma'  : {'id': 0,     'name': 'Floraroma',               'fmt': 'floraroma',    'patterns': ['FLORAROMA']},
+    'garda'      : {'id': 0,     'name': 'GardaExport',             'fmt': 'garda',        'patterns': ['GARDAEXPORT']},
+    'utopia'     : {'id': 0,     'name': 'Utopia Farms',            'fmt': 'utopia',       'patterns': ['UTOPIA FARMS']},
 }
 
 # --- Regex para eliminar sufijo de proveedor del nombre del artículo ---

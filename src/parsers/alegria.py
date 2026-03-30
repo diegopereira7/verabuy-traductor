@@ -28,7 +28,8 @@ class AlegriaParser:
         # Header: regex sobre texto plano (funciona bien)
         m = re.search(r'INVOICE[:\s]*(\d+)', text, re.I)
         h.invoice_number = m.group(1) if m else ''
-        m = re.search(r'DATE\s+([\d/]+)', text, re.I)
+        # FIX: CERES pega DATE sin espacio ("DATE31/12/2025"), \s* en vez de \s+
+        m = re.search(r'DATE\s*([\d/\-]+)', text, re.I)
         h.date = m.group(1) if m else ''
         m = re.search(r'M\.?A\.?W\.?B\.?\s*([\d\-]+)', text, re.I)
         h.awb = re.sub(r'\s+', '', m.group(1)) if m else ''

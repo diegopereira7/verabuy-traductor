@@ -1562,8 +1562,8 @@
     "invoice": "LUXUS.pdf"
   },
   "1429|ROSES|FREEDOM|60|25|": {
-    "articulo_id": 33993,
-    "articulo_name": "ROSA FREEDOM 60CM 25U LUXUS",
+    "articulo_id": 33992,
+    "articulo_name": "ROSA FREEDOM 60CM 25U AGRIVALDANI",
     "origen": "auto-marca",
     "provider_id": 1429,
     "species": "ROSES",
@@ -1571,7 +1571,7 @@
     "size": 60,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "4 - 4 1 HALF FREEDOM 60 25 12 300 0.35 105.00",
+    "raw": "7 - 8 2 HALF FREEDOM 60 25 12 600 0.35 210.00",
     "invoice": ""
   },
   "1429|ROSES|EXPLORER|40|25|": {
@@ -1783,8 +1783,8 @@
     "invoice": "SECORE.pdf"
   },
   "2220|ROSES|FRUTTETO|50|25|": {
-    "articulo_id": 34088,
-    "articulo_name": "ROSA FRUTTETO 50CM 25U FIORENTINA",
+    "articulo_id": 34105,
+    "articulo_name": "ROSA FRUTTETO 50CM 25U STAMPSY",
     "origen": "auto-marca",
     "provider_id": 2220,
     "species": "ROSES",
@@ -1809,8 +1809,8 @@
     "invoice": "STAMPSY.pdf"
   },
   "2220|ROSES|SILANTOI|50|25|": {
-    "articulo_id": 36532,
-    "articulo_name": "ROSA SILANTOI 50CM 25U FIORENTINA",
+    "articulo_id": 36541,
+    "articulo_name": "ROSA SILANTOI 50CM 25U STAMPSY",
     "origen": "auto-marca",
     "provider_id": 2220,
     "species": "ROSES",
@@ -2339,8 +2339,8 @@
     "size": 60,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "1 TB BRIGHTON *25 60 8 200 $ 0.2700 $54.00",
-    "invoice": "ROSELY.pdf"
+    "raw": "3 HB BRIGHTON 25 X 0    3       75 0.36 27.00",
+    "invoice": "CERES.pdf"
   },
   "0|ROSES|EXPLORER|50|25|": {
     "articulo_id": 33784,
@@ -2352,8 +2352,8 @@
     "size": 50,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "1 - 1 RICC ROSES 1 HB ROSE EXPLORER 50 325 325 0.280 91.000 Standing RICC ROSES",
-    "invoice": ""
+    "raw": "8 HB EXPLORER 25 X 0   4        100 0.32 32.00",
+    "invoice": "CERES.pdf"
   },
   "0|ROSES|MONDIAL|50|25|": {
     "articulo_id": 35523,
@@ -2365,8 +2365,8 @@
     "size": 50,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "2 - 2 RICC ROSES 1 HB ROSE MONDIAL 50 325 325 0.280 91.000 Standing RICC ROSES",
-    "invoice": ""
+    "raw": "5 HB MONDIAL 25 X 0   6        150 0.30 45.00",
+    "invoice": "CERES.pdf"
   },
   "0|ROSES|FRUTTETO|50|25|": {
     "articulo_id": 34111,
@@ -2404,8 +2404,8 @@
     "size": 50,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "15 - 15 SANI ROSES 1 HB ROSE BRIGHTON 50 300 300 0.280 84.000 Standing SANI ROSES",
-    "invoice": ""
+    "raw": "7 HB BRIGHTON 25 X 0   2        50 0.30 15.00",
+    "invoice": "CERES.pdf"
   },
   "0|ROSES|MAGIC TIMES|50|25|": {
     "articulo_id": 35206,
@@ -3782,8 +3782,8 @@
     "size": 40,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "10 - 10 FENIX 1 HB ROSE EXPLORER 40 350 350 0.220 77.000 Standing FENIX",
-    "invoice": ""
+    "raw": "5 HB EXPLORER 25 X 0  4         100 0.22 22.00",
+    "invoice": "CERES.pdf"
   },
   "2228|ROSES|HB MONDIAL|50|25|": {
     "articulo_id": 33230,
@@ -4436,8 +4436,8 @@
     "invoice": ""
   },
   "6916|ROSES|SILANTOI|50|25|": {
-    "articulo_id": 36532,
-    "articulo_name": "ROSA SILANTOI 50CM 25U FIORENTINA",
+    "articulo_id": 36541,
+    "articulo_name": "ROSA SILANTOI 50CM 25U STAMPSY",
     "origen": "auto-marca",
     "provider_id": 6916,
     "species": "ROSES",
@@ -4696,30 +4696,30 @@
     "invoice": ""
   },
   "0|ROSES|ESPERANCE|50|25|": {
-    "articulo_id": 32942,
-    "articulo_name": "ROSA EC ESPERANCE 50CM 25U",
-    "origen": "auto",
+    "articulo_id": 33691,
+    "articulo_name": "ROSA ESPERANCE 50CM 25U CERES",
+    "origen": "auto-marca",
     "provider_id": 0,
     "species": "ROSES",
     "variety": "ESPERANCE",
     "size": 50,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "34 - 34 FOUR GROUP 1 HB ROSE ESPERANCE 50 300 300 0.300 90.000 VDAY FOUR GROUP",
-    "invoice": ""
+    "raw": "7 HB ESPERANCE 25 X 0   2        50 0.30 15.00",
+    "invoice": "CERES.pdf"
   },
   "0|ROSES|SWEETNESS|50|25|": {
-    "articulo_id": 37026,
-    "articulo_name": "ROSA SWEETNESS 50CM 25U EQR",
-    "origen": "auto",
+    "articulo_id": 37020,
+    "articulo_name": "ROSA SWEETNESS 50CM 25U CERES",
+    "origen": "auto-marca",
     "provider_id": 0,
     "species": "ROSES",
     "variety": "SWEETNESS",
     "size": 50,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "36 - 36 FOUR GROUP 1 HB ROSE SWEETNESS 50 300 300 0.300 90.000 VDAY FOUR GROUP",
-    "invoice": ""
+    "raw": "7 HB SWEETNESS 25 X 0   2        50 0.30 15.00",
+    "invoice": "CERES.pdf"
   },
   "0|ROSES|BRIGHTON|40|25|": {
     "articulo_id": 31897,
@@ -4731,8 +4731,8 @@
     "size": 40,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "37 - 37 ULCUANGO ROSES 1 HB ROSE BRIGHTON 40 125 125 0.250 31.250 VDAY ULCUANGO ROSES",
-    "invoice": ""
+    "raw": "5 HB BRIGHTON 25 X 0  1         25 0.22 5.50",
+    "invoice": "CERES.pdf"
   },
   "0|ROSES|HERMOSA|50|25|": {
     "articulo_id": 34434,
@@ -4744,8 +4744,8 @@
     "size": 50,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "47 - 47 SAE FLOWERS 1 HB ROSE HERMOSA 50 300 300 0.300 90.000 VDAY SAE FLOWERS",
-    "invoice": ""
+    "raw": "4 HB HERMOSA 25 X 0   6        150 0.36 54.00",
+    "invoice": "CERES.pdf"
   },
   "0|ROSES|PINK MONDIAL|40|25|": {
     "articulo_id": 36132,
@@ -4848,8 +4848,8 @@
     "size": 50,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "7 - 7 SHADDAI ROSES 1 HB ROSE PINK MONDIAL 50 300 300 0.280 84.000 Standing SHADDAI ROSES",
-    "invoice": ""
+    "raw": "5 HB PINK MONDIAL 25 X 0   1        25 0.30 7.50",
+    "invoice": "CERES.pdf"
   },
   "0|ROSES|PLAYA BLANCA|50|25|": {
     "articulo_id": 33348,
@@ -5758,8 +5758,8 @@
     "size": 60,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "18 - 18 RICC ROSES 1 HB ROSE FRUTTETO 60 125 125 0.280 35.000 Standing RICC ROSES",
-    "invoice": ""
+    "raw": "3 HB FRUTTETO 25 X 0    3       75 0.36 27.00",
+    "invoice": "CERES.pdf"
   },
   "0|ROSES|TOFFE|60|25|": {
     "articulo_id": 33566,
@@ -7166,8 +7166,8 @@
     "invoice": ""
   },
   "6916|ROSES|MONDIAL|50|25|": {
-    "articulo_id": 35481,
-    "articulo_name": "ROSA MONDIAL 50CM 25U STAMPSY",
+    "articulo_id": 35486,
+    "articulo_name": "ROSA MONDIAL 50CM 25U FIORENTINA",
     "origen": "auto-marca",
     "provider_id": 6916,
     "species": "ROSES",
@@ -7465,8 +7465,8 @@
     "invoice": ""
   },
   "1429|ROSES|TIBET|50|25|": {
-    "articulo_id": 37132,
-    "articulo_name": "ROSA TIBET 50CM 25U AGRIVALDANI",
+    "articulo_id": 37131,
+    "articulo_name": "ROSA TIBET 50CM 25U LUXUS",
     "origen": "auto-marca",
     "provider_id": 1429,
     "species": "ROSES",
@@ -8622,8 +8622,8 @@
     "invoice": ""
   },
   "6916|ROSES|TIFFANY|50|25|": {
-    "articulo_id": 37176,
-    "articulo_name": "ROSA TIFFANY 50CM 25U FIORENTINA",
+    "articulo_id": 37172,
+    "articulo_name": "ROSA TIFFANY 50CM 25U STAMPSY",
     "origen": "auto-marca",
     "provider_id": 6916,
     "species": "ROSES",
@@ -9112,8 +9112,8 @@
     "size": 60,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "43 - 43 FLOR GOLD 1 HB ROSE DEEP PURPLE 60 150 150 0.350 52.500 VDAY FLOR GOLD",
-    "invoice": ""
+    "raw": "3 HB DEEP PURPLE 25 X 0    1       25 0.36 9.00",
+    "invoice": "CERES.pdf"
   },
   "0|ROSES|EXPLORER|90|25|": {
     "articulo_id": 32955,
@@ -9138,8 +9138,8 @@
     "size": 50,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "76 - 76 NOELCAR 1 HB ROSE DEEP PURPLE 50 300 300 0.300 90.000 VDAY NOELCAR ROSES",
-    "invoice": ""
+    "raw": "7 HB DEEP PURPLE 25 X 0   2        50 0.30 15.00",
+    "invoice": "CERES.pdf"
   },
   "0|ROSES|ATOMIC|60|25|": {
     "articulo_id": 31733,
@@ -9337,17 +9337,17 @@
     "invoice": ""
   },
   "0|ROSES|WASABI|50|25|": {
-    "articulo_id": 33617,
-    "articulo_name": "ROSA EC WASABI 50CM 25U",
-    "origen": "auto",
+    "articulo_id": 37718,
+    "articulo_name": "ROSA WASABI 50CM 25U CERES",
+    "origen": "auto-marca",
     "provider_id": 0,
     "species": "ROSES",
     "variety": "WASABI",
     "size": 50,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "22 - PARAMO ROSES 1 QB ROSE WASABI 50 100 100 0.500 50.000 Venta diaria PARAMO ROSES",
-    "invoice": ""
+    "raw": "1 HB WASABI 25 X 0   3        75 0.30 22.50",
+    "invoice": "CERES.pdf"
   },
   "7338|ROSES|MONDIAL|50|3|": {
     "articulo_id": 33229,
@@ -9701,8 +9701,8 @@
     "invoice": ""
   },
   "442|ROSES|MONDIAL|50|25|": {
-    "articulo_id": 35481,
-    "articulo_name": "ROSA MONDIAL 50CM 25U STAMPSY",
+    "articulo_id": 35486,
+    "articulo_name": "ROSA MONDIAL 50CM 25U FIORENTINA",
     "origen": "auto-marca",
     "provider_id": 442,
     "species": "ROSES",
@@ -10962,8 +10962,8 @@
     "invoice": ""
   },
   "2228|ROSES|FREEDOM|60|25|": {
-    "articulo_id": 33993,
-    "articulo_name": "ROSA FREEDOM 60CM 25U LUXUS",
+    "articulo_id": 33992,
+    "articulo_name": "ROSA FREEDOM 60CM 25U AGRIVALDANI",
     "origen": "auto-marca",
     "provider_id": 2228,
     "species": "ROSES",
@@ -11664,8 +11664,8 @@
     "invoice": ""
   },
   "6916|ROSES|TWILIGHT|50|25|": {
-    "articulo_id": 37502,
-    "articulo_name": "ROSA TWILIGHT 50CM 25U STAMPSY",
+    "articulo_id": 37504,
+    "articulo_name": "ROSA TWILIGHT 50CM 25U FIORENTINA",
     "origen": "auto-marca",
     "provider_id": 6916,
     "species": "ROSES",
@@ -13859,5 +13859,161 @@
     "grade": "",
     "raw": "Gyp XL Rainbow Mix Light 80/750gr Violeta Flowers",
     "invoice": "18185. Veraleza-16-Marzo 2026-Saftec.pdf"
+  },
+  "0|ROSES|SHIMMER|50|25|": {
+    "articulo_id": 43071,
+    "articulo_name": "ROSA SHIMMER 50CM 25U BRISSAS",
+    "origen": "auto-marca",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "SHIMMER",
+    "size": 50,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "1 1 - 1 HB E 12 Shimmer 50 25 300 0.280 84.000",
+    "invoice": "AROMA.pdf"
+  },
+  "0|ROSES|LIMONADE|50|25|": {
+    "articulo_id": 33133,
+    "articulo_name": "ROSA EC LEMONADE 50CM 25U",
+    "origen": "auto-fuzzy",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "LIMONADE",
+    "size": 50,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "1 HB LIMONADE 25 X 0   6        150 0.30 45.00",
+    "invoice": "CERES.pdf"
+  },
+  "0|ROSES|ZAZU|40|25|": {
+    "articulo_id": 37754,
+    "articulo_name": "ROSA ZAZU 40CM 25U CERES",
+    "origen": "auto-marca",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "ZAZU",
+    "size": 40,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "1 HB ZAZU 25 X 0  3         75 0.22 16.50",
+    "invoice": "CERES.pdf"
+  },
+  "0|ROSES|DEEP PURPLE|50|20|": {
+    "articulo_id": 32622,
+    "articulo_name": "ROSA DEEP PURPLE 50CM 20U CERES",
+    "origen": "auto-marca",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "DEEP PURPLE",
+    "size": 50,
+    "stems_per_bunch": 20,
+    "grade": "",
+    "raw": "2 QB DEEP PURPLE 20 X 0   1        20 0.30 6.00",
+    "invoice": "CERES.pdf"
+  },
+  "0|ROSES|DEEP PURPLE|60|20|": {
+    "articulo_id": 32642,
+    "articulo_name": "ROSA DEEP PURPLE 60CM 20U CERES",
+    "origen": "auto-marca",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "DEEP PURPLE",
+    "size": 60,
+    "stems_per_bunch": 20,
+    "grade": "",
+    "raw": "2 QB DEEP PURPLE 20 X 0    6       120 0.36 43.20",
+    "invoice": "CERES.pdf"
+  },
+  "0|ROSES|ESPERANCE|60|25|": {
+    "articulo_id": 33706,
+    "articulo_name": "ROSA ESPERANCE 60CM 25U CERES",
+    "origen": "auto-marca",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "ESPERANCE",
+    "size": 60,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "3 HB ESPERANCE 25 X 0    1       25 0.36 9.00",
+    "invoice": "CERES.pdf"
+  },
+  "0|ROSES|SWEETNESS|60|25|": {
+    "articulo_id": 37030,
+    "articulo_name": "ROSA SWEETNESS 60CM 25U CERES",
+    "origen": "auto-marca",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "SWEETNESS",
+    "size": 60,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "3 HB SWEETNESS 25 X 0    2       50 0.36 18.00",
+    "invoice": "CERES.pdf"
+  },
+  "0|ROSES|TIFFANNY|50|25|": {
+    "articulo_id": 33557,
+    "articulo_name": "ROSA EC TIFFANY 50CM 25U",
+    "origen": "auto-fuzzy",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "TIFFANNY",
+    "size": 50,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "4 HB TIFFANNY 25 X 0   6        150 0.30 45.00",
+    "invoice": "CERES.pdf"
+  },
+  "0|ROSES|HIGH & MAGIC|50|25|": {
+    "articulo_id": 34483,
+    "articulo_name": "ROSA HIGH MAGIC 50CM 25U CANTIZA",
+    "origen": "auto-fuzzy",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "HIGH & MAGIC",
+    "size": 50,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "7 HB HIGH & MAGIC 25 X 0   2        50 0.30 15.00",
+    "invoice": "CERES.pdf"
+  },
+  "0|ROSES|IGUAZU|50|25|": {
+    "articulo_id": 34645,
+    "articulo_name": "ROSA IGUAZU 50CM 25U CERES",
+    "origen": "auto-marca",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "IGUAZU",
+    "size": 50,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "7 HB IGUAZU 25 X 0   2        50 0.30 15.00",
+    "invoice": "CERES.pdf"
+  },
+  "0|ROSES|TIFFANY!|60|25|": {
+    "articulo_id": 33558,
+    "articulo_name": "ROSA EC TIFFANY 60CM 25U",
+    "origen": "auto-fuzzy",
+    "provider_id": 0,
+    "species": "ROSES",
+    "variety": "TIFFANY!",
+    "size": 60,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "08 Q ROSAS (ROSOIDEA) Tiffany! 60 5 125 0,36 45,00",
+    "invoice": "GARDA.pdf"
+  },
+  "0|GYPSOPHILA|GYPSOPHILA XLENCE WHITE|0|25|750GR": {
+    "articulo_id": 28324,
+    "articulo_name": "PANICULATA XLENCE BLANCO 750GR 1U ESMERALDA",
+    "origen": "manual",
+    "provider_id": 0,
+    "species": "GYPSOPHILA",
+    "variety": "GYPSOPHILA XLENCE WHITE",
+    "size": 0,
+    "stems_per_bunch": 25,
+    "grade": "750GR",
+    "raw": "GYPSO. XLENCE WHITE 25ST 750GR",
+    "invoice": "ESMERALDA.pdf"
   }
 }

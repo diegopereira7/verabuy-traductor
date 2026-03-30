@@ -626,3 +626,154 @@ class ValleVerdeParser:
                            price_per_stem=price,line_total=total,label=label)
             lines.append(il)
         return h, lines
+
+
+class FloraromaParser:
+    """Formato Floraroma: BOXES ORDER BOXTYPE GRADE BUNCHES VARIETY SIZE SPB STEMS PRICE TOTAL
+    Tiene líneas de continuación (sin prefijo box/order) para cajas mixtas.
+    Ejemplo:
+      "1 1 - 1 HB E 12 Shimmer 50 25 300 0.280 84.000"
+      "                E 1 Wasabi 60 25 25 0.320 8.000"
+    """
+    def parse(self, text: str, pdata: dict):
+        h = InvoiceHeader()
+        h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
+        # "I N V O I C E 001097740" o "INVOICE 001097740"
+        m = re.search(r'(?:I\s*N\s*V\s*O\s*I\s*C\s*E|INVOICE)\s+(\d+)', text, re.I)
+        h.invoice_number = m.group(1) if m else ''
+        m = re.search(r'Date:\s*([\d\-/]+)', text, re.I); h.date = m.group(1) if m else ''
+        m = re.search(r'M\.?A\.?W\.?B\.?:\s*([\d\-]+)', text, re.I)
+        h.awb = re.sub(r'\s+', '', m.group(1)) if m else ''
+        m = re.search(r'H\.?A\.?W\.?B\.?:\s*(\S+)', text, re.I); h.hawb = m.group(1) if m else ''
+        # Total desde línea TOTALS: "TOTALS 44 1100 0.255 280.500"
+        m = re.search(r'TOTALS\s+\d+\s+\d+\s+[\d.]+\s+([\d.]+)', text)
+        h.total = float(m.group(1)) if m else 0.0
+
+        lines = []
+        box_type = ''
+        for ln in text.split('\n'):
+            raw = ln
+            ln = ln.strip()
+            # Línea completa: "1 1 - 1 HB E 12 Shimmer 50 25 300 0.280 84.000"
+            pm = re.search(
+                r'\d+\s+\d+\s*-\s*\d+\s+(HB|QB|FB|EB)\s+\w?\s*(\d+)\s+([A-Za-z][A-Za-z\s.\-/&]+?)\s+(\d{2,3})\s+(\d+)\s+(\d+)\s+([\d.]+)\s+([\d.]+)',
+                ln)
+            # Línea de continuación: "E 1 Wasabi 60 25 25 0.320 8.000"
+            # Empieza con letra de grade (E) + bunches, sin prefijo box/order
+            if not pm:
+                pm2 = re.search(
+                    r'^[A-Z]\s+(\d+)\s+([A-Za-z][A-Za-z\s.\-/&]+?)\s+(\d{2,3})\s+(\d+)\s+(\d+)\s+([\d.]+)\s+([\d.]+)$',
+                    ln)
+                if pm2:
+                    bunches = int(pm2.group(1)); var = pm2.group(2).strip().upper()
+                    sz = int(pm2.group(3)); spb = int(pm2.group(4))
+                    stems = int(pm2.group(5)); price = float(pm2.group(6)); total = float(pm2.group(7))
+                    il = InvoiceLine(raw_description=ln, species='ROSES', variety=var,
+                                     size=sz, stems_per_bunch=spb, bunches=bunches, stems=stems,
+                                     price_per_stem=price, line_total=total, box_type=box_type)
+                    lines.append(il)
+                continue
+            if not pm:
+                continue
+
+            box_type = pm.group(1)
+            bunches = int(pm.group(2)); var = pm.group(3).strip().upper()
+            sz = int(pm.group(4)); spb = int(pm.group(5))
+            stems = int(pm.group(6)); price = float(pm.group(7)); total = float(pm.group(8))
+            il = InvoiceLine(raw_description=ln, species='ROSES', variety=var,
+                             size=sz, stems_per_bunch=spb, bunches=bunches, stems=stems,
+                             price_per_stem=price, line_total=total, box_type=box_type)
+            lines.append(il)
+        return h, lines
+
+
+class GardaParser:
+    """Formato GardaExport: BOX_RANGE BOXTYPE PRODUCT VARIETY SIZE BUNCHES STEMS PRICE TOTAL
+    Precios en formato europeo (coma decimal).
+    Ejemplo:
+      "01 - 05 H ROSAS (ROSOIDEA) Explorer 60 50 1250 0,36 450,00"
+      "06 H ROSAS (ROSOIDEA) Iguana 50 10 250 0,28 70,00"
+    """
+    def parse(self, text: str, pdata: dict):
+        h = InvoiceHeader()
+        h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
+        m = re.search(r'INVOICE\s*#\s*(\d+)', text, re.I); h.invoice_number = m.group(1) if m else ''
+        m = re.search(r'Date\s*:\s*([\d/\-]+)', text, re.I); h.date = m.group(1) if m else ''
+        m = re.search(r'A\.?W\.?B\.?\s*(?:N.)?\s*:\s*([\d\-]+)', text, re.I)
+        h.awb = re.sub(r'[\s.]', '', m.group(1)) if m else ''
+        m = re.search(r'H\.?A\.?W\.?B\.?\s*(?:N.)?\s*:\s*(\S+)', text, re.I)
+        h.hawb = m.group(1) if m else ''
+        m = re.search(r'Total\s+Invoice:\s*\$\s*([\d.,]+)', text, re.I)
+        h.total = float(m.group(1).replace('.', '').replace(',', '.')) if m else 0.0
+
+        lines = []
+        for ln in text.split('\n'):
+            ln = ln.strip()
+            # "01 - 05 H ROSAS (ROSOIDEA) Explorer 60 50 1250 0,36 450,00"
+            # "06 H ROSAS (ROSOIDEA) Iguana 50 10 250 0,28 70,00"
+            pm = re.search(
+                r'\d{2}(?:\s*-\s*\d{2})?\s+(H|Q|F|E)\s+ROSAS?\s*\([^)]*\)\s+([A-Za-z][A-Za-z\s.\-/&!]+?)\s+(\d{2,3})\s+(\d+)\s+(\d+)\s+([\d.,]+)\s+([\d.,]+)',
+                ln)
+            if not pm:
+                continue
+            bt_map = {'H': 'HB', 'Q': 'QB', 'F': 'FB', 'E': 'EB'}
+            box_type = bt_map.get(pm.group(1), pm.group(1))
+            var = pm.group(2).strip().upper(); sz = int(pm.group(3))
+            bunches = int(pm.group(4)); stems = int(pm.group(5))
+            price = float(pm.group(6).replace('.', '').replace(',', '.'))
+            total = float(pm.group(7).replace('.', '').replace(',', '.'))
+            spb = stems // bunches if bunches else 25
+            il = InvoiceLine(raw_description=ln, species='ROSES', variety=var,
+                             size=sz, stems_per_bunch=spb, bunches=bunches, stems=stems,
+                             price_per_stem=price, line_total=total, box_type=box_type)
+            lines.append(il)
+        return h, lines
+
+
+class UtopiaParser:
+    """Formato Utopia Farms: facturas de gypsophila con estructura compleja.
+    Líneas de producto tipo:
+      "GYPSO. XLENCE WHITE 25ST 750GR 12 B ... 4 Q 1 48 BC 1200 0.260 312.00"
+    Se parsea: variedad, stems/bunch, peso, boxes, box_type, bunches, stems, price, total.
+    """
+    def parse(self, text: str, pdata: dict):
+        h = InvoiceHeader()
+        h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
+        # "Number Ship Date ... 154747 1/1/2026"
+        m = re.search(r'^\s*(\d{5,})\s+([\d/]+)\s*$', text, re.M)
+        h.invoice_number = m.group(1) if m else ''
+        h.date = m.group(2) if m else ''
+        m = re.search(r'Air\s+Waybill:\s*([\d\-\s]+)', text, re.I)
+        h.awb = re.sub(r'\s+', '', m.group(1)).strip() if m else ''
+        m = re.search(r'USD:\s*([\d,.]+)', text, re.I)
+        h.total = float(m.group(1).replace(',', '')) if m else 0.0
+        # HAWB desde línea "Santa Martha HAWB: S1331765"
+        m = re.search(r'HAWB:\s*(\S+)', text, re.I); h.hawb = m.group(1) if m else ''
+
+        lines = []
+        for ln in text.split('\n'):
+            ln = ln.strip()
+            # Buscar línea con GYPSO + stems/bunch + boxes + bunches + stems + price + total
+            # "GYPSO. XLENCE WHITE 25ST 750GR 12 B (ST 1990285-6) 30 GR 4 Q 1 48 BC 1200 0.260 312.00"
+            pm = re.search(
+                r'(GYPSO\w*\.?\s+.+?)\s+(\d+)\s*ST\s+(\d+)\s*GR\s+.+?(\d+)\s+(Q|H|F|E)\s+[\d.]+\s+(\d+)\s+(?:BC\s+)?(\d+)\s+([\d.]+)\s+([\d.]+)',
+                ln, re.I)
+            if not pm:
+                continue
+            desc = pm.group(1).strip()
+            spb = int(pm.group(2)); weight = pm.group(3)
+            boxes = int(pm.group(4))
+            bt_map = {'H': 'HB', 'Q': 'QB', 'F': 'FB', 'E': 'EB'}
+            box_type = bt_map.get(pm.group(5).upper(), pm.group(5).upper())
+            bunches = int(pm.group(6)); stems = int(pm.group(7))
+            price = float(pm.group(8)); total = float(pm.group(9))
+            # Extraer variedad: "GYPSO. XLENCE WHITE" -> "XLENCE WHITE"
+            var_m = re.search(r'GYPSO\w*\.?\s+(.+)', desc, re.I)
+            var = var_m.group(1).strip().upper() if var_m else desc.upper()
+            full_var = 'GYPSOPHILA ' + var if 'GYPSOPHILA' not in var else var
+            il = InvoiceLine(raw_description=ln, species='GYPSOPHILA', variety=full_var,
+                             size=0, stems_per_bunch=spb, bunches=bunches, stems=stems,
+                             price_per_stem=price, line_total=total, box_type=box_type,
+                             grade=weight + 'GR')
+            lines.append(il)
+        return h, lines

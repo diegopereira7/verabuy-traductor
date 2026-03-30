@@ -28,6 +28,9 @@ from src.parsers.otros import (
     UmaParser,
     ValleVerdeParser,
     VerdesEstacionParser,
+    FloraromaParser,
+    GardaParser,
+    UtopiaParser,
 )
 
 FORMAT_PARSERS = {
@@ -58,4 +61,7 @@ FORMAT_PARSERS = {
     'verdesestacion': VerdesEstacionParser(),
     'sayonara'   : SayonaraParser(),
     'life'       : LifeParser(),
+    'floraroma'  : FloraromaParser(),
+    'garda'      : GardaParser(),
+    'utopia'     : UtopiaParser(),
 }

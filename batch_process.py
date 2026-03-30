@@ -65,6 +65,7 @@ def _process_single_pdf(
             'error': 'Proveedor no reconocido',
         }
 
+    pdata['pdf_path'] = str(pdf_path)  # para parsers que usan pdfplumber tables
     fmt = pdata.get('fmt', '')
     parser = FORMAT_PARSERS.get(fmt)
     if not parser:
@@ -267,7 +268,7 @@ def run_batch(folder: Path, batch_id: str | None = None, output: Path | None = N
         print(f'  {len(art.articulos)} artículos, {syn.count()} sinónimos cargados.')
 
     # Patrones de nombre que NO son facturas de proveedor
-    SKIP_PATTERNS = ['DUA', 'NYD', 'ALLIANCE']
+    SKIP_PATTERNS = ['DUA', 'NYD', 'ALLIANCE', 'FULL', 'GUIA', 'PREALERT', 'REAL CARGA']
 
     def _should_skip(name: str) -> str | None:
         """Retorna el patrón detectado si el archivo debe omitirse, o None."""
