@@ -132,6 +132,13 @@ PROVIDERS = {
     'native'     : {'id': 0,     'name': 'Calinama (Native)',        'fmt': 'native',       'patterns': ['CALINAMA CAPITAL']},
     'unique'     : {'id': 0,     'name': 'Unique Flowers',           'fmt': 'unique',       'patterns': ['UNIQUE FLOWERS']},
     'aposentos'  : {'id': 0,     'name': 'Flores de Aposentos',      'fmt': 'aposentos',    'patterns': ['FLORES DE APOSENTOS']},
+    # Farms registradas por formato existente
+    'laila'      : {'id': 0,     'name': 'Laila Flowers',            'fmt': 'alegria',      'patterns': ['LAILA FLOWERS', 'LOMCEM']},
+    'tierraverde': {'id': 0,     'name': 'Tierra Verde',             'fmt': 'alegria',      'patterns': ['TIERRA VERDE CIA']},
+    'hacienda'   : {'id': 0,     'name': 'Flores de la Hacienda',    'fmt': 'rosaleda',     'patterns': ['FLORES DE LA HACIENDA']},
+    'rosadex'    : {'id': 0,     'name': 'Rosadex',                  'fmt': 'rosaleda',     'patterns': ['ROSADEX']},
+    # PENDIENTE: CANANVALLE, TREBOL, MUCH, NARANJO usan plataforma "CUSTOMER INVOICE"
+    # con columnas BUNCH/STEM pricing — formato distinto de Tessa. Necesitan parser propio.
 }
 
 # --- Regex para eliminar sufijo de proveedor del nombre del artículo ---

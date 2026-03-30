@@ -914,22 +914,38 @@ class RosaledaParser:
         h.total = float(m.group(3)) if m else 0.0
 
         lines = []
+        box_type = 'HB'; label = ''
         for ln in text.split('\n'):
             ln = ln.strip()
-            # "1 - 1 MARL 1 QB ROSALEDA UNFORGIVEN 50 25 4 100 0.30 30.00"
+            # Línea completa: "1 - 1 MARL 1 QB ROSALEDA UNFORGIVEN 50 25 4 100 0.30 30.00"
+            # Sin label:      "1 - 1 1 HB MONDIAL 50 25 14 350 0.300 105.000" (ROSADEX)
+            # Label puede ser R12, MARL, DANS (alfanumérico, empieza con letra)
             pm = re.search(
-                r'\d+\s*-\s*\d+\s+(\w+)\s+\d+\s+(QB|HB|FB|EB)\s+(?:ROSALEDA\s+)?([A-Z][A-Z\s.\-/&]+?)\s+(\d{2,3})\s+(\d+)\s+(\d+)\s+(\d+)\s+([\d.]+)\s+([\d.]+)',
+                r'\d+\s*-\s*\d+\s+(?:([A-Z][A-Z\d]+)\s+)?\d+\s+(QB|HB|FB|EB)\s+(?:ROSALEDA\s+)?([A-Za-z][A-Za-z\s.\-/&]+?)\s+(\d{2,3})\s+(\d+)\s+(\d+)\s+(\d+)\s+([\d.]+)\s+([\d.]+)',
                 ln)
-            if not pm:
+            if pm:
+                if pm.group(1): label = pm.group(1)
+                box_type = pm.group(2)
+                var = pm.group(3).strip().upper(); sz = int(pm.group(4))
+                spb = int(pm.group(5)); bunches = int(pm.group(6))
+                stems = int(pm.group(7)); price = float(pm.group(8)); total = float(pm.group(9))
+                il = InvoiceLine(raw_description=ln, species='ROSES', variety=var,
+                                 size=sz, stems_per_bunch=spb, bunches=bunches, stems=stems,
+                                 price_per_stem=price, line_total=total, box_type=box_type, label=label)
+                lines.append(il)
                 continue
-            label = pm.group(1); box_type = pm.group(2)
-            var = pm.group(3).strip(); sz = int(pm.group(4))
-            spb = int(pm.group(5)); bunches = int(pm.group(6))
-            stems = int(pm.group(7)); price = float(pm.group(8)); total = float(pm.group(9))
-            il = InvoiceLine(raw_description=ln, species='ROSES', variety=var,
-                             size=sz, stems_per_bunch=spb, bunches=bunches, stems=stems,
-                             price_per_stem=price, line_total=total, box_type=box_type, label=label)
-            lines.append(il)
+            # Continuación (sin prefijo order): "QUEENS CROWN 50 25 2 50 0.350 17.500"
+            pm2 = re.search(
+                r'^([A-Z][A-Z\s.\-/&]+?)\s+(\d{2,3})\s+(\d+)\s+(\d+)\s+(\d+)\s+([\d.]+)\s+([\d.]+)$',
+                ln)
+            if pm2 and lines:
+                var = pm2.group(1).strip(); sz = int(pm2.group(2))
+                spb = int(pm2.group(3)); bunches = int(pm2.group(4))
+                stems = int(pm2.group(5)); price = float(pm2.group(6)); total = float(pm2.group(7))
+                il = InvoiceLine(raw_description=ln, species='ROSES', variety=var,
+                                 size=sz, stems_per_bunch=spb, bunches=bunches, stems=stems,
+                                 price_per_stem=price, line_total=total, box_type=box_type, label=label)
+                lines.append(il)
         return h, lines
 
 
