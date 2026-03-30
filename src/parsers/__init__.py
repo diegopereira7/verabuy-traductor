@@ -36,6 +36,16 @@ from src.parsers.otros import (
     RosaledaParser,
     UniqueParser,
     AposentosParser,
+    CustomerInvoiceParser,
+    PremiumColParser,
+    DomenicaParser,
+    InvosParser,
+    MeaflosParser,
+    HeraflorParser,
+    InfinityParser,
+    ProgresoParser,
+    ColonParser,
+    AguablancaParser,
 )
 
 FORMAT_PARSERS = {
@@ -74,4 +84,14 @@ FORMAT_PARSERS = {
     'rosaleda'   : RosaledaParser(),
     'unique'     : UniqueParser(),
     'aposentos'  : AposentosParser(),
+    'custinv'    : CustomerInvoiceParser(),
+    'premiumcol' : PremiumColParser(),
+    'domenica'   : DomenicaParser(),
+    'invos'      : InvosParser(),
+    'meaflos'    : MeaflosParser(),
+    'heraflor'   : HeraflorParser(),
+    'infinity'   : InfinityParser(),
+    'progreso'   : ProgresoParser(),
+    'colon'      : ColonParser(),
+    'aguablanca' : AguablancaParser(),
 }

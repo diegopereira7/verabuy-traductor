@@ -137,8 +137,19 @@ PROVIDERS = {
     'tierraverde': {'id': 0,     'name': 'Tierra Verde',             'fmt': 'alegria',      'patterns': ['TIERRA VERDE CIA']},
     'hacienda'   : {'id': 0,     'name': 'Flores de la Hacienda',    'fmt': 'rosaleda',     'patterns': ['FLORES DE LA HACIENDA']},
     'rosadex'    : {'id': 0,     'name': 'Rosadex',                  'fmt': 'rosaleda',     'patterns': ['ROSADEX']},
-    # PENDIENTE: CANANVALLE, TREBOL, MUCH, NARANJO usan plataforma "CUSTOMER INVOICE"
-    # con columnas BUNCH/STEM pricing — formato distinto de Tessa. Necesitan parser propio.
+    'cananvalle' : {'id': 0,     'name': 'Cananvalley Flowers',      'fmt': 'custinv',      'patterns': ['CANANVALLEY', 'CANANVALLE']},
+    'trebol'     : {'id': 0,     'name': 'Plantaciones Plantreb',    'fmt': 'custinv',      'patterns': ['PLANTREB', 'trebolroses']},
+    'much'       : {'id': 0,     'name': 'Comercializadora Almanti', 'fmt': 'custinv',      'patterns': ['ALMANTI']},
+    'naranjo'    : {'id': 0,     'name': 'Naranjo Roses',            'fmt': 'custinv',      'patterns': ['NARANJO ROSES']},
+    'premium'    : {'id': 0,     'name': 'Premium Flowers Boyacá',   'fmt': 'premiumcol',   'patterns': ['VRD FIRAYA', '901800337']},
+    'domenica'   : {'id': 0,     'name': 'Domenica (Valencia Pozo)', 'fmt': 'domenica',     'patterns': ['FAUSTO BAYARDO', 'VALENCIA POZO']},
+    'invos'      : {'id': 0,     'name': 'Invos Flowers',            'fmt': 'invos',        'patterns': ['INVOS FLOWERS']},
+    'meaflos'    : {'id': 0,     'name': 'Meaflos',                  'fmt': 'meaflos',      'patterns': ['MEAFLOS', 'meaflos']},
+    'heraflor'   : {'id': 0,     'name': 'Heraflor',                 'fmt': 'heraflor',     'patterns': ['HERAFLOR']},
+    'infinity'   : {'id': 0,     'name': 'Infinity Trading',         'fmt': 'infinity',     'patterns': ['INFINITY TRADING']},
+    'progreso'   : {'id': 0,     'name': 'Flores El Progreso',       'fmt': 'progreso',     'patterns': ['FLORES EL PROGRESO', 'FLORESPROGRESO']},
+    'colon'      : {'id': 0,     'name': 'C.I. Flores Colon',        'fmt': 'colon',        'patterns': ['FLORES COLON']},
+    'aguablanca' : {'id': 0,     'name': 'Agrícola Aguablanca',      'fmt': 'aguablanca',   'patterns': ['AGUABLANCA']},
 }
 
 # --- Regex para eliminar sufijo de proveedor del nombre del artículo ---

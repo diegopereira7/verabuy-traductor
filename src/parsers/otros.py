@@ -1043,3 +1043,401 @@ class AposentosParser:
         # Total from sum of lines
         h.total = sum(l.line_total for l in lines)
         return h, lines
+
+
+class CustomerInvoiceParser:
+    """Plataforma 'CUSTOMER INVOICE' (Cananvalle, Trebol, Much, Naranjo).
+    Formato: # BOX_TYPE PRODUCT SPECIES ... QTY_BUNCH $BUNCH_PRICE QTY_STEMS $STEM_PRICE $TOTAL
+    Ejemplo: "1 QB CARPE DIEM 40CM A 25ST CV ROSES 5 $10.0000 125 $0.4000 $50.00"
+    """
+    def parse(self, text: str, pdata: dict):
+        h = InvoiceHeader()
+        h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
+        m = re.search(r'CUSTOMER\s+INVOICE\s+(\d+)', text, re.I); h.invoice_number = m.group(1) if m else ''
+        m = re.search(r'Invoice\s+Date\s+([\d/\-]+)', text, re.I); h.date = m.group(1) if m else ''
+        m = re.search(r'MAWB\s+([\d\-\s]+)', text, re.I); h.awb = re.sub(r'\s+', '', m.group(1)).strip() if m else ''
+        m = re.search(r'HAWB\s+([\w\-]+)', text, re.I); h.hawb = m.group(1) if m else ''
+        m = re.search(r'Amount\s+Due\s+\$([\d,.]+)', text, re.I)
+        h.total = float(m.group(1).replace(',', '')) if m else 0.0
+
+        lines = []
+        for ln in text.split('\n'):
+            ln = ln.strip()
+            if 'TOTALS' in ln.upper():
+                continue
+            # Buscar patrón: QTY_BUNCH $PRICE QTY_STEMS $PRICE $TOTAL al final
+            pm = re.search(r'(\d+)\s+\$([\d,.]+)\s+(\d+)\s+\$([\d,.]+)\s+\$([\d,.]+)', ln)
+            if not pm:
+                continue
+            bunches = int(pm.group(1)); stems = int(pm.group(3))
+            price = float(pm.group(4).replace(',', '')); total = float(pm.group(5).replace(',', ''))
+            spb = stems // bunches if bunches else 25
+            # Extraer lo que hay antes de los precios como descripción
+            desc_part = ln[:pm.start()].strip()
+            # Detectar especie
+            species = 'ROSES'
+            if 'GYPSOPHILA' in desc_part.upper():
+                species = 'GYPSOPHILA'
+            elif 'PRESERVED' in desc_part.upper():
+                species = 'OTHER'
+            # Extraer variedad y tamaño del desc
+            # Quitar # inicial, box type, species, label, farm
+            desc_clean = re.sub(r'^\d+\s+(?:QB|HB|FB|FBG|SUPER JUMBO)\s+', '', desc_part, flags=re.I)
+            desc_clean = re.sub(r'\s+(?:ROSES|GYPSOPHILA|PRESERVED\s+ROSES)\s*$', '', desc_clean, flags=re.I)
+            # Extraer tamaño: "40CM", "60CM", "80CM"
+            sz_m = re.search(r'(\d{2,3})\s*CM', desc_clean, re.I)
+            sz = int(sz_m.group(1)) if sz_m else 0
+            # Extraer SPB: "25ST"
+            spb_m = re.search(r'(\d+)\s*ST\b', desc_clean, re.I)
+            if spb_m:
+                spb = int(spb_m.group(1))
+            # Limpiar variedad
+            var = re.sub(r'\d+\s*CM\b|\d+\s*ST\b|\d+\s*GR\b|[A-Z]{1,2}\d+[\w\-]*|\b\d+\b', '', desc_clean, flags=re.I).strip()
+            var = re.sub(r'\s+', ' ', var).strip().upper()
+            # Quitar farm/label trailing words
+            var = re.sub(r'\s+(?:P\w+|F|FC|A|CV|PT|PRAS|VERALEZA|Cotacachi|Exportcalas)\s*$', '', var, flags=re.I).strip()
+            if not var or var in ('TOTALS', 'MIXED BOX'):
+                continue
+            bt_m = re.search(r'(QB|HB|FB|FBG)', desc_part, re.I)
+            box_type = bt_m.group(1).upper() if bt_m else 'HB'
+            il = InvoiceLine(raw_description=ln, species=species, variety=var,
+                             size=sz, stems_per_bunch=spb, bunches=bunches, stems=stems,
+                             price_per_stem=price, line_total=total, box_type=box_type)
+            lines.append(il)
+        return h, lines
+
+
+class PremiumColParser:
+    """Formato Premium Flowers of Boyacá (claveles colombianos).
+    Multi-línea: "1 QB 500 25 CARNATION DESC SIZE LABEL HTS# Stems STEMS US$ PRICE US$ PRICE US$"
+    seguido de "TOTAL" en la siguiente línea.
+    Ejemplo: "1 QB 500 25 CARNATION MIX 55 CM R14 0603.12.7000 Stems 500 US$ 0.130 US$ 2.600 US$\\n65.00"
+    """
+    def parse(self, text: str, pdata: dict):
+        h = InvoiceHeader()
+        h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
+        m = re.search(r'SHIPMENT\s+INVOICE\s+(\d+)', text, re.I); h.invoice_number = m.group(1) if m else ''
+        m = re.search(r'DATE\s+ISSUED\s+(?:DUE\s+DATE\s+)?.*?(\d{4}-\d{2}-\d{2})', text, re.I)
+        h.date = m.group(1) if m else ''
+        m = re.search(r'MAWB\s*#?\s*([\d\-\s]+)', text, re.I); h.awb = re.sub(r'\s+', '', m.group(1)).strip() if m else ''
+        m = re.search(r'HAWB\s*#?\s*([\d\-]+)', text, re.I); h.hawb = m.group(1) if m else ''
+        m = re.search(r'TOTAL\s+US\$\s*([\d,.]+)', text); h.total = float(m.group(1).replace(',', '')) if m else 0.0
+
+        lines = []
+        text_lines = text.split('\n')
+        for i, ln in enumerate(text_lines):
+            ln = ln.strip()
+            # "1 QB 500 25 CARNATION MIX 55 CM R14 0603.12.7000 Stems 500 US$ 0.130 US$ 2.600 US$"
+            pm = re.search(
+                r'(\d+)\s+(QB|HB)\s+(\d+)\s+(\d+)\s+CARNATION\s+(.+?)\s+06[\d.]+\s+Stems\s+(\d+)\s+US\$\s+([\d.]+)\s+US\$',
+                ln, re.I)
+            if not pm:
+                continue
+            boxes = int(pm.group(1)); box_type = pm.group(2)
+            unit_box = int(pm.group(3)); spb_raw = int(pm.group(4))
+            desc = pm.group(5).strip(); stems = int(pm.group(6)); price = float(pm.group(7))
+            # Total en siguiente línea
+            total = 0.0
+            if i + 1 < len(text_lines):
+                tm = re.search(r'^\s*([\d,.]+)\s*$', text_lines[i + 1])
+                if tm:
+                    total = float(tm.group(1).replace(',', ''))
+            if total == 0:
+                total = round(stems * price, 2)
+            # Extraer variedad y color/size del desc: "MIX 55 CM R14", "WHITE MOONLIGHT 55 CM R14"
+            desc = re.sub(r'\s+\d+\s*CM\b', '', desc, flags=re.I)  # quitar size
+            desc = re.sub(r'\s+R\d+', '', desc)  # quitar label
+            desc = re.sub(r'\s+\w*VERALEZA\w*', '', desc, flags=re.I)  # quitar label
+            desc = re.sub(r'\s+SHORT\b', '', desc, flags=re.I)
+            var = desc.strip().upper()
+            sz_m = re.search(r'(\d{2})\s*CM', pm.group(5), re.I)
+            sz = int(sz_m.group(1)) if sz_m else 55  # default carnation 55cm
+            il = InvoiceLine(raw_description=ln, species='CARNATIONS', variety=var, origin='COL',
+                             size=sz, stems_per_bunch=spb_raw, stems=stems,
+                             price_per_stem=price, line_total=total, box_type=box_type)
+            lines.append(il)
+        return h, lines
+
+
+class DomenicaParser:
+    """Formato simple: Boxes HB/QB VARIETY SIZEcm SPB BUNCHES STEMS PRICE TOTAL
+    Precios con coma decimal.
+    Ejemplo: "1 HB EXPLORER 80cm 25 10 250 1,10 275,00"
+    """
+    def parse(self, text: str, pdata: dict):
+        h = InvoiceHeader()
+        h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
+        m = re.search(r'INVOICE\s*#\s*(\d+)', text, re.I); h.invoice_number = m.group(1) if m else ''
+        m = re.search(r'Date[:\s]+([\d/\-]+)', text, re.I); h.date = m.group(1) if m else ''
+        m = re.search(r'AWB[:\s]*([\d\-\s]+)', text, re.I); h.awb = re.sub(r'\s+', '', m.group(1)).strip() if m else ''
+        m = re.search(r'HAWB[:\s]*(\S+)', text, re.I); h.hawb = m.group(1) if m else ''
+        m = re.search(r'GRAND\s+TOTAL[:\s]*([\d.,]+)', text, re.I)
+        h.total = float(m.group(1).replace('.', '').replace(',', '.')) if m else 0.0
+
+        lines = []
+        for ln in text.split('\n'):
+            ln = ln.strip()
+            pm = re.search(
+                r'\d+\s+(HB|QB|FB|EB)\s+([A-Za-z][A-Za-z\s.\-/&]+?)\s+(\d{2,3})\s*cm\s+(\d+)\s+(\d+)\s+(\d+)\s+([\d,]+)\s+([\d,]+)',
+                ln, re.I)
+            if not pm:
+                continue
+            box_type = pm.group(1); var = pm.group(2).strip().upper()
+            sz = int(pm.group(3)); spb = int(pm.group(4))
+            bunches = int(pm.group(5)); stems = int(pm.group(6))
+            price = float(pm.group(7).replace('.', '').replace(',', '.'))
+            total = float(pm.group(8).replace('.', '').replace(',', '.'))
+            il = InvoiceLine(raw_description=ln, species='ROSES', variety=var,
+                             size=sz, stems_per_bunch=spb, bunches=bunches, stems=stems,
+                             price_per_stem=price, line_total=total, box_type=box_type)
+            lines.append(il)
+        return h, lines
+
+
+class InvosParser:
+    """Formato Invos Flowers: líneas concatenadas sin espacio.
+    Ejemplo: "1Rose Freedom 50 - 28 6 Half 3 2100 0,80 1680,00"
+    = Box, Flower, Variety, Size, -, Label, Bunches, BoxType, FBE, Stems, Price, Total
+    """
+    def parse(self, text: str, pdata: dict):
+        h = InvoiceHeader()
+        h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
+        m = re.search(r'Invoice\s+(\w+)', text, re.I); h.invoice_number = m.group(1) if m else ''
+        m = re.search(r'Date\s+Invoice\s+([\d/\-]+)', text, re.I); h.date = m.group(1) if m else ''
+        m = re.search(r'AWB\s+([\d\-]+)', text, re.I); h.awb = re.sub(r'\s+', '', m.group(1)) if m else ''
+        m = re.search(r'AMOUNT\s+([\d.,]+)', text, re.I)
+        h.total = float(m.group(1).replace('.', '').replace(',', '.')) if m else 0.0
+
+        lines = []
+        for ln in text.split('\n'):
+            ln = ln.strip()
+            # "1Rose Freedom 50 - 28 6 Half 3 2100 0,80 1680,00"
+            pm = re.search(
+                r'\d+Rose\s+([A-Za-z][A-Za-z\s.\-/&]+?)\s+(\d{2,3})\s+-\s+\S+\s+(\d+)\s+Half\s+[\d.,]+\s+(\d+)\s+([\d,]+)\s+([\d,]+)',
+                ln, re.I)
+            if not pm:
+                continue
+            var = pm.group(1).strip().upper(); sz = int(pm.group(2))
+            bunches = int(pm.group(3)); stems = int(pm.group(4))
+            price = float(pm.group(5).replace('.', '').replace(',', '.'))
+            total = float(pm.group(6).replace('.', '').replace(',', '.'))
+            spb = stems // bunches if bunches else 25
+            il = InvoiceLine(raw_description=ln, species='ROSES', variety=var, origin='COL',
+                             size=sz, stems_per_bunch=spb, bunches=bunches, stems=stems,
+                             price_per_stem=price, line_total=total, box_type='HB')
+            lines.append(il)
+        return h, lines
+
+
+class MeaflosParser:
+    """Formato Meaflos: multi-línea con farm encima. Líneas de producto:
+    "Rosas - VARIETY SIZEcm GW CW STEMS PRICE TOTAL"
+    Ejemplo: "Rosas - Explorer 50cm 0,00 0,00 400 0,73 292,00"
+    """
+    def parse(self, text: str, pdata: dict):
+        h = InvoiceHeader()
+        h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
+        m = re.search(r'Invoice\s+No\.?[:\s]*([\w]+)', text, re.I); h.invoice_number = m.group(1) if m else ''
+        m = re.search(r'INVOICE\s+DATE[:\s]*([\d\-/]+)', text, re.I); h.date = m.group(1) if m else ''
+        m = re.search(r'A\.W\.B\.?[:\s]*([\d\-]+)', text, re.I); h.awb = re.sub(r'\s+', '', m.group(1)) if m else ''
+        m = re.search(r'TOTAL\s+(?:VALUE|PRICE)[:\s]*([\d.,]+)', text, re.I)
+        h.total = float(m.group(1).replace('.', '').replace(',', '.')) if m else 0.0
+
+        lines = []
+        for ln in text.split('\n'):
+            ln = ln.strip()
+            # "Rosas - Explorer 50cm 0,00 0,00 400 0,73 292,00"
+            pm = re.search(
+                r'Rosas?\s*-\s*([A-Za-z][A-Za-z\s.\-/&]+?)\s+(\d{2,3})\s*cm\s+[\d,]+\s+[\d,]+\s+(\d+)\s+([\d,]+)\s+([\d,]+)',
+                ln, re.I)
+            if not pm:
+                continue
+            var = pm.group(1).strip().upper(); sz = int(pm.group(2))
+            stems = int(pm.group(3))
+            price = float(pm.group(4).replace('.', '').replace(',', '.'))
+            total = float(pm.group(5).replace('.', '').replace(',', '.'))
+            spb = 25
+            il = InvoiceLine(raw_description=ln, species='ROSES', variety=var,
+                             size=sz, stems_per_bunch=spb, stems=stems,
+                             price_per_stem=price, line_total=total, box_type='HB')
+            lines.append(il)
+        return h, lines
+
+
+class HeraflorParser:
+    """Formato Heraflor: líneas concatenadas con farm.
+    Ejemplo: "1Rose Explorer Juma Flowers 50cm 0,5 0,5 1 300 300 $ 0,33 $ 99,00"
+    """
+    def parse(self, text: str, pdata: dict):
+        h = InvoiceHeader()
+        h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
+        m = re.search(r'Invoice\s+n[o\xba][:\s]*(\S+)', text, re.I); h.invoice_number = m.group(1) if m else ''
+        m = re.search(r'Date[:\s]+([\d\-\w]+)', text, re.I); h.date = m.group(1) if m else ''
+        m = re.search(r'AWB[:\s]*([\d\-\s]+)', text, re.I); h.awb = re.sub(r'\s+', '', m.group(1)).strip() if m else ''
+        m = re.search(r'Total\s+\$\s*([\d.,]+)', text, re.I)
+        h.total = float(m.group(1).replace('.', '').replace(',', '.')) if m else 0.0
+
+        lines = []
+        for ln in text.split('\n'):
+            ln = ln.strip()
+            # "1Rose Explorer Juma Flowers 50cm 0,5 0,5 1 300 300 $ 0,33 $ 99,00"
+            pm = re.search(
+                r'\d+Rose\s+([A-Za-z][A-Za-z\s.\-/&]+?)\s+(\d{2,3})\s*cm\s+[\d,]+\s+[\d,]+\s+\d+\s+\d+\s+(\d+)\s+\$\s*([\d,]+)\s+\$\s*([\d,]+)',
+                ln, re.I)
+            if not pm:
+                continue
+            # Variety includes farm name, need to separate: "Explorer Juma Flowers" -> var=EXPLORER, farm=Juma Flowers
+            desc = pm.group(1).strip()
+            # Farm is typically 2+ words after variety
+            parts = desc.split()
+            var = parts[0].upper() if parts else desc.upper()
+            farm = ' '.join(parts[1:]) if len(parts) > 1 else ''
+            sz = int(pm.group(2)); stems = int(pm.group(3))
+            price = float(pm.group(4).replace('.', '').replace(',', '.'))
+            total = float(pm.group(5).replace('.', '').replace(',', '.'))
+            il = InvoiceLine(raw_description=ln, species='ROSES', variety=var,
+                             size=sz, stems_per_bunch=25, stems=stems,
+                             price_per_stem=price, line_total=total, box_type='HB', farm=farm)
+            lines.append(il)
+        return h, lines
+
+
+class InfinityParser:
+    """Formato Infinity Trading: colombiano con bunches y price/bunch.
+    Ejemplo: "5 HF ROSA FREEDOM GRA 70 ATPDEA0603.11.00.00 25 1250 1.000 50 25.000 1,250.00"
+    """
+    def parse(self, text: str, pdata: dict):
+        h = InvoiceHeader()
+        h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
+        m = re.search(r'INV(\d+)', text, re.I); h.invoice_number = m.group(1) if m else ''
+        m = re.search(r'Date\s+([\d\-/]+)', text, re.I); h.date = m.group(1) if m else ''
+        m = re.search(r'AWB\s+([\d\-]+)', text, re.I); h.awb = re.sub(r'\s+', '', m.group(1)) if m else ''
+        m = re.search(r'HAWB[:\s]*([\d\-]+)', text, re.I); h.hawb = m.group(1) if m else ''
+
+        lines = []
+        for ln in text.split('\n'):
+            ln = ln.strip()
+            # "5 HF ROSA FREEDOM GRA 70 ATPDEA0603.11.00.00 25 1250 1.000 50 25.000 1,250.00"
+            pm = re.search(
+                r'(\d+)\s+(?:HF|QF|HB|QB|Full|Half)\s+ROSA\s+([A-Z][A-Z\s.\-/&]+?)\s+(?:GRA\s+)?(\d{2,3})\s+\w*06[\d.]+\s+(\d+)\s+(\d+)\s+[\d.]+\s+(\d+)\s+[\d.]+\s+([\d,.]+)',
+                ln, re.I)
+            if not pm:
+                continue
+            boxes = int(pm.group(1)); var = pm.group(2).strip()
+            sz = int(pm.group(3)); spb = int(pm.group(4))
+            stems = int(pm.group(5)); bunches = int(pm.group(6))
+            total = float(pm.group(7).replace(',', ''))
+            price = total / stems if stems else 0
+            il = InvoiceLine(raw_description=ln, species='ROSES', variety=var, origin='COL',
+                             size=sz, stems_per_bunch=spb, bunches=bunches, stems=stems,
+                             price_per_stem=round(price, 4), line_total=total, box_type='HB')
+            lines.append(il)
+        h.total = sum(l.line_total for l in lines)
+        return h, lines
+
+
+class ProgresoParser:
+    """Formato Flores El Progreso:
+    "CO-0603110060 ROSA FREEDOM 50 CM 25 HB 350 8,750 0.7800 6,825.00"
+    """
+    def parse(self, text: str, pdata: dict):
+        h = InvoiceHeader()
+        h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
+        m = re.search(r'INVOICE.*?No\.?\s*(\d+)', text, re.I); h.invoice_number = m.group(1) if m else ''
+        m = re.search(r'Date\s*:\s*([\d\-\w.]+)', text, re.I); h.date = m.group(1) if m else ''
+        m = re.search(r'MAWB\s*:\s*([\d\-]+)', text, re.I); h.awb = m.group(1) if m else ''
+        m = re.search(r'HAWB\s*:\s*([\d\-]+)', text, re.I); h.hawb = m.group(1) if m else ''
+        m = re.search(r'TOTAL\s*:\s*([\d,.]+)', text)
+        h.total = float(m.group(1).replace(',', '')) if m else 0.0
+
+        lines = []
+        for ln in text.split('\n'):
+            ln = ln.strip()
+            pm = re.search(
+                r'CO-[\d]+\s+ROSA\s+([A-Z][A-Z\s.\-/&]+?)\s+(\d{2,3})\s*CM\s+(\d+)\s+(HB|QB|FB)\s+(\d+)\s+([\d,.]+)\s+([\d.]+)\s+([\d,.]+)',
+                ln, re.I)
+            if not pm:
+                continue
+            var = pm.group(1).strip(); sz = int(pm.group(2))
+            spb = int(pm.group(3)); box_type = pm.group(4)
+            stems_box = int(pm.group(5))
+            stems_total = int(pm.group(6).replace(',', ''))
+            price = float(pm.group(7)); total = float(pm.group(8).replace(',', ''))
+            il = InvoiceLine(raw_description=ln, species='ROSES', variety=var, origin='COL',
+                             size=sz, stems_per_bunch=spb, stems=stems_total,
+                             price_per_stem=price, line_total=total, box_type=box_type)
+            lines.append(il)
+        return h, lines
+
+
+class ColonParser:
+    """Formato C.I. Flores Colon (claveles colombianos):
+    "10T 5000FA CAR BU x 20 Stems (T) 500 FREE CO-0603.12.7000 0.18000 900.00"
+    """
+    def parse(self, text: str, pdata: dict):
+        h = InvoiceHeader()
+        h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
+        m = re.search(r'PACKING LIST No\s*(\d+)', text, re.I); h.invoice_number = m.group(1) if m else ''
+        m = re.search(r'DATE:\s*(.+?)$', text, re.M); h.date = m.group(1).strip() if m else ''
+        m = re.search(r'GRAND\s+TOTAL\s+INVOICE\s+US\$\s*([\d,.]+)', text)
+        h.total = float(m.group(1).replace(',', '')) if m else 0.0
+
+        lines = []
+        for ln in text.split('\n'):
+            ln = ln.strip()
+            # "10T 5000FA CAR BU x 20 Stems (T) 500 FREE CO-0603.12.7000 0.18000 900.00"
+            pm = re.search(
+                r'(\d+)T\s+(\d+)(\w{2})\s+CAR\s+(\w+)\s+x\s+(\d+)\s+Stems\s+\(T\)\s+(\d+)\s+FREE\s+CO-[\d.]+\s+([\d.]+)\s+([\d,.]+)',
+                ln, re.I)
+            if not pm:
+                continue
+            boxes = int(pm.group(1)); stems = int(pm.group(2))
+            grade = pm.group(3).upper()  # FA=FANCY, SE=SELECT
+            color = pm.group(4).strip().upper()  # BU=bicolor, WH=white, RD=red
+            spb = int(pm.group(5)); stems_box = int(pm.group(6))
+            price = float(pm.group(7)); total = float(pm.group(8).replace(',', ''))
+            color_map = {'WH': 'WHITE', 'RD': 'RED', 'BU': 'BICOLOR', 'PK': 'PINK', 'YE': 'YELLOW', 'OR': 'ORANGE', 'GR': 'GREEN', 'PP': 'PURPLE'}
+            var = color_map.get(color, color)
+            grade_map = {'FA': 'FANCY', 'SE': 'SELECT', 'ST': 'STANDARD'}
+            il = InvoiceLine(raw_description=ln, species='CARNATIONS', variety=var, origin='COL',
+                             size=70, stems_per_bunch=spb, stems=stems,
+                             price_per_stem=price, line_total=total, box_type='TB',
+                             grade=grade_map.get(grade, grade))
+            lines.append(il)
+        return h, lines
+
+
+class AguablancaParser:
+    """Formato Agrícola Aguablanca (claveles):
+    "VERALEZA CARNATION STD MIX 3,50 7 HB 500 0603129000 SO 3.500 0,130 455,00"
+    """
+    def parse(self, text: str, pdata: dict):
+        h = InvoiceHeader()
+        h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
+        m = re.search(r'INVOICE\s*#\s*(\d+)', text, re.I); h.invoice_number = m.group(1) if m else ''
+        m = re.search(r'Date/Fecha\s*(\S+)', text, re.I); h.date = m.group(1) if m else ''
+        m = re.search(r'AWB[#\s]*/?\s*[\w\s]*(\d{3}-\d+)', text, re.I); h.awb = m.group(1) if m else ''
+        m = re.search(r'INVOICE\s+TOTAL\s+US\$\s*([\d,.]+)', text)
+        h.total = float(m.group(1).replace(',', '')) if m else 0.0
+
+        lines = []
+        for ln in text.split('\n'):
+            ln = ln.strip()
+            # "VERALEZA CARNATION STD MIX 3,50 7 HB 500 0603129000 SO 3 .500 0,130 4 55,00"
+            pm = re.search(
+                r'CARNATION\s+(\w+)\s+(\w+)\s+[\d,]+\s+(\d+)\s+(HB|QB)\s+(\d+)\s+\d+\s+\w+\s+[\d\s.]+\s+([\d,]+)\s+[\d\s]*([\d,]+)',
+                ln, re.I)
+            if not pm:
+                continue
+            grade = pm.group(1).upper(); color = pm.group(2).upper()
+            bunches = int(pm.group(3)); box_type = pm.group(4)
+            stems_box = int(pm.group(5))
+            price = float(pm.group(6).replace('.', '').replace(',', '.'))
+            total = float(pm.group(7).replace('.', '').replace(',', '.'))
+            stems = bunches * stems_box  # rough estimate
+            il = InvoiceLine(raw_description=ln, species='CARNATIONS', variety=color, origin='COL',
+                             size=70, stems_per_bunch=20, stems=stems_box * bunches,
+                             price_per_stem=price, line_total=total, box_type=box_type,
+                             grade=grade)
+            lines.append(il)
+        return h, lines
