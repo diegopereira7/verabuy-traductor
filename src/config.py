@@ -150,6 +150,7 @@ PROVIDERS = {
     'progreso'   : {'id': 0,     'name': 'Flores El Progreso',       'fmt': 'progreso',     'patterns': ['FLORES EL PROGRESO', 'FLORESPROGRESO']},
     'colon'      : {'id': 0,     'name': 'C.I. Flores Colon',        'fmt': 'colon',        'patterns': ['FLORES COLON']},
     'aguablanca' : {'id': 0,     'name': 'Agrícola Aguablanca',      'fmt': 'aguablanca',   'patterns': ['AGUABLANCA']},
+    'success'    : {'id': 0,     'name': 'Success Flowers',           'fmt': 'success',      'patterns': ['Success Flowers', 'SUCCESSFLOWERS']},
 }
 
 # --- Regex para eliminar sufijo de proveedor del nombre del artículo ---

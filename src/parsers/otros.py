@@ -1441,3 +1441,59 @@ class AguablancaParser:
                              grade=grade)
             lines.append(il)
         return h, lines
+
+
+class SuccessParser:
+    """Formato Success Flowers (colombiano, OCR). Texto viene de OCR y puede tener ruido.
+    Líneas: "8 2400 TALLOS ROSA FREEDOM GR 50 ... 0.40 ... 960.00"
+    Campos: BUNCHES STEMS TALLOS ROSA VARIETY GR SIZE ... PRICE_STEM ... TOTAL_USD
+    """
+    def parse(self, text: str, pdata: dict):
+        h = InvoiceHeader()
+        h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
+        m = re.search(r'(?:FACTURA|No\.?)\s*(?:SF\s*)?(\d{3,})', text, re.I)
+        h.invoice_number = m.group(1) if m else ''
+        m = re.search(r'GUIA\s+MASTER\s+([\d\-]+)', text, re.I); h.awb = m.group(1) if m else ''
+        m = re.search(r'GUIA\s+HIJA\s+([\d\-]+)', text, re.I); h.hawb = m.group(1) if m else ''
+        m = re.search(r'FECHA.*?(\d{1,2}\s+DE\s+\w+\s+DE\s+\d{4})', text, re.I)
+        h.date = m.group(1) if m else ''
+
+        lines = []
+        text_lines = text.split('\n')
+        for i, ln in enumerate(text_lines):
+            ln = ln.strip()
+            # OCR multi-línea: "2400 TALLOS ROSA FREEDOM GR 50"
+            # Bunches en la línea anterior, price 2 líneas después, total 4 después
+            pm = re.search(r'(\d+)\s+TALLOS\s+ROSA\s+([A-Z][A-Z\s.\-/&]+?)\s+(?:GR\s+)?(\d{2,3})', ln, re.I)
+            if not pm:
+                continue
+            stems = int(pm.group(1)); var = pm.group(2).strip().upper()
+            sz = int(pm.group(3))
+            # Bunches: línea anterior
+            bunches = 0
+            if i > 0:
+                bm = re.match(r'^(\d+)$', text_lines[i - 1].strip())
+                if bm:
+                    bunches = int(bm.group(1))
+            spb = stems // bunches if bunches else 25
+            # Price: buscar en líneas i+1 a i+5 un número decimal < 10
+            price = 0.0; total = 0.0
+            for j in range(i + 1, min(i + 6, len(text_lines))):
+                val_s = text_lines[j].strip().replace(',', '')
+                try:
+                    val = float(val_s)
+                except ValueError:
+                    continue
+                if 0 < val < 10 and price == 0:
+                    price = val
+                elif val > 10 and total == 0 and price > 0:
+                    total = val
+                    break
+            if total == 0 and price > 0:
+                total = round(stems * price, 2)
+            il = InvoiceLine(raw_description=ln, species='ROSES', variety=var, origin='COL',
+                             size=sz, stems_per_bunch=spb, bunches=bunches, stems=stems,
+                             price_per_stem=price, line_total=total, box_type='HB')
+            lines.append(il)
+        h.total = sum(l.line_total for l in lines)
+        return h, lines

@@ -46,6 +46,7 @@ from src.parsers.otros import (
     ProgresoParser,
     ColonParser,
     AguablancaParser,
+    SuccessParser,
 )
 
 FORMAT_PARSERS = {
@@ -94,4 +95,5 @@ FORMAT_PARSERS = {
     'progreso'   : ProgresoParser(),
     'colon'      : ColonParser(),
     'aguablanca' : AguablancaParser(),
+    'success'    : SuccessParser(),
 }
