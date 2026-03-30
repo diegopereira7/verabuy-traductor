@@ -268,7 +268,11 @@ def run_batch(folder: Path, batch_id: str | None = None, output: Path | None = N
         print(f'  {len(art.articulos)} artículos, {syn.count()} sinónimos cargados.')
 
     # Patrones de nombre que NO son facturas de proveedor
-    SKIP_PATTERNS = ['DUA', 'NYD', 'ALLIANCE', 'FULL', 'GUIA', 'PREALERT', 'REAL CARGA']
+    SKIP_PATTERNS = [
+        'DUA', 'NYD', 'ALLIANCE', 'FULL', 'GUIA', 'PREALERT', 'REAL CARGA',
+        'SAFTEC', 'EXCELLENT', 'EXCELLENTE',
+        'BTOS', 'PARTE', 'CORRECTA', 'LINDA', 'JORGE', 'SLU',
+    ]
 
     def _should_skip(name: str) -> str | None:
         """Retorna el patrón detectado si el archivo debe omitirse, o None."""
