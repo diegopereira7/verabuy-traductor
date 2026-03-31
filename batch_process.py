@@ -269,7 +269,7 @@ def run_batch(folder: Path, batch_id: str | None = None, output: Path | None = N
 
     # Patrones de nombre que NO son facturas de proveedor
     SKIP_PATTERNS = [
-        'DUA', 'NYD', 'ALLIANCE', 'FULL', 'GUIA', 'PREALERT', 'REAL CARGA',
+        'DUA', 'NYD', 'ALLIANCE', 'FULL', 'GUIA', 'PREALERT', 'PRE ALERT', 'REAL CARGA',
         'SAFTEC', 'EXCELLENT', 'EXCELLENTE',
         'BTOS', 'PARTE', 'CORRECTA', 'LINDA', 'JORGE', 'SLU',
     ]

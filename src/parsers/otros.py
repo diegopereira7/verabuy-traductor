@@ -6,26 +6,144 @@ from src.models import InvoiceHeader, InvoiceLine
 
 
 class BrissasParser:
-    """Formato: ORDER MARK BX BOX VARIETIES CM STEMS TOTAL_STEMS UNIT TOTAL"""
-    def parse(self, text:str, pdata:dict):
-        h=InvoiceHeader(); h.provider_key=pdata['key']; h.provider_id=pdata['id']; h.provider_name=pdata['name']
-        m=re.search(r'Invoice\s+#[:\s]+(\S+)',text,re.I); h.invoice_number=m.group(1) if m else ''
-        m=re.search(r'Date[:\s]+([\d/\-]+)',text,re.I); h.date=m.group(1) if m else ''
-        lines=[]
+    """Formato Brissas:
+    ORDER | MARK | BX | BOX TYPE | VARIETIES | CM | STEMS | TOTAL STEMS | UNIT PRICE | TOTAL PRICE | ORDER TYPE | FARM
+
+    Línea principal:
+      "1 - 1 RICC ROSES 1 HB ROSE EXPLORER 50 325 325 0.280 91.000 Standing RICC ROSES"
+    Línea de continuación (caja mixta, sin ORDER ni MARK):
+      "ROSE FRUTTETO 60 200 200 0.320 64.000 Standing SANI ROSES"
+
+    Variantes especiales:
+      GARDEN ROSE <variety>, SPRAY ROSES SPR <color>, TINTED <color>
+    """
+    # Regex: línea principal con ORDER MARK BX BOXTYPE
+    _MAIN_RE = re.compile(
+        r'(\d+)\s*-\s*\d+\s+'           # ORDER range: "1 - 1" or "3 - 4"
+        r'(.+?)\s+'                       # MARK (farm name): "RICC ROSES"
+        r'(\d+)\s+(HB|QB|TB)\s+'          # BX count + BOX TYPE
+        r'((?:GARDEN\s+)?ROSE\s+'         # "ROSE " or "GARDEN ROSE "
+        r'|SPRAY\s+ROSES?\s+(?:SPR\s+)?'  # "SPRAY ROSES SPR "
+        r'|TINTED\s+'                     # "TINTED "
+        r')'
+        r'(.+?)\s+'                       # VARIETY
+        r'(\d{2,3})\s+'                   # CM (talla)
+        r'(\d+)\s+(\d+)\s+'              # STEMS per box, TOTAL STEMS
+        r'([\d.]+)\s+([\d.]+)',           # UNIT PRICE, TOTAL PRICE
+        re.I
+    )
+    # Regex: línea de continuación (sin ORDER/MARK, empieza con ROSE/GARDEN ROSE/etc.)
+    _CONT_RE = re.compile(
+        r'^((?:GARDEN\s+)?ROSE\s+'
+        r'|SPRAY\s+ROSES?\s+(?:SPR\s+)?'
+        r'|TINTED\s+'
+        r')'
+        r'(.+?)\s+'
+        r'(\d{2,3})\s+'
+        r'(\d+)\s+(\d+)\s+'
+        r'([\d.]+)\s+([\d.]+)',
+        re.I
+    )
+
+    def parse(self, text: str, pdata: dict):
+        h = InvoiceHeader()
+        h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
+        m = re.search(r'Invoice\s+#[:\s]+(\S+)', text, re.I); h.invoice_number = m.group(1) if m else ''
+        m = re.search(r'Date[:\s]+([\d/\-]+)', text, re.I); h.date = m.group(1) if m else ''
+        m = re.search(r'Air\s+waybill\s+No\.?[:\s]*([\d\-\s]+)', text, re.I)
+        h.awb = re.sub(r'\s+', '', m.group(1).strip()) if m else ''
+        # Total: "Sub Total XXXX.XXX" or just the last TOTAL line
+        m = re.search(r'(?:Sub\s+)?Total\s+([\d,.]+)', text, re.I)
+        h.total = float(m.group(1).replace(',', '')) if m else 0.0
+
+        lines = []
+        last_farm = ''
+        last_box_type = 'HB'
+
         for ln in text.split('\n'):
-            ln=ln.strip()
-            pm=re.search(r'(?:HB|QB|TB)\s+(?:ROSE\s+)?([A-Z][A-Z\s.\-/]+?)\s+(\d{2})\s+(\d+)\s+([\d.]+)\s+([\d.]+)',ln)
-            if not pm: continue
-            var=pm.group(1).strip(); sz=int(pm.group(2))
-            stems=int(pm.group(3))
-            try: total=float(pm.group(5))
-            except: total=0.0
-            spb=25
-            bt_m=re.search(r'(HB|QB|TB)',ln); btype=bt_m.group(1) if bt_m else ''
-            il=InvoiceLine(raw_description=ln,species='ROSES',variety=var,
-                           size=sz,stems_per_bunch=spb,stems=stems,line_total=total,box_type=btype)
-            lines.append(il)
+            raw = ln.strip()
+            if not raw:
+                continue
+
+            # Skip noise lines
+            if re.match(r'(?:TOTAL|Forwarder|Box\s+Type|HB\s+\d|QB\s+\d|Thank|Payment|Sub\s+Total|Account|Bank|The\s+Swift)', raw, re.I):
+                continue
+
+            # Try main line
+            pm = self._MAIN_RE.search(raw)
+            if pm:
+                last_farm = pm.group(2).strip()
+                last_box_type = pm.group(4).upper()
+                prefix = pm.group(5).strip().upper()
+                var_raw = pm.group(6).strip().upper()
+                sz = int(pm.group(7))
+                stems_box = int(pm.group(8)); stems_total = int(pm.group(9))
+                price = float(pm.group(10)); total = float(pm.group(11))
+
+                var = self._clean_variety(prefix, var_raw)
+                il = InvoiceLine(
+                    raw_description=raw, species='ROSES', variety=var,
+                    size=sz, stems_per_bunch=25, stems=stems_total,
+                    price_per_stem=price, line_total=total,
+                    box_type=last_box_type, farm=last_farm,
+                )
+                lines.append(il)
+                continue
+
+            # Try continuation line
+            pm = self._CONT_RE.match(raw)
+            if pm:
+                prefix = pm.group(1).strip().upper()
+                var_raw = pm.group(2).strip().upper()
+                sz = int(pm.group(3))
+                stems_box = int(pm.group(4)); stems_total = int(pm.group(5))
+                price = float(pm.group(6)); total = float(pm.group(7))
+
+                var = self._clean_variety(prefix, var_raw)
+                il = InvoiceLine(
+                    raw_description=raw, species='ROSES', variety=var,
+                    size=sz, stems_per_bunch=25, stems=stems_total,
+                    price_per_stem=price, line_total=total,
+                    box_type=last_box_type, farm=last_farm,
+                )
+                lines.append(il)
+
         return h, lines
+
+    @staticmethod
+    def _clean_variety(prefix: str, var: str) -> str:
+        """Clean variety name based on prefix and known patterns."""
+        # Strip trailing noise: "Standing FARM_NAME", order type, farm repetition
+        var = re.sub(r'\s+(?:Standing|VDAY|MDAY|Venta\s+diaria)\b.*$', '', var, flags=re.I).strip()
+
+        # GARDEN ROSE prefix → keep as part of variety
+        if 'GARDEN' in prefix:
+            var = f"GARDEN ROSE {var}"
+        # SPRAY ROSES SPR → normalize to SPRAY
+        elif 'SPRAY' in prefix:
+            var = f"SPRAY {var}"
+        # TINTED prefix (captured explicitly)
+        elif 'TINTED' in prefix:
+            var = re.sub(r'^ROS\s+TINTED\b', '', var).strip()
+            if not var:
+                var = 'TINTED'
+            else:
+                var = f"TINTED {var}"
+        else:
+            # "ROSE TINTED ROS TINTED..." → the prefix is "ROSE " but var starts with TINTED
+            if var.startswith('TINTED'):
+                # "TINTED ROS TINTED" → just "TINTED"
+                var = re.sub(r'^TINTED\s+ROS\s+TINTED\b', 'TINTED', var)
+                if not var.startswith('TINTED '):
+                    var = re.sub(r'^TINTED\b', 'TINTED', var)
+
+        # Fix known truncations
+        if var == 'HIGH AND':
+            var = 'HIGH AND MAGIC'
+        elif var == 'ULTRA FREEDOM':
+            var = 'FREEDOM'
+
+        return var
 
 
 class AlunaParser:
@@ -391,6 +509,12 @@ class MalimaParser:
 
 
 class MonterosaParser:
+    """Formato Monterosas: QB/HB {pcs} {order} {mark} {variety} {spb} {b} {tb} {stems} {price} {total}
+    Ejemplo: "HB 1 3 COTTON XPRESSION 25 12 12 300 0.35 105.00"
+             "QB 1 4 PEACH WAVE 25 4 4 100 0.40 40.00"
+    El SPB (25) viene DESPUÉS de la variedad, no la talla.
+    La talla no aparece explícita en este formato — se infiere del contexto.
+    """
     def parse(self, text:str, pdata:dict):
         h=InvoiceHeader(); h.provider_key=pdata['key']; h.provider_id=pdata['id']; h.provider_name=pdata['name']
         m=re.search(r'INVOICE\s+(\d+)',text,re.I); h.invoice_number=m.group(1) if m else ''
@@ -399,16 +523,41 @@ class MonterosaParser:
         lines=[]
         for ln in text.split('\n'):
             ln=ln.strip()
-            # Formato: QB {pieces} {order} {mark} {variety} {stem_size} {T_bunch} {T_bunches} {stems} {price} {total}
-            pm=re.search(r'(?:QB|HB)\s+(?:\w+\s+){0,3}([A-Z][A-Z\s.\-/]+?)\s+(\d{2})\s+(\d+)\s+(\d+)\s+(\d+)\s+([\d.]+)\s+([\d.]+)',ln)
-            if not pm: continue
-            var=pm.group(1).strip(); sz=int(pm.group(2))
-            try: bunches=int(pm.group(4)); stems=int(pm.group(5)); total=float(pm.group(7))
+            # Formato: "QB/HB {num} {num} {MARK?} VARIETY SPB BUNCH TBUNCH STEMS PRICE TOTAL"
+            # Strip box type + numeric prefix: "HB 1 3 " → "COTTON XPRESSION 25 12 12 300 0.35 105.00"
+            pm = re.search(
+                r'(?:QB|HB)\s+\d+\s+\d+\s+'   # box_type + pieces + order
+                r'(?:[A-Z]+\s+)?'               # optional MARK (single uppercase word like "PEACH" — but this is part of variety!)
+                , ln)
+            if not pm:
+                continue
+            # Better approach: strip "QB/HB N N " prefix, then parse variety from rest
+            rest = re.sub(r'^(?:QB|HB)\s+\d+\s+\d+\s+', '', ln).strip()
+            # rest = "COTTON XPRESSION 25 12 12 300 0.35 105.00"
+            # or     "PEACH WAVE 25 4 4 100 0.40 40.00"
+            # Variety = all alpha/space/punct until we hit: SPB(2digit) BUNCH TBUNCH STEMS
+            vm = re.match(
+                r'([A-Z][A-Z\s.\-/&]+?)\s+'    # variety (lazy but requires alpha start)
+                r'(\d{2})\s+'                   # SPB (always 2 digits: 10, 12, 25)
+                r'(\d+)\s+(\d+)\s+(\d+)\s+'    # bunches, total_bunches, stems
+                r'([\d.]+)\s+([\d.]+)',          # price, total
+                rest)
+            if not vm:
+                continue
+            var = vm.group(1).strip()
+            spb = int(vm.group(2))
+            bunches = int(vm.group(3))
+            stems = int(vm.group(5))
+            try: total = float(vm.group(7))
             except: continue
-            spb=stems//bunches if bunches else 25; price=total/stems if stems else 0.0
-            il=InvoiceLine(raw_description=ln,species='ROSES',variety=var,
-                           size=sz,stems_per_bunch=spb,bunches=bunches,stems=stems,
-                           price_per_stem=price,line_total=total)
+            price = total / stems if stems else 0.0
+            # Talla no está explícita en Monterosas — default 50
+            sz = 50
+            bt_m = re.search(r'(QB|HB)', ln)
+            btype = bt_m.group(1) if bt_m else ''
+            il = InvoiceLine(raw_description=ln, species='ROSES', variety=var,
+                             size=sz, stems_per_bunch=spb, bunches=bunches, stems=stems,
+                             price_per_stem=price, line_total=total, box_type=btype)
             lines.append(il)
         return h, lines
 
@@ -789,33 +938,37 @@ class ColFarmParser:
     Ejemplo: "1 H Rose Frutteto X 25 - 40 143213 40 0603.11.00.00 300 300 ST 0.25 75.00"
     Continuación (mixed box): "Rose White X 10 - 50 50 70 70 ST 0.30"
     """
+    @staticmethod
+    def _money(s: str) -> float:
+        """Parse money value: handles '3,900.00' and '75.00'."""
+        return float(s.replace(',', ''))
+
     def parse(self, text: str, pdata: dict):
         h = InvoiceHeader()
         h.provider_key = pdata['key']; h.provider_id = pdata['id']; h.provider_name = pdata['name']
         m = re.search(r'INVOICE\s+No\.?\s*([\w\-]+)', text, re.I); h.invoice_number = m.group(1) if m else ''
-        m = re.search(r'Date\s+(?:Invoice|lnvoice)?[:\s]*([\d/\-]+\s*\w*\s*\d*)', text, re.I)
+        m = re.search(r'Date\s+(?:Invoice|lnvoice)?[:\s]*([\d/\-]+)', text, re.I)
         h.date = m.group(1).strip() if m else ''
         m = re.search(r'AWB\s*/?\s*VL[:\s]*([\d\-\s]+)', text, re.I)
         h.awb = re.sub(r'\s+', '', m.group(1).strip()) if m else ''
         m = re.search(r'HAWB\s*/?\s*HVL[:\s]*([\w\-]+)', text, re.I); h.hawb = m.group(1) if m else ''
         m = re.search(r'INVOICE\s+TOTAL\s*\(?\w*\)?\s*([\d,.]+)', text, re.I)
-        h.total = float(m.group(1).replace(',', '')) if m else 0.0
+        h.total = self._money(m.group(1)) if m else 0.0
 
         lines = []
         box_type = 'HB'
         for ln in text.split('\n'):
             ln = ln.strip()
             # Línea principal: "1 H Rose Frutteto X 25 - 40 ... 300 300 ST 0.25 75.00"
-            # o con mixed: "1 H Rosemix ... 325 325 ST 0.28 91.00"
             pm = re.search(
-                r'\d+\s+(H|Q)\s+Rose?\s*(.+?)\s+X\s*(\d+)\s*-\s*(\d{2,3})\s+.+?\s+(\d+)\s+(\d+)\s+ST\s+([\d.]+)\s+([\d.]+)',
+                r'\d+\s+(H|Q)\s+Rose?\s*(.+?)\s+X\s*(\d+)\s*-\s*(\d{2,3})\s+.+?\s+(\d+)\s+(\d+)\s+ST\s+([\d.]+)\s+([\d,.]+)',
                 ln, re.I)
             if pm:
                 box_type = 'HB' if pm.group(1).upper() == 'H' else 'QB'
                 var = pm.group(2).strip().upper()
                 spb = int(pm.group(3)); sz = int(pm.group(4))
                 stems_box = int(pm.group(5)); stems_total = int(pm.group(6))
-                price = float(pm.group(7)); total = float(pm.group(8))
+                price = float(pm.group(7)); total = self._money(pm.group(8))
                 # Skip "Rosemix"/"assorted" lines — their sub-lines follow
                 if re.match(r'(?:ROSEMIX|ASSORTED|SURTID)', var, re.I):
                     continue
@@ -827,13 +980,13 @@ class ColFarmParser:
                 continue
             # Línea principal sin X-SPB: "1 H Rose assorted 142985 50 GONZA X 10 ... 200 200 ST 0.30 60.00"
             pm2 = re.search(
-                r'\d+\s+(H|Q)\s+Rose?\s*(.+?)\s+\d{5,}\s+(\d{2,3})\s+.+?\s+(\d+)\s+(\d+)\s+ST\s+([\d.]+)\s+([\d.]+)',
+                r'\d+\s+(H|Q)\s+Rose?\s*(.+?)\s+\d{5,}\s+(\d{2,3})\s+.+?\s+(\d+)\s+(\d+)\s+ST\s+([\d.]+)\s+([\d,.]+)',
                 ln, re.I)
             if pm2:
                 box_type = 'HB' if pm2.group(1).upper() == 'H' else 'QB'
                 var = pm2.group(2).strip().upper()
                 sz = int(pm2.group(3))
-                stems_total = int(pm2.group(5)); price = float(pm2.group(6)); total = float(pm2.group(7))
+                stems_total = int(pm2.group(5)); price = float(pm2.group(6)); total = self._money(pm2.group(7))
                 if re.match(r'(?:ROSEMIX|ASSORTED|SURTID)', var, re.I):
                     continue
                 il = InvoiceLine(raw_description=ln, species='ROSES', variety=var, origin='COL',

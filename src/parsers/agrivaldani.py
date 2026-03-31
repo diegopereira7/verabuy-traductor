@@ -49,15 +49,18 @@ class AgrivaldaniParser:
             # -- Limpiar prefijos de orden y tipo de caja --
             clean=re.sub(r'^\d+\s*[-\u2013]\s*\d+\s+\S+\s+','',ln)              # "1 - 1 R15 "
             clean=re.sub(r'^\d+\s+(?:QUARTER|HALF|FULL)\s+','',clean,flags=re.I)  # "1 QUARTER "
-            clean=re.sub(r'^(?:QUARTER|HALF|FULL)\s+','',clean,flags=re.I)         # "HALF " residual
+            # Solo quitar QUARTER/HALF/FULL residual si va seguido de un campo numérico
+            # (= es tipo de caja), NO si va seguido de letras (= es variedad como FULL MONTY)
+            clean=re.sub(r'^(?:QUARTER|HALF|FULL)\s+(?=\d)','',clean,flags=re.I)
 
             # -- Patron A: variedad + CM + SPB + (bunches) + stems + price + total --
             # "FREEDOM 40 25 12 300 0.22 22.00"  /  "E. BLACK 50 25 1 25 0.30 15.00"
+            # "HIGH & MAGIC 50 25 1 25 0.34 8.50"
             pm=re.search(
-                r'^([A-Z][A-Z\s.]{1,28}?)\s+'  # variedad (admite puntos y espacios)
-                r'(\d{2})\s+(\d{2})\s+'         # CM  SPB
-                r'\d*\s*(\d+)\s+'               # (bunches?)  stems
-                r'([\d.]+)\s+([\d.]+)',          # price  total
+                r'^([A-Z][A-Z\s.\-/&]{1,28}?)\s+'  # variedad (admite puntos, espacios, &, -, /)
+                r'(\d{2})\s+(\d{2})\s+'              # CM  SPB
+                r'\d*\s*(\d+)\s+'                    # (bunches?)  stems
+                r'([\d.]+)\s+([\d.]+)',               # price  total
                 clean, re.I
             )
             if pm:
@@ -81,7 +84,7 @@ class AgrivaldaniParser:
             # -- Patron B: variedad + bunches + stems + price + total (sin CM/SPB) --
             # "M. DARK BLUE  1  25  0.90  22.50"  -- hereda CM/SPB del contexto
             pm2=re.search(
-                r'^([A-Z][A-Z\s.]{1,28}?)\s+'   # variedad
+                r'^([A-Z][A-Z\s.\-/&]{1,28}?)\s+'   # variedad
                 r'(\d{1,3})\s+(\d{1,3})\s+'     # bunches  stems
                 r'([\d.]+)\s+([\d.]+)',           # price  total
                 clean, re.I

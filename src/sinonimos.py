@@ -62,8 +62,20 @@ class SynonymStore:
         return f"{provider_id}|{line.match_key()}"
 
     def find(self, provider_id: int, line: InvoiceLine) -> dict | None:
-        """Busca un sinónimo para la línea dada."""
-        return self.syns.get(self._key(provider_id, line))
+        """Busca un sinónimo para la línea dada.
+
+        Si no hay match exacto por stems_per_bunch, intenta con spb=0
+        (sinónimo genérico que ignora SPB como discriminador).
+        """
+        exact = self.syns.get(self._key(provider_id, line))
+        if exact:
+            return exact
+        # Fallback: intentar con stems_per_bunch=0
+        if line.stems_per_bunch != 0:
+            fallback_key = (f"{provider_id}|{line.species}|{line.variety.upper()}"
+                            f"|{line.size}|0|{line.grade.upper()}")
+            return self.syns.get(fallback_key)
+        return None
 
     def add(self, provider_id: int, line: InvoiceLine,
             articulo_id: int, articulo_name: str, origin: str = 'manual',
