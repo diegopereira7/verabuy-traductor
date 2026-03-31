@@ -1,9 +1,9 @@
 Encontrados 150 PDFs. Cargando datos...
-  42502 artículos, 1439 sinónimos cargados.
+  42502 artículos, 1734 sinónimos cargados.
   [1/150] EQR1.pdf: 1/1 — OK
   [2/150] EQR2.pdf: 1/1 — OK
-  [3/150] ESMERALDA (2).pdf: 0/1 — 1 sin match
-  [4/150] ESMERALDA 2.pdf: 0/1 — 1 sin match
+  [3/150] ESMERALDA (2).pdf: 1/1 — OK
+  [4/150] ESMERALDA 2.pdf: 1/1 — OK
   [5/150] ESMERALDA.pdf: 1/1 — OK
   [6/150] ESMERALDA1.pdf: 1/1 — OK
   [7/150] Factura Exportacion CERESFARMS 00295332 VERALEZA SL - VERALEZA SL H 12_16_03.pdf: 5/5 — OK
@@ -40,21 +40,21 @@ Encontrados 150 PDFs. Cargando datos...
   [38/150] FLORSANI 2.pdf: 19/19 — OK
   [39/150] FLORSANI.pdf: 1/1 — OK
   [40/150] FLORSANI1.pdf: 20/20 — OK
-  [41/150] GARDA (2).pdf: 4/11 — 7 sin match
+  [41/150] GARDA (2).pdf: 5/11 — 6 sin match
   [42/150] GARDA (3).pdf: 10/10 — OK
   [43/150] GARDA.pdf: 4/4 — OK
   [44/150] GARDA1.pdf: 1/1 — OK
-  [45/150] GARDA2.pdf: 6/11 — 5 sin match
+  [45/150] GARDA2.pdf: 7/11 — 4 sin match
   [46/150] GARDA3.pdf: 1/1 — OK
-  [47/150] GOLDEN (2).pdf: 0/4 — 4 sin match
+  [47/150] GOLDEN (2).pdf: 2/4 — 2 sin match
   [48/150] GOLDEN (3).pdf: 4/4 — OK
-  [49/150] GOLDEN 105369.pdf: 1/8 — 7 sin match
+  [49/150] GOLDEN 105369.pdf: 6/8 — 2 sin match
   [50/150] GOLDEN 105397.pdf: 33/33 — OK
-  [51/150] GOLDEN 2.pdf: 0/2 — 2 sin match
-  [52/150] GOLDEN 3.pdf: 1/8 — 7 sin match
+  [51/150] GOLDEN 2.pdf: 1/2 — 1 sin match
+  [52/150] GOLDEN 3.pdf: 6/8 — 2 sin match
   [53/150] GOLDEN 4.pdf: 45/46 — OK
   [54/150] GOLDEN.pdf: 33/33 — OK
-  [55/150] GOLDEN1.pdf: 0/5 — 5 sin match
+  [55/150] GOLDEN1.pdf: 3/5 — 2 sin match
   [56/150] GOLDEN2.pdf: 35/38 — OK
   [57/150] GROWER.pdf: 3/3 — OK
   [58/150] HACIENDA.pdf: 2/2 — OK
@@ -68,7 +68,7 @@ Encontrados 150 PDFs. Cargando datos...
   [66/150] Invoice #120002 - VERALEZA SLU.pdf: OMITIDO — no es factura (SLU)
   [67/150] INVOICE 4132 BRISSAS completa.pdf: 16/18 — OK
   [68/150] Invoice 4170 BRISSAS correcta.pdf: OMITIDO — no es factura (CORRECTA)
-  [69/150] Invoice 4171 BRISSAS ROSES completa.pdf: 70/74 — 1 sin match
+  [69/150] Invoice 4171 BRISSAS ROSES completa.pdf: 71/74 — OK
   [70/150] Invoice 4180 BRISSAS correcta.pdf: OMITIDO — no es factura (CORRECTA)
   [71/150] INVOICE 6933501.pdf: ERROR — Proveedor no reconocido
   [72/150] Invoice#0000142162-VERALEZA SL-.pdf: 3/9 — 6 sin match
@@ -95,7 +95,7 @@ Encontrados 150 PDFs. Cargando datos...
   [93/150] LIFE (2).pdf: 13/19 — 6 sin match
   [94/150] LIFE (3).pdf: 13/19 — 6 sin match
   [95/150] LIFE 2.pdf: 1/1 — OK
-  [96/150] LIFE 3.pdf: 2/13 — 11 sin match
+  [96/150] LIFE 3.pdf: 3/13 — 10 sin match
   [97/150] LIFE 4.pdf: 2/2 — OK
   [98/150] LIFE.pdf: 13/19 — 6 sin match
   [99/150] LIFE1 (2).pdf: 2/2 — OK
@@ -134,7 +134,7 @@ Encontrados 150 PDFs. Cargando datos...
   [132/150] MEAFLOS-2 (1).pdf: 7/7 — OK
   [133/150] MEAFLOS.pdf: 12/12 — OK
   [134/150] MEAFLOSS.pdf: 6/6 — OK
-  [135/150] MILONGA.pdf: 9/18 — 7 sin match
+  [135/150] MILONGA.pdf: 10/18 — 6 sin match
   [136/150] MONTEROSA 2.pdf: 1/1 — OK
   [137/150] MONTEROSA.pdf: 3/3 — OK
   [138/150] MONTEROSA1.pdf: 1/1 — OK
@@ -153,5 +153,5 @@ Encontrados 150 PDFs. Cargando datos...
 
 Excel generado: C:\verabuy-traductor\batch_2026_resultados\lote_5.xlsx
 
-Resumen: 131 OK, 1 errores, 18 omitidos, 1338 líneas (1056 match, 165 sin match)
+Resumen: 131 OK, 1 errores, 18 omitidos, 1338 líneas (1079 match, 142 sin match)
 Total USD: $138,980.25

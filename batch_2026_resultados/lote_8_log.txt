@@ -1,5 +1,5 @@
 Encontrados 150 PDFs. Cargando datos...
-  42502 artículos, 1439 sinónimos cargados.
+  42502 artículos, 1735 sinónimos cargados.
   [1/150] SEMANA_12_✈️_075-6768_22874_REAL_GOLDEN.pdf: 46/46 — OK
   [2/150] SEMANA_12_✈️_075-6768_22874_REAL_UNIQUE.pdf: 0/2 — 2 sin match
   [3/150] SEMANA_12_✈️_075-6771_1000_SAFTEC__GUIA.pdf: OMITIDO — no es factura (GUIA)
@@ -23,7 +23,7 @@ Encontrados 150 PDFs. Cargando datos...
   [21/150] SEMANA_12_✈️_075-6771_1210_ALLIANZA_LIFE (2).pdf: 3/3 — OK
   [22/150] SEMANA_12_✈️_075-6771_1210_ALLIANZA_LIFE.pdf: 12/14 — 2 sin match
   [23/150] SEMANA_12_✈️_075-6771_1210_ALLIANZA_MALIMA.pdf: 2/2 — OK
-  [24/150] SEMANA_12_✈️_075-6771_1210_ALLIANZA_MONTEROSA.pdf: 4/7 — 3 sin match
+  [24/150] SEMANA_12_✈️_075-6771_1210_ALLIANZA_MONTEROSA.pdf: 5/7 — 2 sin match
   [25/150] SEMANA_12_✈️_075-6771_1210_ALLIANZA_OLIMPO.pdf: 12/12 — OK
   [26/150] SEMANA_12_✈️_075-6771_1210_ALLIANZA_ROSELY (2).pdf: 8/8 — OK
   [27/150] SEMANA_12_✈️_075-6771_1210_ALLIANZA_TESSA.pdf: 5/5 — OK
@@ -31,7 +31,7 @@ Encontrados 150 PDFs. Cargando datos...
   [29/150] SEMANA_12_✈️_075-6771_2282_(48)XX__PREALERT.pdf: OMITIDO — no es factura (PREALERT)
   [30/150] SEMANA_12_✈️_075-6771_2282_(48)XX_CANTIZA.pdf: 27/28 — 1 sin match
   [31/150] SEMANA_12_✈️_075-6771_2282_(48)XX_HACIENDA.pdf: 4/4 — OK
-  [32/150] SEMANA_12_✈️_075-6771_2282_(48)XX_ROSELY.pdf: 11/14 — 3 sin match
+  [32/150] SEMANA_12_✈️_075-6771_2282_(48)XX_ROSELY.pdf: 12/14 — 2 sin match
   [33/150] SEMANA_12_✈️_075-6771_2282_(48)XX_TIERRA VERDE.pdf: 8/8 — OK
   [34/150] SEMANA_12_✈️_075-6771_4625_SAFTEC_JUEVE__GUIA.pdf: OMITIDO — no es factura (GUIA)
   [35/150] SEMANA_12_✈️_075-6771_4625_SAFTEC_JUEVE__PREALERT.pdf: OMITIDO — no es factura (PREALERT)
@@ -78,7 +78,7 @@ Encontrados 150 PDFs. Cargando datos...
   [76/150] SEMANA_12_✈️_369-9902_2674_ALLIANZA_LIFE (2).pdf: 1/1 — OK
   [77/150] SEMANA_12_✈️_369-9902_2674_ALLIANZA_LIFE 3.pdf: 0/1 — 1 sin match
   [78/150] SEMANA_12_✈️_369-9902_2674_ALLIANZA_LIFE 4.pdf: 9/11 — 2 sin match
-  [79/150] SEMANA_12_✈️_369-9902_2674_ALLIANZA_LIFE.pdf: 2/13 — 11 sin match
+  [79/150] SEMANA_12_✈️_369-9902_2674_ALLIANZA_LIFE.pdf: 3/13 — 10 sin match
   [80/150] SEMANA_12_✈️_369-9902_2674_ALLIANZA_LUXUS (2).pdf: 3/3 — OK
   [81/150] SEMANA_12_✈️_369-9902_2674_ALLIANZA_LUXUS.pdf: 43/43 — OK
   [82/150] SEMANA_12_✈️_369-9902_2674_ALLIANZA_MALIMA.pdf: 3/3 — OK
@@ -88,7 +88,7 @@ Encontrados 150 PDFs. Cargando datos...
   [86/150] SEMANA_12_✈️_369-9902_2674_ALLIANZA_ROSALEDA.pdf: 6/14 — 8 sin match
   [87/150] SEMANA_12_✈️_369-9902_2674_ALLIANZA_ROSELY (2).pdf: 4/5 — 1 sin match
   [88/150] SEMANA_12_✈️_369-9902_2674_ALLIANZA_ROSELY 2.pdf: 12/12 — OK
-  [89/150] SEMANA_12_✈️_369-9902_2674_ALLIANZA_ROSELY.pdf: 12/14 — 2 sin match
+  [89/150] SEMANA_12_✈️_369-9902_2674_ALLIANZA_ROSELY.pdf: 13/14 — 1 sin match
   [90/150] SEMANA_12_✈️_369-9902_2674_ALLIANZA_TIERRA VERDE.pdf: 3/3 — OK
   [91/150] SEMANA_12_✈️_729-45937522_REAL__GUIA.pdf: OMITIDO — no es factura (GUIA)
   [92/150] SEMANA_12_✈️_729-45937522_REAL__PREALERT.pdf: OMITIDO — no es factura (PREALERT)
@@ -153,5 +153,5 @@ Encontrados 150 PDFs. Cargando datos...
 
 Excel generado: C:\verabuy-traductor\batch_2026_resultados\lote_8.xlsx
 
-Resumen: 72 OK, 0 errores, 78 omitidos, 678 líneas (518 match, 118 sin match)
+Resumen: 72 OK, 0 errores, 78 omitidos, 678 líneas (522 match, 114 sin match)
 Total USD: $34,399.35

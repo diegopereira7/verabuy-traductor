@@ -3,7 +3,8 @@ from __future__ import annotations
 
 import logging
 import re
-from collections import Counter
+import unicodedata
+from collections import Counter, defaultdict
 from difflib import SequenceMatcher
 from typing import Dict, List, Optional
 
@@ -14,6 +15,60 @@ from src.config import (
 from src.models import InvoiceLine
 
 logger = logging.getLogger(__name__)
+
+# Traducciones variedad inglés → español para búsqueda flexible
+VARIETY_TRANSLATIONS = {
+    # Multiword first (matched before single words)
+    'GYPSOPHILA OVER TIME WHITE': 'OVERTIME BLANCO',
+    'GYPSOPHILA OVER TIME': 'OVERTIME',
+    'OVER TIME WHITE': 'OVERTIME BLANCO',
+    'OVER TIME': 'OVERTIME',
+    'GYPSOPHILA XLENCE NATURAL': 'XLENCE BLANCO',
+    'GYPSOPHILA XLENCE RAINBOW MIX LIGHT': 'XLENCE TENIDA RAINBOW',
+    'GYPSOPHILA XLENCE': 'XLENCE BLANCO',
+    'GYPSOPHILA': 'PANICULATA',
+    'GARDEN ROSE': 'LA GARDEN',
+    'TINTED BLUE': 'TENIDA AZUL',
+    'TINTED RED': 'TENIDA ROJO',
+    'TINTED PINK': 'TENIDA ROSA',
+    'TINTED GREEN': 'TENIDA VERDE',
+    'TINTED ORANGE': 'TENIDA NARANJA',
+    'TINTED PURPLE': 'TENIDA MORADO',
+    'TINTED BLACK': 'TENIDA NEGRO',
+    'TINTED': 'TENIDA',
+    'WHITE': 'BLANCO',
+    'RED': 'ROJO',
+    'YELLOW': 'AMARILLO',
+    'PINK': 'ROSA',
+    'BLUE': 'AZUL',
+    'ORANGE': 'NARANJA',
+    'GREEN': 'VERDE',
+    'PURPLE': 'MORADO',
+    'LIGHT': 'CLARO',
+    'DARK': 'OSCURO',
+    'NATURAL': 'BLANCO',
+    # Variaciones ortográficas
+    'JESSIKA': 'JESSICA',
+    'TOFFE': 'TOFFEE',
+    # O'Hara roses
+    'OHARA PINK': 'OHARA ROSA',
+    'OHARA WHITE': 'OHARA BLANCO',
+    'OHARA RED': 'OHARA ROJO',
+    "O'HARA PINK": 'OHARA ROSA',
+    "O'HARA WHITE": 'OHARA BLANCO',
+    "PINK O'HARA": 'OHARA ROSA',
+    "WHITE O'HARA": 'OHARA BLANCO',
+    'PINK OHARA': 'OHARA ROSA',
+    'WHITE OHARA': 'OHARA BLANCO',
+}
+
+
+def _normalize(s: str) -> str:
+    """Normaliza: mayúsculas, sin tildes, sin espacios extra."""
+    s = s.upper().strip()
+    s = unicodedata.normalize('NFD', s)
+    s = ''.join(c for c in s if unicodedata.category(c) != 'Mn')
+    return re.sub(r'\s+', ' ', s)
 
 
 class ArticulosLoader:
@@ -26,6 +81,10 @@ class ArticulosLoader:
         self.rosas_col: Dict[str, int] = {}
         self.by_species: Dict[str, List] = {}
         self.brand_by_provider: Dict[int, str] = {}
+        # Índice variedad+talla → lista de artículos (para matching mejorado)
+        self.by_variety_size: Dict[str, List[dict]] = defaultdict(list)
+        # Índice variedad → lista de artículos (sin talla)
+        self.by_variety: Dict[str, List[dict]] = defaultdict(list)
         self.loaded = False
 
     def load_from_sql(self, sql_path: str) -> int:
@@ -64,8 +123,10 @@ class ArticulosLoader:
                     continue
 
         self._build_brand_index()
+        self._build_variety_index()
         self.loaded = True
-        logger.info("Artículos cargados: %d, rosas EC: %d", count, len(self.rosas_ec))
+        logger.info("Artículos cargados: %d, rosas EC: %d, variedades: %d",
+                     count, len(self.rosas_ec), len(self.by_variety))
         return count
 
     # --- Búsquedas ---
@@ -218,6 +279,302 @@ class ArticulosLoader:
             top = Counter(suffixes).most_common(1)[0]
             if top[1] >= BRAND_MIN_ARTICLES:
                 self.brand_by_provider[pid] = top[0]
+
+    def _build_variety_index(self) -> None:
+        """Construye índices por variedad y variedad+talla para búsqueda flexible."""
+        rose_re = re.compile(
+            r'^ROSA\s+(?:EC\s+|COL\s+)?(.+?)\s+(\d+)CM\s+(\d+)U(?:\s+(.+))?$'
+        )
+        paniculata_re = re.compile(
+            r'^PANICULATA\s+(.+?)(?:\s+\d+GR\s+\d+U)?(?:\s+([A-Z][A-Z ]+))?$'
+        )
+        hydrangea_re = re.compile(
+            r'^HYDRANGEA\s+(.+?)\s+(\d+)CM\s+(\d+)U(?:\s+(.+))?$'
+        )
+        clavel_re = re.compile(
+            r'^(?:MINI\s+)?CLAVEL\s+(?:COL\s+|EC\s+)?(?:SPRAY\s+)?(?:FANCY\s+)?(.+?)\s+(\d+)CM\s+(\d+)U(?:\s+(.+))?$'
+        )
+        crisantemo_re = re.compile(
+            r'^CRISANTEMO\s+(.+?)\s+(\d+)CM\s+(\d+)U(?:\s+(.+))?$'
+        )
+        alstro_re = re.compile(
+            r'^ALSTROMERIA\s+(?:EC\s+|COL\s+)?(.+?)\s+(\d+)CM\s+(\d+)U(?:\s+(.+))?$'
+        )
+
+        for art in self.articulos.values():
+            nombre = _normalize(art['nombre'])
+            if not nombre:
+                continue
+
+            variedad = None
+            talla = 0
+            marca = ''
+
+            m = rose_re.match(nombre)
+            if m:
+                variedad = m.group(1).strip()
+                talla = int(m.group(2))
+                marca = (m.group(4) or '').strip()
+            else:
+                m = paniculata_re.match(nombre)
+                if m:
+                    variedad = m.group(1).strip()
+                    variedad = re.sub(r'\s+\d+GR$', '', variedad)
+                    marca = (m.group(2) or '').strip()
+                    # Also index with GYPSOPHILA prefix
+                    self.by_variety[f"GYPSOPHILA {variedad}"].append(art)
+                else:
+                    m = hydrangea_re.match(nombre)
+                    if m:
+                        variedad = m.group(1).strip()
+                        talla = int(m.group(2))
+                        marca = (m.group(4) or '').strip()
+                    else:
+                        m = clavel_re.match(nombre)
+                        if m:
+                            variedad = m.group(1).strip()
+                            talla = int(m.group(2))
+                            marca = (m.group(4) or '').strip()
+                        else:
+                            m = crisantemo_re.match(nombre)
+                            if m:
+                                variedad = m.group(1).strip()
+                                talla = int(m.group(2))
+                                marca = (m.group(4) or '').strip()
+                            else:
+                                m = alstro_re.match(nombre)
+                                if m:
+                                    variedad = m.group(1).strip()
+                                    talla = int(m.group(2))
+                                    marca = (m.group(4) or '').strip()
+
+            if variedad:
+                self.by_variety[variedad].append(art)
+                if talla:
+                    self.by_variety_size[f"{variedad}|{talla}"].append(art)
+
+    # --- Búsqueda mejorada (proceso manual replicado) ---
+
+    def search_variety(self, variety: str, size: int = 0) -> List[dict]:
+        """Busca artículos por variedad, intentando traducciones si no hay match.
+
+        Args:
+            variety: Variedad tal como viene de la factura.
+            size: Talla en CM (0 = sin filtro de talla).
+
+        Returns:
+            Lista de artículos candidatos.
+        """
+        variantes = self._translate_variety(variety)
+        results = []
+        for var in variantes:
+            var_n = _normalize(var)
+            if size:
+                key = f"{var_n}|{size}"
+                results.extend(self.by_variety_size.get(key, []))
+            else:
+                results.extend(self.by_variety.get(var_n, []))
+        # Deduplicar manteniendo orden
+        seen = set()
+        unique = []
+        for r in results:
+            if r['id'] not in seen:
+                seen.add(r['id'])
+                unique.append(r)
+        return unique
+
+    def search_with_priority(self, variety: str, size: int,
+                              provider_id: int, provider_key: str = '') -> Optional[dict]:
+        """Búsqueda con el orden de prioridad del proceso manual:
+
+        1. Variedad + talla + marca/farm del proveedor en nombre
+        2. Variedad + talla + campo proveedor (id_proveedor)
+        3. Variedad + talla + genérico (sin marca, o EC/COL)
+        4. Variedad genérica sin talla exacta + marca
+        5. Variedad genérica sin talla + proveedor
+        6. Variedad genérica (cualquier artículo de esa variedad)
+        7. None (sin match)
+
+        Returns:
+            Tuple (articulo_dict, confidence, method) or (None, '', '')
+        """
+        brands = self._get_brands(provider_id, provider_key)
+
+        # Candidatos con talla exacta
+        con_talla = self.search_variety(variety, size) if size else []
+        # Candidatos sin filtro de talla (fallback)
+        sin_talla = self.search_variety(variety, 0)
+
+        # --- Paso 3: Variedad + talla + marca en nombre ---
+        if brands and con_talla:
+            for art in con_talla:
+                if self._has_brand(art, brands):
+                    return art, 'ALTA', 'variedad+talla+marca'
+
+        # --- Paso 4: Variedad + talla + campo proveedor ---
+        if provider_id and con_talla:
+            for art in con_talla:
+                if art.get('id_proveedor') == provider_id:
+                    return art, 'MEDIA', 'variedad+talla+proveedor_id'
+
+        # --- Paso 5: Variedad + talla + genérico ---
+        if con_talla:
+            for art in con_talla:
+                if self._is_generic(art):
+                    return art, 'BAJA', 'variedad+talla+generico'
+
+        # --- Variedad sin talla + marca ---
+        if brands and sin_talla:
+            best = self._closest_size(sin_talla, size, brands)
+            if best:
+                return best, 'ALTA', 'variedad+marca(sin_talla_exacta)'
+
+        # --- Variedad sin talla + proveedor ---
+        if provider_id and sin_talla:
+            for art in sin_talla:
+                if art.get('id_proveedor') == provider_id:
+                    return art, 'MEDIA', 'variedad+proveedor_id(sin_talla)'
+
+        # --- Paso 6: Artículo genérico de esa variedad ---
+        if sin_talla:
+            # Preferir genéricos, luego cualquiera
+            generics = [a for a in sin_talla if self._is_generic(a)]
+            if generics:
+                best = self._closest_size(generics, size)
+                if best:
+                    return best, 'BAJA', 'variedad+generico(sin_talla)'
+            # Cualquier artículo de la variedad
+            best = self._closest_size(sin_talla, size)
+            if best:
+                return best, 'MUY_BAJA', 'variedad(cualquier)'
+
+        # --- Paso 7: Sin match ---
+        return None, '', 'sin_match'
+
+    def _translate_variety(self, variety: str) -> List[str]:
+        """Genera variantes traducidas inglés→español de una variedad."""
+        v = _normalize(variety)
+        variantes = [v]
+
+        # Quitar prefijo de especie si lo tiene (GYPSOPHILA, GARDEN ROSE, etc.)
+        stripped = v
+        for prefix in ('GYPSOPHILA ', 'GARDEN ROSE ', 'PANICULATA '):
+            if v.startswith(prefix):
+                stripped = v[len(prefix):]
+                if stripped not in variantes:
+                    variantes.append(stripped)
+                break
+
+        # Traducciones completas (primero las más largas)
+        bases = [v, stripped] if stripped != v else [v]
+        for base in bases:
+            for eng, esp in sorted(VARIETY_TRANSLATIONS.items(), key=lambda x: -len(x[0])):
+                if eng in base:
+                    translated = base.replace(eng, esp)
+                    if translated and translated not in variantes:
+                        variantes.append(translated)
+
+        # Traducción palabra por palabra
+        for base in bases:
+            words = base.split()
+            tw = [VARIETY_TRANSLATIONS.get(w, w) for w in words]
+            word_t = ' '.join(tw)
+            if word_t not in variantes:
+                variantes.append(word_t)
+
+        # Variantes con prefijo GYPSOPHILA → también sin él y viceversa
+        extra = []
+        for vk in list(variantes):
+            if vk.startswith('GYPSOPHILA '):
+                nopfx = vk[len('GYPSOPHILA '):]
+                if nopfx not in variantes:
+                    extra.append(nopfx)
+            # Add GYPSOPHILA prefix variant for paniculata searches
+            gypso = f"GYPSOPHILA {vk}"
+            if gypso not in variantes:
+                extra.append(gypso)
+        variantes.extend(extra)
+
+        # Fuzzy: si ninguna variante está en el índice, buscar parecida
+        if not any(vk in self.by_variety for vk in variantes):
+            best_ratio, best_key = 0, None
+            for known in self.by_variety:
+                if len(known) < 4:
+                    continue
+                for vk in variantes[:3]:
+                    if abs(len(known) - len(vk)) > 3:
+                        continue
+                    r = SequenceMatcher(None, vk, known).ratio()
+                    if r > best_ratio and r >= 0.80:
+                        best_ratio = r
+                        best_key = known
+            if best_key:
+                variantes.append(best_key)
+
+        return variantes
+
+    def _get_brands(self, provider_id: int, provider_key: str = '') -> List[str]:
+        """Obtiene marcas posibles para un proveedor.
+
+        NO mezcla marcas de proveedores que comparten fmt (formato de parser),
+        ya que fmt indica formato de factura, no marca comercial.
+        """
+        brands = []
+        # Marca detectada del índice SQL (sufijo más frecuente)
+        b = self.brand_by_provider.get(provider_id)
+        if b:
+            brands.append(b)
+        # Clave del proveedor en PROVIDERS como posible marca
+        if provider_key:
+            brands.append(provider_key.upper())
+        # Buscar la clave del proveedor por id
+        from src.config import PROVIDERS
+        for pkey, pdata in PROVIDERS.items():
+            if pdata.get('id') == provider_id:
+                brands.append(pkey.upper())
+                break
+        return list(dict.fromkeys(_normalize(b) for b in brands if b))
+
+    def _has_brand(self, art: dict, brands: List[str]) -> bool:
+        """Comprueba si un artículo tiene alguna de las marcas en su nombre."""
+        nombre = _normalize(art['nombre'])
+        # Extraer la(s) última(s) palabra(s) del nombre (lo que va después de NNU)
+        tail_m = re.search(r'\d+U\s+(.+)$', nombre)
+        tail = tail_m.group(1).strip() if tail_m else ''
+        for brand in brands:
+            # Match exacto del sufijo
+            if tail == brand:
+                return True
+            # Match parcial: "ALEGRIA" coincide con "LA ALEGRIA"
+            if tail and brand in tail:
+                return True
+            # Fallback: buscar en todo el nombre
+            if nombre.endswith(f" {brand}"):
+                return True
+        return False
+
+    def _is_generic(self, art: dict) -> bool:
+        """Artículo genérico: termina en \\d+U (sin marca) o tiene EC/COL."""
+        nombre = _normalize(art['nombre'])
+        # Termina en NNu sin marca
+        if re.search(r'\d+U$', nombre):
+            return True
+        return False
+
+    def _closest_size(self, arts: List[dict], target_size: int,
+                       brands: List[str] = None) -> Optional[dict]:
+        """De una lista de artículos, elige el de talla más cercana (con marca si se da)."""
+        if brands:
+            arts = [a for a in arts if self._has_brand(a, brands)]
+        if not arts:
+            return None
+        if not target_size:
+            return arts[0]
+
+        def size_dist(a):
+            m = re.search(r'(\d+)CM', a['nombre'].upper())
+            return abs(int(m.group(1)) - target_size) if m else 999
+        return min(arts, key=size_dist)
 
     def _query_key(self, line: InvoiceLine) -> str:
         v = line.variety.upper()

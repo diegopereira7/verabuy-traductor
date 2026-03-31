@@ -1,5 +1,5 @@
 Encontrados 150 PDFs. Cargando datos...
-  42502 artículos, 1439 sinónimos cargados.
+  42502 artículos, 1734 sinónimos cargados.
   [1/150] 31080 NYD.pdf: OMITIDO — no es factura (NYD)
   [2/150] 31090 NYD.pdf: OMITIDO — no es factura (NYD)
   [3/150] 31091 NYD.pdf: OMITIDO — no es factura (NYD)

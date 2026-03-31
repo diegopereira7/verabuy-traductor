@@ -1,5 +1,5 @@
 Encontrados 150 PDFs. Cargando datos...
-  42502 artículos, 1439 sinónimos cargados.
+  42502 artículos, 1734 sinónimos cargados.
   [1/150] 729-4588 9966 FULL.pdf: OMITIDO — no es factura (FULL)
   [2/150] 729-4588 9992 FULL.pdf: OMITIDO — no es factura (FULL)
   [3/150] 729-4591 4971 FULL.pdf: OMITIDO — no es factura (FULL)
@@ -19,8 +19,8 @@ Encontrados 150 PDFs. Cargando datos...
   [17/150] 996-1423 4754 FULL.pdf: OMITIDO — no es factura (FULL)
   [18/150] AGRIVALDANI (2).pdf: 4/4 — OK
   [19/150] AGRIVALDANI (3).pdf: 3/3 — OK
-  [20/150] AGRIVALDANI 2.pdf: 15/18 — 3 sin match
-  [21/150] AGRIVALDANI 3.pdf: 38/44 — 6 sin match
+  [20/150] AGRIVALDANI 2.pdf: 17/18 — 1 sin match
+  [21/150] AGRIVALDANI 3.pdf: 39/44 — 5 sin match
   [22/150] AGRIVALDANI.pdf: 2/2 — OK
   [23/150] AGRIVALDANI1 (2).pdf: 1/1 — OK
   [24/150] AGRIVALDANI1.pdf: 4/4 — OK
@@ -31,7 +31,7 @@ Encontrados 150 PDFs. Cargando datos...
   [29/150] ALEGRIA.pdf: 57/57 — OK
   [30/150] ALUNA.pdf: 3/3 — OK
   [31/150] APOSENTOS CORRECTA.pdf: OMITIDO — no es factura (CORRECTA)
-  [32/150] APOSENTOS.pdf: 1/13 — 10 sin match
+  [32/150] APOSENTOS.pdf: 2/13 — 9 sin match
   [33/150] APOSENTOS1.pdf: 1/9 — 7 sin match
   [34/150] ARAWI FLOWERS.pdf: ERROR — Proveedor no reconocido
   [35/150] AROMA (2).pdf: 0/1 — OK
@@ -51,18 +51,18 @@ Encontrados 150 PDFs. Cargando datos...
   [49/150] ART.pdf: 7/7 — OK
   [50/150] AWB 729-45997243 VERALEZA SLU.pdf: OMITIDO — no es factura (SLU)
   [51/150] AWB VERALEZA SLU.pdf: OMITIDO — no es factura (SLU)
-  [52/150] BG-104176.pdf: 0/5 — 5 sin match
+  [52/150] BG-104176.pdf: 3/5 — 2 sin match
   [53/150] BG-104191.pdf: 33/33 — OK
-  [54/150] BG-104318.pdf: 0/5 — 5 sin match
+  [54/150] BG-104318.pdf: 3/5 — 2 sin match
   [55/150] BG-104323.pdf: 34/34 — OK
-  [56/150] BG-104775.pdf: 0/6 — 6 sin match
+  [56/150] BG-104775.pdf: 4/6 — 2 sin match
   [57/150] BG-104800.pdf: 31/35 — OK
   [58/150] BG-104801.pdf: 3/3 — OK
-  [59/150] BG-104935.pdf: 0/5 — 5 sin match
+  [59/150] BG-104935.pdf: 3/5 — 2 sin match
   [60/150] BG-104956.pdf: 33/33 — OK
-  [61/150] BG-105071.pdf: 0/7 — 5 sin match
+  [61/150] BG-105071.pdf: 3/7 — 2 sin match
   [62/150] BG-105089.pdf: 35/35 — OK
-  [63/150] BG-105205.pdf: 0/7 — 7 sin match
+  [63/150] BG-105205.pdf: 5/7 — 2 sin match
   [64/150] BG-105216.pdf: 35/35 — OK
   [65/150] BG-105230.pdf: 0/2 — OK
   [66/150] BG-105761.pdf: 1/1 — OK
@@ -70,12 +70,12 @@ Encontrados 150 PDFs. Cargando datos...
   [68/150] BOQUE.pdf: 0/1 — OK
   [69/150] BOSQUE (2).pdf: 0/2 — OK
   [70/150] BOSQUE.pdf: 0/1 — OK
-  [71/150] BOYACA.pdf: 0/8 — 6 sin match
+  [71/150] BOYACA.pdf: 2/8 — 4 sin match
   [72/150] BRISSAS (2).pdf: 17/19 — 1 sin match
   [73/150] BRISSAS ALIANZA.pdf: 5/6 — OK
   [74/150] BRISSAS ALLIANZA.pdf: 2/3 — OK
-  [75/150] BRISSAS completa.pdf: 81/87 — 3 sin match
-  [76/150] BRISSAS.pdf: 97/104 — 2 sin match
+  [75/150] BRISSAS completa.pdf: 84/87 — OK
+  [76/150] BRISSAS.pdf: 98/104 — 1 sin match
   [77/150] BRISSAS1.pdf: 32/35 — 1 sin match
   [78/150] CANANVALLE.pdf: 2/2 — OK
   [79/150] CANITZA.pdf: 2/2 — OK
@@ -95,9 +95,9 @@ Encontrados 150 PDFs. Cargando datos...
   [93/150] COLIBRI 2.pdf: 28/30 — 2 sin match
   [94/150] COLIBRI.pdf: 13/13 — OK
   [95/150] COLON.pdf: 4/5 — OK
-  [96/150] CONDOR 58938.pdf: 0/1 — 1 sin match
+  [96/150] CONDOR 58938.pdf: 1/1 — OK
   [97/150] CONDOR ANDINO.pdf: 0/0 — OK
-  [98/150] CONDOR.pdf: 0/1 — 1 sin match
+  [98/150] CONDOR.pdf: 1/1 — OK
   [99/150] CUFE 24019 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
   [100/150] CUFE 24030 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
   [101/150] CUFE 24064 REAL CARGA.pdf: OMITIDO — no es factura (REAL CARGA)
@@ -141,17 +141,17 @@ Encontrados 150 PDFs. Cargando datos...
   [139/150] DILIGENCIA VIGILANCIA ADUANERA.pdf: OMITIDO — no es factura (DUA)
   [140/150] DOMENICA.pdf: 12/12 — OK
   [141/150] ECM-00003200.pdf: 8/15 — 7 sin match
-  [142/150] ECM-00003201.pdf: 0/1 — 1 sin match
-  [143/150] ECM-00003203.pdf: 98/112 — 14 sin match
+  [142/150] ECM-00003201.pdf: 1/1 — OK
+  [143/150] ECM-00003203.pdf: 108/112 — 4 sin match
   [144/150] ECOFLOR 79682.pdf: 10/10 — OK
   [145/150] ECOFLOR.pdf: 8/8 — OK
   [146/150] ECOFLOR1.pdf: 17/19 — 2 sin match
-  [147/150] ECOFLOR2.pdf: 11/14 — 3 sin match
+  [147/150] ECOFLOR2.pdf: 12/14 — 2 sin match
   [148/150] EQR (2).pdf: 0/0 — OK
   [149/150] EQR 2.pdf: 1/2 — 1 sin match
   [150/150] EQR.pdf: 1/1 — OK
 
 Excel generado: C:\verabuy-traductor\batch_2026_resultados\lote_4.xlsx
 
-Resumen: 89 OK, 1 errores, 60 omitidos, 1199 líneas (1037 match, 113 sin match)
+Resumen: 89 OK, 1 errores, 60 omitidos, 1199 líneas (1082 match, 68 sin match)
 Total USD: $111,359.60

@@ -28,6 +28,13 @@ class Matcher:
                    invoice: str = '') -> InvoiceLine:
         """Intenta vincular una línea de factura con un artículo de VeraBuy.
 
+        Pipeline de 7 etapas siguiendo el proceso manual del usuario:
+        1. Sinónimo guardado (con upgrade a marca si aplica)
+        2. Búsqueda priorizada: variedad+talla+marca > proveedor > genérico
+        3. Match exacto por nombre esperado (legacy)
+        4. Match por rosa EC/COL (legacy)
+        5. Auto-fuzzy >=90%
+
         Args:
             provider_id: ID del proveedor.
             line: Línea de factura a matchear.
@@ -62,7 +69,37 @@ class Matcher:
             line.match_method = 'sinónimo'
             return line
 
-        # 2. Match con marca del proveedor
+        # 2. Búsqueda priorizada por variedad+talla+marca (proceso manual)
+        #    Prioridad: marca > proveedor_id > genérico > sin talla > cualquier
+        if line.variety and self.art.by_variety:
+            result, confidence, method = self.art.search_with_priority(
+                variety=line.variety,
+                size=line.size,
+                provider_id=provider_id,
+                provider_key=getattr(line, 'provider_key', ''),
+            )
+            if result:
+                line.articulo_id = result['id']
+                line.articulo_name = result['nombre']
+                line.match_status = 'ok'
+                line.match_method = method
+                origin = 'auto-marca' if confidence == 'ALTA' else 'auto-matching'
+                self.syn.add(provider_id, line, result['id'], result['nombre'],
+                             origin, invoice=invoice)
+                return line
+
+        # 3. Match exacto por nombre esperado (fallback legacy)
+        a = self.art.find_by_name(line.expected_name())
+        if a:
+            line.articulo_id = a['id']
+            line.articulo_name = a['nombre']
+            line.match_status = 'ok'
+            line.match_method = 'exacto'
+            self.syn.add(provider_id, line, a['id'], a['nombre'], 'auto',
+                         invoice=invoice)
+            return line
+
+        # 4. Match con marca del proveedor (fallback legacy)
         a = self.art.find_branded(line.expected_name(), provider_id,
                                   getattr(line, 'provider_key', ''))
         if a:
@@ -74,18 +111,7 @@ class Matcher:
                          invoice=invoice)
             return line
 
-        # 3. Match exacto por nombre esperado
-        a = self.art.find_by_name(line.expected_name())
-        if a:
-            line.articulo_id = a['id']
-            line.articulo_name = a['nombre']
-            line.match_status = 'ok'
-            line.match_method = 'exacto'
-            self.syn.add(provider_id, line, a['id'], a['nombre'], 'auto',
-                         invoice=invoice)
-            return line
-
-        # 4. Match por rosa (si es rosa)
+        # 5. Match por rosa (si es rosa, fallback legacy)
         if line.species == 'ROSES' and line.size and line.stems_per_bunch:
             if line.origin != 'COL':
                 a = self.art.find_rose_ec(line.variety, line.size, line.stems_per_bunch)
@@ -100,7 +126,7 @@ class Matcher:
                              invoice=invoice)
                 return line
 
-        # 5. Auto-fuzzy ≥90%
+        # 6. Auto-fuzzy ≥90%
         cands = self.art.fuzzy_search(line, threshold=FUZZY_THRESHOLD_AUTO)
         if cands:
             best = cands[0]

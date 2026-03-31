@@ -1,8 +1,8 @@
 Encontrados 24 PDFs. Cargando datos...
-  42502 artículos, 1439 sinónimos cargados.
+  42502 artículos, 1734 sinónimos cargados.
   [1/24] UMA1.pdf: 0/0 — OK
   [2/24] UNIQUE.pdf: 0/2 — 2 sin match
-  [3/24] UTOPIA.pdf: 0/1 — 1 sin match
+  [3/24] UTOPIA.pdf: 1/1 — OK
   [4/24] UTOPIA1.pdf: 1/1 — OK
   [5/24] VALLE VERDE (2).pdf: 0/1 — 1 sin match
   [6/24] VALLE VERDE.pdf: 7/7 — OK
@@ -19,13 +19,13 @@ Encontrados 24 PDFs. Cargando datos...
   [17/24] VERALEZA SLU-INV-008963 (1).pdf: OMITIDO — no es factura (SLU)
   [18/24] VERDES LA ESTACION 1815.pdf: 25/25 — OK
   [19/24] VERDES LA ESTACION 1816.pdf: 0/0 — OK
-  [20/24] VERDES LA ESTACION 1829.pdf: 47/51 — 4 sin match
+  [20/24] VERDES LA ESTACION 1829.pdf: 51/51 — OK
   [21/24] VERDES TB.pdf: 0/0 — OK
   [22/24] VERDES.pdf: 0/0 — OK
-  [23/24] VUELVEN (2).pdf: 4/9 — 1 sin match
-  [24/24] VUELVEN.pdf: 10/15 — 1 sin match
+  [23/24] VUELVEN (2).pdf: 5/9 — OK
+  [24/24] VUELVEN.pdf: 11/15 — OK
 
 Excel generado: C:\verabuy-traductor\batch_2026_resultados\lote_17.xlsx
 
-Resumen: 21 OK, 0 errores, 3 omitidos, 264 líneas (243 match, 13 sin match)
+Resumen: 21 OK, 0 errores, 3 omitidos, 264 líneas (250 match, 6 sin match)
 Total USD: $6,552.25

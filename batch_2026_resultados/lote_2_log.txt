@@ -1,5 +1,5 @@
 Encontrados 150 PDFs. Cargando datos...
-  42502 artículos, 1439 sinónimos cargados.
+  42502 artículos, 1734 sinónimos cargados.
   [1/150] 25ES002801I06B62R8 DUA.pdf: OMITIDO — no es factura (DUA)
   [2/150] 25ES002801I06B6ER6 DUA.pdf: OMITIDO — no es factura (DUA)
   [3/150] 25ES002801I06BGRR3 DUA.pdf: OMITIDO — no es factura (DUA)

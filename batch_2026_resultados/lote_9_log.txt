@@ -1,5 +1,5 @@
 Encontrados 150 PDFs. Cargando datos...
-  42502 artículos, 1439 sinónimos cargados.
+  42502 artículos, 1735 sinónimos cargados.
   [1/150] SEMANA_13_139-4785_6513_ALLIANCE_ROSALEDA.pdf: OMITIDO — no es factura (ALLIANCE)
   [2/150] SEMANA_13_139-4785_6513_ALLIANCE_TESSA.pdf: OMITIDO — no es factura (ALLIANCE)
   [3/150] SEMANA_13_996-1425_5161_REAL__GUIA.pdf: OMITIDO — no es factura (GUIA)
@@ -29,7 +29,7 @@ Encontrados 150 PDFs. Cargando datos...
   [27/150] SEMANA_2_075-6764_1534_(314)__GUIA.pdf: OMITIDO — no es factura (GUIA)
   [28/150] SEMANA_2_075-6764_1534_(314)__PREALERT.pdf: OMITIDO — no es factura (PREALERT)
   [29/150] SEMANA_2_075-6764_1534_(314)_ALEGRIA.pdf: 6/6 — OK
-  [30/150] SEMANA_2_075-6764_1534_(314)_BRISSAS.pdf: 70/76 — 2 sin match
+  [30/150] SEMANA_2_075-6764_1534_(314)_BRISSAS.pdf: 71/76 — 1 sin match
   [31/150] SEMANA_2_075-6764_1534_(314)_CANTIZA.pdf: 17/18 — 1 sin match
   [32/150] SEMANA_2_075-6764_1534_(314)_EQR.pdf: 1/2 — 1 sin match
   [33/150] SEMANA_2_075-6764_1534_(314)_FLORSANI.pdf: 1/1 — OK
@@ -53,7 +53,7 @@ Encontrados 150 PDFs. Cargando datos...
   [51/150] SEMANA_2_075-6764_1545_(154)_AGRIVALDANI2.pdf: 1/1 — OK
   [52/150] SEMANA_2_075-6764_1545_(154)_AROMA.pdf: 7/9 — OK
   [53/150] SEMANA_2_075-6764_1545_(154)_BOSQUE.pdf: 0/6 — OK
-  [54/150] SEMANA_2_075-6764_1545_(154)_BRISSAS.pdf: 48/54 — 3 sin match
+  [54/150] SEMANA_2_075-6764_1545_(154)_BRISSAS.pdf: 49/54 — 2 sin match
   [55/150] SEMANA_2_075-6764_1545_(154)_CANTIZA.pdf: 15/15 — OK
   [56/150] SEMANA_2_075-6764_1545_(154)_EQR.pdf: 1/1 — OK
   [57/150] SEMANA_2_075-6764_1545_(154)_FLORSANI.pdf: 1/1 — OK
@@ -79,7 +79,7 @@ Encontrados 150 PDFs. Cargando datos...
   [77/150] SEMANA_2_369-9829_9983_(236)__GUIA.PDF: OMITIDO — no es factura (GUIA)
   [78/150] SEMANA_2_369-9829_9983_(236)__PREALERT.pdf: OMITIDO — no es factura (PREALERT)
   [79/150] SEMANA_2_369-9829_9983_(236)_AGRIVALDANI.pdf: 1/1 — OK
-  [80/150] SEMANA_2_369-9829_9983_(236)_AGRIVALDANI1.pdf: 16/17 — 1 sin match
+  [80/150] SEMANA_2_369-9829_9983_(236)_AGRIVALDANI1.pdf: 17/17 — OK
   [81/150] SEMANA_2_369-9829_9983_(236)_AROMA1.pdf: 1/3 — OK
   [82/150] SEMANA_2_369-9829_9983_(236)_AROMA2.pdf: 49/51 — OK
   [83/150] SEMANA_2_369-9829_9983_(236)_BRISSAS.pdf: 40/43 — OK
@@ -88,13 +88,13 @@ Encontrados 150 PDFs. Cargando datos...
   [86/150] SEMANA_2_369-9829_9983_(236)_CERES1.pdf: 4/4 — OK
   [87/150] SEMANA_2_369-9829_9983_(236)_ECOFLOR.pdf: 19/20 — 1 sin match
   [88/150] SEMANA_2_369-9829_9983_(236)_EQR1.pdf: 2/2 — OK
-  [89/150] SEMANA_2_369-9829_9983_(236)_ESMERALDA.pdf: 0/1 — 1 sin match
+  [89/150] SEMANA_2_369-9829_9983_(236)_ESMERALDA.pdf: 1/1 — OK
   [90/150] SEMANA_2_369-9829_9983_(236)_ESMERALDA1.pdf: 1/1 — OK
-  [91/150] SEMANA_2_369-9829_9983_(236)_FIORENTINA.pdf: 3/5 — 2 sin match
+  [91/150] SEMANA_2_369-9829_9983_(236)_FIORENTINA.pdf: 4/5 — 1 sin match
   [92/150] SEMANA_2_369-9829_9983_(236)_GARDA.pdf: 1/2 — 1 sin match
   [93/150] SEMANA_2_369-9829_9983_(236)_GARDA1.pdf: 3/3 — OK
   [94/150] SEMANA_2_369-9829_9983_(236)_LA HACIENDA.pdf: 3/3 — OK
-  [95/150] SEMANA_2_369-9829_9983_(236)_LIFE.pdf: 2/13 — 11 sin match
+  [95/150] SEMANA_2_369-9829_9983_(236)_LIFE.pdf: 3/13 — 10 sin match
   [96/150] SEMANA_2_369-9829_9983_(236)_LIFE1.pdf: 1/1 — OK
   [97/150] SEMANA_2_369-9829_9983_(236)_LIFE2.pdf: 1/1 — OK
   [98/150] SEMANA_2_369-9829_9983_(236)_LIFE3.pdf: 13/19 — 6 sin match
@@ -135,10 +135,10 @@ Encontrados 150 PDFs. Cargando datos...
   [133/150] SEMANA_2_729-4588_9465_(144)__PREALERT.pdf: OMITIDO — no es factura (PREALERT)
   [134/150] SEMANA_2_729-4588_9465_(144)_CIRCASIA.pdf: 3/5 — OK
   [135/150] SEMANA_2_729-4588_9465_(144)_MAXIFLORES.pdf: 14/21 — 6 sin match
-  [136/150] SEMANA_2_729-4588_9465_(144)_PONDEROSA.pdf: 64/65 — 1 sin match
+  [136/150] SEMANA_2_729-4588_9465_(144)_PONDEROSA.pdf: 65/65 — OK
   [137/150] SEMANA_2_729-4588_9465_(144)_PREMIUM.pdf: 0/3 — 2 sin match
   [138/150] SEMANA_2_729-4588_9465_(144)_PRESTIGE.pdf: 0/1 — 1 sin match
-  [139/150] SEMANA_2_729-4588_9465_(144)_VUELVEN.pdf: 4/9 — 1 sin match
+  [139/150] SEMANA_2_729-4588_9465_(144)_VUELVEN.pdf: 5/9 — OK
   [140/150] SEMANA_2_996-1423_3973_(105)__GUIA.pdf: OMITIDO — no es factura (GUIA)
   [141/150] SEMANA_2_996-1423_3973_(105)__PREALERT.pdf: OMITIDO — no es factura (PREALERT)
   [142/150] SEMANA_2_996-1423_3973_(105)_COLIBRI.pdf: 1/1 — OK
@@ -153,5 +153,5 @@ Encontrados 150 PDFs. Cargando datos...
 
 Excel generado: C:\verabuy-traductor\batch_2026_resultados\lote_9.xlsx
 
-Resumen: 124 OK, 0 errores, 26 omitidos, 1194 líneas (947 match, 169 sin match)
+Resumen: 124 OK, 0 errores, 26 omitidos, 1194 líneas (955 match, 161 sin match)
 Total USD: $50,604.30

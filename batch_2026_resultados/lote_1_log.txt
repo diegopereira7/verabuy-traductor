@@ -1,5 +1,5 @@
 Encontrados 150 PDFs. Cargando datos...
-  42502 artículos, 1437 sinónimos cargados.
+  42502 artículos, 1732 sinónimos cargados.
   [1/150] 045-1608 2253 FULL.pdf: OMITIDO — no es factura (FULL)
   [2/150] 075-6735 3370 FULL.pdf: OMITIDO — no es factura (FULL)
   [3/150] 075-6764 1431 FULL.pdf: OMITIDO — no es factura (FULL)
