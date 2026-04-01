@@ -60,6 +60,8 @@ VARIETY_TRANSLATIONS = {
     "WHITE O'HARA": 'OHARA BLANCO',
     'PINK OHARA': 'OHARA ROSA',
     'WHITE OHARA': 'OHARA BLANCO',
+    # Spanish variety names
+    'LIMONADA': 'LEMONADE',
 }
 
 

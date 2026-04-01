@@ -11,6 +11,7 @@ from src.parsers.sayonara import SayonaraParser
 from src.parsers.life import LifeParser
 from src.parsers.otros import (
     BrissasParser,
+    TurflorParser,
     AlunaParser,
     DaflorParser,
     EqrParser,
@@ -47,6 +48,8 @@ from src.parsers.otros import (
     ColonParser,
     AguablancaParser,
     SuccessParser,
+    IwaParser,
+    TimanaParser,
 )
 
 FORMAT_PARSERS = {
@@ -56,6 +59,7 @@ FORMAT_PARSERS = {
     'alegria'    : AlegriaParser(),
     'aluna'      : AlunaParser(),
     'daflor'     : DaflorParser(),
+    'turflor'    : TurflorParser(),
     'eqr'        : EqrParser(),
     'bosque'     : BosqueParser(),
     'colibri'    : ColibriParser(),
@@ -96,4 +100,6 @@ FORMAT_PARSERS = {
     'colon'      : ColonParser(),
     'aguablanca' : AguablancaParser(),
     'success'    : SuccessParser(),
+    'iwa'        : IwaParser(),
+    'timana'     : TimanaParser(),
 }

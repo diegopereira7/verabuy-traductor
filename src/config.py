@@ -93,7 +93,7 @@ PROVIDERS = {
     'fairis'     : {'id': 0,     'name': 'Fairis Garden',          'fmt': 'alegria',      'patterns': ['FAIRIS GARDEN', 'fairisgarden']},
     'aluna'      : {'id': 3375,  'name': 'Inversiones del Neusa',  'fmt': 'aluna',        'patterns': ['INVERSIONES DEL NEUSA', 'alunaflowers']},
     'daflor'     : {'id': 9750,  'name': 'Daflor',                 'fmt': 'daflor',       'patterns': ['DAFLOR S.A', 'diagudelo@daflor']},
-    'turflor'    : {'id': 306,   'name': 'Turflor',                'fmt': 'daflor',       'patterns': ['TURFLOR']},
+    'turflor'    : {'id': 306,   'name': 'Turflor',                'fmt': 'turflor',      'patterns': ['TURFLOR']},
     'eqr'        : {'id': 2229,  'name': 'EQR USA',                'fmt': 'eqr',          'patterns': ['EQUATOROSES', 'EQR USA']},
     'bosque'     : {'id': 0,     'name': 'Bosque Flowers',         'fmt': 'bosque',       'patterns': ['BOSQUEFLOWERS', 'bosqueflowers']},
     'colibri'    : {'id': 313,   'name': 'Colibri Flowers',        'fmt': 'colibri',      'patterns': ['COLIBRI FLOWERS']},
@@ -125,7 +125,7 @@ PROVIDERS = {
     'ecoflor'    : {'id': 0,     'name': 'Ecoflor Groupchile',      'fmt': 'mystic',       'patterns': ['ECOFLOR GROUPCHILE']},
     'florifrut'  : {'id': 0,     'name': 'Flores y Frutas Florifrut','fmt': 'mystic',       'patterns': ['FLORIFRUT']},
     'solpacific' : {'id': 0,     'name': 'Sol Pacific',              'fmt': 'valleverde',   'patterns': ['solpacificecuador', 'SOLPACIFIC']},
-    'rosaleda'   : {'id': 2226,  'name': 'Floricola La Rosaleda',    'fmt': 'rosaleda',     'patterns': ['FLORICOLA LA ROSALEDA', 'LA ROSALEDA']},
+    'rosaleda'   : {'id': 2226,  'name': 'Floricola La Rosaleda',    'fmt': 'rosaleda',     'patterns': ['FLORICOLA LA ROSALEDA', 'FLORICOLALAROSALEDA', 'LA ROSALEDA']},
     'circasia'   : {'id': 0,     'name': 'Agricola Circasia',        'fmt': 'colfarm',      'patterns': ['AGRICOLA CIRCASIA']},
     'vuelven'    : {'id': 0,     'name': 'Vuelven',                  'fmt': 'colfarm',      'patterns': ['VUELVEN S.A']},
     'milonga'    : {'id': 0,     'name': 'Flores Milonga',           'fmt': 'colfarm',      'patterns': ['FLORES MILONGA']},
@@ -151,6 +151,17 @@ PROVIDERS = {
     'colon'      : {'id': 0,     'name': 'C.I. Flores Colon',        'fmt': 'colon',        'patterns': ['FLORES COLON']},
     'aguablanca' : {'id': 0,     'name': 'Agrícola Aguablanca',      'fmt': 'aguablanca',   'patterns': ['AGUABLANCA']},
     'success'    : {'id': 0,     'name': 'Success Flowers',           'fmt': 'success',      'patterns': ['Success Flowers', 'SUCCESSFLOWERS']},
+    # Proveedores nuevos (SEMANA 7)
+    'conejera'   : {'id': 0,     'name': 'Flores La Conejera',       'fmt': 'turflor',      'patterns': ['FLORES LA CONEJERA', 'LA CONEJERA']},
+    'iwa'        : {'id': 0,     'name': 'IWA Flowers',              'fmt': 'iwa',          'patterns': ['IWA FLOWERS', 'IWA7']},
+    'timana'     : {'id': 0,     'name': 'Flores Timana',            'fmt': 'timana',       'patterns': ['FLORES TIMANA', 'florestimana']},
+    'rosabella'  : {'id': 0,     'name': 'Rosabella',                'fmt': 'rosaleda',     'patterns': ['rosabella.ec', 'ROSABELLA']},
+    'agrosanalfonso': {'id': 0,  'name': 'Agro San Alfonso',         'fmt': 'rosaleda',     'patterns': ['AGROSANALFONSO', 'SANALFONSO']},
+    # Stubs — proveedores detectados sin parser (TODO: crear parser cuando haya ejemplos)
+    'victoria'   : {'id': 0,     'name': 'Flores de la Victoria',    'fmt': 'unknown',      'patterns': ['FLORES DE LA VICTORIA']},
+    'milagro'    : {'id': 0,     'name': 'Finca Milagro',            'fmt': 'unknown',      'patterns': ['MILAGRO']},
+    'saga'       : {'id': 0,     'name': 'Saga Flowers',             'fmt': 'unknown',      'patterns': ['SAGA']},
+    'flowerco'   : {'id': 0,     'name': 'The Flower Company',       'fmt': 'unknown',      'patterns': ['THE FLOWER CO', 'THE FLOWER COMPANY']},
 }
 
 # --- Regex para eliminar sufijo de proveedor del nombre del artículo ---

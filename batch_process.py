@@ -26,7 +26,7 @@ from src.pdf import detect_provider
 from src.parsers import FORMAT_PARSERS
 from src.articulos import ArticulosLoader
 from src.sinonimos import SynonymStore
-from src.matcher import Matcher, rescue_unparsed_lines, split_mixed_boxes
+from src.matcher import Matcher, rescue_unparsed_lines, split_mixed_boxes, reclassify_assorted
 from src.historial import History
 
 # Directorios de batch
@@ -79,6 +79,7 @@ def _process_single_pdf(
     lines = split_mixed_boxes(lines)
     rescued = rescue_unparsed_lines(pdata['text'], lines)
     lines = matcher.match_all(pdata['id'], lines)
+    lines = reclassify_assorted(lines)
     lines.extend(rescued)
 
     ok_count = sum(1 for l in lines if l.match_status == 'ok')

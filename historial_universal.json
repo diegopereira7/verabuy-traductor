@@ -90,13 +90,13 @@
     "fecha": "2026-03-30 17:11"
   },
   "750": {
-    "pdf": "FLORSANI.pdf",
+    "pdf": "FLORSANI 002001000528827.pdf",
     "provider": "Florsani",
     "total_usd": 0.0,
-    "lineas": 14,
-    "ok": 14,
+    "lineas": 1,
+    "ok": 1,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:40"
+    "fecha": "2026-04-01 13:58"
   },
   "GOLDEN 105369.pdf": {
     "pdf": "GOLDEN 105369.pdf",
@@ -180,13 +180,13 @@
     "fecha": "2026-03-30 17:11"
   },
   "ROSELY": {
-    "pdf": "UMA FLOWER.pdf",
+    "pdf": "ROSELY 002001000323876.pdf",
     "provider": "Rosely Flowers",
     "total_usd": 0.0,
-    "lineas": 0,
-    "ok": 0,
+    "lineas": 3,
+    "ok": 3,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-04-01 14:01"
   },
   "83155": {
     "pdf": "SAYONARA 83155.pdf",
@@ -297,13 +297,13 @@
     "fecha": "2026-03-30 17:09"
   },
   "": {
-    "pdf": "VUELVEN.pdf",
-    "provider": "Vuelven",
-    "total_usd": 0.0,
-    "lineas": 9,
-    "ok": 0,
-    "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "pdf": "UNIQUE 1680.pdf",
+    "provider": "Unique Flowers",
+    "total_usd": 442.0,
+    "lineas": 4,
+    "ok": 3,
+    "sin_match": 1,
+    "fecha": "2026-04-01 14:02"
   },
   "7.149": {
     "pdf": "000 full.pdf",
@@ -315,22 +315,22 @@
     "fecha": "2026-03-28 10:38"
   },
   "3168": {
-    "pdf": "001-1143 7171 FULL.pdf",
+    "pdf": "DAFLOR 3168.pdf",
     "provider": "Daflor",
     "total_usd": 0.0,
-    "lineas": 50,
+    "lineas": 8,
     "ok": 0,
-    "sin_match": 10,
-    "fecha": "2026-03-28 10:38"
+    "sin_match": 6,
+    "fecha": "2026-04-01 13:58"
   },
   "3169": {
-    "pdf": "SEMANA_8_729-4588_9852_(227)_PRESTIGE.pdf",
-    "provider": "Prestige Roses",
+    "pdf": "DAFLOR 3169.pdf",
+    "provider": "Daflor",
     "total_usd": 0.0,
-    "lineas": 6,
-    "ok": 3,
+    "lineas": 3,
+    "ok": 0,
     "sin_match": 3,
-    "fecha": "2026-03-30 17:06"
+    "fecha": "2026-04-01 13:58"
   },
   "342": {
     "pdf": "AGUABLANCA.pdf",
@@ -891,13 +891,13 @@
     "fecha": "2026-03-30 17:00"
   },
   "001001": {
-    "pdf": "OLIMPO.pdf",
-    "provider": "Olimpo Flowers",
-    "total_usd": 535.0,
-    "lineas": 23,
-    "ok": 22,
-    "sin_match": 1,
-    "fecha": "2026-03-31 10:41"
+    "pdf": "TIERRA VERDE 001001 00034589.pdf",
+    "provider": "Tierra Verde",
+    "total_usd": 672.5,
+    "lineas": 9,
+    "ok": 9,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
   },
   "90688973": {
     "pdf": "SEMANA_3_075-6764_1615_(311)_TESSA.pdf",
@@ -963,13 +963,13 @@
     "fecha": "2026-03-30 17:00"
   },
   "001010": {
-    "pdf": "SEMANA_2_075-6764_1545_(154)_LATINA.pdf",
+    "pdf": "LATINA 001010 00064277.pdf",
     "provider": "Floricola Latinafarms",
-    "total_usd": 370.0,
-    "lineas": 6,
+    "total_usd": 231.25,
+    "lineas": 4,
     "ok": 0,
     "sin_match": 0,
-    "fecha": "2026-03-30 17:13"
+    "fecha": "2026-04-01 13:59"
   },
   "25056284": {
     "pdf": "SEMANA_3_075-6764_1626_(93)_VALTHO.pdf",
@@ -8667,13 +8667,13 @@
     "fecha": "2026-03-30 17:14"
   },
   "001005": {
-    "pdf": "CERES.pdf",
+    "pdf": "CERES 001005 00284642.pdf",
     "provider": "Ceresfarms",
-    "total_usd": 849.0,
-    "lineas": 26,
-    "ok": 26,
+    "total_usd": 197.5,
+    "lineas": 6,
+    "ok": 6,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:40"
+    "fecha": "2026-04-01 13:58"
   },
   "155839": {
     "pdf": "SEMANA_3_075-6764_1604_(84)_ESMERALDA.pdf",
@@ -9090,13 +9090,13 @@
     "fecha": "2026-03-30 17:01"
   },
   "830068604": {
-    "pdf": "SEMANA_2_729-4588_9454_(250)_APOSENTOS.pdf",
+    "pdf": "APOSENTOS 184574.pdf",
     "provider": "Flores de Aposentos",
-    "total_usd": 2880.0,
-    "lineas": 13,
-    "ok": 2,
-    "sin_match": 10,
-    "fecha": "2026-03-30 17:13"
+    "total_usd": 3400.0,
+    "lineas": 10,
+    "ok": 3,
+    "sin_match": 6,
+    "fecha": "2026-04-01 13:58"
   },
   "INV-008307": {
     "pdf": "SEMANA_4_729-4494_2225_(220)_MILONGA.pdf",
@@ -9288,13 +9288,13 @@
     "fecha": "2026-03-30 17:02"
   },
   "002005": {
-    "pdf": "LAILA.pdf",
+    "pdf": "LAILA 002005 00007295.pdf",
     "provider": "Laila Flowers",
-    "total_usd": 28.0,
+    "total_usd": 66.0,
     "lineas": 1,
     "ok": 1,
     "sin_match": 0,
-    "fecha": "2026-03-30 17:10"
+    "fecha": "2026-04-01 13:59"
   },
   "000004684": {
     "pdf": "SEMANA_5_369-9830_7753_(200)_ROSALEDA.pdf",
@@ -12228,7 +12228,7 @@
     "lineas": 1,
     "ok": 0,
     "sin_match": 1,
-    "fecha": "2026-03-31 10:38"
+    "fecha": "2026-03-31 12:23"
   },
   "00000147309": {
     "pdf": "AGRIVALDANI1.pdf",
@@ -12237,7 +12237,7 @@
     "lineas": 1,
     "ok": 1,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:38"
+    "fecha": "2026-03-31 12:23"
   },
   "7.722": {
     "pdf": "ALUNA.pdf",
@@ -12246,7 +12246,7 @@
     "lineas": 4,
     "ok": 4,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:38"
+    "fecha": "2026-03-31 12:23"
   },
   "7.728": {
     "pdf": "ALUNA.pdf",
@@ -12255,7 +12255,7 @@
     "lineas": 1,
     "ok": 1,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:38"
+    "fecha": "2026-03-31 12:23"
   },
   "001082201": {
     "pdf": "AROMA1.pdf",
@@ -12264,7 +12264,7 @@
     "lineas": 3,
     "ok": 3,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:38"
+    "fecha": "2026-03-31 12:23"
   },
   "001082214": {
     "pdf": "AROMA2.pdf",
@@ -12273,7 +12273,7 @@
     "lineas": 83,
     "ok": 83,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:38"
+    "fecha": "2026-03-31 12:23"
   },
   "001082227": {
     "pdf": "AROMA3.pdf",
@@ -12282,7 +12282,7 @@
     "lineas": 1,
     "ok": 1,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:38"
+    "fecha": "2026-03-31 12:23"
   },
   "0001074154": {
     "pdf": "ART ROSES.pdf",
@@ -12291,7 +12291,7 @@
     "lineas": 2,
     "ok": 2,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:38"
+    "fecha": "2026-03-31 12:23"
   },
   "0001074213": {
     "pdf": "ART1.pdf",
@@ -12300,7 +12300,7 @@
     "lineas": 6,
     "ok": 6,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:38"
+    "fecha": "2026-03-31 12:23"
   },
   "0001074214": {
     "pdf": "ART2.pdf",
@@ -12309,7 +12309,7 @@
     "lineas": 3,
     "ok": 3,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:38"
+    "fecha": "2026-03-31 12:23"
   },
   "000003023": {
     "pdf": "BRISSAS.pdf",
@@ -12318,16 +12318,16 @@
     "lineas": 52,
     "ok": 49,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:40"
+    "fecha": "2026-03-31 12:25"
   },
   "000003026": {
     "pdf": "BRISSAS.pdf",
     "provider": "Brissas",
     "total_usd": 27800.0,
-    "lineas": 52,
-    "ok": 34,
-    "sin_match": 1,
-    "fecha": "2026-03-31 10:40"
+    "lineas": 112,
+    "ok": 109,
+    "sin_match": 2,
+    "fecha": "2026-03-31 12:25"
   },
   "FA-103865": {
     "pdf": "COLIBRI.pdf",
@@ -12336,7 +12336,7 @@
     "lineas": 24,
     "ok": 21,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:40"
+    "fecha": "2026-03-31 12:25"
   },
   "1304": {
     "pdf": "DAFLOR.pdf",
@@ -12345,7 +12345,7 @@
     "lineas": 4,
     "ok": 0,
     "sin_match": 3,
-    "fecha": "2026-03-31 10:40"
+    "fecha": "2026-03-31 12:25"
   },
   "0000062912": {
     "pdf": "ECOFLOR.pdf",
@@ -12354,7 +12354,7 @@
     "lineas": 3,
     "ok": 3,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:40"
+    "fecha": "2026-03-31 12:25"
   },
   "517031": {
     "pdf": "EQR.pdf",
@@ -12363,7 +12363,7 @@
     "lineas": 1,
     "ok": 1,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:40"
+    "fecha": "2026-03-31 12:25"
   },
   "0000110492": {
     "pdf": "FIORENTINA.pdf",
@@ -12372,7 +12372,7 @@
     "lineas": 4,
     "ok": 4,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:40"
+    "fecha": "2026-03-31 12:25"
   },
   "096472": {
     "pdf": "GOLDEN.pdf",
@@ -12381,7 +12381,7 @@
     "lineas": 0,
     "ok": 0,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "3478": {
     "pdf": "INFINITY.pdf",
@@ -12390,7 +12390,7 @@
     "lineas": 2,
     "ok": 2,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "00024525": {
     "pdf": "LA ALEGRIA.pdf",
@@ -12399,34 +12399,34 @@
     "lineas": 9,
     "ok": 9,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "001018100": {
     "pdf": "LIFE.pdf",
     "provider": "Life Flowers",
     "total_usd": 0.0,
-    "lineas": 49,
-    "ok": 13,
-    "sin_match": 36,
-    "fecha": "2026-03-31 10:41"
+    "lineas": 115,
+    "ok": 115,
+    "sin_match": 0,
+    "fecha": "2026-03-31 12:26"
   },
   "001018158": {
     "pdf": "LIFE1.pdf",
     "provider": "Life Flowers",
     "total_usd": 0.0,
-    "lineas": 3,
-    "ok": 0,
-    "sin_match": 3,
-    "fecha": "2026-03-31 10:41"
+    "lineas": 5,
+    "ok": 5,
+    "sin_match": 0,
+    "fecha": "2026-03-31 12:26"
   },
   "001018149": {
     "pdf": "LIFE2.pdf",
     "provider": "Life Flowers",
     "total_usd": 0.0,
-    "lineas": 28,
-    "ok": 25,
-    "sin_match": 3,
-    "fecha": "2026-03-31 10:41"
+    "lineas": 36,
+    "ok": 36,
+    "sin_match": 0,
+    "fecha": "2026-03-31 12:26"
   },
   "0000030444": {
     "pdf": "LUXUS.pdf",
@@ -12435,7 +12435,7 @@
     "lineas": 2,
     "ok": 2,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "0000030446": {
     "pdf": "LUXUS1.pdf",
@@ -12444,7 +12444,7 @@
     "lineas": 20,
     "ok": 20,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "5100252": {
     "pdf": "MALIMA1.pdf",
@@ -12453,7 +12453,7 @@
     "lineas": 1,
     "ok": 1,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "5100254": {
     "pdf": "MALIMA2.pdf",
@@ -12462,7 +12462,7 @@
     "lineas": 1,
     "ok": 1,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "75623": {
     "pdf": "MAXI.pdf",
@@ -12471,7 +12471,7 @@
     "lineas": 20,
     "ok": 17,
     "sin_match": 3,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "75622": {
     "pdf": "MAXI1.pdf",
@@ -12480,7 +12480,7 @@
     "lineas": 6,
     "ok": 0,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "000063741": {
     "pdf": "MONTEROSA.pdf",
@@ -12489,7 +12489,7 @@
     "lineas": 1,
     "ok": 0,
     "sin_match": 1,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "A2454615": {
     "pdf": "MULTIFLORA.pdf",
@@ -12498,7 +12498,7 @@
     "lineas": 10,
     "ok": 0,
     "sin_match": 10,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "0000215283": {
     "pdf": "MYSTIC1.pdf",
@@ -12507,7 +12507,7 @@
     "lineas": 0,
     "ok": 0,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "0000215300": {
     "pdf": "MYSTIC2.pdf",
@@ -12516,7 +12516,7 @@
     "lineas": 0,
     "ok": 0,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "0000215258": {
     "pdf": "MYSTIC3.pdf",
@@ -12525,7 +12525,7 @@
     "lineas": 7,
     "ok": 7,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "564": {
     "pdf": "PREMIUM.pdf",
@@ -12534,7 +12534,7 @@
     "lineas": 5,
     "ok": 2,
     "sin_match": 2,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "297": {
     "pdf": "PRESTIGE.pdf",
@@ -12543,7 +12543,7 @@
     "lineas": 0,
     "ok": 0,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "72730": {
     "pdf": "SAYONARA.pdf",
@@ -12552,7 +12552,7 @@
     "lineas": 1,
     "ok": 1,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "001209885": {
     "pdf": "SOLPACIFIC.pdf",
@@ -12561,16 +12561,16 @@
     "lineas": 2,
     "ok": 2,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "FC125386": {
     "pdf": "TURFLOR.pdf",
     "provider": "Turflor",
-    "total_usd": 0.0,
+    "total_usd": 3905.5,
     "lineas": 24,
     "ok": 0,
-    "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "sin_match": 22,
+    "fecha": "2026-03-31 12:26"
   },
   "16282": {
     "pdf": "UMA.pdf",
@@ -12579,7 +12579,7 @@
     "lineas": 4,
     "ok": 1,
     "sin_match": 3,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "25031974": {
     "pdf": "VALTHO.pdf",
@@ -12588,7 +12588,7 @@
     "lineas": 6,
     "ok": 6,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "25031975": {
     "pdf": "VALTHO1.pdf",
@@ -12597,16 +12597,16 @@
     "lineas": 2,
     "ok": 2,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
   },
   "25032002": {
     "pdf": "VALTHO2.pdf",
     "provider": "Cantiza Flores",
     "total_usd": 380.0,
     "lineas": 9,
-    "ok": 8,
-    "sin_match": 1,
-    "fecha": "2026-03-31 10:41"
+    "ok": 9,
+    "sin_match": 0,
+    "fecha": "2026-03-31 12:26"
   },
   "553": {
     "pdf": "VERDES.pdf",
@@ -12615,6 +12615,3030 @@
     "lineas": 0,
     "ok": 0,
     "sin_match": 0,
-    "fecha": "2026-03-31 10:41"
+    "fecha": "2026-03-31 12:26"
+  },
+  "DE": {
+    "pdf": "IWA.pdf",
+    "provider": "IWA Flowers",
+    "total_usd": 0.0,
+    "lineas": 6,
+    "ok": 4,
+    "sin_match": 0,
+    "fecha": "2026-03-31 12:26"
+  },
+  "90502": {
+    "pdf": "TIMANA.pdf",
+    "provider": "Flores Timana",
+    "total_usd": 0.0,
+    "lineas": 3,
+    "ok": 0,
+    "sin_match": 2,
+    "fecha": "2026-03-31 12:26"
+  },
+  "00000159580": {
+    "pdf": "AGRIVALDANI 00000159580.pdf",
+    "provider": "Agrivaldani",
+    "total_usd": 0.0,
+    "lineas": 18,
+    "ok": 17,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00000159600": {
+    "pdf": "AGRIVALDANI 00000159600.pdf",
+    "provider": "Agrivaldani",
+    "total_usd": 0.0,
+    "lineas": 17,
+    "ok": 16,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00000159700": {
+    "pdf": "AGRIVALDANI 00000159700.pdf",
+    "provider": "Agrivaldani",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00000159721": {
+    "pdf": "AGRIVALDANI 00000159721.pdf",
+    "provider": "Agrivaldani",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00000159862": {
+    "pdf": "AGRIVALDANI 00000159862.pdf",
+    "provider": "Agrivaldani",
+    "total_usd": 0.0,
+    "lineas": 4,
+    "ok": 4,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00000159886": {
+    "pdf": "AGRIVALDANI 00000159886.pdf",
+    "provider": "Agrivaldani",
+    "total_usd": 0.0,
+    "lineas": 4,
+    "ok": 4,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00000160477": {
+    "pdf": "AGRIVALDANI 00000160477.pdf",
+    "provider": "Agrivaldani",
+    "total_usd": 0.0,
+    "lineas": 4,
+    "ok": 1,
+    "sin_match": 3,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00000160586": {
+    "pdf": "AGRIVALDANI 00000160586.pdf",
+    "provider": "Agrivaldani",
+    "total_usd": 0.0,
+    "lineas": 8,
+    "ok": 3,
+    "sin_match": 5,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00000160619": {
+    "pdf": "AGRIVALDANI 00000160619.pdf",
+    "provider": "Agrivaldani",
+    "total_usd": 0.0,
+    "lineas": 5,
+    "ok": 1,
+    "sin_match": 4,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00000160646": {
+    "pdf": "AGRIVALDANI 00000160646.pdf",
+    "provider": "Agrivaldani",
+    "total_usd": 0.0,
+    "lineas": 5,
+    "ok": 2,
+    "sin_match": 3,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00000160674": {
+    "pdf": "AGRIVALDANI 00000160674.pdf",
+    "provider": "Agrivaldani",
+    "total_usd": 0.0,
+    "lineas": 3,
+    "ok": 1,
+    "sin_match": 2,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00000160778": {
+    "pdf": "AGRIVALDANI 00000160778.pdf",
+    "provider": "Agrivaldani",
+    "total_usd": 0.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00000160784": {
+    "pdf": "AGRIVALDANI 00000160784.pdf",
+    "provider": "Agrivaldani",
+    "total_usd": 0.0,
+    "lineas": 15,
+    "ok": 11,
+    "sin_match": 4,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00037780": {
+    "pdf": "ALEGRIA 00037780.pdf",
+    "provider": "La Alegria Farm",
+    "total_usd": 363.0,
+    "lineas": 4,
+    "ok": 4,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00037816": {
+    "pdf": "ALEGRIA 00037816.pdf",
+    "provider": "La Alegria Farm",
+    "total_usd": 482.75,
+    "lineas": 14,
+    "ok": 14,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00037951": {
+    "pdf": "ALEGRIA 00037951.pdf",
+    "provider": "La Alegria Farm",
+    "total_usd": 96.0,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00038157": {
+    "pdf": "ALEGRIA 00038157.pdf",
+    "provider": "La Alegria Farm",
+    "total_usd": 135.0,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:57"
+  },
+  "00038180": {
+    "pdf": "ALEGRIA 00038180.pdf",
+    "provider": "La Alegria Farm",
+    "total_usd": 370.0,
+    "lineas": 13,
+    "ok": 13,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:57"
+  },
+  "8.384": {
+    "pdf": "ALUNA 8384.pdf",
+    "provider": "Inversiones del Neusa",
+    "total_usd": 0.0,
+    "lineas": 8,
+    "ok": 8,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:57"
+  },
+  "001094243": {
+    "pdf": "AROMA 001094243.pdf",
+    "provider": "Floraroma",
+    "total_usd": 897.5,
+    "lineas": 6,
+    "ok": 6,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001094244": {
+    "pdf": "AROMA 001094244.pdf",
+    "provider": "Floraroma",
+    "total_usd": 462.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001094461": {
+    "pdf": "AROMA 001094461.pdf",
+    "provider": "Floraroma",
+    "total_usd": 4.0,
+    "lineas": 10,
+    "ok": 10,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001094462": {
+    "pdf": "AROMA 001094462.pdf",
+    "provider": "Floraroma",
+    "total_usd": 168.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001001000052381": {
+    "pdf": "BOSQUE 001001000052381.pdf",
+    "provider": "Bosque Flowers",
+    "total_usd": 0.0,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001001000052449": {
+    "pdf": "BOSQUE 001001000052449.pdf",
+    "provider": "Bosque Flowers",
+    "total_usd": 0.0,
+    "lineas": 4,
+    "ok": 4,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001001000052481": {
+    "pdf": "BOSQUE 001001000052481.pdf",
+    "provider": "Bosque Flowers",
+    "total_usd": 0.0,
+    "lineas": 3,
+    "ok": 2,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001001000052512": {
+    "pdf": "BOSQUE 001001000052512.pdf",
+    "provider": "Bosque Flowers",
+    "total_usd": 0.0,
+    "lineas": 3,
+    "ok": 2,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001001000052548": {
+    "pdf": "BOSQUE 001001000052548.pdf",
+    "provider": "Bosque Flowers",
+    "total_usd": 0.0,
+    "lineas": 3,
+    "ok": 2,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001001000052598": {
+    "pdf": "BOSQUE 001001000052598.pdf",
+    "provider": "Bosque Flowers",
+    "total_usd": 0.0,
+    "lineas": 5,
+    "ok": 3,
+    "sin_match": 2,
+    "fecha": "2026-04-01 13:58"
+  },
+  "000003767": {
+    "pdf": "BRISSAS 000003767 completa.pdf",
+    "provider": "Brissas",
+    "total_usd": 13250.0,
+    "lineas": 42,
+    "ok": 40,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "000003768": {
+    "pdf": "BRISSAS 000003768 completa.pdf",
+    "provider": "Brissas",
+    "total_usd": 2400.0,
+    "lineas": 8,
+    "ok": 7,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "000003770": {
+    "pdf": "BRISSAS 000003770.pdf",
+    "provider": "Brissas",
+    "total_usd": 3235.0,
+    "lineas": 104,
+    "ok": 101,
+    "sin_match": 2,
+    "fecha": "2026-04-01 13:58"
+  },
+  "000003778": {
+    "pdf": "BRISSAS 000003778.pdf",
+    "provider": "Brissas",
+    "total_usd": 19675.0,
+    "lineas": 57,
+    "ok": 55,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "000003790": {
+    "pdf": "BRISSAS 000003790.pdf",
+    "provider": "Brissas",
+    "total_usd": 7700.0,
+    "lineas": 8,
+    "ok": 7,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "000003794": {
+    "pdf": "BRISSAS 000003794.pdf",
+    "provider": "Brissas",
+    "total_usd": 4157.0,
+    "lineas": 162,
+    "ok": 160,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "000003796": {
+    "pdf": "BRISSAS 000003796.pdf",
+    "provider": "Brissas",
+    "total_usd": 3060.0,
+    "lineas": 83,
+    "ok": 80,
+    "sin_match": 2,
+    "fecha": "2026-04-01 13:58"
+  },
+  "000003797": {
+    "pdf": "BRISSAS 000003797.pdf",
+    "provider": "Brissas",
+    "total_usd": 24925.0,
+    "lineas": 93,
+    "ok": 92,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "000003800": {
+    "pdf": "BRISSAS 000003800.pdf",
+    "provider": "Brissas",
+    "total_usd": 7350.0,
+    "lineas": 21,
+    "ok": 18,
+    "sin_match": 2,
+    "fecha": "2026-04-01 13:58"
+  },
+  "000003789": {
+    "pdf": "BRISSAS 3789.pdf",
+    "provider": "Brissas",
+    "total_usd": 5400.0,
+    "lineas": 17,
+    "ok": 15,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "000003791": {
+    "pdf": "BRISSAS.pdf",
+    "provider": "Brissas",
+    "total_usd": 4695.0,
+    "lineas": 148,
+    "ok": 145,
+    "sin_match": 2,
+    "fecha": "2026-04-01 13:58"
+  },
+  "000003787": {
+    "pdf": "BRISSAS.pdf",
+    "provider": "Brissas",
+    "total_usd": 64100.0,
+    "lineas": 219,
+    "ok": 209,
+    "sin_match": 9,
+    "fecha": "2026-04-01 13:58"
+  },
+  "000003779": {
+    "pdf": "BRISSAS.pdf",
+    "provider": "Brissas",
+    "total_usd": 94800.0,
+    "lineas": 220,
+    "ok": 213,
+    "sin_match": 6,
+    "fecha": "2026-04-01 13:58"
+  },
+  "000003773": {
+    "pdf": "BRISSAS.pdf",
+    "provider": "Brissas",
+    "total_usd": 13525.0,
+    "lineas": 46,
+    "ok": 43,
+    "sin_match": 2,
+    "fecha": "2026-04-01 13:58"
+  },
+  "000003774": {
+    "pdf": "BRISSAS.pdf",
+    "provider": "Brissas",
+    "total_usd": 300.0,
+    "lineas": 2,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "000003772": {
+    "pdf": "BRISSAS.pdf",
+    "provider": "Brissas",
+    "total_usd": 94575.0,
+    "lineas": 246,
+    "ok": 243,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "5058983": {
+    "pdf": "CANANVALLE 5058983.pdf",
+    "provider": "Cananvalley Flowers",
+    "total_usd": 240.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "5059069": {
+    "pdf": "CANANVALLE 5059069.pdf",
+    "provider": "Cananvalley Flowers",
+    "total_usd": 114.0,
+    "lineas": 1,
+    "ok": 0,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "5059132": {
+    "pdf": "CANANVALLE 5059132.pdf",
+    "provider": "Cananvalley Flowers",
+    "total_usd": 114.0,
+    "lineas": 1,
+    "ok": 0,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "5059285": {
+    "pdf": "CANANVALLE 5059285.pdf",
+    "provider": "Cananvalley Flowers",
+    "total_usd": 176.5,
+    "lineas": 4,
+    "ok": 3,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "5059409": {
+    "pdf": "CANANVALLE 5059409.pdf",
+    "provider": "Cananvalley Flowers",
+    "total_usd": 188.75,
+    "lineas": 4,
+    "ok": 3,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "25050440": {
+    "pdf": "CANTIZA 25050440.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 188.75,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "25050443": {
+    "pdf": "CANTIZA 25050443.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 437.5,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "25050444": {
+    "pdf": "CANTIZA 25050444.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 2626.0,
+    "lineas": 20,
+    "ok": 20,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "25050446": {
+    "pdf": "CANTIZA 25050446.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 2889.75,
+    "lineas": 20,
+    "ok": 20,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "25050447": {
+    "pdf": "CANTIZA 25050447.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 291.0,
+    "lineas": 4,
+    "ok": 4,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "25050556": {
+    "pdf": "CANTIZA 25050556.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 1986.0,
+    "lineas": 20,
+    "ok": 19,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "25050557": {
+    "pdf": "CANTIZA 25050557.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 275.25,
+    "lineas": 5,
+    "ok": 5,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "25050558": {
+    "pdf": "CANTIZA 25050558.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 776.75,
+    "lineas": 36,
+    "ok": 36,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "25050559": {
+    "pdf": "CANTIZA 25050559.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 1728.5,
+    "lineas": 45,
+    "ok": 45,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "25050662": {
+    "pdf": "CANTIZA 25050662.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 390.0,
+    "lineas": 4,
+    "ok": 4,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "25050663": {
+    "pdf": "CANTIZA 25050663.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 533.25,
+    "lineas": 7,
+    "ok": 7,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "25050664": {
+    "pdf": "CANTIZA 25050664.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 87.5,
+    "lineas": 6,
+    "ok": 6,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "25050712": {
+    "pdf": "CANTIZA 25050712.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 693.5,
+    "lineas": 16,
+    "ok": 16,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "25050741": {
+    "pdf": "CANTIZA 25050741.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 166.0,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "25050757": {
+    "pdf": "CANTIZA 25050757.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 232.5,
+    "lineas": 5,
+    "ok": 5,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "25050766": {
+    "pdf": "CANTIZA 25050766.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 53.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "INV-003370": {
+    "pdf": "CIRCASIA INV-003370.pdf",
+    "provider": "Agricola Circasia",
+    "total_usd": 243.0,
+    "lineas": 5,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "INV-003498": {
+    "pdf": "CIRCASIA INV-003498.pdf",
+    "provider": "Agricola Circasia",
+    "total_usd": 1149.0,
+    "lineas": 9,
+    "ok": 7,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "INV-003500": {
+    "pdf": "CIRCASIA INV-003500.pdf",
+    "provider": "Agricola Circasia",
+    "total_usd": 448.0,
+    "lineas": 4,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "INV-003638": {
+    "pdf": "CIRCASIA INV-003638.pdf",
+    "provider": "Agricola Circasia",
+    "total_usd": 504.0,
+    "lineas": 4,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "INV-003706": {
+    "pdf": "CIRCASIA INV-003706.pdf",
+    "provider": "Agricola Circasia",
+    "total_usd": 243.0,
+    "lineas": 5,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "FA-112093": {
+    "pdf": "COLIBRI FA-112093.pdf",
+    "provider": "Colibri Flowers",
+    "total_usd": 0.0,
+    "lineas": 7,
+    "ok": 7,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "FA-112094": {
+    "pdf": "COLIBRI FA-112094.pdf",
+    "provider": "Colibri Flowers",
+    "total_usd": 0.0,
+    "lineas": 9,
+    "ok": 9,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "FA-112101": {
+    "pdf": "COLIBRI FA-112101.pdf",
+    "provider": "Colibri Flowers",
+    "total_usd": 0.0,
+    "lineas": 14,
+    "ok": 12,
+    "sin_match": 2,
+    "fecha": "2026-04-01 13:58"
+  },
+  "FA-112105": {
+    "pdf": "COLIBRI FA-112105.pdf",
+    "provider": "Colibri Flowers",
+    "total_usd": 0.0,
+    "lineas": 13,
+    "ok": 13,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "FA-112316": {
+    "pdf": "COLIBRI FA-112316.pdf",
+    "provider": "Colibri Flowers",
+    "total_usd": 0.0,
+    "lineas": 39,
+    "ok": 35,
+    "sin_match": 4,
+    "fecha": "2026-04-01 13:58"
+  },
+  "FA-112421": {
+    "pdf": "COLIBRI FA-112421.pdf",
+    "provider": "Colibri Flowers",
+    "total_usd": 0.0,
+    "lineas": 15,
+    "ok": 15,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "FA-112552": {
+    "pdf": "COLIBRI FA-112552.pdf",
+    "provider": "Colibri Flowers",
+    "total_usd": 0.0,
+    "lineas": 26,
+    "ok": 24,
+    "sin_match": 2,
+    "fecha": "2026-04-01 13:58"
+  },
+  "50964": {
+    "pdf": "CONDOR 50964.pdf",
+    "provider": "Condor Andino",
+    "total_usd": 274.75,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "51142": {
+    "pdf": "CONDOR 51142.pdf",
+    "provider": "Condor Andino",
+    "total_usd": 591.5,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "51566": {
+    "pdf": "CONDOR 51566.pdf",
+    "provider": "Condor Andino",
+    "total_usd": 252.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "3133": {
+    "pdf": "DAFLOR 3133.pdf",
+    "provider": "Daflor",
+    "total_usd": 0.0,
+    "lineas": 5,
+    "ok": 0,
+    "sin_match": 2,
+    "fecha": "2026-04-01 13:58"
+  },
+  "3198": {
+    "pdf": "DAFLOR 3198.pdf",
+    "provider": "Daflor",
+    "total_usd": 0.0,
+    "lineas": 5,
+    "ok": 0,
+    "sin_match": 5,
+    "fecha": "2026-04-01 13:58"
+  },
+  "3199": {
+    "pdf": "DAFLOR 3199.pdf",
+    "provider": "Daflor",
+    "total_usd": 0.0,
+    "lineas": 5,
+    "ok": 0,
+    "sin_match": 2,
+    "fecha": "2026-04-01 13:58"
+  },
+  "3216": {
+    "pdf": "DAFLOR 3216.pdf",
+    "provider": "Daflor",
+    "total_usd": 0.0,
+    "lineas": 8,
+    "ok": 0,
+    "sin_match": 8,
+    "fecha": "2026-04-01 13:58"
+  },
+  "3227": {
+    "pdf": "DAFLOR 3227.pdf",
+    "provider": "Daflor",
+    "total_usd": 0.0,
+    "lineas": 6,
+    "ok": 0,
+    "sin_match": 5,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0000074611": {
+    "pdf": "ECOFLOR 0000074611.pdf",
+    "provider": "Ecoflor Groupchile",
+    "total_usd": 210.0,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "560866": {
+    "pdf": "EQR 560866.pdf",
+    "provider": "EQR USA",
+    "total_usd": 114.0,
+    "lineas": 2,
+    "ok": 1,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "560932": {
+    "pdf": "EQR 560932.pdf",
+    "provider": "EQR USA",
+    "total_usd": 348.6,
+    "lineas": 4,
+    "ok": 3,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "561249": {
+    "pdf": "EQR 561249.pdf",
+    "provider": "EQR USA",
+    "total_usd": 84.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "561536": {
+    "pdf": "EQR 561536.pdf",
+    "provider": "EQR USA",
+    "total_usd": 102.5,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "561537": {
+    "pdf": "EQR 561537.pdf",
+    "provider": "EQR USA",
+    "total_usd": 6038.5,
+    "lineas": 42,
+    "ok": 33,
+    "sin_match": 9,
+    "fecha": "2026-04-01 13:58"
+  },
+  "561660": {
+    "pdf": "EQR 561660.pdf",
+    "provider": "EQR USA",
+    "total_usd": 3169.5,
+    "lineas": 31,
+    "ok": 26,
+    "sin_match": 5,
+    "fecha": "2026-04-01 13:58"
+  },
+  "561968": {
+    "pdf": "EQR 561968.pdf",
+    "provider": "EQR USA",
+    "total_usd": 625.5,
+    "lineas": 6,
+    "ok": 6,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "562016": {
+    "pdf": "EQR 562016.pdf",
+    "provider": "EQR USA",
+    "total_usd": 80.0,
+    "lineas": 1,
+    "ok": 0,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "562022": {
+    "pdf": "EQR 562022.pdf",
+    "provider": "EQR USA",
+    "total_usd": 2473.0,
+    "lineas": 27,
+    "ok": 23,
+    "sin_match": 4,
+    "fecha": "2026-04-01 13:58"
+  },
+  "562391": {
+    "pdf": "EQR 562391.pdf",
+    "provider": "EQR USA",
+    "total_usd": 266.0,
+    "lineas": 4,
+    "ok": 1,
+    "sin_match": 3,
+    "fecha": "2026-04-01 13:58"
+  },
+  "562442": {
+    "pdf": "EQR 562442.pdf",
+    "provider": "EQR USA",
+    "total_usd": 300.0,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "562741": {
+    "pdf": "EQR 562741.pdf",
+    "provider": "EQR USA",
+    "total_usd": 84.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "145871": {
+    "pdf": "ESMERALDA 145871.pdf",
+    "provider": "Utopia Farms",
+    "total_usd": 390.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "146223": {
+    "pdf": "ESMERALDA 146223.pdf",
+    "provider": "Utopia Farms",
+    "total_usd": 312.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "146239": {
+    "pdf": "ESMERALDA 146239.pdf",
+    "provider": "Utopia Farms",
+    "total_usd": 390.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "146291": {
+    "pdf": "ESMERALDA 146291.pdf",
+    "provider": "Utopia Farms",
+    "total_usd": 3900.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "146518": {
+    "pdf": "ESMERALDA 146518.pdf",
+    "provider": "Utopia Farms",
+    "total_usd": 3900.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "147116": {
+    "pdf": "ESMERALDA 147116.pdf",
+    "provider": "Utopia Farms",
+    "total_usd": 312.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "147126": {
+    "pdf": "ESMERALDA 147126.pdf",
+    "provider": "Utopia Farms",
+    "total_usd": 390.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0000130461": {
+    "pdf": "FIORENTINA 0000130461.pdf",
+    "provider": "Fiorentina Flowers",
+    "total_usd": 445.0,
+    "lineas": 4,
+    "ok": 4,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0000130523": {
+    "pdf": "FIORENTINA 0000130523.pdf",
+    "provider": "Fiorentina Flowers",
+    "total_usd": 1882.5,
+    "lineas": 19,
+    "ok": 19,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0000130728": {
+    "pdf": "FIORENTINA 0000130728.pdf",
+    "provider": "Fiorentina Flowers",
+    "total_usd": 2250.0,
+    "lineas": 23,
+    "ok": 21,
+    "sin_match": 2,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001094146": {
+    "pdf": "FLORAROMA 001094146.pdf",
+    "provider": "Floraroma",
+    "total_usd": 168.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001094316": {
+    "pdf": "FLORAROMA 001094316.pdf",
+    "provider": "Floraroma",
+    "total_usd": 77.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001094317": {
+    "pdf": "FLORAROMA 001094317.pdf",
+    "provider": "Floraroma",
+    "total_usd": 604.0,
+    "lineas": 2,
+    "ok": 1,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001094318": {
+    "pdf": "FLORAROMA 001094318.pdf",
+    "provider": "Floraroma",
+    "total_usd": 756.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001094319": {
+    "pdf": "FLORAROMA 001094319.pdf",
+    "provider": "Floraroma",
+    "total_usd": 1.0,
+    "lineas": 47,
+    "ok": 47,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001094370": {
+    "pdf": "FLORAROMA 001094370.pdf",
+    "provider": "Floraroma",
+    "total_usd": 37.5,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001094385": {
+    "pdf": "FLORAROMA 001094385.pdf",
+    "provider": "Floraroma",
+    "total_usd": 486.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001094482": {
+    "pdf": "FLORAROMA 001094482.pdf",
+    "provider": "Floraroma",
+    "total_usd": 1.0,
+    "lineas": 7,
+    "ok": 7,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001094573": {
+    "pdf": "FLORAROMA 001094573.pdf",
+    "provider": "Floraroma",
+    "total_usd": 132.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001094574": {
+    "pdf": "FLORAROMA 001094574 PRECIO MAL.pdf",
+    "provider": "Floraroma",
+    "total_usd": 1.0,
+    "lineas": 29,
+    "ok": 29,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001094613": {
+    "pdf": "FLORAROMA 001094613.pdf",
+    "provider": "Floraroma",
+    "total_usd": 297.0,
+    "lineas": 4,
+    "ok": 4,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001094614": {
+    "pdf": "FLORAROMA 001094614.pdf",
+    "provider": "Floraroma",
+    "total_usd": 833.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "001094615": {
+    "pdf": "FLORAROMA 001094615.pdf",
+    "provider": "Floraroma",
+    "total_usd": 1.0,
+    "lineas": 46,
+    "ok": 46,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0001086105": {
+    "pdf": "FLORIFRUT 0001086105.pdf",
+    "provider": "Flores y Frutas Florifrut",
+    "total_usd": 939.0,
+    "lineas": 18,
+    "ok": 18,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0001086229": {
+    "pdf": "FLORIFRUT 0001086229.pdf",
+    "provider": "Flores y Frutas Florifrut",
+    "total_usd": 3931.75,
+    "lineas": 38,
+    "ok": 38,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0001086291": {
+    "pdf": "FLORIFRUT 0001086291.pdf",
+    "provider": "Flores y Frutas Florifrut",
+    "total_usd": 1284.75,
+    "lineas": 17,
+    "ok": 17,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0001086328": {
+    "pdf": "FLORIFRUT 0001086328.pdf",
+    "provider": "Flores y Frutas Florifrut",
+    "total_usd": 112.5,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0001086416": {
+    "pdf": "FLORIFRUT 0001086416.pdf",
+    "provider": "Flores y Frutas Florifrut",
+    "total_usd": 1065.0,
+    "lineas": 15,
+    "ok": 15,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0001086425": {
+    "pdf": "FLORIFRUT 0001086425.pdf",
+    "provider": "Flores y Frutas Florifrut",
+    "total_usd": 679.0,
+    "lineas": 12,
+    "ok": 12,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0001086430": {
+    "pdf": "FLORIFRUT5.pdf",
+    "provider": "Flores y Frutas Florifrut",
+    "total_usd": 112.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0001086468": {
+    "pdf": "FLORIFRUT 0001086468.pdf",
+    "provider": "Flores y Frutas Florifrut",
+    "total_usd": 260.0,
+    "lineas": 6,
+    "ok": 6,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0001086469": {
+    "pdf": "FLORIFRUT 0001086469.pdf",
+    "provider": "Flores y Frutas Florifrut",
+    "total_usd": 612.5,
+    "lineas": 6,
+    "ok": 6,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0001086471": {
+    "pdf": "FLORIFRUT 0001086471.pdf",
+    "provider": "Flores y Frutas Florifrut",
+    "total_usd": 96.25,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0001086485": {
+    "pdf": "FLORIFRUT 0001086485.pdf",
+    "provider": "Flores y Frutas Florifrut",
+    "total_usd": 944.0,
+    "lineas": 14,
+    "ok": 14,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0001086548": {
+    "pdf": "FLORIFRUT 0001086548.pdf",
+    "provider": "Flores y Frutas Florifrut",
+    "total_usd": 463.0,
+    "lineas": 6,
+    "ok": 6,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0001086550": {
+    "pdf": "FLORIFRUT 0001086550.pdf",
+    "provider": "Flores y Frutas Florifrut",
+    "total_usd": 98.75,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0000321769": {
+    "pdf": "GARDA 0000321769.pdf",
+    "provider": "GardaExport",
+    "total_usd": 914.5,
+    "lineas": 9,
+    "ok": 9,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0000322110": {
+    "pdf": "GARDA 0000322110.pdf",
+    "provider": "GardaExport",
+    "total_usd": 535.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0000322516": {
+    "pdf": "GARDA 0000322516.pdf",
+    "provider": "GardaExport",
+    "total_usd": 87.5,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0000322581": {
+    "pdf": "GARDA 0000322581.pdf",
+    "provider": "GardaExport",
+    "total_usd": 635.0,
+    "lineas": 5,
+    "ok": 5,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "0000321662": {
+    "pdf": "GARDA EXPORT 0000321662.pdf",
+    "provider": "GardaExport",
+    "total_usd": 635.0,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:58"
+  },
+  "102291": {
+    "pdf": "GOLDEN 102291.pdf",
+    "provider": "Benchmark Growers",
+    "total_usd": 0.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "000003777": {
+    "pdf": "Invoice 000003777 BRISSAS.pdf",
+    "provider": "Brissas",
+    "total_usd": 600.0,
+    "lineas": 3,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "00037587": {
+    "pdf": "LA ALEGRIA 00037587.pdf",
+    "provider": "La Alegria Farm",
+    "total_usd": 1215.0,
+    "lineas": 30,
+    "ok": 30,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "00037975": {
+    "pdf": "LA ALEGRIA 00037975.pdf",
+    "provider": "La Alegria Farm",
+    "total_usd": 1215.0,
+    "lineas": 30,
+    "ok": 30,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000060382": {
+    "pdf": "LA HACIENDA 0000060382.pdf",
+    "provider": "Flores de la Hacienda",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000060530": {
+    "pdf": "LA HACIENDA 0000060530.pdf",
+    "provider": "Flores de la Hacienda",
+    "total_usd": 0.0,
+    "lineas": 18,
+    "ok": 18,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000060638": {
+    "pdf": "LA HACIENDA 0000060638.pdf",
+    "provider": "Flores de la Hacienda",
+    "total_usd": 0.0,
+    "lineas": 16,
+    "ok": 16,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000060649": {
+    "pdf": "LA HACIENDA 0000060649.pdf",
+    "provider": "Flores de la Hacienda",
+    "total_usd": 0.0,
+    "lineas": 32,
+    "ok": 27,
+    "sin_match": 5,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000060729": {
+    "pdf": "LA HACIENDA 0000060729.pdf",
+    "provider": "Flores de la Hacienda",
+    "total_usd": 0.0,
+    "lineas": 15,
+    "ok": 15,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000060575": {
+    "pdf": "LA HACIENDA 75.pdf",
+    "provider": "Flores de la Hacienda",
+    "total_usd": 0.0,
+    "lineas": 4,
+    "ok": 4,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "LF37520": {
+    "pdf": "LATIN FLOWERS LF37520.pdf",
+    "provider": "Latin Flowers",
+    "total_usd": 4360.25,
+    "lineas": 79,
+    "ok": 74,
+    "sin_match": 5,
+    "fecha": "2026-04-01 13:59"
+  },
+  "LF37617": {
+    "pdf": "LATIN FLOWERS LF37617.pdf",
+    "provider": "Latin Flowers",
+    "total_usd": 4382.0,
+    "lineas": 48,
+    "ok": 45,
+    "sin_match": 2,
+    "fecha": "2026-04-01 13:59"
+  },
+  "LF37723": {
+    "pdf": "LATIN FLOWERS LF37723.pdf",
+    "provider": "Latin Flowers",
+    "total_usd": 806.5,
+    "lineas": 29,
+    "ok": 29,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "LF37618": {
+    "pdf": "LATIN LF37618.pdf",
+    "provider": "Latin Flowers",
+    "total_usd": 320.25,
+    "lineas": 6,
+    "ok": 6,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "LF37666": {
+    "pdf": "LATIN LF37666.pdf",
+    "provider": "Latin Flowers",
+    "total_usd": 0.0,
+    "lineas": 5,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "001025862": {
+    "pdf": "LIFE 001025862.pdf",
+    "provider": "Life Flowers",
+    "total_usd": 0.0,
+    "lineas": 20,
+    "ok": 20,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "001025906": {
+    "pdf": "LIFE 001025906.pdf",
+    "provider": "Life Flowers",
+    "total_usd": 0.0,
+    "lineas": 33,
+    "ok": 33,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "001025954": {
+    "pdf": "LIFE 001025954.pdf",
+    "provider": "Life Flowers",
+    "total_usd": 0.0,
+    "lineas": 29,
+    "ok": 29,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "001025956": {
+    "pdf": "LIFE 001025956.pdf",
+    "provider": "Life Flowers",
+    "total_usd": 0.0,
+    "lineas": 6,
+    "ok": 6,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "001025983": {
+    "pdf": "LIFE 001025983.pdf",
+    "provider": "Life Flowers",
+    "total_usd": 0.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "001026056": {
+    "pdf": "LIFE 001026056.pdf",
+    "provider": "Life Flowers",
+    "total_usd": 0.0,
+    "lineas": 13,
+    "ok": 13,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "001026126": {
+    "pdf": "LIFEFLOWERS 001026126.pdf",
+    "provider": "Life Flowers",
+    "total_usd": 0.0,
+    "lineas": 22,
+    "ok": 22,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "001026136": {
+    "pdf": "LIFEFLOWERS 001026136.pdf",
+    "provider": "Life Flowers",
+    "total_usd": 0.0,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "001026168": {
+    "pdf": "LIFEFLOWERS 001026168.pdf",
+    "provider": "Life Flowers",
+    "total_usd": 0.0,
+    "lineas": 4,
+    "ok": 4,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "001026171": {
+    "pdf": "LIFEFLOWERS 001026171.pdf",
+    "provider": "Life Flowers",
+    "total_usd": 0.0,
+    "lineas": 33,
+    "ok": 33,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "001026207": {
+    "pdf": "LIFELOWERS 001026207.pdf",
+    "provider": "Life Flowers",
+    "total_usd": 0.0,
+    "lineas": 30,
+    "ok": 30,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000035134": {
+    "pdf": "LUXUS 0000035134.pdf",
+    "provider": "Luxus Blumen",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 0,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000035145": {
+    "pdf": "LUXUS 0000035145.pdf",
+    "provider": "Luxus Blumen",
+    "total_usd": 0.0,
+    "lineas": 55,
+    "ok": 55,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000035154": {
+    "pdf": "LUXUS 0000035154.pdf",
+    "provider": "Luxus Blumen",
+    "total_usd": 0.0,
+    "lineas": 8,
+    "ok": 7,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000035176": {
+    "pdf": "LUXUS 0000035176.pdf",
+    "provider": "Luxus Blumen",
+    "total_usd": 0.0,
+    "lineas": 26,
+    "ok": 25,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000035213": {
+    "pdf": "LUXUS 0000035213.pdf",
+    "provider": "Luxus Blumen",
+    "total_usd": 0.0,
+    "lineas": 33,
+    "ok": 29,
+    "sin_match": 4,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000035233": {
+    "pdf": "LUXUS 0000035233.pdf",
+    "provider": "Luxus Blumen",
+    "total_usd": 0.0,
+    "lineas": 4,
+    "ok": 1,
+    "sin_match": 3,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000035237": {
+    "pdf": "LUXUS 0000035237.pdf",
+    "provider": "Luxus Blumen",
+    "total_usd": 0.0,
+    "lineas": 22,
+    "ok": 22,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000035258": {
+    "pdf": "LUXUS 0000035258.pdf",
+    "provider": "Luxus Blumen",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 0,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000035259": {
+    "pdf": "LUXUS 0000035259.pdf",
+    "provider": "Luxus Blumen",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000035292": {
+    "pdf": "LUXUS 0000035292.pdf",
+    "provider": "Luxus Blumen",
+    "total_usd": 0.0,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000035308": {
+    "pdf": "LUXUS 0000035308.pdf",
+    "provider": "Luxus Blumen",
+    "total_usd": 0.0,
+    "lineas": 18,
+    "ok": 15,
+    "sin_match": 3,
+    "fecha": "2026-04-01 13:59"
+  },
+  "0000035324": {
+    "pdf": "LUXUS 0000035324.pdf",
+    "provider": "Luxus Blumen",
+    "total_usd": 0.0,
+    "lineas": 16,
+    "ok": 16,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "5110934": {
+    "pdf": "MALIMA 5110934.pdf",
+    "provider": "Starflowers (Malima)",
+    "total_usd": 885.5,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "5111109": {
+    "pdf": "MALIMA 5111109.pdf",
+    "provider": "Starflowers (Malima)",
+    "total_usd": 2887.5,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "5111115": {
+    "pdf": "MALIMA 5111115.pdf",
+    "provider": "Starflowers (Malima)",
+    "total_usd": 9800.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "5111182": {
+    "pdf": "MALIMA 5111182.pdf",
+    "provider": "Starflowers (Malima)",
+    "total_usd": 9800.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "5111272": {
+    "pdf": "MALIMA 5111272.pdf",
+    "provider": "Starflowers (Malima)",
+    "total_usd": 1771.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "5111427": {
+    "pdf": "MALIMA 5111427.pdf",
+    "provider": "Starflowers (Malima)",
+    "total_usd": 5103.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94550": {
+    "pdf": "MAXI 94550.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 5044.5,
+    "lineas": 9,
+    "ok": 8,
+    "sin_match": 1,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94551": {
+    "pdf": "MAXI 94551.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 4900.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94552": {
+    "pdf": "MAXI 94552.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 3150.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "93725": {
+    "pdf": "MAXIFLORES 93725.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 86.4,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94114": {
+    "pdf": "MAXIFLORES 94114.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 2814.65,
+    "lineas": 28,
+    "ok": 20,
+    "sin_match": 8,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94115": {
+    "pdf": "MAXIFLORES 94115.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 4440.0,
+    "lineas": 10,
+    "ok": 10,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94116": {
+    "pdf": "MAXIFLORES 94116.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 1980.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94157": {
+    "pdf": "MAXIFLORES 94157.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 4703.0,
+    "lineas": 11,
+    "ok": 11,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94158": {
+    "pdf": "MAXIFLORES 94158.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 3500.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94159": {
+    "pdf": "MAXIFLORES 94159.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 4006.0,
+    "lineas": 5,
+    "ok": 5,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94235": {
+    "pdf": "MAXIFLORES 94235.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 10458.5,
+    "lineas": 7,
+    "ok": 7,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94269": {
+    "pdf": "MAXIFLORES 94269.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 5839.0,
+    "lineas": 17,
+    "ok": 15,
+    "sin_match": 2,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94270": {
+    "pdf": "MAXIFLORES 94270.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 5940.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94271": {
+    "pdf": "MAXIFLORES 94271.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 1452.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94272": {
+    "pdf": "MAXIFLORES 94272.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 5600.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94273": {
+    "pdf": "MAXIFLORES 94273.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 3914.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94549": {
+    "pdf": "MAXIFLORES 94549.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 86.4,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94661": {
+    "pdf": "MAXIFLORES 94661.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 5397.5,
+    "lineas": 8,
+    "ok": 8,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94662": {
+    "pdf": "MAXIFLORES 94662.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 5940.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94663": {
+    "pdf": "MAXIFLORES 94663.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 198.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "94713": {
+    "pdf": "MAXIFLORES 94713.pdf",
+    "provider": "Maxiflores",
+    "total_usd": 3258.65,
+    "lineas": 31,
+    "ok": 23,
+    "sin_match": 8,
+    "fecha": "2026-04-01 13:59"
+  },
+  "EC1000031901": {
+    "pdf": "MEAFLOS EC1000031901.pdf",
+    "provider": "Meaflos",
+    "total_usd": 3010.0,
+    "lineas": 18,
+    "ok": 18,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "EC1000031904": {
+    "pdf": "MEAFLOS EC1000031904.pdf",
+    "provider": "Meaflos",
+    "total_usd": 5852.5,
+    "lineas": 30,
+    "ok": 30,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "EC1000031984": {
+    "pdf": "MEAFLOS EC1000031984.pdf",
+    "provider": "Meaflos",
+    "total_usd": 3954.25,
+    "lineas": 24,
+    "ok": 24,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "EC1000032065": {
+    "pdf": "MEAFLOS EC1000032065.pdf",
+    "provider": "Meaflos",
+    "total_usd": 372.5,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "EC1000032069": {
+    "pdf": "MEAFLOS EC1000032069.pdf",
+    "provider": "Meaflos",
+    "total_usd": 1053.25,
+    "lineas": 9,
+    "ok": 9,
+    "sin_match": 0,
+    "fecha": "2026-04-01 13:59"
+  },
+  "INV-007332": {
+    "pdf": "MILONGA INV-007332.pdf",
+    "provider": "Flores Milonga",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "INV-007": {
+    "pdf": "MILONGA INV-007402.pdf",
+    "provider": "Flores Milonga",
+    "total_usd": 0.0,
+    "lineas": 3,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "000081651": {
+    "pdf": "MONTEROSA 000081651.pdf",
+    "provider": "Monterosas Farms",
+    "total_usd": 0.0,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "000081860": {
+    "pdf": "MONTEROSA 000081860.pdf",
+    "provider": "Monterosas Farms",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 0,
+    "sin_match": 1,
+    "fecha": "2026-04-01 14:00"
+  },
+  "000082238": {
+    "pdf": "MONTEROSA 000082238.pdf",
+    "provider": "Monterosas Farms",
+    "total_usd": 0.0,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "000082491": {
+    "pdf": "MONTEROSA 000082491.pdf",
+    "provider": "Monterosas Farms",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 0,
+    "sin_match": 1,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000254171": {
+    "pdf": "MSYTIC 0000254171.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 90.0,
+    "lineas": 6,
+    "ok": 6,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "90375913": {
+    "pdf": "MUCH FLOWERS 90375913.pdf",
+    "provider": "Comercializadora Almanti",
+    "total_usd": 1103.0,
+    "lineas": 32,
+    "ok": 0,
+    "sin_match": 32,
+    "fecha": "2026-04-01 14:00"
+  },
+  "A2529998": {
+    "pdf": "MULTIFLORA A2529998.pdf",
+    "provider": "Multiflora",
+    "total_usd": 1186.4,
+    "lineas": 5,
+    "ok": 0,
+    "sin_match": 5,
+    "fecha": "2026-04-01 14:00"
+  },
+  "A2531798": {
+    "pdf": "MULTIFLORA A2531798.pdf",
+    "provider": "Multiflora",
+    "total_usd": 875.2,
+    "lineas": 10,
+    "ok": 0,
+    "sin_match": 10,
+    "fecha": "2026-04-01 14:00"
+  },
+  "A2532456": {
+    "pdf": "MULTIFLORA A2532456.pdf",
+    "provider": "Multiflora",
+    "total_usd": 1024.0,
+    "lineas": 4,
+    "ok": 1,
+    "sin_match": 3,
+    "fecha": "2026-04-01 14:00"
+  },
+  "A2533156": {
+    "pdf": "MULTIFLORA A2533156.pdf",
+    "provider": "Multiflora",
+    "total_usd": 2671.2,
+    "lineas": 11,
+    "ok": 0,
+    "sin_match": 11,
+    "fecha": "2026-04-01 14:00"
+  },
+  "A2534073": {
+    "pdf": "MULTIFLORA A2534073.pdf",
+    "provider": "Multiflora",
+    "total_usd": 382.5,
+    "lineas": 1,
+    "ok": 0,
+    "sin_match": 1,
+    "fecha": "2026-04-01 14:00"
+  },
+  "A2534280": {
+    "pdf": "MULTIFLORA A2534280.pdf",
+    "provider": "Multiflora",
+    "total_usd": 875.2,
+    "lineas": 10,
+    "ok": 0,
+    "sin_match": 10,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000253643": {
+    "pdf": "MYSTIC 0000253643.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 576.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000253644": {
+    "pdf": "MYSTIC 0000253644.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 442.5,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000254185": {
+    "pdf": "MYSTIC 0000254185.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 4800.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000254191": {
+    "pdf": "MYSTIC 0000254191.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 96.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000254990": {
+    "pdf": "MYSTIC 0000254990.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 1183.25,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000255149": {
+    "pdf": "MYSTIC 0000255149.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 2880.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000256110": {
+    "pdf": "MYSTICFLOWER 0000256110.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 576.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000256111": {
+    "pdf": "MYSTICFLOWER 0000256111.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 442.5,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000256171": {
+    "pdf": "MYSTICFLOWER 0000256171.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 2400.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000254268": {
+    "pdf": "MYSTICFLOWERS 0000254268.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 4800.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000254752": {
+    "pdf": "MYSTICFLOWERS 0000254752.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 2400.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000254756": {
+    "pdf": "MYSTICFLOWERS 0000254756.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 288.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000254780": {
+    "pdf": "MYSTICFLOWERS 0000254780.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 3330.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000254785": {
+    "pdf": "MYSTICFLOWERS 0000254785.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 6792.0,
+    "lineas": 93,
+    "ok": 87,
+    "sin_match": 6,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000254889": {
+    "pdf": "MYSTICFLOWERS 0000254889.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 576.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000254890": {
+    "pdf": "MYSTICFLOWERS 0000254890.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 442.5,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000254919": {
+    "pdf": "MYSTICFLOWERS 0000254919.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 2400.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000255235": {
+    "pdf": "MYSTICFLOWERS 0000255235.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 48.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000255435": {
+    "pdf": "MYSTICFLOWERS 0000255435.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 90.0,
+    "lineas": 6,
+    "ok": 6,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000255447": {
+    "pdf": "MYSTICFLOWERS 0000255447.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 2400.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000255452": {
+    "pdf": "MYSTICFLOWERS 0000255452.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 96.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000256071": {
+    "pdf": "MYSTICFLOWERS 0000256071.pdf",
+    "provider": "Mystic Flowers",
+    "total_usd": 1920.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "25018421": {
+    "pdf": "NARANJO 25018421.pdf",
+    "provider": "Naranjo Roses",
+    "total_usd": 242.0,
+    "lineas": 3,
+    "ok": 0,
+    "sin_match": 3,
+    "fecha": "2026-04-01 14:00"
+  },
+  "25018668": {
+    "pdf": "NARANJO 25018668.pdf",
+    "provider": "Naranjo Roses",
+    "total_usd": 168.0,
+    "lineas": 4,
+    "ok": 0,
+    "sin_match": 4,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000029298": {
+    "pdf": "NATIVE 0000029298.pdf",
+    "provider": "Calinama (Native)",
+    "total_usd": 0.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000029591": {
+    "pdf": "NATIVE 0000029591.pdf",
+    "provider": "Calinama (Native)",
+    "total_usd": 0.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000029655": {
+    "pdf": "NATIVE 0000029655.pdf",
+    "provider": "Calinama (Native)",
+    "total_usd": 105.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000029825": {
+    "pdf": "NATIVE BLOOMS 0000029825.pdf",
+    "provider": "Calinama (Native)",
+    "total_usd": 252.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000029885": {
+    "pdf": "NATIVE BLOOMS 0000029885.pdf",
+    "provider": "Calinama (Native)",
+    "total_usd": 0.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "0000030016": {
+    "pdf": "NATIVE BLOOMS 0000030016.pdf",
+    "provider": "Calinama (Native)",
+    "total_usd": 168.75,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "8.400": {
+    "pdf": "NEUSA 8400.pdf",
+    "provider": "Inversiones del Neusa",
+    "total_usd": 0.0,
+    "lineas": 8,
+    "ok": 8,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:00"
+  },
+  "1191": {
+    "pdf": "PONDEROSA 1191.pdf",
+    "provider": "Verdes La Estacion",
+    "total_usd": 0.0,
+    "lineas": 28,
+    "ok": 28,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "1192": {
+    "pdf": "PONDEROSA 1192.pdf",
+    "provider": "Verdes La Estacion",
+    "total_usd": 0.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "1196": {
+    "pdf": "PONDEROSA 1196.pdf",
+    "provider": "Verdes La Estacion",
+    "total_usd": 0.0,
+    "lineas": 52,
+    "ok": 52,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "1197": {
+    "pdf": "PONDEROSA 1197.pdf",
+    "provider": "Verdes La Estacion",
+    "total_usd": 0.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "1213": {
+    "pdf": "PONDEROSA 1213.pdf",
+    "provider": "Verdes La Estacion",
+    "total_usd": 0.0,
+    "lineas": 33,
+    "ok": 33,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "1227": {
+    "pdf": "PONDEROSA 1227.pdf",
+    "provider": "Verdes La Estacion",
+    "total_usd": 0.0,
+    "lineas": 54,
+    "ok": 54,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "1237": {
+    "pdf": "PONDEROSA 1237.pdf",
+    "provider": "Verdes La Estacion",
+    "total_usd": 0.0,
+    "lineas": 63,
+    "ok": 63,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "1238": {
+    "pdf": "PONDEROSA 1238.pdf",
+    "provider": "Verdes La Estacion",
+    "total_usd": 0.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "1249": {
+    "pdf": "PONDEROSA 1249.pdf",
+    "provider": "Verdes La Estacion",
+    "total_usd": 0.0,
+    "lineas": 28,
+    "ok": 28,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "1482": {
+    "pdf": "PREMIUM 1482.pdf",
+    "provider": "Premium Flowers Boyacá",
+    "total_usd": 744.0,
+    "lineas": 10,
+    "ok": 3,
+    "sin_match": 4,
+    "fecha": "2026-04-01 14:01"
+  },
+  "1499": {
+    "pdf": "PREMIUM 1499.pdf",
+    "provider": "Premium Flowers Boyacá",
+    "total_usd": 432.0,
+    "lineas": 2,
+    "ok": 0,
+    "sin_match": 1,
+    "fecha": "2026-04-01 14:01"
+  },
+  "1519": {
+    "pdf": "PREMIUM 1519.pdf",
+    "provider": "Premium Flowers Boyacá",
+    "total_usd": 636.0,
+    "lineas": 8,
+    "ok": 3,
+    "sin_match": 3,
+    "fecha": "2026-04-01 14:01"
+  },
+  "2117": {
+    "pdf": "PRESTIGE 2117.pdf",
+    "provider": "Prestige Roses",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "2137": {
+    "pdf": "PRESTIGE 2137.pdf",
+    "provider": "Prestige Roses",
+    "total_usd": 0.0,
+    "lineas": 2,
+    "ok": 1,
+    "sin_match": 1,
+    "fecha": "2026-04-01 14:01"
+  },
+  "2165": {
+    "pdf": "PRESTIGE 2165.pdf",
+    "provider": "Prestige Roses",
+    "total_usd": 0.0,
+    "lineas": 10,
+    "ok": 9,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "2169": {
+    "pdf": "PRESTIGE 2169.pdf",
+    "provider": "Prestige Roses",
+    "total_usd": 0.0,
+    "lineas": 5,
+    "ok": 3,
+    "sin_match": 2,
+    "fecha": "2026-04-01 14:01"
+  },
+  "2183": {
+    "pdf": "PRESTIGE 2183.pdf",
+    "provider": "Prestige Roses",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "2196": {
+    "pdf": "PRESTIGE 2196.pdf",
+    "provider": "Prestige Roses",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "2200": {
+    "pdf": "PRESTIGE 2200.pdf",
+    "provider": "Prestige Roses",
+    "total_usd": 0.0,
+    "lineas": 1,
+    "ok": 0,
+    "sin_match": 1,
+    "fecha": "2026-04-01 14:01"
+  },
+  "2225": {
+    "pdf": "PRESTIGE 2225.pdf",
+    "provider": "Prestige Roses",
+    "total_usd": 0.0,
+    "lineas": 5,
+    "ok": 3,
+    "sin_match": 2,
+    "fecha": "2026-04-01 14:01"
+  },
+  "00000386658": {
+    "pdf": "ROSADEX 00000386658.pdf",
+    "provider": "Rosadex",
+    "total_usd": 0.0,
+    "lineas": 5,
+    "ok": 5,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "00000386719": {
+    "pdf": "ROSADEX 00000386719.pdf",
+    "provider": "Rosadex",
+    "total_usd": 0.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "00000388463": {
+    "pdf": "ROSADEX 00000388463.pdf",
+    "provider": "Rosadex",
+    "total_usd": 0.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "00000388475": {
+    "pdf": "ROSADEX 00000388475.pdf",
+    "provider": "Rosadex",
+    "total_usd": 0.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "00000388552": {
+    "pdf": "ROSADEX 00000388552.pdf",
+    "provider": "Rosadex",
+    "total_usd": 0.0,
+    "lineas": 5,
+    "ok": 5,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "00000388629": {
+    "pdf": "ROSADEX 00000388629.pdf",
+    "provider": "Rosadex",
+    "total_usd": 0.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "00000388652": {
+    "pdf": "ROSADEX 00000388652.pdf",
+    "provider": "Rosadex",
+    "total_usd": 0.0,
+    "lineas": 4,
+    "ok": 4,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "00000388812": {
+    "pdf": "ROSADEX 00000388812.pdf",
+    "provider": "Rosadex",
+    "total_usd": 0.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "00000388813": {
+    "pdf": "ROSADEX 00000388813.pdf",
+    "provider": "Rosadex",
+    "total_usd": 0.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "00000389836": {
+    "pdf": "ROSADEX 00000389836.pdf",
+    "provider": "Rosadex",
+    "total_usd": 0.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "79393": {
+    "pdf": "SAYONARA 79393.pdf",
+    "provider": "Sayonara",
+    "total_usd": 0.0,
+    "lineas": 11,
+    "ok": 10,
+    "sin_match": 1,
+    "fecha": "2026-04-01 14:01"
+  },
+  "79480": {
+    "pdf": "SAYONARA 79480.pdf",
+    "provider": "Sayonara",
+    "total_usd": 0.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "001223579": {
+    "pdf": "SOLPACIFIC 001223579.pdf",
+    "provider": "Sol Pacific",
+    "total_usd": 0.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "001224090": {
+    "pdf": "SOLPACIFIC 001224090.pdf",
+    "provider": "Sol Pacific",
+    "total_usd": 0.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "90642253": {
+    "pdf": "TESSA 90642253.pdf",
+    "provider": "Tessa Corp",
+    "total_usd": 260.0,
+    "lineas": 4,
+    "ok": 4,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "90642807": {
+    "pdf": "TESSA 90642807.pdf",
+    "provider": "Tessa Corp",
+    "total_usd": 510.0,
+    "lineas": 3,
+    "ok": 2,
+    "sin_match": 1,
+    "fecha": "2026-04-01 14:01"
+  },
+  "90643756": {
+    "pdf": "TESSA 90643756.pdf",
+    "provider": "Tessa Corp",
+    "total_usd": 540.0,
+    "lineas": 11,
+    "ok": 11,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "90644575": {
+    "pdf": "TESSA 90644575.pdf",
+    "provider": "Tessa Corp",
+    "total_usd": 180.0,
+    "lineas": 4,
+    "ok": 3,
+    "sin_match": 1,
+    "fecha": "2026-04-01 14:01"
+  },
+  "90645201": {
+    "pdf": "TESSA 90645201.pdf",
+    "provider": "Tessa Corp",
+    "total_usd": 460.0,
+    "lineas": 8,
+    "ok": 8,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:01"
+  },
+  "90646323": {
+    "pdf": "TESSA 90646323.pdf",
+    "provider": "Tessa Corp",
+    "total_usd": 395.0,
+    "lineas": 3,
+    "ok": 2,
+    "sin_match": 1,
+    "fecha": "2026-04-01 14:01"
+  },
+  "90646995": {
+    "pdf": "TESSA 90646995.pdf",
+    "provider": "Tessa Corp",
+    "total_usd": 275.0,
+    "lineas": 1,
+    "ok": 0,
+    "sin_match": 1,
+    "fecha": "2026-04-01 14:01"
+  },
+  "5103112": {
+    "pdf": "TREBOL 5103112.pdf",
+    "provider": "Plantaciones Plantreb",
+    "total_usd": 557.5,
+    "lineas": 5,
+    "ok": 0,
+    "sin_match": 5,
+    "fecha": "2026-04-01 14:02"
+  },
+  "133156": {
+    "pdf": "TURFLOR 133156.pdf",
+    "provider": "Turflor",
+    "total_usd": 0.0,
+    "lineas": 14,
+    "ok": 0,
+    "sin_match": 12,
+    "fecha": "2026-04-01 14:02"
+  },
+  "133253": {
+    "pdf": "TURFLOR 133253.pdf",
+    "provider": "Turflor",
+    "total_usd": 0.0,
+    "lineas": 3,
+    "ok": 0,
+    "sin_match": 2,
+    "fecha": "2026-04-01 14:02"
+  },
+  "133338": {
+    "pdf": "TURFLOR 133338.pdf",
+    "provider": "Turflor",
+    "total_usd": 0.0,
+    "lineas": 15,
+    "ok": 0,
+    "sin_match": 13,
+    "fecha": "2026-04-01 14:02"
+  },
+  "17375": {
+    "pdf": "UMA 17375.pdf",
+    "provider": "Uma Flowers",
+    "total_usd": 3494.0,
+    "lineas": 4,
+    "ok": 4,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "17388": {
+    "pdf": "UMA 17388.pdf",
+    "provider": "Uma Flowers",
+    "total_usd": 168.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "17400": {
+    "pdf": "UMA 17400.pdf",
+    "provider": "Uma Flowers",
+    "total_usd": 2964.5,
+    "lineas": 7,
+    "ok": 6,
+    "sin_match": 1,
+    "fecha": "2026-04-01 14:02"
+  },
+  "17402": {
+    "pdf": "UMA 17402.pdf",
+    "provider": "Uma Flowers",
+    "total_usd": 13041.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "17404": {
+    "pdf": "UMA 17404.pdf",
+    "provider": "Uma Flowers",
+    "total_usd": 19960.5,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "17406": {
+    "pdf": "UMA 17406.pdf",
+    "provider": "Uma Flowers",
+    "total_usd": 5329.5,
+    "lineas": 5,
+    "ok": 3,
+    "sin_match": 2,
+    "fecha": "2026-04-01 14:02"
+  },
+  "17408": {
+    "pdf": "UMA 17408.pdf",
+    "provider": "Uma Flowers",
+    "total_usd": 6033.5,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "17414": {
+    "pdf": "UMA 17414.pdf",
+    "provider": "Uma Flowers",
+    "total_usd": 671.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "17415": {
+    "pdf": "UMA 17415.pdf",
+    "provider": "Uma Flowers",
+    "total_usd": 4783.0,
+    "lineas": 4,
+    "ok": 4,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "17437": {
+    "pdf": "UMA 17437.pdf",
+    "provider": "Uma Flowers",
+    "total_usd": 1613.5,
+    "lineas": 1,
+    "ok": 0,
+    "sin_match": 1,
+    "fecha": "2026-04-01 14:02"
+  },
+  "17440": {
+    "pdf": "UMA 17440.pdf",
+    "provider": "Uma Flowers",
+    "total_usd": 435.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "17441": {
+    "pdf": "UMA 17441.pdf",
+    "provider": "Uma Flowers",
+    "total_usd": 576.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "17442": {
+    "pdf": "UMA 17442.pdf",
+    "provider": "Uma Flowers",
+    "total_usd": 3153.5,
+    "lineas": 7,
+    "ok": 6,
+    "sin_match": 1,
+    "fecha": "2026-04-01 14:02"
+  },
+  "17445": {
+    "pdf": "UMA 17445.pdf",
+    "provider": "Uma Flowers",
+    "total_usd": 576.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "17447": {
+    "pdf": "UMA 17447.pdf",
+    "provider": "Uma Flowers",
+    "total_usd": 780.0,
+    "lineas": 0,
+    "ok": 0,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "17448": {
+    "pdf": "UMA 17448.pdf",
+    "provider": "Uma Flowers",
+    "total_usd": 6952.5,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "146747": {
+    "pdf": "UTOPIA 146747.pdf",
+    "provider": "Utopia Farms",
+    "total_usd": 390.0,
+    "lineas": 1,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "001298198": {
+    "pdf": "VALLE VERDE 001298198.pdf",
+    "provider": "Valle Verde Farms",
+    "total_usd": 0.0,
+    "lineas": 8,
+    "ok": 8,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "001298671": {
+    "pdf": "VALLE VERDE 001298671.pdf",
+    "provider": "Valle Verde Farms",
+    "total_usd": 0.0,
+    "lineas": 7,
+    "ok": 7,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "25050161": {
+    "pdf": "VALTHOMIG 25050161.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 36.0,
+    "lineas": 2,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "25050191": {
+    "pdf": "VALTHOMIG 25050191.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 618.5,
+    "lineas": 13,
+    "ok": 13,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "25050194": {
+    "pdf": "VALTHOMIG 25050194.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 1009.0,
+    "lineas": 10,
+    "ok": 10,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "25050312": {
+    "pdf": "VALTHOMIG 25050312.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 78.0,
+    "lineas": 3,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "25050313": {
+    "pdf": "VALTHOMIG 25050313.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 475.75,
+    "lineas": 18,
+    "ok": 18,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "25050391": {
+    "pdf": "VALTHOMIG 25050391.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 2890.0,
+    "lineas": 37,
+    "ok": 37,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "25050392": {
+    "pdf": "VALTHOMIG 25050392.pdf",
+    "provider": "Cantiza Flores",
+    "total_usd": 1075.0,
+    "lineas": 60,
+    "ok": 59,
+    "sin_match": 1,
+    "fecha": "2026-04-01 14:02"
+  },
+  "INV-003228": {
+    "pdf": "VUELVEN INV-003228.pdf",
+    "provider": "Vuelven",
+    "total_usd": 618.0,
+    "lineas": 9,
+    "ok": 7,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "INV-003391": {
+    "pdf": "VUELVEN INV-003391.pdf",
+    "provider": "Vuelven",
+    "total_usd": 357.0,
+    "lineas": 10,
+    "ok": 6,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "INV-003476": {
+    "pdf": "VUELVEN INV-003476.pdf",
+    "provider": "Vuelven",
+    "total_usd": 291.0,
+    "lineas": 4,
+    "ok": 2,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "INV-003477": {
+    "pdf": "VUELVEN INV-003477.pdf",
+    "provider": "Vuelven",
+    "total_usd": 1032.0,
+    "lineas": 9,
+    "ok": 7,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "INV-003602": {
+    "pdf": "VUELVEN INV-003602.pdf",
+    "provider": "Vuelven",
+    "total_usd": 711.0,
+    "lineas": 10,
+    "ok": 8,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "INV-003604": {
+    "pdf": "VUELVEN INV-003604.pdf",
+    "provider": "Vuelven",
+    "total_usd": 324.0,
+    "lineas": 5,
+    "ok": 3,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "INV-003658": {
+    "pdf": "VUELVEN INV-003658.pdf",
+    "provider": "Vuelven",
+    "total_usd": 168.0,
+    "lineas": 3,
+    "ok": 1,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
+  },
+  "INV-003694": {
+    "pdf": "VUELVEN INV-003694.pdf",
+    "provider": "Vuelven",
+    "total_usd": 285.0,
+    "lineas": 9,
+    "ok": 5,
+    "sin_match": 0,
+    "fecha": "2026-04-01 14:02"
   }
 }

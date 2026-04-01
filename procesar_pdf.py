@@ -13,7 +13,7 @@ from src.pdf import detect_provider
 from src.parsers import FORMAT_PARSERS
 from src.articulos import ArticulosLoader
 from src.sinonimos import SynonymStore
-from src.matcher import Matcher, rescue_unparsed_lines, split_mixed_boxes
+from src.matcher import Matcher, rescue_unparsed_lines, split_mixed_boxes, reclassify_assorted
 from src.config import SQL_FILE, SYNS_FILE
 
 
@@ -72,10 +72,12 @@ def _process_with_lines(pdf_path: str, pdata: dict, header, lines) -> dict:
     rescued = rescue_unparsed_lines(pdata.get('text', ''), lines)
     pdf_name = Path(pdf_path).name if pdf_path else ''
     lines = matcher.match_all(pdata.get('id', 0), lines, invoice=pdf_name)
+    lines = reclassify_assorted(lines)
     lines.extend(rescued)
 
     ok_count = sum(1 for l in lines if l.match_status == 'ok')
     no_parser = sum(1 for l in lines if l.match_status == 'sin_parser')
+    mixed_box = sum(1 for l in lines if l.match_status == 'mixed_box')
 
     raw_lines = _serialize_lines(lines)
     grouped_lines = _group_mixed_boxes(raw_lines)
@@ -94,8 +96,9 @@ def _process_with_lines(pdf_path: str, pdata: dict, header, lines) -> dict:
         'stats': {
             'total_lineas': len(lines),
             'ok':           ok_count,
-            'sin_match':    len(lines) - ok_count - no_parser,
+            'sin_match':    len(lines) - ok_count - no_parser - mixed_box,
             'sin_parser':   no_parser,
+            'mixed_box':    mixed_box,
         },
         'lines': grouped_lines,
     }

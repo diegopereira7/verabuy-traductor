@@ -265,6 +265,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (status === 'sin_parser') {
             return '<span class="badge badge-sin-parser">NO PARSEADO</span>';
         }
+        if (status === 'mixed_box') {
+            return '<span class="badge badge-fuzzy" title="Caja mixta sin desglose">CAJA MIXTA</span>';
+        }
         return '<span class="badge badge-sin-match">SIN MATCH</span>';
     }
 

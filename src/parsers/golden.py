@@ -52,7 +52,7 @@ class GoldenParser:
         """Parsea una linea de factura anclando en el campo Item Description fijo.
         FIX: también captura SPIDER ASSORTED/WHITE/etc (crisantemos).
         """
-        desc_m = re.search(r'(CONSUMER\s+BUNCH\s+CARNATION\s+FANCY|MINICARNS\s+ASSORTED|SPIDER\s+\w+)', ln, re.I)
+        desc_m = re.search(r'(CONSUMER\s+BUNCH\s+CARNATION\s+(?:FANCY|SELEC\w*)|MINICARNS\s+ASSORTED|SPIDER\s+\w+|ALSTRO\s+\w+\s+\w+)', ln, re.I)
         if not desc_m: return None
         item_desc = desc_m.group(1).upper()
         before = ln[:desc_m.start()].strip()
@@ -91,6 +91,20 @@ class GoldenParser:
             if not parsed: continue
             is_mini='MINICARNS' in parsed['item_desc']
             is_spider='SPIDER' in parsed['item_desc']
+            is_alstro='ALSTRO' in parsed['item_desc']
+            is_selec='SELEC' in parsed['item_desc'] and 'FANCY' not in parsed['item_desc']
+            stems_total=parsed['stems']; total=parsed['total']; price=parsed['price_per_stem']
+            btype=parsed['btype']
+            if is_alstro:
+                sp='ALSTROEMERIA'
+                spb=10
+                label, colors = self._parse_grade_color(parsed['grade_color'])
+                var_name = colors[0] if colors[0] != 'MIXTO' else 'MIXTO'
+                il=InvoiceLine(raw_description=ln,species=sp,variety=var_name,grade='SELECT',origin='COL',
+                               size=0,stems_per_bunch=spb,stems=stems_total,price_per_stem=price,
+                               line_total=total,box_type=btype,label=label,provider_key='golden')
+                lines.append(il)
+                continue
             if is_spider:
                 sp='CHRYSANTHEMUM'
                 spb=10
@@ -98,8 +112,6 @@ class GoldenParser:
                 sp='CARNATIONS'
                 spb=10 if is_mini else 20   # 10U miniclavel, 20U clavel fancy
             label, colors = self._parse_grade_color(parsed['grade_color'])
-            stems_total=parsed['stems']; total=parsed['total']; price=parsed['price_per_stem']
-            btype=parsed['btype']
 
             # FIX: para SPIDER, usar tipo + color del grade_color como variedad
             if is_spider:
@@ -112,9 +124,10 @@ class GoldenParser:
                 lines.append(il)
                 continue
 
+            grade = 'SELECT' if is_selec else 'FANCY'
             n=len(colors)
             if n<=1:
-                il=InvoiceLine(raw_description=ln,species=sp,variety=colors[0],grade='FANCY',origin='COL',
+                il=InvoiceLine(raw_description=ln,species=sp,variety=colors[0],grade=grade,origin='COL',
                                size=70,stems_per_bunch=spb,stems=stems_total,price_per_stem=price,
                                line_total=total,box_type=btype,label=label,provider_key='golden')
                 lines.append(il)
@@ -123,7 +136,7 @@ class GoldenParser:
                 for i,color in enumerate(colors):
                     st=base if i<n-1 else stems_total-base*(n-1)
                     lt=round(st*price,2)
-                    il=InvoiceLine(raw_description=ln,species=sp,variety=color,grade='FANCY',origin='COL',
+                    il=InvoiceLine(raw_description=ln,species=sp,variety=color,grade=grade,origin='COL',
                                    size=70,stems_per_bunch=spb,stems=st,price_per_stem=price,
                                    line_total=lt,box_type=btype,label=label,provider_key='golden')
                     lines.append(il)

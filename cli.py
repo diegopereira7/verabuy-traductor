@@ -28,7 +28,7 @@ from src.models import InvoiceLine
 from src.articulos import ArticulosLoader
 from src.sinonimos import SynonymStore
 from src.historial import History
-from src.matcher import Matcher, rescue_unparsed_lines, split_mixed_boxes
+from src.matcher import Matcher, rescue_unparsed_lines, split_mixed_boxes, reclassify_assorted
 from src.pdf import detect_provider
 from src.parsers import FORMAT_PARSERS
 
@@ -190,6 +190,7 @@ def process_pdfs(pdfs, art, syns, hist, matcher):
             continue
         pid = pdata['id']
         lines = matcher.match_all(pid, lines)
+        lines = reclassify_assorted(lines)
         already = ' (ya)' if hist.was_processed(header.invoice_number or name) else ''
         print(f"\n  {C.CYAN}{'━' * 57}{C.RESET}\n"
               f"  {C.BOLD}📄 {name}{C.RESET}{C.DIM}{already}{C.RESET}")

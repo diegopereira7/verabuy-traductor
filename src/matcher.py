@@ -17,6 +17,33 @@ from src.sinonimos import SynonymStore
 logger = logging.getLogger(__name__)
 
 
+def _strip_life_delegation(variety: str, art_index: dict) -> str:
+    """Strip Life Flowers delegation prefix by finding a known variety as suffix.
+
+    Strategy: try progressively longer prefixes (1 word, 2 words, 3 words).
+    For each, check if the remainder is a known variety in the article index.
+    Return the longest match (= shortest delegation prefix that leaves a known variety).
+
+    "RODRIGO PINK FLOYD" → try "PINK FLOYD" (known) → return "PINK FLOYD"
+    "CAMPO FLOR EXPLORER" → try "EXPLORER" (no, too short), "FLOR EXPLORER" (no),
+                            → try removing 2 words: "EXPLORER" (known) → return "EXPLORER"
+    "MARL EXPLORER" → try "EXPLORER" (known) → return "EXPLORER"
+    """
+    from src.articulos import _normalize
+    v = _normalize(variety)
+    words = v.split()
+    if len(words) <= 1:
+        return v
+
+    # Try stripping 1, 2, 3 words from the front (delegation)
+    for n_strip in range(1, min(len(words), 4)):
+        candidate = ' '.join(words[n_strip:])
+        if candidate in art_index:
+            return candidate
+    # No known variety found — return original
+    return v
+
+
 class Matcher:
     """Pipeline de matching de 5 etapas: sinónimo → marca → exacto → rosa → fuzzy."""
 
@@ -87,6 +114,25 @@ class Matcher:
                 self.syn.add(provider_id, line, result['id'], result['nombre'],
                              origin, invoice=invoice)
                 return line
+
+        # 2b. Delegación stripping para Life Flowers (provider_id=4471)
+        #     "MARL EXPLORER" → "EXPLORER", "CAMPO FLOR MONDIAL" → "MONDIAL"
+        if provider_id == 4471 and line.variety:
+            stripped = _strip_life_delegation(line.variety, self.art.by_variety)
+            if stripped and stripped != line.variety.upper():
+                result, confidence, method = self.art.search_with_priority(
+                    variety=stripped, size=line.size,
+                    provider_id=provider_id,
+                    provider_key=getattr(line, 'provider_key', ''),
+                )
+                if result:
+                    line.articulo_id = result['id']
+                    line.articulo_name = result['nombre']
+                    line.match_status = 'ok'
+                    line.match_method = f'delegacion+{method}'
+                    self.syn.add(provider_id, line, result['id'], result['nombre'],
+                                 'auto-delegacion', invoice=invoice)
+                    return line
 
         # 3. Match exacto por nombre esperado (fallback legacy)
         a = self.art.find_by_name(line.expected_name())
@@ -226,6 +272,26 @@ def rescue_unparsed_lines(text: str, parsed_lines: list[InvoiceLine]) -> list[In
         )
         rescued.append(il)
     return rescued
+
+
+def reclassify_assorted(lines: list[InvoiceLine]) -> list[InvoiceLine]:
+    """Reclassify unmatched ASSORTED rose lines as mixed_box.
+
+    Lines with species=ROSES and variety matching ASSORTED/SPECIAL ASSTD/
+    SPECIAL ASSORTED that didn't match (sin_match) are reclassified as
+    mixed_box since they represent mixed boxes without per-variety breakdown.
+
+    Does NOT touch lines that already matched (synonym or auto-match).
+    """
+    _ASSORTED_RE = re.compile(
+        r'^(?:ASSORTED|SPECIAL\s+ASSTD|SPECIAL\s+ASSORTED|ASSTD)$', re.I)
+    for l in lines:
+        if (l.match_status == 'sin_match'
+                and l.species == 'ROSES'
+                and _ASSORTED_RE.match(l.variety.strip())):
+            l.match_status = 'mixed_box'
+            l.match_method = 'assorted-no-desglose'
+    return lines
 
 
 def split_mixed_boxes(lines: list[InvoiceLine]) -> list[InvoiceLine]:
