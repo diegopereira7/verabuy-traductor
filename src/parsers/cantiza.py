@@ -31,15 +31,15 @@ class CantizaParser:
                 fm=re.search(r'(C\d+)\s+\d+\s+\$',ln)
                 if fm: farm=fm.group(1)
                 continue
-            pm=re.search(r'(\w[\w\s]*?)\s+(\d+)CM\s+N\s+(\d+)ST\s+CZ',ln)
+            pm=re.search(r'([\w][\w\s.\']*?)\s+(\d+)CM\s+N\s+(\d+)ST\s+CZ',ln)
             if not pm: continue
             var=re.sub(r'^[\d*X.]+\s+','',pm.group(1).strip()).strip()
             var=re.sub(r'\([\d*X.]+\)','',var).strip()
             if not var: continue
             sz,spb=int(pm.group(2)),int(pm.group(3))
-            fm2=re.search(r'(?:ROSES|CARNATION)\s+(C\d+)',ln)
+            fm2=re.search(r'(?:ROSES|CARNATION)\s+([A-Z][A-Z0-9]*(?:-\d+)?)',ln)
             if fm2: farm=fm2.group(1).upper()
-            nm=re.search(rf'(?:C\d+)\s+(\d+)\s+\$([\d.]+)\s+(\d+)\s+\$([\d.]+)\s+\$([\d.]+)',ln)
+            nm=re.search(r'(?:[A-Z][A-Z0-9]*(?:-\d+)?)\s+(\d+)\s+\$([\d.]+)\s+(\d+)\s+\$([\d.]+)\s+\$([\d.]+)',ln)
             bunches=int(nm.group(1)) if nm else 0
             ppb=float(nm.group(2)) if nm else 0.0
             stems=int(nm.group(3)) if nm else 0
