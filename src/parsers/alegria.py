@@ -145,6 +145,27 @@ class AlegriaParser:
                 if pm:
                     btype, var, spb = pm.group(1), pm.group(2).strip(), int(pm.group(3))
                 else:
+                    # Latinafarms format: "N VARIETY SPB SIZE PPB PRICE STEMS TOTAL"
+                    pm2 = re.search(
+                        r'^\d+\s+([A-Z][A-Z\s.\-/]+?)\s+'   # variety
+                        r'(\d+)\s+(\d{2,3})\s+'               # SPB + size
+                        r'[\d.]+\s+([\d.]+)\s+'                # ppb + price
+                        r'([\d,.]+)\s+([\d,.]+)\s*$',          # stems + total
+                        ln)
+                    if pm2:
+                        var = pm2.group(1).strip()
+                        spb = int(pm2.group(2))
+                        sz = int(pm2.group(3))
+                        price = float(pm2.group(4))
+                        stems_f = float(pm2.group(5).replace(',', ''))
+                        total = float(pm2.group(6).replace(',', ''))
+                        il = InvoiceLine(
+                            raw_description=ln, species='ROSES', variety=var,
+                            size=sz, stems_per_bunch=spb, stems=int(stems_f),
+                            price_per_stem=price, line_total=total, box_type='',
+                            provider_key=pdata.get('key', ''),
+                        )
+                        lines.append(il)
                     continue
             else:
                 btype, var, spb = pm.group(2), pm.group(3).strip(), int(pm.group(4))

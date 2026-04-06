@@ -44,6 +44,27 @@ def _strip_life_delegation(variety: str, art_index: dict) -> str:
     return v
 
 
+_COLOR_PREFIX_RE = re.compile(
+    r'^(?:PINK|RED|ORANGE|YELLOW|WHITE|PEACH|CREAM|SALMON|HOT PINK|LIGHT PINK)\s+', re.I)
+
+
+def _strip_color_prefix(variety: str, art_index: dict) -> str | None:
+    """Strip a color prefix from a variety if the remainder is a known article variety.
+
+    "PINK ESPERANCE" → "ESPERANCE" (if ESPERANCE exists in catalog)
+    "PINK FLOYD" → None (FLOYD doesn't exist, so keep PINK FLOYD)
+    """
+    from src.articulos import _normalize
+    v = _normalize(variety)
+    m = _COLOR_PREFIX_RE.match(v)
+    if not m:
+        return None
+    candidate = v[m.end():].strip()
+    if candidate and candidate in art_index:
+        return candidate
+    return None
+
+
 class Matcher:
     """Pipeline de matching de 5 etapas: sinónimo → marca → exacto → rosa → fuzzy."""
 
@@ -132,6 +153,25 @@ class Matcher:
                     line.match_method = f'delegacion+{method}'
                     self.syn.add(provider_id, line, result['id'], result['nombre'],
                                  'auto-delegacion', invoice=invoice)
+                    return line
+
+        # 2c. Color prefix stripping for varieties like "PINK ESPERANCE" → "ESPERANCE"
+        #     Only if the stripped variety exists in the article index.
+        if line.variety and line.species == 'ROSES':
+            stripped = _strip_color_prefix(line.variety, self.art.by_variety)
+            if stripped:
+                result, confidence, method = self.art.search_with_priority(
+                    variety=stripped, size=line.size,
+                    provider_id=provider_id,
+                    provider_key=getattr(line, 'provider_key', ''),
+                )
+                if result:
+                    line.articulo_id = result['id']
+                    line.articulo_name = result['nombre']
+                    line.match_status = 'ok'
+                    line.match_method = f'color-strip+{method}'
+                    self.syn.add(provider_id, line, result['id'], result['nombre'],
+                                 'auto-color-strip', invoice=invoice)
                     return line
 
         # 3. Match exacto por nombre esperado (fallback legacy)
@@ -275,19 +315,22 @@ def rescue_unparsed_lines(text: str, parsed_lines: list[InvoiceLine]) -> list[In
 
 
 def reclassify_assorted(lines: list[InvoiceLine]) -> list[InvoiceLine]:
-    """Reclassify unmatched ASSORTED rose lines as mixed_box.
+    """Reclassify unmatched ASSORTED/MIX lines as mixed_box.
 
-    Lines with species=ROSES and variety matching ASSORTED/SPECIAL ASSTD/
-    SPECIAL ASSORTED that didn't match (sin_match) are reclassified as
-    mixed_box since they represent mixed boxes without per-variety breakdown.
+    Lines with variety matching assorted/mix patterns that didn't match
+    (sin_match) are reclassified as mixed_box since they represent mixed
+    boxes without per-variety breakdown.
 
+    Applies to all species (ROSES, ALSTROEMERIA, CARNATIONS, etc.).
     Does NOT touch lines that already matched (synonym or auto-match).
     """
     _ASSORTED_RE = re.compile(
-        r'^(?:ASSORTED|SPECIAL\s+ASSTD|SPECIAL\s+ASSORTED|ASSTD)$', re.I)
+        r'^(?:ASSORTED|SPECIAL\s+ASSTD|SPECIAL\s+ASSORTED|ASSTD'
+        r'|ASSORTED\s+COLOR|MIX\s+COLORS?|MIX|MIXED'
+        r'|SPECIAL\s+PACK|SURTIDO'
+        r'|(?:SPRAY\s+)?CARNATION\s+(?:ASSORTED|MIX))$', re.I)
     for l in lines:
         if (l.match_status == 'sin_match'
-                and l.species == 'ROSES'
                 and _ASSORTED_RE.match(l.variety.strip())):
             l.match_status = 'mixed_box'
             l.match_method = 'assorted-no-desglose'

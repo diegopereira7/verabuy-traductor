@@ -315,9 +315,10 @@ class DaflorParser:
         for ln in text.split('\n'):
             ln=ln.strip()
             # FIX: usar re.I para mixed-case: "1 QB Alstroemeria Assorted - Fancy"
-            pm=re.search(r'(\d+)\s+(QB|HB)\s+([A-Za-z][A-Za-z\s.\-/\u00b4\u2019\']+?)\s*[-\u2013]\s*([A-Za-z]+)',ln,re.I)
+            # Also allow digits in grade position (for roses where size appears as grade: "- 50")
+            pm=re.search(r'(\d+)\s+(QB|HB)\s+([A-Za-z][A-Za-z\s.\-/\u00b4\u2019\']+?)\s*[-\u2013]\s*([A-Za-z0-9]+)',ln,re.I)
             if not pm:
-                pm=re.search(r'(QB|HB)\s+([A-Za-z][A-Za-z\s.\-/\u00b4\u2019\']+?)\s*[-\u2013]\s*([A-Za-z]+)',ln,re.I)
+                pm=re.search(r'(QB|HB)\s+([A-Za-z][A-Za-z\s.\-/\u00b4\u2019\']+?)\s*[-\u2013]\s*([A-Za-z0-9]+)',ln,re.I)
                 if not pm: continue
                 btype=pm.group(1).upper(); desc=pm.group(2).strip(); grade=pm.group(3).strip()
             else:
@@ -347,6 +348,7 @@ class DaflorParser:
 
 class EqrParser:
     """Formato: Description 'Roses Color Variety CM x Stems Stem'"""
+
     def parse(self, text:str, pdata:dict):
         h=InvoiceHeader(); h.provider_key=pdata['key']; h.provider_id=pdata['id']; h.provider_name=pdata['name']
         m=re.search(r'Invoice\s+#\s+(\d+)',text,re.I); h.invoice_number=m.group(1) if m else ''

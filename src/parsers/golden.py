@@ -50,9 +50,15 @@ class GoldenParser:
 
     def _parse_invoice_line(self, ln:str):
         """Parsea una linea de factura anclando en el campo Item Description fijo.
-        FIX: también captura SPIDER ASSORTED/WHITE/etc (crisantemos).
+        FIX: también captura SPIDER, MUM BALL, SUPER MUMS, CONSUMER BUNCH MUM.
         """
-        desc_m = re.search(r'(CONSUMER\s+BUNCH\s+CARNATION\s+(?:FANCY|SELEC\w*)|MINICARNS\s+ASSORTED|SPIDER\s+\w+|ALSTRO\s+\w+\s+\w+)', ln, re.I)
+        desc_m = re.search(
+            r'(CONSUMER\s+BUNCH\s+CARNATION\s+(?:FANCY|SELEC\w*)'
+            r'|CONSUMER\s+BUNCH\s+MUM\s+BALL\s+\w+'   # CONSUMER BUNCH MUM BALL VERDILUGO
+            r'|SUPER\s+MUMS\s+\w+'                     # SUPER MUMS WHITE
+            r'|MUM\s+BALL\s+\w+'                        # MUM BALL GREEN
+            r'|CREMON\s+\w+'                            # CREMON GREEN/CREAM/ASSORTED
+            r'|MINICARNS\s+ASSORTED|SPIDER\s+\w+|ALSTRO\s+\w+\s+\w+)', ln, re.I)
         if not desc_m: return None
         item_desc = desc_m.group(1).upper()
         before = ln[:desc_m.start()].strip()
@@ -92,6 +98,7 @@ class GoldenParser:
             is_mini='MINICARNS' in parsed['item_desc']
             is_spider='SPIDER' in parsed['item_desc']
             is_alstro='ALSTRO' in parsed['item_desc']
+            is_mum=('MUM' in parsed['item_desc'] or 'CREMON' in parsed['item_desc']) and 'CARNATION' not in parsed['item_desc']
             is_selec='SELEC' in parsed['item_desc'] and 'FANCY' not in parsed['item_desc']
             stems_total=parsed['stems']; total=parsed['total']; price=parsed['price_per_stem']
             btype=parsed['btype']
@@ -101,6 +108,19 @@ class GoldenParser:
                 label, colors = self._parse_grade_color(parsed['grade_color'])
                 var_name = colors[0] if colors[0] != 'MIXTO' else 'MIXTO'
                 il=InvoiceLine(raw_description=ln,species=sp,variety=var_name,grade='SELECT',origin='COL',
+                               size=0,stems_per_bunch=spb,stems=stems_total,price_per_stem=price,
+                               line_total=total,box_type=btype,label=label,provider_key='golden')
+                lines.append(il)
+                continue
+            if is_mum:
+                sp='CHRYSANTHEMUM'
+                spb=10
+                label, colors = self._parse_grade_color(parsed['grade_color'])
+                # MUM/CREMON variety from item_desc
+                mum_desc = parsed['item_desc']
+                mum_desc = re.sub(r'^CONSUMER\s+BUNCH\s+', '', mum_desc)
+                var_name = mum_desc
+                il=InvoiceLine(raw_description=ln,species=sp,variety=var_name,grade='',origin='COL',
                                size=0,stems_per_bunch=spb,stems=stems_total,price_per_stem=price,
                                line_total=total,box_type=btype,label=label,provider_key='golden')
                 lines.append(il)
