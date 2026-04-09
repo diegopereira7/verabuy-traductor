@@ -49,9 +49,9 @@ class AgrivaldaniParser:
             # -- Limpiar prefijos de orden y tipo de caja --
             clean=re.sub(r'^\d+\s*[-\u2013]\s*\d+\s+\S+\s+','',ln)              # "1 - 1 R15 "
             clean=re.sub(r'^\d+\s+(?:QUARTER|HALF|FULL)\s+','',clean,flags=re.I)  # "1 QUARTER "
-            # Solo quitar QUARTER/HALF/FULL residual si va seguido de un campo numérico
-            # (= es tipo de caja), NO si va seguido de letras (= es variedad como FULL MONTY)
-            clean=re.sub(r'^(?:QUARTER|HALF|FULL)\s+(?=\d)','',clean,flags=re.I)
+            # Quitar QUARTER/HALF/FULL residual — siempre es box type en este formato
+            # (carry-forward a current_btype ya se hizo arriba)
+            clean=re.sub(r'^(?:QUARTER|HALF|FULL)\s+','',clean,flags=re.I)
 
             # -- Patron A: variedad + CM + SPB + (bunches) + stems + price + total --
             # "FREEDOM 40 25 12 300 0.22 22.00"  /  "E. BLACK 50 25 1 25 0.30 15.00"

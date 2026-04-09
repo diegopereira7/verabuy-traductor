@@ -1234,9 +1234,9 @@
     "grade": ""
   },
   "4471|ROSES|MARL EXPLORER|50|20|": {
-    "articulo_id": 32949,
-    "articulo_name": "ROSA EC EXPLORER 50CM 20U",
-    "origen": "auto-fuzzy",
+    "articulo_id": 33759,
+    "articulo_name": "ROSA EXPLORER 50CM 20U LIFEFLOWERS",
+    "origen": "manual",
     "provider_id": 4471,
     "species": "ROSES",
     "variety": "MARL EXPLORER",
@@ -1247,9 +1247,9 @@
     "invoice": "LIFE2.pdf"
   },
   "4471|ROSES|MARL MONDIAL|50|20|": {
-    "articulo_id": 33229,
-    "articulo_name": "ROSA EC MONDIAL 50CM 20U",
-    "origen": "auto-fuzzy",
+    "articulo_id": 35477,
+    "articulo_name": "ROSA MONDIAL 50CM 20U LIFEFLOWERS",
+    "origen": "manual",
     "provider_id": 4471,
     "species": "ROSES",
     "variety": "MARL MONDIAL",
@@ -1260,9 +1260,9 @@
     "invoice": "LIFE2.pdf"
   },
   "4471|ROSES|MARL FRUTTETO|50|20|": {
-    "articulo_id": 33001,
-    "articulo_name": "ROSA EC FRUTTETO 50CM 20U",
-    "origen": "auto-fuzzy",
+    "articulo_id": 34084,
+    "articulo_name": "ROSA FRUTTETO 50CM 20U LIFEFLOWERS",
+    "origen": "manual",
     "provider_id": 4471,
     "species": "ROSES",
     "variety": "MARL FRUTTETO",
@@ -1299,9 +1299,9 @@
     "invoice": "LIFE2.pdf"
   },
   "4471|ROSES|BLUES|50|25|": {
-    "articulo_id": 31812,
-    "articulo_name": "ROSA BLUEZ 50CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "articulo_id": 32512,
+    "articulo_name": "ROSA COUNTRY BLUES 50CM 25U LIFEFLOWERS",
+    "origen": "manual",
     "provider_id": 4471,
     "species": "ROSES",
     "variety": "BLUES",
@@ -1375,7 +1375,7 @@
   "6323|HYDRANGEAS|PREMIUM AZUL CRIOLLA|60|1|": {
     "articulo_id": 22765,
     "articulo_name": "HYDRANGEA PREMIUM AZUL CLARO 60CM 1U LATIN",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 6323,
     "species": "HYDRANGEAS",
     "variety": "PREMIUM AZUL CRIOLLA",
@@ -1616,7 +1616,7 @@
   "442|ROSES|MOODY BLUES|50|20|": {
     "articulo_id": 35618,
     "articulo_name": "ROSA MOODY BLUES 50CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 442,
     "species": "ROSES",
     "variety": "MOODY BLUES",
@@ -1629,7 +1629,7 @@
   "442|ROSES|ORANGE CRUSH|50|20|": {
     "articulo_id": 33300,
     "articulo_name": "ROSA EC ORANGE CRUSH 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 442,
     "species": "ROSES",
     "variety": "ORANGE CRUSH",
@@ -1681,7 +1681,7 @@
   "7338|ROSES|MONDIAL|50|1|": {
     "articulo_id": 33229,
     "articulo_name": "ROSA EC MONDIAL 50CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 7338,
     "species": "ROSES",
     "variety": "MONDIAL",
@@ -1694,7 +1694,7 @@
   "7338|ROSES|MONDIAL|40|1|": {
     "articulo_id": 33227,
     "articulo_name": "ROSA EC MONDIAL 40CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 7338,
     "species": "ROSES",
     "variety": "MONDIAL",
@@ -1705,8 +1705,8 @@
     "invoice": "SECORE.pdf"
   },
   "2220|ROSES|FRUTTETO|50|25|": {
-    "articulo_id": 34105,
-    "articulo_name": "ROSA FRUTTETO 50CM 25U STAMPSY",
+    "articulo_id": 34088,
+    "articulo_name": "ROSA FRUTTETO 50CM 25U FIORENTINA",
     "origen": "auto-marca",
     "provider_id": 2220,
     "species": "ROSES",
@@ -1731,8 +1731,8 @@
     "invoice": "STAMPSY.pdf"
   },
   "2220|ROSES|SILANTOI|50|25|": {
-    "articulo_id": 36541,
-    "articulo_name": "ROSA SILANTOI 50CM 25U STAMPSY",
+    "articulo_id": 36532,
+    "articulo_name": "ROSA SILANTOI 50CM 25U FIORENTINA",
     "origen": "auto-marca",
     "provider_id": 2220,
     "species": "ROSES",
@@ -2015,7 +2015,7 @@
   "4471|ROSES|COUNTRY HOME|50|20|": {
     "articulo_id": 32538,
     "articulo_name": "ROSA COUNTRY HOME 50CM 25U FIORENTINA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 4471,
     "species": "ROSES",
     "variety": "COUNTRY HOME",
@@ -2087,7 +2087,7 @@
   "313|CARNATIONS|MIX|0|10|SELECT": {
     "articulo_id": 26776,
     "articulo_name": "MINI CLAVEL COL SELECT MIXTO 70CM 10U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 313,
     "species": "CARNATIONS",
     "variety": "MIX",
@@ -2100,7 +2100,7 @@
   "313|CARNATIONS|NOVELTY|0|10|SELECT": {
     "articulo_id": 12578,
     "articulo_name": "CLAVEL COL SELECT NOVEDADES 70CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 313,
     "species": "CARNATIONS",
     "variety": "NOVELTY",
@@ -2113,7 +2113,7 @@
   "6323|HYDRANGEAS|PREMIUM TENIDA MELOCOTON|60|1|": {
     "articulo_id": 22734,
     "articulo_name": "HYDRANGEA PREMIUM TEÑIDA MELOCOTON 60CM 1U LATIN",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 6323,
     "species": "HYDRANGEAS",
     "variety": "PREMIUM TENIDA MELOCOTON",
@@ -2126,7 +2126,7 @@
   "6323|HYDRANGEAS|PREMIUM TENIDA ROSA CLARO|60|1|": {
     "articulo_id": 22748,
     "articulo_name": "HYDRANGEA PREMIUM TEÑIDA ROSA CLARO 60CM 1U LATIN",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 6323,
     "species": "HYDRANGEAS",
     "variety": "PREMIUM TENIDA ROSA CLARO",
@@ -2139,7 +2139,7 @@
   "6323|HYDRANGEAS|PREMIUM TENIDA ROSA VIEJO|60|1|": {
     "articulo_id": 22730,
     "articulo_name": "HYDRANGEA PREMIUM TEÑIDA ROSA VIEJO 60CM 1U LATIN",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 6323,
     "species": "HYDRANGEAS",
     "variety": "PREMIUM TENIDA ROSA VIEJO",
@@ -2152,7 +2152,7 @@
   "6323|HYDRANGEAS|PREMIUM TENIDA SALMON|60|1|": {
     "articulo_id": 22752,
     "articulo_name": "HYDRANGEA PREMIUM TEÑIDA SALMON 60CM 1U LATIN",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 6323,
     "species": "HYDRANGEAS",
     "variety": "PREMIUM TENIDA SALMON",
@@ -2165,7 +2165,7 @@
   "6323|HYDRANGEAS|PREMIUM TENIDA MOCCA|60|1|": {
     "articulo_id": 22751,
     "articulo_name": "HYDRANGEA PREMIUM TEÑIDA MOCCA 60CM 1U LATIN",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 6323,
     "species": "HYDRANGEAS",
     "variety": "PREMIUM TENIDA MOCCA",
@@ -2178,7 +2178,7 @@
   "6323|HYDRANGEAS|PREMIUM TENIDA ROSA|60|1|": {
     "articulo_id": 22728,
     "articulo_name": "HYDRANGEA PREMIUM TEÑIDA ROSA 60CM 1U LATIN",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 6323,
     "species": "HYDRANGEAS",
     "variety": "PREMIUM TENIDA ROSA",
@@ -2425,7 +2425,7 @@
   "430|ROSES|STARDUTS|70|25|": {
     "articulo_id": 33471,
     "articulo_name": "ROSA EC STARDUST 70CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 430,
     "species": "ROSES",
     "variety": "STARDUTS",
@@ -2555,7 +2555,7 @@
   "13001|ROSES|MONDIAL|60|12|": {
     "articulo_id": 33231,
     "articulo_name": "ROSA EC MONDIAL 60CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 13001,
     "species": "ROSES",
     "variety": "MONDIAL",
@@ -2568,7 +2568,7 @@
   "13001|ROSES|MONDIAL|60|4|": {
     "articulo_id": 33231,
     "articulo_name": "ROSA EC MONDIAL 60CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 13001,
     "species": "ROSES",
     "variety": "MONDIAL",
@@ -2698,7 +2698,7 @@
   "11748|ROSES|BRIGHTON|40|20|": {
     "articulo_id": 31877,
     "articulo_name": "ROSA BRIGHTON 40CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "BRIGHTON",
@@ -2711,7 +2711,7 @@
   "11748|ROSES|MALIBU|50|20|": {
     "articulo_id": 35228,
     "articulo_name": "ROSA MALIBU 50CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "MALIBU",
@@ -2737,7 +2737,7 @@
   "11748|ROSES|FREEDOM|70|20|": {
     "articulo_id": 33939,
     "articulo_name": "ROSA FREEDOM 50CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "FREEDOM",
@@ -2750,7 +2750,7 @@
   "11748|ROSES|MOMENTUM|40|20|": {
     "articulo_id": 32311,
     "articulo_name": "ROSA COL MOMENTUM 40CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "MOMENTUM",
@@ -2763,7 +2763,7 @@
   "11748|ROSES|SWEET CAKE|40|20|": {
     "articulo_id": 32402,
     "articulo_name": "ROSA COL SWEET CAKE 40CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "SWEET CAKE",
@@ -2776,7 +2776,7 @@
   "11748|ROSES|PINK MONDIAL|40|20|": {
     "articulo_id": 32344,
     "articulo_name": "ROSA COL PINK MONDIAL 40CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "PINK MONDIAL",
@@ -2789,7 +2789,7 @@
   "11748|ROSES|MALIBU|40|20|": {
     "articulo_id": 35222,
     "articulo_name": "ROSA MALIBU 40CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "MALIBU",
@@ -2802,7 +2802,7 @@
   "11748|ROSES|SILANTOI|40|20|": {
     "articulo_id": 36513,
     "articulo_name": "ROSA SILANTOI 40CM 25U LUXUS",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "SILANTOI",
@@ -2815,7 +2815,7 @@
   "11748|ROSES|BLUSH|40|20|": {
     "articulo_id": 31820,
     "articulo_name": "ROSA BLUSH 40CM 25U EQR",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "BLUSH",
@@ -2841,7 +2841,7 @@
   "11748|ROSES|VENDELA|60|20|": {
     "articulo_id": 32425,
     "articulo_name": "ROSA COL VENDELA 40CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "VENDELA",
@@ -2932,7 +2932,7 @@
   "11748|ROSES|FRUTTETO|40|20|": {
     "articulo_id": 32259,
     "articulo_name": "ROSA COL FRUTTETO 40CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "FRUTTETO",
@@ -2945,7 +2945,7 @@
   "11748|ROSES|VINTAGE|40|20|": {
     "articulo_id": 37679,
     "articulo_name": "ROSA VINTAGE 40CM 25U UMA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "VINTAGE",
@@ -2958,7 +2958,7 @@
   "11748|ROSES|PINK FLOYD|40|20|": {
     "articulo_id": 32342,
     "articulo_name": "ROSA COL PINK FLOYD 40CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "PINK FLOYD",
@@ -2997,7 +2997,7 @@
   "11748|ROSES|ATOMIC|50|20|": {
     "articulo_id": 31713,
     "articulo_name": "ROSA ATOMIC 50CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "ATOMIC",
@@ -3153,7 +3153,7 @@
   "2228|ROSES|COTTON XPRESSION|50|25|": {
     "articulo_id": 32501,
     "articulo_name": "ROSA COTTON X-PRESSION 50CM 25U LUXUS",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "COTTON XPRESSION",
@@ -3268,9 +3268,9 @@
     "invoice": "AGRIVALDANI 00000159580.pdf"
   },
   "2228|ROSES|HIGH YELLOW FLAME|50|25|": {
-    "articulo_id": 34452,
-    "articulo_name": "ROSA HIGH & YELLOW M. FLAME 50CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "articulo_id": 33066,
+    "articulo_name": "ROSA EC HIGH & YELLOW 50CM 25U",
+    "origen": "manual",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "HIGH YELLOW FLAME",
@@ -3320,9 +3320,9 @@
     "invoice": "AGRIVALDANI 00000159580.pdf"
   },
   "2228|ROSES|HIGH YELLOW FLAME|60|25|": {
-    "articulo_id": 34453,
-    "articulo_name": "ROSA HIGH & YELLOW M. FLAME 60CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "articulo_id": 33067,
+    "articulo_name": "ROSA EC HIGH & YELLOW 60CM 25U",
+    "origen": "manual",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "HIGH YELLOW FLAME",
@@ -3335,7 +3335,7 @@
   "2228|ROSES|H MONDIAL|60|25|": {
     "articulo_id": 33232,
     "articulo_name": "ROSA EC MONDIAL 60CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H MONDIAL",
@@ -3517,7 +3517,7 @@
   "2228|ROSES|TIFANNY|60|25|": {
     "articulo_id": 33558,
     "articulo_name": "ROSA EC TIFFANY 60CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "TIFANNY",
@@ -3530,7 +3530,7 @@
   "2228|ROSES|HB MONDIAL|50|25|": {
     "articulo_id": 33230,
     "articulo_name": "ROSA EC MONDIAL 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "HB MONDIAL",
@@ -3543,7 +3543,7 @@
   "2228|ROSES|HB MONDIAL|60|25|": {
     "articulo_id": 33232,
     "articulo_name": "ROSA EC MONDIAL 60CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "HB MONDIAL",
@@ -3556,7 +3556,7 @@
   "2222|ROSES|ARCTICA|50|25|": {
     "articulo_id": 31695,
     "articulo_name": "ROSA ARTICA 50CM 25U CANTIZA",
-    "origen": "auto-matching",
+    "origen": "revisado",
     "provider_id": 2222,
     "species": "ROSES",
     "variety": "ARCTICA",
@@ -3660,7 +3660,7 @@
   "2222|ROSES|ARCTICA|60|25|": {
     "articulo_id": 31696,
     "articulo_name": "ROSA ARTICA 60CM 25U CANTIZA",
-    "origen": "auto-matching",
+    "origen": "revisado",
     "provider_id": 2222,
     "species": "ROSES",
     "variety": "ARCTICA",
@@ -3673,7 +3673,7 @@
   "2222|ROSES|ARCTICA|70|25|": {
     "articulo_id": 31697,
     "articulo_name": "ROSA ARTICA 70CM 25U CANTIZA",
-    "origen": "auto-matching",
+    "origen": "revisado",
     "provider_id": 2222,
     "species": "ROSES",
     "variety": "ARCTICA",
@@ -4009,9 +4009,9 @@
     "invoice": ""
   },
   "1429|ROSES|HB MONDIAL|50|25|": {
-    "articulo_id": 33230,
-    "articulo_name": "ROSA EC MONDIAL 50CM 25U",
-    "origen": "auto-fuzzy",
+    "articulo_id": 35502,
+    "articulo_name": "ROSA MONDIAL 50CM 25U LUXUS",
+    "origen": "manual",
     "provider_id": 1429,
     "species": "ROSES",
     "variety": "HB MONDIAL",
@@ -4022,9 +4022,9 @@
     "invoice": ""
   },
   "1429|ROSES|HB MONDIAL|40|25|": {
-    "articulo_id": 33228,
-    "articulo_name": "ROSA EC MONDIAL 40CM 25U",
-    "origen": "auto-fuzzy",
+    "articulo_id": 35454,
+    "articulo_name": "ROSA MONDIAL 40CM 25U LUXUS",
+    "origen": "manual",
     "provider_id": 1429,
     "species": "ROSES",
     "variety": "HB MONDIAL",
@@ -4297,7 +4297,7 @@
   "2228|ROSES|H EXPLORER|50|50|": {
     "articulo_id": 33081,
     "articulo_name": "ROSA EC HOT EXPLORER 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H EXPLORER",
@@ -4323,7 +4323,7 @@
   "2228|ROSES|QB COUNTRY BLUE|50|25|": {
     "articulo_id": 32522,
     "articulo_name": "ROSA COUNTRY BLUES 50CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "QB COUNTRY BLUE",
@@ -4349,7 +4349,7 @@
   "2228|ROSES|H EXPLORER|10|25|": {
     "articulo_id": 32946,
     "articulo_name": "ROSA EC EXPLORER 100CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H EXPLORER",
@@ -4360,9 +4360,9 @@
     "invoice": ""
   },
   "2228|ROSES|H DEEP PURPLE|10|25|": {
-    "articulo_id": 32603,
-    "articulo_name": "ROSA DEEP PURPLE 40CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "articulo_id": 32916,
+    "articulo_name": "ROSA EC DEEP PURPLE  60CM 25U",
+    "origen": "manual",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H DEEP PURPLE",
@@ -4414,7 +4414,7 @@
   "2228|ROSES|H REDVOLUTION|60|75|": {
     "articulo_id": 36372,
     "articulo_name": "ROSA REDVOLUTION 60CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H REDVOLUTION",
@@ -4427,7 +4427,7 @@
   "2228|ROSES|H EXPLORER|60|75|": {
     "articulo_id": 33082,
     "articulo_name": "ROSA EC HOT EXPLORER 60CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H EXPLORER",
@@ -4440,7 +4440,7 @@
   "2228|ROSES|H DEEP PURPLE|60|75|": {
     "articulo_id": 32646,
     "articulo_name": "ROSA DEEP PURPLE 60CM 25U LUXUS",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H DEEP PURPLE",
@@ -4726,7 +4726,7 @@
   "1429|ROSES|QB BRIGHTON|70|25|": {
     "articulo_id": 31956,
     "articulo_name": "ROSA BRIGHTON 70CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 1429,
     "species": "ROSES",
     "variety": "QB BRIGHTON",
@@ -4856,7 +4856,7 @@
   "2228|ROSES|H MONDIAL|50|25|": {
     "articulo_id": 33230,
     "articulo_name": "ROSA EC MONDIAL 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H MONDIAL",
@@ -4869,7 +4869,7 @@
   "2228|ROSES|H VENDELA|50|25|": {
     "articulo_id": 33599,
     "articulo_name": "ROSA EC VENDELA 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H VENDELA",
@@ -4895,7 +4895,7 @@
   "2222|ROSES|MELON X PRESSION|50|25|": {
     "articulo_id": 33199,
     "articulo_name": "ROSA EC MELON X-PRESSION 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2222,
     "species": "ROSES",
     "variety": "MELON X PRESSION",
@@ -5103,7 +5103,7 @@
   "442|ROSES|PROUD|50|20|": {
     "articulo_id": 33365,
     "articulo_name": "ROSA EC PROUD 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 442,
     "species": "ROSES",
     "variety": "PROUD",
@@ -5116,7 +5116,7 @@
   "442|ROSES|STARDUST|50|20|": {
     "articulo_id": 33469,
     "articulo_name": "ROSA EC STARDUST 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 442,
     "species": "ROSES",
     "variety": "STARDUST",
@@ -5168,7 +5168,7 @@
   "13001|ROSES|MOMENTUM|50|2|": {
     "articulo_id": 33223,
     "articulo_name": "ROSA EC MOMENTUM 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 13001,
     "species": "ROSES",
     "variety": "MOMENTUM",
@@ -5181,7 +5181,7 @@
   "13001|ROSES|FRUTTETO|50|4|": {
     "articulo_id": 33000,
     "articulo_name": "ROSA EC FRUTTETO 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 13001,
     "species": "ROSES",
     "variety": "FRUTTETO",
@@ -5194,7 +5194,7 @@
   "13001|ROSES|EXPLORER|60|12|": {
     "articulo_id": 32951,
     "articulo_name": "ROSA EC EXPLORER 60CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 13001,
     "species": "ROSES",
     "variety": "EXPLORER",
@@ -5272,7 +5272,7 @@
   "2228|ROSES|JESSIKA|50|25|": {
     "articulo_id": 33111,
     "articulo_name": "ROSA EC JESSICA 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "JESSIKA",
@@ -5662,7 +5662,7 @@
   "313|CARNATIONS|RED|0|10|SELECT": {
     "articulo_id": 12576,
     "articulo_name": "CLAVEL COL SELECT ROJO 70CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 313,
     "species": "CARNATIONS",
     "variety": "RED",
@@ -5675,7 +5675,7 @@
   "313|CARNATIONS|WHITE|0|10|SELECT": {
     "articulo_id": 26777,
     "articulo_name": "MINI CLAVEL COL SELECT BLANCO 70CM 10U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 313,
     "species": "CARNATIONS",
     "variety": "WHITE",
@@ -5818,7 +5818,7 @@
   "11748|ROSES|HIGH AND MAGIC|60|25|": {
     "articulo_id": 34508,
     "articulo_name": "ROSA HIGH MAGIC 60CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "HIGH AND MAGIC",
@@ -5870,7 +5870,7 @@
   "7338|ROSES|MONDIAL|50|2|": {
     "articulo_id": 33229,
     "articulo_name": "ROSA EC MONDIAL 50CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 7338,
     "species": "ROSES",
     "variety": "MONDIAL",
@@ -5883,7 +5883,7 @@
   "6323|HYDRANGEAS|PREMIUM TENIDA AZUL CLARO|60|1|": {
     "articulo_id": 22729,
     "articulo_name": "HYDRANGEA PREMIUM TEÑIDA AZUL CLARO 60CM 1U LATIN",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 6323,
     "species": "HYDRANGEAS",
     "variety": "PREMIUM TENIDA AZUL CLARO",
@@ -5896,7 +5896,7 @@
   "6323|HYDRANGEAS|PREMIUM TENIDA GRANATE|60|1|": {
     "articulo_id": 22736,
     "articulo_name": "HYDRANGEA PREMIUM TEÑIDA GRANATE 60CM 1U LATIN",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 6323,
     "species": "HYDRANGEAS",
     "variety": "PREMIUM TENIDA GRANATE",
@@ -5909,7 +5909,7 @@
   "281|ROSES|VENDE LA|40|25|": {
     "articulo_id": 32424,
     "articulo_name": "ROSA COL VENDELA 40CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 281,
     "species": "ROSES",
     "variety": "VENDE LA",
@@ -6013,7 +6013,7 @@
   "11748|ROSES|HIGH AND MAGIC|50|25|": {
     "articulo_id": 34483,
     "articulo_name": "ROSA HIGH MAGIC 50CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "HIGH AND MAGIC",
@@ -6130,7 +6130,7 @@
   "11748|ROSES|HIGH AND MAGIC|40|25|": {
     "articulo_id": 34471,
     "articulo_name": "ROSA HIGH MAGIC 40CM 25U LUXUS",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "HIGH AND MAGIC",
@@ -6247,7 +6247,7 @@
   "7338|ROSES|MONDIAL|40|4|": {
     "articulo_id": 33227,
     "articulo_name": "ROSA EC MONDIAL 40CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 7338,
     "species": "ROSES",
     "variety": "MONDIAL",
@@ -6260,7 +6260,7 @@
   "7338|ROSES|MONDIAL|50|4|": {
     "articulo_id": 33229,
     "articulo_name": "ROSA EC MONDIAL 50CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 7338,
     "species": "ROSES",
     "variety": "MONDIAL",
@@ -6728,7 +6728,7 @@
   "13001|ROSES|MOMENTUM|50|4|": {
     "articulo_id": 33223,
     "articulo_name": "ROSA EC MOMENTUM 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 13001,
     "species": "ROSES",
     "variety": "MOMENTUM",
@@ -6741,7 +6741,7 @@
   "6323|HYDRANGEAS|PREMIUM TENIDA ROJO|60|1|": {
     "articulo_id": 22733,
     "articulo_name": "HYDRANGEA PREMIUM TEÑIDA ROJO 60CM 1U LATIN",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 6323,
     "species": "HYDRANGEAS",
     "variety": "PREMIUM TENIDA ROJO",
@@ -6754,7 +6754,7 @@
   "6323|HYDRANGEAS|PREMIUM TENIDA AZUL|60|1|": {
     "articulo_id": 22742,
     "articulo_name": "HYDRANGEA PREMIUM TEÑIDA AZUL 60CM 1U LATIN",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 6323,
     "species": "HYDRANGEAS",
     "variety": "PREMIUM TENIDA AZUL",
@@ -6780,7 +6780,7 @@
   "6323|HYDRANGEAS|PREMIUM TENIDA LAVANDER|60|1|": {
     "articulo_id": 22739,
     "articulo_name": "HYDRANGEA PREMIUM TEÑIDA LAVANDA 60CM 1U LATIN",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 6323,
     "species": "HYDRANGEAS",
     "variety": "PREMIUM TENIDA LAVANDER",
@@ -6806,7 +6806,7 @@
   "7338|ROSES|MONDIAL|40|2|": {
     "articulo_id": 33227,
     "articulo_name": "ROSA EC MONDIAL 40CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 7338,
     "species": "ROSES",
     "variety": "MONDIAL",
@@ -7181,9 +7181,9 @@
     "invoice": ""
   },
   "4471|ROSES|CROWN|50|25|": {
-    "articulo_id": 32181,
-    "articulo_name": "ROSA CLOWN 50CM 25U LUXUS",
-    "origen": "auto-fuzzy",
+    "articulo_id": 36289,
+    "articulo_name": "ROSA QUEENS CROWN 50CM 20U LIFEFLOWERS",
+    "origen": "manual",
     "provider_id": 4471,
     "species": "ROSES",
     "variety": "CROWN",
@@ -7222,7 +7222,7 @@
   "281|ROSES|VENCJELA|50|25|": {
     "articulo_id": 32426,
     "articulo_name": "ROSA COL VENDELA 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 281,
     "species": "ROSES",
     "variety": "VENCJELA",
@@ -7389,8 +7389,8 @@
     "invoice": ""
   },
   "2228|ROSES|TIBET|50|25|": {
-    "articulo_id": 37132,
-    "articulo_name": "ROSA TIBET 50CM 25U AGRIVALDANI",
+    "articulo_id": 37131,
+    "articulo_name": "ROSA TIBET 50CM 25U LUXUS",
     "origen": "auto-marca",
     "provider_id": 2228,
     "species": "ROSES",
@@ -7398,7 +7398,7 @@
     "size": 50,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "TIBET 50 25 1 25 0.30 7.50",
+    "raw": "5 - 5 1 QUARTER TIBET 50 25 6 150 0.30 45.00",
     "invoice": ""
   },
   "6916|ROSES|FREEDOM|60|20|": {
@@ -7417,7 +7417,7 @@
   "6916|ROSES|FREEDOM|70|20|": {
     "articulo_id": 32992,
     "articulo_name": "ROSA EC FREEDOM 50CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 6916,
     "species": "ROSES",
     "variety": "FREEDOM",
@@ -7430,7 +7430,7 @@
   "6916|ROSES|FREEDOM|80|20|": {
     "articulo_id": 32992,
     "articulo_name": "ROSA EC FREEDOM 50CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 6916,
     "species": "ROSES",
     "variety": "FREEDOM",
@@ -7612,7 +7612,7 @@
   "1434|ROSES|FELICITY|25|25|": {
     "articulo_id": 32972,
     "articulo_name": "ROSA EC FELICITY 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 1434,
     "species": "ROSES",
     "variety": "FELICITY",
@@ -7651,7 +7651,7 @@
   "1434|ROSES|ENGAGEMENT|25|25|": {
     "articulo_id": 32933,
     "articulo_name": "ROSA EC ENGAGEMENT 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 1434,
     "species": "ROSES",
     "variety": "ENGAGEMENT",
@@ -7703,7 +7703,7 @@
   "6916|ROSES|BUMBLE BEE|70|25|": {
     "articulo_id": 31985,
     "articulo_name": "ROSA BUMBLEBEE 70CM 25U FIORENTINA",
-    "origen": "auto-matching",
+    "origen": "revisado",
     "provider_id": 6916,
     "species": "ROSES",
     "variety": "BUMBLE BEE",
@@ -7911,7 +7911,7 @@
   "13001|ROSES|MOMENTUM|50|3|": {
     "articulo_id": 33223,
     "articulo_name": "ROSA EC MOMENTUM 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 13001,
     "species": "ROSES",
     "variety": "MOMENTUM",
@@ -7924,7 +7924,7 @@
   "7338|ROSES|MONDIAL|50|3|": {
     "articulo_id": 33229,
     "articulo_name": "ROSA EC MONDIAL 50CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 7338,
     "species": "ROSES",
     "variety": "MONDIAL",
@@ -7937,7 +7937,7 @@
   "7338|ROSES|MONDIAL|60|2|": {
     "articulo_id": 33231,
     "articulo_name": "ROSA EC MONDIAL 60CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 7338,
     "species": "ROSES",
     "variety": "MONDIAL",
@@ -8015,7 +8015,7 @@
   "11748|ROSES|ATOMIC|40|20|": {
     "articulo_id": 31706,
     "articulo_name": "ROSA ATOMIC 40CM 25U LUXUS",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "ATOMIC",
@@ -8028,7 +8028,7 @@
   "11748|ROSES|EXPLORER|40|20|": {
     "articulo_id": 32251,
     "articulo_name": "ROSA COL EXPLORER 40CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "EXPLORER",
@@ -8054,7 +8054,7 @@
   "11748|ROSES|ATOMIC|60|20|": {
     "articulo_id": 31726,
     "articulo_name": "ROSA ATOMIC 60CM 25U LUXUS",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "ATOMIC",
@@ -8119,7 +8119,7 @@
   "442|ROSES|BOULEVARD|40|25|": {
     "articulo_id": 31862,
     "articulo_name": "ROSA BOULEVAR 40CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 442,
     "species": "ROSES",
     "variety": "BOULEVARD",
@@ -8249,7 +8249,7 @@
   "442|ROSES|REDVOLUTION|40|25|": {
     "articulo_id": 36368,
     "articulo_name": "ROSA REDVOLUTION 50CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 442,
     "species": "ROSES",
     "variety": "REDVOLUTION",
@@ -8301,7 +8301,7 @@
   "13001|ROSES|MONDIAL|50|4|": {
     "articulo_id": 33229,
     "articulo_name": "ROSA EC MONDIAL 50CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 13001,
     "species": "ROSES",
     "variety": "MONDIAL",
@@ -8314,7 +8314,7 @@
   "2228|ROSES|FLOREANA|70|10|": {
     "articulo_id": 32980,
     "articulo_name": "ROSA EC FLOREANA 40CM 10U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "FLOREANA",
@@ -8611,9 +8611,9 @@
     "invoice": ""
   },
   "2228|ROSES|CANDLELIGTH|50|25|": {
-    "articulo_id": 32078,
-    "articulo_name": "ROSA CANDLELIGHT 50CM 25U LUXUS",
-    "origen": "auto-fuzzy",
+    "articulo_id": 32800,
+    "articulo_name": "ROSA EC CANDLELIGHT 50CM 25U",
+    "origen": "manual",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "CANDLELIGTH",
@@ -8626,7 +8626,7 @@
   "2228|ROSES|FRUTETTO|50|25|": {
     "articulo_id": 33000,
     "articulo_name": "ROSA EC FRUTTETO 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "FRUTETTO",
@@ -8717,7 +8717,7 @@
   "2228|ROSES|FRUTETTO|40|25|": {
     "articulo_id": 32999,
     "articulo_name": "ROSA EC FRUTTETO 40CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "FRUTETTO",
@@ -8782,7 +8782,7 @@
   "2228|ROSES|H BLUSH|50|25|": {
     "articulo_id": 31824,
     "articulo_name": "ROSA BLUSH 50CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H BLUSH",
@@ -8795,7 +8795,7 @@
   "2228|ROSES|H BUMBLE BEE|50|25|": {
     "articulo_id": 31979,
     "articulo_name": "ROSA BUMBLEBEE 50CM 25U FIORENTINA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H BUMBLE BEE",
@@ -8808,7 +8808,7 @@
   "2228|ROSES|H CARNELIAN|50|25|": {
     "articulo_id": 32127,
     "articulo_name": "ROSA CARNELIAN 50CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H CARNELIAN",
@@ -8821,7 +8821,7 @@
   "2228|ROSES|H COOL WATER|50|25|": {
     "articulo_id": 32461,
     "articulo_name": "ROSA COOL WATER 50CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H COOL WATER",
@@ -8834,7 +8834,7 @@
   "2228|ROSES|H ENGAGEMENT|50|25|": {
     "articulo_id": 32933,
     "articulo_name": "ROSA EC ENGAGEMENT 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H ENGAGEMENT",
@@ -8847,7 +8847,7 @@
   "2228|ROSES|H FAIR LADY|50|25|": {
     "articulo_id": 32959,
     "articulo_name": "ROSA EC FAIR LADY 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H FAIR LADY",
@@ -8860,7 +8860,7 @@
   "2228|ROSES|H HARD ROCK|50|25|": {
     "articulo_id": 34410,
     "articulo_name": "ROSA HARD ROCK 50CM 25U FIORENTINA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H HARD ROCK",
@@ -8873,7 +8873,7 @@
   "2228|ROSES|H HOT KISS|50|25|": {
     "articulo_id": 34566,
     "articulo_name": "ROSA HOT KISS 50CM 25U FIORENTINA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H HOT KISS",
@@ -8884,9 +8884,9 @@
     "invoice": ""
   },
   "2228|ROSES|H MADONA|50|25|": {
-    "articulo_id": 33159,
-    "articulo_name": "ROSA EC MADONNA 50CM 25U",
-    "origen": "auto-fuzzy",
+    "articulo_id": 35173,
+    "articulo_name": "ROSA MADONNA 50CM 25U FIORENTINA",
+    "origen": "manual",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H MADONA",
@@ -8899,7 +8899,7 @@
   "2228|ROSES|H PHOENIX|50|25|": {
     "articulo_id": 33317,
     "articulo_name": "ROSA EC PHOENIX 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H PHOENIX",
@@ -8912,7 +8912,7 @@
   "2228|ROSES|H SWEET LADY|50|25|": {
     "articulo_id": 36976,
     "articulo_name": "ROSA SWEET LADY 50CM 25U FIORENTINA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "H SWEET LADY",
@@ -9248,9 +9248,9 @@
     "invoice": ""
   },
   "2228|ROSES|CANDLELIGTH|60|25|": {
-    "articulo_id": 32093,
-    "articulo_name": "ROSA CANDLELIGHT 60CM 25U LUXUS",
-    "origen": "auto-fuzzy",
+    "articulo_id": 32801,
+    "articulo_name": "ROSA EC CANDLELIGHT 60CM 25U",
+    "origen": "manual",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "CANDLELIGTH",
@@ -9445,7 +9445,7 @@
   "2228|ROSES|STARBLUSH|50|10|": {
     "articulo_id": 33460,
     "articulo_name": "ROSA EC STAR BLUSH 50CM 10U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "STARBLUSH",
@@ -9471,7 +9471,7 @@
   "2228|ROSES|COTTON XPRESSION|40|25|": {
     "articulo_id": 32510,
     "articulo_name": "ROSA COTTON X-PRESSION 40CM 25U LUXUS",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "COTTON XPRESSION",
@@ -9588,7 +9588,7 @@
   "2228|ROSES|COTTON XPRESSION|60|25|": {
     "articulo_id": 32511,
     "articulo_name": "ROSA COTTON X-PRESSION 60CM 25U ROSELY",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "COTTON XPRESSION",
@@ -9757,7 +9757,7 @@
   "281|ROSES|VENDE LA|50|25|": {
     "articulo_id": 32426,
     "articulo_name": "ROSA COL VENDELA 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 281,
     "species": "ROSES",
     "variety": "VENDE LA",
@@ -9770,7 +9770,7 @@
   "281|ROSES|FRF.EDOM|60|25|": {
     "articulo_id": 33980,
     "articulo_name": "ROSA FREEDOM 60CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 281,
     "species": "ROSES",
     "variety": "FRF.EDOM",
@@ -9822,7 +9822,7 @@
   "2228|ROSES|JESSIKA|60|25|": {
     "articulo_id": 33112,
     "articulo_name": "ROSA EC JESSICA 60CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "JESSIKA",
@@ -9913,7 +9913,7 @@
   "2228|ROSES|JESSIKA|40|25|": {
     "articulo_id": 33110,
     "articulo_name": "ROSA EC JESSICA 40CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "JESSIKA",
@@ -9965,7 +9965,7 @@
   "6323|HYDRANGEAS|PREMIUM TENIDA RASPBERRY|60|1|": {
     "articulo_id": 22754,
     "articulo_name": "HYDRANGEA PREMIUM TEÑIDA CRAMBERRY 60CM 1U LATIN",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 6323,
     "species": "HYDRANGEAS",
     "variety": "PREMIUM TENIDA RASPBERRY",
@@ -9978,7 +9978,7 @@
   "6323|HYDRANGEAS|PREMIUM TENIDA CORAL|60|1|": {
     "articulo_id": 22741,
     "articulo_name": "HYDRANGEA PREMIUM TEÑIDA CORAL 60CM 1U LATIN",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 6323,
     "species": "HYDRANGEAS",
     "variety": "PREMIUM TENIDA CORAL",
@@ -10056,7 +10056,7 @@
   "6916|ROSES|BUMBLE BEE|50|25|": {
     "articulo_id": 31979,
     "articulo_name": "ROSA BUMBLEBEE 50CM 25U FIORENTINA",
-    "origen": "auto-matching",
+    "origen": "revisado",
     "provider_id": 6916,
     "species": "ROSES",
     "variety": "BUMBLE BEE",
@@ -10134,7 +10134,7 @@
   "6916|ROSES|MADONA|50|25|": {
     "articulo_id": 35173,
     "articulo_name": "ROSA MADONNA 50CM 25U FIORENTINA",
-    "origen": "auto-matching",
+    "origen": "revisado",
     "provider_id": 6916,
     "species": "ROSES",
     "variety": "MADONA",
@@ -10589,7 +10589,7 @@
   "1434|ROSES|COUNTRY HOME|25|2|": {
     "articulo_id": 32538,
     "articulo_name": "ROSA COUNTRY HOME 50CM 25U FIORENTINA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 1434,
     "species": "ROSES",
     "variety": "COUNTRY HOME",
@@ -10719,7 +10719,7 @@
   "11748|ROSES|SILANTOI|50|20|": {
     "articulo_id": 36527,
     "articulo_name": "ROSA SILANTOI 50CM 25U LUXUS",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "SILANTOI",
@@ -10732,7 +10732,7 @@
   "11748|ROSES|HIGH AND MAGIC|50|20|": {
     "articulo_id": 34482,
     "articulo_name": "ROSA HIGH MAGIC 50CM 20U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "HIGH AND MAGIC",
@@ -10745,7 +10745,7 @@
   "11748|ROSES|BLUSH|50|20|": {
     "articulo_id": 31824,
     "articulo_name": "ROSA BLUSH 50CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "BLUSH",
@@ -10927,7 +10927,7 @@
   "13001|ROSES|MONDIAL|50|2|": {
     "articulo_id": 33229,
     "articulo_name": "ROSA EC MONDIAL 50CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 13001,
     "species": "ROSES",
     "variety": "MONDIAL",
@@ -11057,7 +11057,7 @@
   "310|CARNATIONS|MORADO|70|20|FANCY": {
     "articulo_id": 12801,
     "articulo_name": "CLAVEL FANCY MORADO 70CM 20U COLIBRI",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 310,
     "species": "CARNATIONS",
     "variety": "MORADO",
@@ -11083,7 +11083,7 @@
   "1434|ROSES|PINK X-PRESSION|25|2|": {
     "articulo_id": 35949,
     "articulo_name": "ROSA PINK  X-PRESSION 50CM 25U LUXUS",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 1434,
     "species": "ROSES",
     "variety": "PINK X-PRESSION",
@@ -11096,7 +11096,7 @@
   "1434|ROSES|PRINCESS CROWN|25|2|": {
     "articulo_id": 33360,
     "articulo_name": "ROSA EC PRINCESS CROWN 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 1434,
     "species": "ROSES",
     "variety": "PRINCESS CROWN",
@@ -11148,7 +11148,7 @@
   "2222|ROSES|CHAMPAGNER|40|25|": {
     "articulo_id": 32825,
     "articulo_name": "ROSA EC CHAMPAGNE 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2222,
     "species": "ROSES",
     "variety": "CHAMPAGNER",
@@ -11614,9 +11614,9 @@
     "invoice": ""
   },
   "4471|ROSES|CANDELIGHT|50|20|": {
-    "articulo_id": 32081,
-    "articulo_name": "ROSA CANDLELIGHT 50CM 25U LIFEFLOWERS",
-    "origen": "auto-matching",
+    "articulo_id": 32083,
+    "articulo_name": "ROSA CANDLELIGHT 50CM 20U LIFEFLOWERS",
+    "origen": "manual",
     "provider_id": 4471,
     "species": "ROSES",
     "variety": "CANDELIGHT",
@@ -11861,9 +11861,9 @@
     "invoice": ""
   },
   "313|CARNATIONS|GOLEM|0|20|FANCY": {
-    "articulo_id": 12545,
-    "articulo_name": "CLAVEL COL FANCY GOLD 70CM 20U",
-    "origen": "auto-fuzzy",
+    "articulo_id": 12779,
+    "articulo_name": "CLAVEL FANCY LILA 70CM 20U COLIBRI",
+    "origen": "manual",
     "provider_id": 313,
     "species": "CARNATIONS",
     "variety": "GOLEM",
@@ -11889,7 +11889,7 @@
   "313|CARNATIONS|CREAM|0|20|FANCY": {
     "articulo_id": 12539,
     "articulo_name": "CLAVEL COL FANCY CREMA 70CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 313,
     "species": "CARNATIONS",
     "variety": "CREAM",
@@ -11915,7 +11915,7 @@
   "313|CARNATIONS|NOVELTY|0|25|SELECT": {
     "articulo_id": 12578,
     "articulo_name": "CLAVEL COL SELECT NOVEDADES 70CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 313,
     "species": "CARNATIONS",
     "variety": "NOVELTY",
@@ -12110,7 +12110,7 @@
   "442|ROSES|HIGH & MAGIC|50|20|": {
     "articulo_id": 34482,
     "articulo_name": "ROSA HIGH MAGIC 50CM 20U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 442,
     "species": "ROSES",
     "variety": "HIGH & MAGIC",
@@ -12630,7 +12630,7 @@
   "2226|ROSES|TIFANNY|60|25|": {
     "articulo_id": 37192,
     "articulo_name": "ROSA TIFFANY 60CM 25U LA ROSALEDA",
-    "origen": "auto-matching",
+    "origen": "revisado",
     "provider_id": 2226,
     "species": "ROSES",
     "variety": "TIFANNY",
@@ -12890,7 +12890,7 @@
   "11748|ROSES|HIGH AND MAGIC|50|10|": {
     "articulo_id": 34487,
     "articulo_name": "ROSA HIGH MAGIC 50CM 10U ECOFLOR",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 11748,
     "species": "ROSES",
     "variety": "HIGH AND MAGIC",
@@ -13319,7 +13319,7 @@
   "2228|ROSES|WHITE XPRESSION|50|25|": {
     "articulo_id": 37743,
     "articulo_name": "ROSA WHITE X-PRESSION 50CM 25U LA ROSALEDA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2228,
     "species": "ROSES",
     "variety": "WHITE XPRESSION",
@@ -13540,7 +13540,7 @@
   "430|ROSES|FRUTETTO|70|25|": {
     "articulo_id": 33005,
     "articulo_name": "ROSA EC FRUTTETO 70CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 430,
     "species": "ROSES",
     "variety": "FRUTETTO",
@@ -13566,7 +13566,7 @@
   "2226|ROSES|RISE&SHINE|60|25|": {
     "articulo_id": 33404,
     "articulo_name": "ROSA EC RISE & SHINE 60CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 2226,
     "species": "ROSES",
     "variety": "RISE&SHINE",
@@ -13631,7 +13631,7 @@
   "430|ROSES|LIMONADE|70|25|": {
     "articulo_id": 33135,
     "articulo_name": "ROSA EC LEMONADE 70CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 430,
     "species": "ROSES",
     "variety": "LIMONADE",
@@ -14492,9 +14492,9 @@
     "invoice": ""
   },
   "306|CARNATIONS|SPRAY CARNATION RED|0|500|SELECT": {
-    "articulo_id": 36691,
-    "articulo_name": "ROSA SPRAY MAROON ROJO 60CM 10U",
-    "origen": "auto-matching",
+    "articulo_id": 13021,
+    "articulo_name": "CLAVEL SHORT ROJO 40CM 20U TURFLOR",
+    "origen": "manual",
     "provider_id": 306,
     "species": "CARNATIONS",
     "variety": "SPRAY CARNATION RED",
@@ -14505,9 +14505,9 @@
     "invoice": ""
   },
   "306|CARNATIONS|SPRAY CARNATION WHITE|0|500|SELECT": {
-    "articulo_id": 14947,
-    "articulo_name": "CRISANTEMO SPRAY NEWTON BLANCO 70CM 5U",
-    "origen": "auto-matching",
+    "articulo_id": 12988,
+    "articulo_name": "CLAVEL SHORT BLANCO 40CM 20U TURFLOR",
+    "origen": "manual",
     "provider_id": 306,
     "species": "CARNATIONS",
     "variety": "SPRAY CARNATION WHITE",
@@ -14830,9 +14830,9 @@
     "invoice": ""
   },
   "6916|ROSES|BLANCA|50|25|": {
-    "articulo_id": 22371,
-    "articulo_name": "HYDRANGEA BLANCO 40CM 1U",
-    "origen": "auto-matching",
+    "articulo_id": 36179,
+    "articulo_name": "ROSA PLAYA BLANCA 50CM 25U FIORENTINA",
+    "origen": "manual",
     "provider_id": 6916,
     "species": "ROSES",
     "variety": "BLANCA",
@@ -15035,28 +15035,6 @@
     "provider_id": 9750,
     "species": "ALSTROEMERIA",
     "variety": "VIRGINIA",
-    "size": 0,
-    "stems_per_bunch": 0,
-    "grade": ""
-  },
-  "8342|ALSTROEMERIA|ASSORTED|0|0|": {
-    "articulo_id": 2383,
-    "articulo_name": "ALSTROMERIA PERFECTION MIXTO 70CM 10U MULTIFLORA",
-    "origen": "auto-matching",
-    "provider_id": 8342,
-    "species": "ALSTROEMERIA",
-    "variety": "ASSORTED",
-    "size": 0,
-    "stems_per_bunch": 0,
-    "grade": ""
-  },
-  "9750|ALSTROEMERIA|ASSORTED|0|0|": {
-    "articulo_id": 2316,
-    "articulo_name": "ALSTROMERIA FANCY MIXTO 70CM 10U DAFLOR",
-    "origen": "auto-matching",
-    "provider_id": 9750,
-    "species": "ALSTROEMERIA",
-    "variety": "ASSORTED",
     "size": 0,
     "stems_per_bunch": 0,
     "grade": ""
@@ -15517,7 +15495,7 @@
   "2226|ROSES|TIFANNY|60|0|": {
     "articulo_id": 37192,
     "articulo_name": "ROSA TIFFANY 60CM 25U LA ROSALEDA",
-    "origen": "auto-matching",
+    "origen": "revisado",
     "provider_id": 2226,
     "species": "ROSES",
     "variety": "TIFANNY",
@@ -16298,7 +16276,7 @@
   "4471|ROSES|CANDELIGHT|50|0|": {
     "articulo_id": 32081,
     "articulo_name": "ROSA CANDLELIGHT 50CM 25U LIFEFLOWERS",
-    "origen": "auto-matching",
+    "origen": "revisado",
     "provider_id": 4471,
     "species": "ROSES",
     "variety": "CANDELIGHT",
@@ -16519,17 +16497,6 @@
     "provider_id": 9750,
     "species": "ALSTROEMERIA",
     "variety": "NADYA",
-    "size": 0,
-    "stems_per_bunch": 0,
-    "grade": ""
-  },
-  "9750|ALSTROEMERIA|ILSA|0|0|": {
-    "articulo_id": 2436,
-    "articulo_name": "ALSTROMERIA SELECT ISA 80CM 10U DAFLOR",
-    "origen": "auto-matching",
-    "provider_id": 9750,
-    "species": "ALSTROEMERIA",
-    "variety": "ILSA",
     "size": 0,
     "stems_per_bunch": 0,
     "grade": ""
@@ -16912,23 +16879,12 @@
     "grade": ""
   },
   "313|CARNATIONS|CERISE|0|0|": {
-    "articulo_id": 12758,
-    "articulo_name": "CLAVEL FANCY FUCSIA 70CM 20U COLIBRI",
-    "origen": "auto-batch-2026",
+    "articulo_id": 12819,
+    "articulo_name": "CLAVEL FANCY ROJO 70CM 20U COLIBRI",
+    "origen": "manual",
     "provider_id": 313,
     "species": "CARNATIONS",
     "variety": "CERISE",
-    "size": 0,
-    "stems_per_bunch": 0,
-    "grade": ""
-  },
-  "8342|ALSTROEMERIA|SPECIAL PACK|0|0|": {
-    "articulo_id": 2383,
-    "articulo_name": "ALSTROMERIA PERFECTION MIXTO 70CM 10U MULTIFLORA",
-    "origen": "auto-batch-2026",
-    "provider_id": 8342,
-    "species": "ALSTROEMERIA",
-    "variety": "SPECIAL PACK",
     "size": 0,
     "stems_per_bunch": 0,
     "grade": ""
@@ -17046,7 +17002,7 @@
   "440|GYPSOPHILA|GYPSOPHILA GYP XL RAINBOW MIX80 CM/750GR VIOLETA FLOWERS|80|0|": {
     "articulo_id": 28255,
     "articulo_name": "PANICULATA XLENCE TEÑIDA RAINBOW 750GR 1U VIOLETA",
-    "origen": "auto-batch-2026",
+    "origen": "revisado",
     "provider_id": 440,
     "species": "GYPSOPHILA",
     "variety": "GYPSOPHILA GYP XL RAINBOW MIX80 CM/750GR VIOLETA FLOWERS",
@@ -17136,7 +17092,7 @@
   "440|GYPSOPHILA|GYPSOPHILA GYP XL NATURAL WHITE80 CM/ 750 GR VIOLETA FLOWERS|80|0|": {
     "articulo_id": 28248,
     "articulo_name": "PANICULATA XLENCE BLANCO 750GR 1U VIOLETA",
-    "origen": "auto-batch-2026",
+    "origen": "revisado",
     "provider_id": 440,
     "species": "GYPSOPHILA",
     "variety": "GYPSOPHILA GYP XL NATURAL WHITE80 CM/ 750 GR VIOLETA FLOWERS",
@@ -17171,7 +17127,7 @@
   "440|GYPSOPHILA|GYPSOPHILA XL ESPECIAL|80|0|": {
     "articulo_id": 28248,
     "articulo_name": "PANICULATA XLENCE BLANCO 750GR 1U VIOLETA",
-    "origen": "auto-batch-2026",
+    "origen": "revisado",
     "provider_id": 440,
     "species": "GYPSOPHILA",
     "variety": "GYPSOPHILA XL ESPECIAL",
@@ -17239,7 +17195,7 @@
   "2226|ROSES|TIFANNY|50|0|": {
     "articulo_id": 37174,
     "articulo_name": "ROSA TIFFANY 50CM 25U LA ROSALEDA",
-    "origen": "auto-batch-2026",
+    "origen": "revisado",
     "provider_id": 2226,
     "species": "ROSES",
     "variety": "TIFANNY",
@@ -17250,7 +17206,7 @@
   "440|GYPSOPHILA|GYPSOPHILA XL TINTED LIGHT PINK|80|0|": {
     "articulo_id": 28296,
     "articulo_name": "PANICULATA XLENCE TEÑIDA ROSA CLARO 750GR 1U VIOLETA",
-    "origen": "auto-batch-2026",
+    "origen": "revisado",
     "provider_id": 440,
     "species": "GYPSOPHILA",
     "variety": "GYPSOPHILA XL TINTED LIGHT PINK",
@@ -17261,7 +17217,7 @@
   "440|GYPSOPHILA|GYPSOPHILA XL TINTED LIGHT BLUE|80|0|": {
     "articulo_id": 28297,
     "articulo_name": "PANICULATA XLENCE TEÑIDA AZUL CLARO 750GR 1U VIOLETA",
-    "origen": "auto-batch-2026",
+    "origen": "revisado",
     "provider_id": 440,
     "species": "GYPSOPHILA",
     "variety": "GYPSOPHILA XL TINTED LIGHT BLUE",
@@ -17272,7 +17228,7 @@
   "440|GYPSOPHILA|GYPSOPHILA XL TINTED FUCSIA|80|0|": {
     "articulo_id": 28293,
     "articulo_name": "PANICULATA XLENCE TEÑIDA FUCSIA 750GR 1U VIOLETA",
-    "origen": "auto-batch-2026",
+    "origen": "revisado",
     "provider_id": 440,
     "species": "GYPSOPHILA",
     "variety": "GYPSOPHILA XL TINTED FUCSIA",
@@ -17283,7 +17239,7 @@
   "440|GYPSOPHILA|GYPSOPHILA XL TINTED LAVANDER|80|0|": {
     "articulo_id": 28292,
     "articulo_name": "PANICULATA XLENCE TEÑIDA LAVANDA 750GR 1U VIOLETA",
-    "origen": "auto-batch-2026",
+    "origen": "revisado",
     "provider_id": 440,
     "species": "GYPSOPHILA",
     "variety": "GYPSOPHILA XL TINTED LAVANDER",
@@ -17294,7 +17250,7 @@
   "440|GYPSOPHILA|GYPSOPHILA XL NATURAL WHITE|80|0|": {
     "articulo_id": 28248,
     "articulo_name": "PANICULATA XLENCE BLANCO 750GR 1U VIOLETA",
-    "origen": "auto-batch-2026",
+    "origen": "revisado",
     "provider_id": 440,
     "species": "GYPSOPHILA",
     "variety": "GYPSOPHILA XL NATURAL WHITE",
@@ -17395,7 +17351,7 @@
   "440|GYPSOPHILA|GYPSOPHILA XL NATURAL|80|0|": {
     "articulo_id": 28248,
     "articulo_name": "PANICULATA XLENCE BLANCO 750GR 1U VIOLETA",
-    "origen": "auto-batch-2026",
+    "origen": "revisado",
     "provider_id": 440,
     "species": "GYPSOPHILA",
     "variety": "GYPSOPHILA XL NATURAL",
@@ -17417,7 +17373,7 @@
   "440|GYPSOPHILA|GYPSOPHILA XL MIX RAINBOW|80|0|": {
     "articulo_id": 28255,
     "articulo_name": "PANICULATA XLENCE TEÑIDA RAINBOW 750GR 1U VIOLETA",
-    "origen": "auto-batch-2026",
+    "origen": "revisado",
     "provider_id": 440,
     "species": "GYPSOPHILA",
     "variety": "GYPSOPHILA XL MIX RAINBOW",
@@ -17590,7 +17546,7 @@
   "8870|ROSES|HIGH YELLOW FLAME|50|25|": {
     "articulo_id": 34452,
     "articulo_name": "ROSA HIGH & YELLOW M. FLAME 50CM 25U CANTIZA",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 8870,
     "species": "ROSES",
     "variety": "HIGH YELLOW FLAME",
@@ -17627,9 +17583,9 @@
     "invoice": "001018100"
   },
   "4471|ROSES|MAGIC|50|25|": {
-    "articulo_id": 33163,
-    "articulo_name": "ROSA EC MAGGI 50CM 25U",
-    "origen": "auto-matching",
+    "articulo_id": 34491,
+    "articulo_name": "ROSA HIGH MAGIC 50CM 25U LIFEFLOWERS",
+    "origen": "manual",
     "provider_id": 4471,
     "species": "ROSES",
     "variety": "MAGIC",
@@ -17811,7 +17767,7 @@
   "440|GYPSOPHILA|GYPSOPHILA XLENCE RAINBOWN MIX|80|25|": {
     "articulo_id": 28255,
     "articulo_name": "PANICULATA XLENCE TEÑIDA RAINBOW 750GR 1U VIOLETA",
-    "origen": "auto-matching",
+    "origen": "revisado",
     "provider_id": 440,
     "species": "GYPSOPHILA",
     "variety": "GYPSOPHILA XLENCE RAINBOWN MIX",
@@ -17911,9 +17867,9 @@
     "invoice": "001018100"
   },
   "4471|ROSES|ROSALIA CANDELIGHT|50|20|": {
-    "articulo_id": 32081,
-    "articulo_name": "ROSA CANDLELIGHT 50CM 25U LIFEFLOWERS",
-    "origen": "auto-delegacion",
+    "articulo_id": 32083,
+    "articulo_name": "ROSA CANDLELIGHT 50CM 20U LIFEFLOWERS",
+    "origen": "manual",
     "provider_id": 4471,
     "species": "ROSES",
     "variety": "ROSALIA CANDELIGHT",
@@ -22983,7 +22939,7 @@
   "2222|ROSES|COOLDOWN|60|25|": {
     "articulo_id": 32455,
     "articulo_name": "ROSA COOL DOWN 60CM 25U CANTIZA",
-    "origen": "auto-marca",
+    "origen": "revisado",
     "provider_id": 2222,
     "species": "ROSES",
     "variety": "COOLDOWN",
@@ -24374,7 +24330,7 @@
   "90004|CARNATIONS|ILIAS YELLOW|70|20|FANCY": {
     "articulo_id": 12527,
     "articulo_name": "CLAVEL COL FANCY AMARILLO 70CM 20U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 90004,
     "species": "CARNATIONS",
     "variety": "ILIAS YELLOW",
@@ -25154,7 +25110,7 @@
   "90001|ROSES|LIGHT HOUSE|50|25|": {
     "articulo_id": 35118,
     "articulo_name": "ROSA LIGHTHOUSE 50CM 25U BRISSAS",
-    "origen": "auto-marca",
+    "origen": "revisado",
     "provider_id": 90001,
     "species": "ROSES",
     "variety": "LIGHT HOUSE",
@@ -26064,7 +26020,7 @@
   "90001|ROSES|LIGHT HOUSE|60|25|": {
     "articulo_id": 35123,
     "articulo_name": "ROSA LIGHTHOUSE 60CM 25U BRISSAS",
-    "origen": "auto-marca",
+    "origen": "revisado",
     "provider_id": 90001,
     "species": "ROSES",
     "variety": "LIGHT HOUSE",
@@ -26324,7 +26280,7 @@
   "90001|ROSES|HIGH AND EXOTIC|50|25|": {
     "articulo_id": 33068,
     "articulo_name": "ROSA EC HIGH EXOTIC 50CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 90001,
     "species": "ROSES",
     "variety": "HIGH AND EXOTIC",
@@ -26831,7 +26787,7 @@
   "90001|ROSES|HIGH AND EXOTIC|60|25|": {
     "articulo_id": 33070,
     "articulo_name": "ROSA EC HIGH EXOTIC 60CM 25U",
-    "origen": "auto-fuzzy",
+    "origen": "revisado",
     "provider_id": 90001,
     "species": "ROSES",
     "variety": "HIGH AND EXOTIC",
@@ -26933,8 +26889,8 @@
     "invoice": ""
   },
   "90007|ROSES|BRIGHTON|50|25|": {
-    "articulo_id": 31908,
-    "articulo_name": "ROSA BRIGHTON 50CM 25U CERES",
+    "articulo_id": 31909,
+    "articulo_name": "ROSA BRIGHTON 50CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -26946,8 +26902,8 @@
     "invoice": ""
   },
   "90007|ROSES|CABARET|50|25|": {
-    "articulo_id": 32029,
-    "articulo_name": "ROSA CABARET 50CM 25U CERES",
+    "articulo_id": 32031,
+    "articulo_name": "ROSA CABARET 50CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -26959,8 +26915,8 @@
     "invoice": ""
   },
   "90007|ROSES|FRUTTETO|50|25|": {
-    "articulo_id": 34087,
-    "articulo_name": "ROSA FRUTTETO 50CM 25U CERES",
+    "articulo_id": 34086,
+    "articulo_name": "ROSA FRUTTETO 50CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -26985,8 +26941,8 @@
     "invoice": ""
   },
   "90007|ROSES|BRIGHTON|40|25|": {
-    "articulo_id": 31879,
-    "articulo_name": "ROSA BRIGHTON 40CM 25U CERES",
+    "articulo_id": 31881,
+    "articulo_name": "ROSA BRIGHTON 40CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -26998,8 +26954,8 @@
     "invoice": ""
   },
   "90007|ROSES|EXPLORER|40|25|": {
-    "articulo_id": 33736,
-    "articulo_name": "ROSA EXPLORER 40CM 25U CERES",
+    "articulo_id": 33739,
+    "articulo_name": "ROSA EXPLORER 40CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27037,8 +26993,8 @@
     "invoice": ""
   },
   "90007|ROSES|MONDIAL|40|25|": {
-    "articulo_id": 35450,
-    "articulo_name": "ROSA MONDIAL 40CM 25U CERES",
+    "articulo_id": 35451,
+    "articulo_name": "ROSA MONDIAL 40CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27050,8 +27006,8 @@
     "invoice": ""
   },
   "90007|ROSES|PINK FLOYD|40|25|": {
-    "articulo_id": 35975,
-    "articulo_name": "ROSA PINK FLOYD 40CM 25U CERES",
+    "articulo_id": 35986,
+    "articulo_name": "ROSA PINK FLOYD 40CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27076,8 +27032,8 @@
     "invoice": ""
   },
   "90007|ROSES|WASABI|50|25|": {
-    "articulo_id": 37718,
-    "articulo_name": "ROSA WASABI 50CM 25U CERES",
+    "articulo_id": 37722,
+    "articulo_name": "ROSA WASABI 50CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27115,8 +27071,8 @@
     "invoice": ""
   },
   "90007|ROSES|BRIGHTON|60|25|": {
-    "articulo_id": 31931,
-    "articulo_name": "ROSA BRIGHTON 60CM 25U CERES",
+    "articulo_id": 31932,
+    "articulo_name": "ROSA BRIGHTON 60CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27128,8 +27084,8 @@
     "invoice": ""
   },
   "90007|ROSES|DEEP PURPLE|60|25|": {
-    "articulo_id": 32641,
-    "articulo_name": "ROSA DEEP PURPLE 60CM 25U CERES",
+    "articulo_id": 32643,
+    "articulo_name": "ROSA DEEP PURPLE 60CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27141,8 +27097,8 @@
     "invoice": ""
   },
   "90007|ROSES|ESPERANCE|60|25|": {
-    "articulo_id": 33706,
-    "articulo_name": "ROSA ESPERANCE 60CM 25U CERES",
+    "articulo_id": 33707,
+    "articulo_name": "ROSA ESPERANCE 60CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27154,8 +27110,8 @@
     "invoice": ""
   },
   "90007|ROSES|FRUTTETO|60|25|": {
-    "articulo_id": 34114,
-    "articulo_name": "ROSA FRUTTETO 60CM 25U CERES",
+    "articulo_id": 34115,
+    "articulo_name": "ROSA FRUTTETO 60CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27167,8 +27123,8 @@
     "invoice": ""
   },
   "90007|ROSES|SWEETNESS|60|25|": {
-    "articulo_id": 37030,
-    "articulo_name": "ROSA SWEETNESS 60CM 25U CERES",
+    "articulo_id": 37035,
+    "articulo_name": "ROSA SWEETNESS 60CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27180,8 +27136,8 @@
     "invoice": ""
   },
   "90007|ROSES|HERMOSA|50|25|": {
-    "articulo_id": 34423,
-    "articulo_name": "ROSA HERMOSA 50CM 25U CERES",
+    "articulo_id": 34429,
+    "articulo_name": "ROSA HERMOSA 50CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27193,8 +27149,8 @@
     "invoice": ""
   },
   "90007|ROSES|PHOENIX|60|25|": {
-    "articulo_id": 35928,
-    "articulo_name": "ROSA PHOENIX 60CM 25U CERES",
+    "articulo_id": 35926,
+    "articulo_name": "ROSA PHOENIX 60CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27206,8 +27162,8 @@
     "invoice": ""
   },
   "90007|ROSES|MONDIAL|50|25|": {
-    "articulo_id": 35498,
-    "articulo_name": "ROSA MONDIAL 50CM 25U CERES",
+    "articulo_id": 35497,
+    "articulo_name": "ROSA MONDIAL 50CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27219,8 +27175,8 @@
     "invoice": ""
   },
   "90007|ROSES|PINK MONDIAL|50|25|": {
-    "articulo_id": 36070,
-    "articulo_name": "ROSA PINK MONDIAL 50CM 25U CERES",
+    "articulo_id": 36071,
+    "articulo_name": "ROSA PINK MONDIAL 50CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27232,8 +27188,8 @@
     "invoice": ""
   },
   "90007|ROSES|DEEP PURPLE|50|25|": {
-    "articulo_id": 32621,
-    "articulo_name": "ROSA DEEP PURPLE 50CM 25U CERES",
+    "articulo_id": 32623,
+    "articulo_name": "ROSA DEEP PURPLE 50CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27245,8 +27201,8 @@
     "invoice": ""
   },
   "90007|ROSES|ESPERANCE|50|25|": {
-    "articulo_id": 33691,
-    "articulo_name": "ROSA ESPERANCE 50CM 25U CERES",
+    "articulo_id": 33693,
+    "articulo_name": "ROSA ESPERANCE 50CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27284,8 +27240,8 @@
     "invoice": ""
   },
   "90007|ROSES|SWEETNESS|50|25|": {
-    "articulo_id": 37020,
-    "articulo_name": "ROSA SWEETNESS 50CM 25U CERES",
+    "articulo_id": 37022,
+    "articulo_name": "ROSA SWEETNESS 50CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27297,8 +27253,8 @@
     "invoice": ""
   },
   "90007|ROSES|EXPLORER|50|25|": {
-    "articulo_id": 33766,
-    "articulo_name": "ROSA EXPLORER 50CM 25U CERES",
+    "articulo_id": 33760,
+    "articulo_name": "ROSA EXPLORER 50CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27310,8 +27266,8 @@
     "invoice": ""
   },
   "90007|ROSES|VENDELA|40|25|": {
-    "articulo_id": 37540,
-    "articulo_name": "ROSA VENDELA 40CM 25U CERES",
+    "articulo_id": 37541,
+    "articulo_name": "ROSA VENDELA 40CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27349,8 +27305,8 @@
     "invoice": ""
   },
   "90007|ROSES|PINK MONDIAL|40|25|": {
-    "articulo_id": 36055,
-    "articulo_name": "ROSA PINK MONDIAL 40CM 25U CERES",
+    "articulo_id": 36123,
+    "articulo_name": "ROSA PINK MONDIAL 40CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27362,8 +27318,8 @@
     "invoice": ""
   },
   "90007|ROSES|IGUAZU|50|25|": {
-    "articulo_id": 34645,
-    "articulo_name": "ROSA IGUAZU 50CM 25U CERES",
+    "articulo_id": 34642,
+    "articulo_name": "ROSA IGUAZU 50CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27375,8 +27331,8 @@
     "invoice": ""
   },
   "90007|ROSES|VENDELA|50|25|": {
-    "articulo_id": 37569,
-    "articulo_name": "ROSA VENDELA 50CM 25U CERES",
+    "articulo_id": 37570,
+    "articulo_name": "ROSA VENDELA 50CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27414,8 +27370,8 @@
     "invoice": ""
   },
   "90007|ROSES|MOMENTUM|50|25|": {
-    "articulo_id": 35384,
-    "articulo_name": "ROSA MOMENTUM 50CM 25U CERES",
+    "articulo_id": 35381,
+    "articulo_name": "ROSA MOMENTUM 50CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27427,8 +27383,8 @@
     "invoice": ""
   },
   "90007|ROSES|MOMENTUM|60|25|": {
-    "articulo_id": 35411,
-    "articulo_name": "ROSA MOMENTUM 60CM 25U CERES",
+    "articulo_id": 35405,
+    "articulo_name": "ROSA MOMENTUM 60CM 25U SCARLET",
     "origen": "auto-marca",
     "provider_id": 90007,
     "species": "ROSES",
@@ -27598,7 +27554,7 @@
   "90042|GYPSOPHILA|GYPSOPHILA OVER TIME WHITE|0|25|750GR": {
     "articulo_id": 28196,
     "articulo_name": "PANICULATA OVERTIME BLANCO 750GR 1U ESMERALDA",
-    "origen": "auto-matching",
+    "origen": "revisado",
     "provider_id": 90042,
     "species": "GYPSOPHILA",
     "variety": "GYPSOPHILA OVER TIME WHITE",
@@ -27936,7 +27892,7 @@
   "90014|ROSES|NEWS FLASH|40|25|": {
     "articulo_id": 35691,
     "articulo_name": "ROSA NEWSFLASH 40CM 25U FLORAROMA",
-    "origen": "auto-marca",
+    "origen": "revisado",
     "provider_id": 90014,
     "species": "ROSES",
     "variety": "NEWS FLASH",
@@ -28298,8 +28254,8 @@
     "invoice": ""
   },
   "90015|ROSES|EXPLORER|40|25|": {
-    "articulo_id": 33735,
-    "articulo_name": "ROSA EXPLORER 40CM 25U FIORENTINA",
+    "articulo_id": 33737,
+    "articulo_name": "ROSA EXPLORER 40CM 25U MYSTIC",
     "origen": "auto-marca",
     "provider_id": 90015,
     "species": "ROSES",
@@ -28307,7 +28263,7 @@
     "size": 40,
     "stems_per_bunch": 25,
     "grade": "",
-    "raw": "12 H Explorer 16 25 40 400 0,270 108,000",
+    "raw": "11 H Explorer 16 25 40 400 0,270 108,000",
     "invoice": ""
   },
   "90015|ROSES|EXPLORER|50|25|": {
@@ -29119,7 +29075,7 @@
   "90018|ROSES|LIGHT HOUSE|50|25|": {
     "articulo_id": 32293,
     "articulo_name": "ROSA COL LIGHTHOUSE 50CM 25U",
-    "origen": "auto-matching",
+    "origen": "revisado",
     "provider_id": 90018,
     "species": "ROSES",
     "variety": "LIGHT HOUSE",
@@ -29847,7 +29803,7 @@
   "90023|ROSES|TIARA|40|25|": {
     "articulo_id": 33507,
     "articulo_name": "ROSA EC TARA 40CM 25U",
-    "origen": "auto-matching",
+    "origen": "revisado",
     "provider_id": 90023,
     "species": "ROSES",
     "variety": "TIARA",
@@ -30219,19 +30175,6 @@
     "stems_per_bunch": 25,
     "grade": "",
     "raw": "Rosas - Mondial 70cm 0,00 0,00 225 0,35 78,75",
-    "invoice": ""
-  },
-  "90026|ROSES|MIX|50|25|": {
-    "articulo_id": 35344,
-    "articulo_name": "ROSA MIA 50CM 25U FLORAROMA",
-    "origen": "auto-fuzzy",
-    "provider_id": 90026,
-    "species": "ROSES",
-    "variety": "MIX",
-    "size": 50,
-    "stems_per_bunch": 25,
-    "grade": "",
-    "raw": "1 H Rosemix 89393 50 )00( 325 325 ST 0.28 91.00",
     "invoice": ""
   },
   "90029|ROSES|IGUANA|50|25|": {
@@ -31131,19 +31074,6 @@
     "raw": "8 QB PLAYA BLANCA 25 X .00   5        125.00 0.30 37.50",
     "invoice": ""
   },
-  "90038|ROSES|MIXTA|40|25|": {
-    "articulo_id": 22691,
-    "articulo_name": "HYDRANGEA MIXTO 40CM 1U",
-    "origen": "auto-matching",
-    "provider_id": 90038,
-    "species": "ROSES",
-    "variety": "MIXTA",
-    "size": 40,
-    "stems_per_bunch": 25,
-    "grade": "",
-    "raw": "1 HB MIXTA 25 X .00  14         350.00 0.25 87.50",
-    "invoice": ""
-  },
   "90038|ROSES|MONDIAL|60|25|": {
     "articulo_id": 35545,
     "articulo_name": "ROSA MONDIAL 60CM 25U SCARLET",
@@ -31300,19 +31230,6 @@
     "raw": "4 QB MAGIC TIMES 25 X .00    4       100.00 0.35 35.00",
     "invoice": ""
   },
-  "90038|ROSES|MIXTA|60|25|": {
-    "articulo_id": 12548,
-    "articulo_name": "CLAVEL COL FANCY MIXTO 70CM 25U",
-    "origen": "auto-matching",
-    "provider_id": 90038,
-    "species": "ROSES",
-    "variety": "MIXTA",
-    "size": 60,
-    "stems_per_bunch": 25,
-    "grade": "",
-    "raw": "7 HB MIXTA 25 X .00    12       300.00 0.35 105.00",
-    "invoice": ""
-  },
   "90038|ROSES|KAHALA°|40|25|": {
     "articulo_id": 33117,
     "articulo_name": "ROSA EC KAHALA 40CM 25U",
@@ -31402,19 +31319,6 @@
     "stems_per_bunch": 25,
     "grade": "",
     "raw": "3 QB BRIGHTON 25 X .00   5        125.00 0.30 37.50",
-    "invoice": ""
-  },
-  "90038|ROSES|MIXTA|50|25|": {
-    "articulo_id": 22691,
-    "articulo_name": "HYDRANGEA MIXTO 40CM 1U",
-    "origen": "auto-matching",
-    "provider_id": 90038,
-    "species": "ROSES",
-    "variety": "MIXTA",
-    "size": 50,
-    "stems_per_bunch": 25,
-    "grade": "",
-    "raw": "7 HB MIXTA 25 X .00   14        350.00 0.30 105.00",
     "invoice": ""
   },
   "90041|ROSES|YELLOW TEXAS|50|25|": {
@@ -31610,6 +31514,162 @@
     "stems_per_bunch": 25,
     "grade": "",
     "raw": "1 H Rose Momentum X 25 - 50 48851 50 0603.11.00.00 300 300 ST 0.31 93.00",
+    "invoice": ""
+  },
+  "90026|ROSES|MIX|50|25|": {
+    "articulo_id": 35344,
+    "articulo_name": "ROSA MIA 50CM 25U FLORAROMA",
+    "origen": "auto-fuzzy",
+    "provider_id": 90026,
+    "species": "ROSES",
+    "variety": "MIX",
+    "size": 50,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "1 H Rosemix 89393 50 )00( 325 325 ST 0.28 91.00",
+    "invoice": ""
+  },
+  "90038|ROSES|MIXTA|40|25|": {
+    "articulo_id": 22691,
+    "articulo_name": "HYDRANGEA MIXTO 40CM 1U",
+    "origen": "auto-matching",
+    "provider_id": 90038,
+    "species": "ROSES",
+    "variety": "MIXTA",
+    "size": 40,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "1 HB MIXTA 25 X .00  14         350.00 0.25 87.50",
+    "invoice": ""
+  },
+  "90038|ROSES|MIXTA|60|25|": {
+    "articulo_id": 12548,
+    "articulo_name": "CLAVEL COL FANCY MIXTO 70CM 25U",
+    "origen": "auto-matching",
+    "provider_id": 90038,
+    "species": "ROSES",
+    "variety": "MIXTA",
+    "size": 60,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "7 HB MIXTA 25 X .00    12       300.00 0.35 105.00",
+    "invoice": ""
+  },
+  "90038|ROSES|MIXTA|50|25|": {
+    "articulo_id": 22691,
+    "articulo_name": "HYDRANGEA MIXTO 40CM 1U",
+    "origen": "auto-matching",
+    "provider_id": 90038,
+    "species": "ROSES",
+    "variety": "MIXTA",
+    "size": 50,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "7 HB MIXTA 25 X .00   14        350.00 0.30 105.00",
+    "invoice": ""
+  },
+  "2228|ROSES|EXPLORER|70|25|": {
+    "articulo_id": 33836,
+    "articulo_name": "ROSA EXPLORER 70CM 25U LUXUS",
+    "origen": "auto-marca",
+    "provider_id": 2228,
+    "species": "ROSES",
+    "variety": "EXPLORER",
+    "size": 70,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "4 - 4 1 HALF EXPLORER 70 25 12 300 0.40 120.00",
+    "invoice": ""
+  },
+  "2228|ROSES|STARDUST|70|25|": {
+    "articulo_id": 32392,
+    "articulo_name": "ROSA COL STARDUST 70CM 25U",
+    "origen": "auto-matching",
+    "provider_id": 2228,
+    "species": "ROSES",
+    "variety": "STARDUST",
+    "size": 70,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "3 - 3 1 QUARTER STARDUST 70 25 4 100 0.45 45.00",
+    "invoice": ""
+  },
+  "2228|ROSES|KAHALA|40|25|": {
+    "articulo_id": 34695,
+    "articulo_name": "ROSA KAHALA 40CM 25U LUXUS",
+    "origen": "auto-marca",
+    "provider_id": 2228,
+    "species": "ROSES",
+    "variety": "KAHALA",
+    "size": 40,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "4 - 4 1 QUARTER KAHALA 40 25 2 50 0.30 15.00",
+    "invoice": ""
+  },
+  "2228|ROSES|HILUX|40|25|": {
+    "articulo_id": 32280,
+    "articulo_name": "ROSA COL HILUX 40CM 25U",
+    "origen": "auto-matching",
+    "provider_id": 2228,
+    "species": "ROSES",
+    "variety": "HILUX",
+    "size": 40,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "3 - 3 1 QUARTER HILUX 40 25 1 25 0.25 6.25",
+    "invoice": ""
+  },
+  "1429|ROSES|ALTAMIRA|40|25|": {
+    "articulo_id": 31659,
+    "articulo_name": "ROSA ALTAMIRA 40CM 25U LUXUS",
+    "origen": "auto-marca",
+    "provider_id": 1429,
+    "species": "ROSES",
+    "variety": "ALTAMIRA",
+    "size": 40,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "1 - 2 2 HALF ALTAMIRA 40 25 1 50 0.24 12.00",
+    "invoice": ""
+  },
+  "1429|ROSES|ALBA|40|25|": {
+    "articulo_id": 31618,
+    "articulo_name": "ROSA ALBA 40CM 25U LUXUS",
+    "origen": "auto-marca",
+    "provider_id": 1429,
+    "species": "ROSES",
+    "variety": "ALBA",
+    "size": 40,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "4 - 4 1 HALF ALBA 40 25 1 25 0.24 6.00",
+    "invoice": ""
+  },
+  "90041|ROSES|FREEDOM|60|25|": {
+    "articulo_id": 34005,
+    "articulo_name": "ROSA FREEDOM 60CM 25U UNIQUE FLOWERS",
+    "origen": "auto-marca",
+    "provider_id": 90041,
+    "species": "ROSES",
+    "variety": "FREEDOM",
+    "size": 60,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "2 QB 100 ROSE RED FREEDOM 60 CM 0603110000 Stems 200 US$ 0.32 8 US$ 8.00 US$ 64.00",
+    "invoice": ""
+  },
+  "90041|ROSES|TEXAS|50|25|": {
+    "articulo_id": 37116,
+    "articulo_name": "ROSA TEXAS 50CM 25U UNIQUE FLOWERS",
+    "origen": "auto-marca",
+    "provider_id": 90041,
+    "species": "ROSES",
+    "variety": "TEXAS",
+    "size": 50,
+    "stems_per_bunch": 25,
+    "grade": "",
+    "raw": "1 HB 350 ROSE YELLOW TEXAS 50 0603110000 Stems 350 US$ 0.28 14 US$ 7.00 US$ 98.00",
     "invoice": ""
   }
 }

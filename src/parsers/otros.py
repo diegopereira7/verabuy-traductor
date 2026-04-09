@@ -1428,15 +1428,28 @@ class UniqueParser:
             # "1 HB 350 ROSE ASSORTED R-19 ... Stems 350 US$ 0.30 14 US$ 7.50 US$"
             # Siguiente línea: "ASSORTED 50 Jesma 105.00"
             pm = re.search(
-                r'(\d+)\s+(HB|QB|FB)\s+(\d+)\s+ROSE\s+(\w[\w\s]*?)\s+(?:R-?\d+\s+)?(?:\w+\s+)?06[\d.]+\s+Stems\s+(\d+)\s+US\$\s+([\d.]+)\s+(\d+)\s+US\$',
+                r'(\d+)\s+(HB|QB|FB)\s+(\d+)\s+ROSE\s+(\w[\w\s]*?)\s+(\d{2,3})\s+CM\s+06[\d.]+\s+Stems\s+(\d+)\s+US\$\s+([\d.]+)\s+(\d+)\s+US\$',
                 ln, re.I)
             if not pm:
+                # Fallback without size: "ROSE ASSORTED R-19 0603..."
+                pm = re.search(
+                    r'(\d+)\s+(HB|QB|FB)\s+(\d+)\s+ROSE\s+(\w[\w\s]*?)\s+(?:R-?\d+\s+)?(?:\w+\s+)?06[\d.]+\s+Stems\s+(\d+)\s+US\$\s+([\d.]+)\s+(\d+)\s+US\$',
+                    ln, re.I)
+            if not pm:
                 continue
+            has_size_in_regex = len(pm.groups()) == 8  # primary regex has 8 groups (incl size)
             box_type = pm.group(2); var = pm.group(4).strip().upper()
-            stems = int(pm.group(5)); price = float(pm.group(6)); bunches = int(pm.group(7))
+            if has_size_in_regex:
+                sz_from_regex = int(pm.group(5))
+                stems = int(pm.group(6)); price = float(pm.group(7)); bunches = int(pm.group(8))
+            else:
+                sz_from_regex = 0
+                stems = int(pm.group(5)); price = float(pm.group(6)); bunches = int(pm.group(7))
+            # Strip color prefix from variety (RED FREEDOM → FREEDOM)
+            var = re.sub(r'^(?:RED|WHITE|PINK|YELLOW|ORANGE|CREAM|PEACH)\s+', '', var).strip()
             spb = stems // bunches if bunches else 25
             # Total y tamaño pueden estar al final de esta línea o en la siguiente
-            total = 0.0; sz = 50
+            total = 0.0; sz = sz_from_regex or 50
             # Buscar total al final: "US$ 105.00"
             tm = re.search(r'US\$\s*([\d.]+)\s*$', ln)
             if tm:
