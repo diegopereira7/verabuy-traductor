@@ -1,47 +1,86 @@
-"""
-Procesador no-interactivo de facturas PDF para VeraBuy Web.
+"""Procesador no-interactivo de facturas PDF para VeraBuy Web.
+
 Uso: python procesar_pdf.py <ruta_pdf>
 Salida: JSON en stdout
 """
-import sys, json, os
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from __future__ import annotations
 
-from verabuy_trainer import (
-    detect_provider, FORMAT_PARSERS, ArticulosLoader,
-    SynonymStore, Matcher, SYNS_FILE, _rescue_unparsed_lines,
-    _split_mixed_boxes
-)
+import json
+import sys
 from pathlib import Path
+
+from src.pdf import detect_provider
+from src.parsers import FORMAT_PARSERS
+from src.articulos import ArticulosLoader
+from src.sinonimos import SynonymStore
+from src.matcher import Matcher, rescue_unparsed_lines, split_mixed_boxes, reclassify_assorted
+from src.config import SQL_FILE, SYNS_FILE
 
 
 def run(pdf_path: str) -> dict:
+    """Procesa un PDF y devuelve el resultado como dict JSON-serializable."""
     pdata = detect_provider(pdf_path)
-    if not pdata:
-        return {'ok': False, 'error': 'Proveedor no reconocido en el PDF'}
 
-    fmt    = pdata.get('fmt', '')
+    if not pdata:
+        # Intentar con parsers aprendidos
+        from src.learner import intentar_auto_parse
+        from src.pdf import extract_text
+        text = extract_text(pdf_path)
+        auto_result = intentar_auto_parse(pdf_path, text)
+        if auto_result['ok']:
+            pdata = {
+                'id': 0,
+                'name': auto_result.get('learned_provider', 'Auto'),
+                'fmt': 'auto_learned',
+                'key': 'auto_learned',
+                'text': text,
+            }
+            header = auto_result['header']
+            lines = auto_result['lines']
+            # Saltar al matching directamente
+            return _process_with_lines(pdf_path, pdata, header, lines)
+        return {
+            'ok': False,
+            'error': 'Proveedor no reconocido en el PDF',
+            'auto_learn_info': auto_result.get('auto_learn_info'),
+        }
+
+    fmt = pdata.get('fmt', '')
     parser = FORMAT_PARSERS.get(fmt)
     if not parser:
         return {'ok': False, 'error': f'Sin parser para formato "{fmt}"'}
 
-    sql_path = Path(__file__).parent / 'articulos (3).sql'
-    if not sql_path.exists():
-        return {'ok': False, 'error': f'No se encuentra la BD de artículos: {sql_path}'}
+    if not SQL_FILE.exists():
+        return {'ok': False, 'error': f'No se encuentra la BD de artículos: {SQL_FILE}'}
 
-    art = ArticulosLoader()
-    art.load_from_sql(str(sql_path))
-
-    syn     = SynonymStore(str(SYNS_FILE))
-    matcher = Matcher(art, syn)
+    # Inyectar ruta al PDF para parsers que necesiten acceso directo (ej: tablas)
+    pdata['pdf_path'] = pdf_path
 
     header, lines = parser.parse(pdata['text'], pdata)
-    lines = _split_mixed_boxes(lines)
-    rescued = _rescue_unparsed_lines(pdata['text'], lines)
-    lines = matcher.match_all(pdata['id'], lines)
-    lines.extend(rescued)  # sin_parser lines added after matching
+    return _process_with_lines(pdf_path, pdata, header, lines)
+
+
+def _process_with_lines(pdf_path: str, pdata: dict, header, lines) -> dict:
+    """Pipeline compartido: matching + serialización."""
+    art = ArticulosLoader()
+    art.load_from_sql(str(SQL_FILE))
+
+    syn = SynonymStore(str(SYNS_FILE))
+    matcher = Matcher(art, syn)
+
+    lines = split_mixed_boxes(lines)
+    rescued = rescue_unparsed_lines(pdata.get('text', ''), lines)
+    pdf_name = Path(pdf_path).name if pdf_path else ''
+    lines = matcher.match_all(pdata.get('id', 0), lines, invoice=pdf_name)
+    lines = reclassify_assorted(lines)
+    lines.extend(rescued)
 
     ok_count = sum(1 for l in lines if l.match_status == 'ok')
     no_parser = sum(1 for l in lines if l.match_status == 'sin_parser')
+    mixed_box = sum(1 for l in lines if l.match_status == 'mixed_box')
+
+    raw_lines = _serialize_lines(lines)
+    grouped_lines = _group_mixed_boxes(raw_lines)
 
     return {
         'ok': True,
@@ -57,30 +96,88 @@ def run(pdf_path: str) -> dict:
         'stats': {
             'total_lineas': len(lines),
             'ok':           ok_count,
-            'sin_match':    len(lines) - ok_count - no_parser,
+            'sin_match':    len(lines) - ok_count - no_parser - mixed_box,
             'sin_parser':   no_parser,
+            'mixed_box':    mixed_box,
         },
-        'lines': [{
-            'raw':             l.raw_description[:120],
-            'species':         l.species,
-            'variety':         l.variety,
-            'grade':           l.grade,
-            'size':            l.size,
-            'stems_per_bunch': l.stems_per_bunch,
-            'stems':           l.stems,
-            'price_per_stem':  round(l.price_per_stem, 5),
-            'line_total':      round(l.line_total, 2),
-            'label':           l.label,
-            'box_type':        l.box_type,
-            'articulo_id':     l.articulo_id,
-            'articulo_name':   l.articulo_name or '',
-            'match_status':    l.match_status,
-            'match_method':    l.match_method,
-        } for l in lines]
+        'lines': grouped_lines,
     }
 
 
+def _serialize_line(l) -> dict:
+    """Convierte una InvoiceLine a dict JSON-serializable."""
+    return {
+        'raw':             l.raw_description[:120],
+        'species':         l.species,
+        'variety':         l.variety,
+        'grade':           l.grade,
+        'size':            l.size,
+        'stems_per_bunch': l.stems_per_bunch,
+        'stems':           l.stems,
+        'price_per_stem':  round(l.price_per_stem, 5),
+        'line_total':      round(l.line_total, 2),
+        'label':           l.label,
+        'box_type':        l.box_type,
+        'articulo_id':     l.articulo_id,
+        'articulo_name':   l.articulo_name or '',
+        'match_status':    l.match_status,
+        'match_method':    l.match_method,
+    }
+
+
+def _serialize_lines(lines) -> list[dict]:
+    return [_serialize_line(l) for l in lines]
+
+
+def _group_mixed_boxes(lines: list[dict]) -> list[dict]:
+    """Agrupa líneas de cajas mixtas (box_type='MIX', mismo raw) bajo una fila padre.
+
+    Las líneas normales pasan sin modificar con is_mixed=False.
+    Las cajas mixtas generan una fila padre con totales + array de hijas.
+    """
+    from collections import OrderedDict
+
+    groups: OrderedDict[str, list[int]] = OrderedDict()
+    for i, l in enumerate(lines):
+        if l.get('box_type') == 'MIX':
+            key = l['raw']
+            groups.setdefault(key, []).append(i)
+        else:
+            # Línea normal: clave única para que no se agrupe
+            groups.setdefault(f'__single_{i}', []).append(i)
+
+    result = []
+    for key, indices in groups.items():
+        if key.startswith('__single_'):
+            line = lines[indices[0]]
+            line['is_mixed'] = False
+            result.append(line)
+        elif len(indices) == 1:
+            line = lines[indices[0]]
+            line['is_mixed'] = False
+            result.append(line)
+        else:
+            hijas = [lines[i] for i in indices]
+            for h in hijas:
+                h['is_mixed'] = True
+            first = hijas[0]
+            result.append({
+                'row_type':    'mixed_parent',
+                'raw':         first['raw'],
+                'species':     first['species'],
+                'grade':       first['grade'],
+                'label':       first['label'],
+                'stems':       sum(h['stems'] for h in hijas),
+                'line_total':  round(sum(h['line_total'] for h in hijas), 2),
+                'num_varieties': len(hijas),
+                'children':    hijas,
+                'is_mixed':    True,
+            })
+    return result
+
+
 if __name__ == '__main__':
+    sys.stdout.reconfigure(encoding='utf-8')
     if len(sys.argv) < 2:
         print(json.dumps({'ok': False, 'error': 'Uso: procesar_pdf.py <ruta_pdf>'}))
         sys.exit(1)

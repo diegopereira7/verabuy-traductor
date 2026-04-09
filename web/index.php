@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VeraBuy Traductor</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/style.css?v=<?= filemtime(__DIR__ . '/assets/style.css') ?>">
 </head>
 <body>
     <header>
         <h1>VeraBuy Traductor</h1>
         <nav>
             <button class="nav-btn active" data-tab="upload">Procesar Factura</button>
+            <button class="nav-btn" data-tab="batch">Importación Masiva</button>
             <button class="nav-btn" data-tab="history">Historial</button>
             <button class="nav-btn" data-tab="synonyms">Sinónimos</button>
+            <button class="nav-btn" data-tab="learned">Auto-Aprendizaje</button>
         </nav>
     </header>
 
@@ -54,6 +56,7 @@
                                 <th>Total</th>
                                 <th>Artículo VeraBuy</th>
                                 <th>Match</th>
+                                <th>Acción</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -61,6 +64,91 @@
                 </div>
 
                 <button class="btn btn-secondary" id="btnNewUpload">Procesar otra factura</button>
+            </div>
+        </section>
+
+        <!-- TAB: Importación Masiva -->
+        <section id="tab-batch" class="tab hidden">
+            <!-- Estado 1: Subida -->
+            <div id="batch-upload-zone">
+                <h2>Importación Masiva de Facturas</h2>
+                <div class="batch-drop-zone" id="batchDropZone">
+                    <div class="upload-icon">&#128230;</div>
+                    <p>Arrastra archivos <strong>PDF</strong>, una <strong>carpeta</strong> o un <strong>.zip</strong></p>
+                    <p class="text-muted">o usa los botones para seleccionar</p>
+                    <div class="batch-btn-group">
+                        <button type="button" class="btn btn-primary" id="btnSelectZip">ZIP</button>
+                        <button type="button" class="btn btn-primary" id="btnSelectFolder">Carpeta</button>
+                        <button type="button" class="btn btn-primary" id="btnSelectPdfs">PDFs</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estado 2: Progreso -->
+            <div id="batch-progress" class="hidden">
+                <h2>Procesando Lote</h2>
+                <div class="batch-progress-card">
+                    <div class="batch-progress-header">
+                        <span id="batch-status-text">Iniciando...</span>
+                        <span id="batch-progress-count"></span>
+                    </div>
+                    <div class="batch-progress-bar-wrap">
+                        <div class="batch-progress-bar" id="batchProgressBar" style="width: 0%"></div>
+                    </div>
+                    <div class="batch-progress-detail">
+                        <span id="batch-current-pdf"></span>
+                        <span id="batch-ok-err"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estado 3: Resultados -->
+            <div id="batch-results" class="hidden">
+                <h2>Resultados del Lote</h2>
+
+                <!-- Tarjetas resumen -->
+                <div class="batch-summary" id="batchSummary"></div>
+
+                <!-- Filtros -->
+                <div class="filters">
+                    <select id="batchFilterInvoice">
+                        <option value="">Todas las facturas</option>
+                    </select>
+                    <select id="batchFilterStatus">
+                        <option value="">Todos los estados</option>
+                        <option value="ok">OK</option>
+                        <option value="parcial">Parcial</option>
+                        <option value="error">Error</option>
+                    </select>
+                    <input type="text" id="batchFilterText" placeholder="Buscar proveedor, factura...">
+                </div>
+
+                <!-- Tabla de resultados -->
+                <div class="table-container">
+                    <table id="batchTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>PDF</th>
+                                <th>Proveedor</th>
+                                <th>Factura</th>
+                                <th>Fecha</th>
+                                <th>Líneas</th>
+                                <th>OK</th>
+                                <th>Sin Match</th>
+                                <th>Total USD</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <!-- Acciones -->
+                <div class="batch-actions">
+                    <button class="btn btn-primary" id="btnBatchExcel">Descargar Excel</button>
+                    <button class="btn btn-secondary" id="btnBatchNew">Nueva Importación</button>
+                </div>
             </div>
         </section>
 
@@ -82,6 +170,7 @@
                             <th>OK</th>
                             <th>Sin Match</th>
                             <th>Total USD</th>
+                            <th>Detalle</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -91,38 +180,119 @@
 
         <!-- TAB: Sinónimos -->
         <section id="tab-synonyms" class="tab hidden">
-            <h2>Diccionario de Sinónimos</h2>
+            <div class="syn-header">
+                <h2>Diccionario de Sinónimos</h2>
+                <button type="button" class="btn btn-primary" id="btnAddSynonym">+ Añadir sinónimo</button>
+            </div>
+
+            <!-- Badges de resumen clickables -->
+            <div class="syn-badges" id="synBadges"></div>
+
+            <!-- Filtros -->
             <div class="filters">
-                <input type="text" id="synFilter" placeholder="Buscar por variedad, proveedor, especie...">
+                <input type="text" id="synFilter" placeholder="Buscar en línea, factura, variedad, artículo...">
                 <select id="synOriginFilter">
                     <option value="">Todos los orígenes</option>
                     <option value="auto">Auto</option>
+                    <option value="auto-marca">Marca</option>
                     <option value="auto-fuzzy">Fuzzy</option>
                     <option value="manual">Manual</option>
                     <option value="manual-web">Manual (Web)</option>
                 </select>
                 <span id="synCount"></span>
             </div>
+
             <div id="synLoading" class="hidden">
                 <div class="spinner"></div>
             </div>
+
+            <!-- Formulario añadir sinónimo (oculto) -->
+            <div id="synAddForm" class="syn-add-form hidden">
+                <h3>Añadir sinónimo manual</h3>
+                <div class="syn-form-grid">
+                    <label>Clave (provider|species|variety|size|spb|grade)
+                        <input type="text" id="synAddKey" placeholder="2222|ROSES|FREEDOM|50|25|">
+                    </label>
+                    <label>ID Artículo VeraBuy
+                        <input type="number" id="synAddArticuloId" placeholder="32993">
+                    </label>
+                    <label>Nombre Artículo
+                        <input type="text" id="synAddArticuloName" placeholder="ROSA EC FREEDOM 50CM 25U">
+                    </label>
+                </div>
+                <div class="syn-form-actions">
+                    <button type="button" class="btn btn-primary" id="btnSynAddSave">Guardar</button>
+                    <button type="button" class="btn btn-secondary" id="btnSynAddCancel">Cancelar</button>
+                </div>
+            </div>
+
+            <!-- Paginación -->
+            <div class="syn-pagination" id="synPagination"></div>
+
             <div class="table-container">
                 <table id="synTable">
                     <thead>
                         <tr>
-                            <th>Proveedor</th>
-                            <th>Especie</th>
+                            <th>Línea Factura</th>
+                            <th>Factura</th>
                             <th>Variedad</th>
                             <th>Talla</th>
-                            <th>SPB</th>
-                            <th>Grado</th>
+                            <th>Tallos</th>
                             <th>ID Artículo</th>
                             <th>Nombre Artículo</th>
                             <th>Origen</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
                 </table>
+            </div>
+
+            <!-- Paginación inferior -->
+            <div class="syn-pagination" id="synPaginationBottom"></div>
+        </section>
+        <!-- TAB: Auto-Aprendizaje -->
+        <section id="tab-learned" class="tab hidden">
+            <h2>Parsers Auto-Aprendidos</h2>
+            <div id="learnedLoading" class="hidden"><div class="spinner"></div></div>
+
+            <div id="learnedContent">
+                <h3>Parsers Generados</h3>
+                <div class="table-container">
+                    <table id="learnedTable">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Especie</th>
+                                <th>Score</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th>PDFs</th>
+                                <th>Keywords</th>
+                                <th>Activo</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <h3 style="margin-top: 24px;">Pendientes de Revisión</h3>
+                <div class="table-container">
+                    <table id="pendingTable">
+                        <thead>
+                            <tr>
+                                <th>Proveedor</th>
+                                <th>Score</th>
+                                <th>Razón</th>
+                                <th>PDFs</th>
+                                <th>Fecha</th>
+                                <th>Acción Sugerida</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
         </section>
     </main>
@@ -131,6 +301,11 @@
         <p>VeraBuy Traductor v4.0 &mdash; Interfaz Web</p>
     </footer>
 
-    <script src="assets/app.js"></script>
+    <!-- Inputs ocultos para batch (fuera de tabs para evitar display:none issues) -->
+    <input type="file" id="batchZipInput" accept=".zip" style="position:fixed;top:-9999px;left:-9999px">
+    <input type="file" id="batchFolderInput" webkitdirectory style="position:fixed;top:-9999px;left:-9999px">
+    <input type="file" id="batchPdfInput" accept=".pdf" multiple style="position:fixed;top:-9999px;left:-9999px">
+
+    <script src="assets/app.js?v=<?= filemtime(__DIR__ . '/assets/app.js') ?>"></script>
 </body>
 </html>

@@ -21,3 +21,9 @@ define('HISTORY_FILE', PROJECT_ROOT . '/historial_universal.json');
 
 // Tamaño máximo de PDF (10 MB)
 define('MAX_PDF_SIZE', 10 * 1024 * 1024);
+
+// Aumentar límites para importación masiva
+@ini_set('upload_max_filesize', '200M');
+@ini_set('post_max_size', '210M');
+@ini_set('max_file_uploads', '200');
+@ini_set('max_execution_time', '300');
