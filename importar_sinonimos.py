@@ -85,6 +85,12 @@ def apply_changes(changes: list[dict], syns: dict, art: ArticulosLoader) -> dict
             print(f'  BORRADO: {key}')
             continue
 
+        if action == 'OK':
+            syns[key]['origen'] = 'revisado'
+            updated += 1
+            print(f'  REVISADO OK: {key}')
+            continue
+
         # Try to parse as article ID
         try:
             new_id = int(float(action))  # float() handles "32779.0" from Excel

@@ -144,26 +144,29 @@ def audit(art: ArticulosLoader, syns: dict):
         if variety and size:
             variety_map[(_normalize(variety), size)].append(entry)
 
-        # Flag suspicious
+        # Flag suspicious — skip manually reviewed synonyms
         is_suspicious = False
         reason = []
-        if origen == 'auto-fuzzy' and sim < 80:
-            reason.append(f'fuzzy baja similitud ({sim}%)')
-        if origen == 'auto-fuzzy':
-            reason.append('fuzzy')
-            is_suspicious = True
-        if sim < 50 and aid > 0:
-            reason.append(f'similitud {sim}%')
-            is_suspicious = True
-        if not exists and aid > 0:
-            reason.append('artículo eliminado')
-            is_suspicious = True
-        if species == 'ROSES' and aname and 'ROSA' not in aname.upper() and 'GARDEN' not in aname.upper():
-            reason.append('especie≠artículo')
-            is_suspicious = True
-        if species == 'CARNATIONS' and aname and 'CLAVEL' not in aname.upper():
-            reason.append('especie≠artículo')
-            is_suspicious = True
+        if origen in ('manual', 'manual-batch', 'revisado'):
+            pass  # already reviewed by user, never flag
+        else:
+            if origen == 'auto-fuzzy' and sim < 80:
+                reason.append(f'fuzzy baja similitud ({sim}%)')
+            if origen == 'auto-fuzzy':
+                reason.append('fuzzy')
+                is_suspicious = True
+            if sim < 50 and aid > 0:
+                reason.append(f'similitud {sim}%')
+                is_suspicious = True
+            if not exists and aid > 0:
+                reason.append('artículo eliminado')
+                is_suspicious = True
+            if species == 'ROSES' and aname and 'ROSA' not in aname.upper() and 'GARDEN' not in aname.upper():
+                reason.append('especie≠artículo')
+                is_suspicious = True
+            if species == 'CARNATIONS' and aname and 'CLAVEL' not in aname.upper():
+                reason.append('especie≠artículo')
+                is_suspicious = True
 
         if is_suspicious:
             entry['reason'] = ' | '.join(reason)
@@ -306,9 +309,10 @@ def generate_excel(sospechosos, todos, duplicados, output: Path):
         ['Instrucciones:', ''],
         ['  1. Revisa pestañas "Sospechosos" y "Revisar"', ''],
         ['  2. En columna "Nuevo Art. ID":', ''],
-        ['     - Escribe un número para cambiar el artículo', ''],
-        ['     - Escribe BORRAR para eliminar el sinónimo', ''],
-        ['     - Déjalo vacío para no cambiar nada', ''],
+        ['     - Número (ej: 32779) para cambiar el artículo', ''],
+        ['     - OK para marcar como revisado (no aparece más)', ''],
+        ['     - BORRAR para eliminar el sinónimo', ''],
+        ['     - Vacío = sin cambio', ''],
         ['  3. Guarda el Excel', ''],
         ['  4. Ejecuta: python importar_sinonimos.py auditoria_sinonimos.xlsx', ''],
     ])
